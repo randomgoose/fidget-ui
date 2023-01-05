@@ -1,0 +1,35 @@
+{
+  "name": "widget-component-library",
+  "version": "1.0.0",
+  "description": "Your Figma widget",
+  "scripts": {
+    "build": "esbuild widget-src/code.tsx --bundle --outfile=dist/code.js --target=es6",
+    "tsc": "tsc --noEmit -p widget-src",
+    "watch": "npm run build -- --watch",
+    "rollup": "rollup -c"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "@figma/plugin-typings": "*",
+    "@figma/widget-typings": "*",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
+    "esbuild": "*",
+    "rollup": "^2.60.0",
+    "rollup-plugin-dts": "^4.1.0",
+    "tslib": "^2.4.1",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1"
+  },
+  "main": "build/cjs/index.js",
+  "module": "build/esm/index.js",
+  "type": "module",
+  "files": [
+    "build"
+  ],
+  "types": "build/index.d.ts"
+}

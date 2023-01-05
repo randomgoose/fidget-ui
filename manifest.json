@@ -1,0 +1,12 @@
+{
+  "name": "widget-component-library",
+  "id": "1188853556594196977",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "editorType": [
+    "figma",
+    "figjam"
+  ],
+  "containsWidget": true,
+  "widgetApi": "1.0.0"
+}
