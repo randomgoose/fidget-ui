@@ -5,5 +5,8 @@ export interface TextFieldProps extends InputProps {
     size?: "sm" | "md" | "lg";
     placeholder?: string;
     leftElement?: FigmaDeclarativeNode;
+    rightElement?: FigmaDeclarativeNode;
+    leftAddon?: FigmaDeclarativeNode;
+    rightAddon?: FigmaDeclarativeNode;
     disabled?: boolean;
 }

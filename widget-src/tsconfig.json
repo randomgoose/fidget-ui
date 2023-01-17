@@ -3,7 +3,7 @@
     "jsx": "react",
     "module": "ESNext",
     "declaration": true,
-    "declarationDir": "build/types",
+    // "declarationDir": "build/types",
     "sourceMap": true,
     "outDir": "build",
     "jsxFactory": "figma.widget.h",

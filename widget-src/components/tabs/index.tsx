@@ -1,7 +1,10 @@
 import { colors } from "../../styles"
+import { renderChildren } from "../../utils";
+import { TabPaneProps, TabsProps } from "./interface";
+import { getTabsStyles } from "./styles";
 
 const { widget } = figma
-const { AutoLayout, Text } = widget
+const { AutoLayout, Rectangle } = widget
 
 const styles = {
     tab: {
@@ -24,64 +27,88 @@ const styles = {
     }
 }
 
-interface TabsProps {
-    isFitted?: boolean;
-    children?: FigmaDeclarativeNode;
-}
+export function TabPanel({ children, tab }: TabPaneProps) {
 
-interface TabPaneProps {
-    children: FigmaDeclarativeNode;
-}
-
-export function TabPane({ children }: TabPaneProps) {
-    const getChildren = (children: FigmaDeclarativeNode) => {
-        if (Array.isArray(children)) {
-            return children.map(child => {
-                if (typeof child === "string") {
-                    <Text>{child}</Text>
-                } else {
-                    return child
-                }
-            })
-        } else {
-            return children
-        }
-    }
-
-    return <AutoLayout width={"fill-parent"} height={"fill-parent"}>
-        {getChildren(children)}
+    return <AutoLayout
+        name="TabPane"
+        width={"fill-parent"}
+        height={"fill-parent"}
+    >
+        {renderChildren(children)}
     </AutoLayout>
 }
 
-export function Tabs({ children }: TabsProps) {
-    return <AutoLayout name="Tabs" width={"fill-parent"} direction={"vertical"}>
+function Tab() {
+    return <AutoLayout name="Tab tab">
 
-        <AutoLayout name="Tabs__tab-list" spacing={8}>
-            <AutoLayout
-                name="Tabs__tab"
-                {...styles.tab.base}
+    </AutoLayout>
+}
+
+export function Tabs({
+    variant = "line",
+    items,
+    isFitted,
+    activeKey,
+    colorScheme = "neutral",
+    onChange
+}: TabsProps) {
+
+    const { container, tabList, tabLabel, tab: tabStyles, tabPanels: tabPanelsStyles, activeTab, activeTabLabel } = getTabsStyles({ variant, isFitted, colorScheme })
+
+    const tabPanels = Array.isArray(items)
+        ? items.filter(({ key }) => key === activeKey).map(({ tab, key, children, }) => (
+            <TabPanel
+                key={key}
+                tab={tab}
             >
-                <Text {...styles.text.base}>Tab 1</Text>
-                {/* <Line stroke={colors.neutral[900]} length={"fill-parent"} positioning={"absolute"} y={{ type: "bottom", offset: 0 }} /> */}
-            </AutoLayout>
+                {renderChildren(children, { textProps: { fontSize: 14, lineHeight: 22, fill: colors.neutral[900] } })}
+            </TabPanel>
+        ))
+        : null
 
-            <AutoLayout {...styles.tab.base}>
-                <Text>Tab 2</Text>
-            </AutoLayout>
+    const tabs = Array.isArray(items)
+        ? items.map(({ tab, key }) => {
 
-            <AutoLayout {...styles.tab.base}>
-                <Text>Tab 3</Text>
+            const isActive = key === activeKey
+
+            return <AutoLayout
+                name="Tabs Tab"
+                {...isActive ? { ...activeTab } : { ...tabStyles }}
+                key={key}
+                onClick={() => {
+                    onChange && onChange(key)
+                }}
+            >
+                {renderChildren(tab, { textProps: !isActive ? tabLabel : activeTabLabel })}
             </AutoLayout>
+        })
+        : null
+
+    const divider = <Rectangle
+        name="Divider"
+        width={"fill-parent"}
+        height={1}
+        fill={colors.neutral[200]}
+        positioning={"absolute"}
+        x={{ type: "left-right", leftOffset: 0, rightOffset: 0 }}
+        y={{ type: "bottom", offset: 0 }}
+    />
+
+    return <AutoLayout
+        name="Tabs Container"
+        {...container}
+    >
+        <AutoLayout
+            name="Tabs Tab List"
+            {...tabList}
+        >
+            {(variant === "line" || variant === "enclosed") ? divider : null}
+
+            {tabs}
         </AutoLayout>
 
-        {/* <AutoLayout name="Tabs__tab-pane" padding={16}>
-            <Text>hgu</Text>
-        </AutoLayout> */}
-
-        <TabPane>
-            <AutoLayout><Text>hi</Text></AutoLayout>
-        </TabPane>
-
-        {/* <Line stroke={colors.neutral[200]} length={"fill-parent"} name={"Tabs__divider"} /> */}
+        <AutoLayout name="Tabs Tab Panes" {...tabPanelsStyles}>
+            {tabPanels}
+        </AutoLayout>
     </AutoLayout>
 }

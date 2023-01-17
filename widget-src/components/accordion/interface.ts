@@ -1,4 +1,10 @@
+export type AccordionItemProps = {
+    title: FigmaDeclarativeNode;
+    content: FigmaDeclarativeNode; 
+    key: string | number
+}
+
 export interface AccordionProps {
-    data: { title: string; content: string; key: string | number }[];
+    data: AccordionItemProps[];
     width?: number | "fill-parent"
 }

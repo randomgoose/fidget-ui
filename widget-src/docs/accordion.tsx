@@ -1,25 +1,37 @@
-import { Accordion } from "../components"
+import { Accordion, Button, Heading, IconArrowIconRight } from "../components"
+import { colors } from "../styles"
+import { docStyle } from "./styles"
 
 const { widget } = figma
-const { AutoLayout, Text } = widget
+const { AutoLayout, Text, Span } = widget
 
 export function AccordionDoc() {
     return <AutoLayout
-        verticalAlignItems={'center'}
-        direction={"vertical"}
-        spacing={24}
-        padding={32}
-        cornerRadius={8}
-        fill={'#FFFFFF'}
-        stroke={'#E6E6E6'}
-        overflow={"visible"}
-        width={480}
+        {...docStyle}
     >
-        <Text fontSize={24} fontWeight={"bold"}>Accordion</Text>
-        <Accordion data={[
-            { key: 1, title: "FAQ", content: "These are some frequently asked questions." },
-            { key: 2, title: "Why use this library?", content: "You should definitely use this library." },
-            { key: 3, title: "Start with an Accordion component", content: "Start using this library from an accordion component." }
-        ]} />
+        <Heading as="h3">Accordion</Heading>
+        <Accordion
+            data={[
+                {
+                    key: 1,
+                    title: "FAQ", content: "These are some frequently asked questions."
+                },
+                {
+                    key: 2,
+                    title: <Text
+                        fontWeight={"bold"}
+                        fill={colors.neutral[900]}
+                        fontSize={14}
+                        lineHeight={22}
+                    >
+                        Why use this <Span fill={colors.blue[500]}>library</Span>?
+                    </Text>, content: "You should definitely use this library."
+                },
+                {
+                    key: 3,
+                    title: "Start with an Accordion component",
+                    content: <Button rightIcon={<IconArrowIconRight />}>Documentation</Button>
+                }
+            ]} />
     </AutoLayout>
 }

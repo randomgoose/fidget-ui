@@ -1,19 +1,10 @@
-import { colors } from "../../styles"
 import { IconChevronIconDown, IconChevronIconUp } from "../icons"
-import { AccordionProps } from "./interface"
+import { AccordionItemProps, AccordionProps } from "./interface"
+import { renderChildren } from "../../utils"
+import { getAccordionStyles } from "./styles"
 
 const { widget } = figma
-const { AutoLayout, Text, useSyncedState } = widget
-
-const styles: {
-    container: AutoLayoutProps,
-    title: TextProps,
-    content: TextProps
-} = {
-    container: {},
-    title: {},
-    content: {}
-}
+const { AutoLayout, useSyncedState } = widget
 
 export function Accordion({
     data,
@@ -21,6 +12,17 @@ export function Accordion({
 }:
     AccordionProps) {
     const [activeKeys, setActiveKeys] = useSyncedState<(string | number)[]>("activeKeys", []);
+
+    const {
+        container,
+        item,
+        title: titleStyles,
+        content: contentStyles,
+        panel,
+        button,
+        chevronContainer,
+        chevron
+    } = getAccordionStyles();
 
     const toggle = (key: string | number) => {
         if (activeKeys.indexOf(key) >= 0) {
@@ -32,76 +34,45 @@ export function Accordion({
         }
     }
 
-    return <AutoLayout
-        name="Accordion"
-        direction={"vertical"}
-        width={width}
-        padding={4}
-        stroke={colors.neutral[200]}
-        cornerRadius={6}
-        spacing={4}
-    >
-        {
-            data.map(({ title, content, key }, index) => (
+    const renderItem = ({ title, content, key }: AccordionItemProps) => {
+        return <AutoLayout
+            name="Accordion Item"
+            key={key}
+            {...item}
+        >
+            <AutoLayout
+                name="Accordion Button"
+                onClick={() => { toggle(key) }}
+                {...button}
+            >
+                <AutoLayout name="Accordion Title Container" width={"fill-parent"}>
+                    {renderChildren(title, { textProps: titleStyles })}
+                </AutoLayout>
+
                 <AutoLayout
-                    name="Accordion Item"
-                    direction="vertical"
-                    key={index}
-                    width={"fill-parent"}
-                    spacing={4}
-                    fill={colors.white}
-                    cornerRadius={3}
-                >
-                    <AutoLayout
-                        cornerRadius={2}
-                        padding={{ left: 8, vertical: 4 }}
-                        name="Accordion Item Title"
-                        width={"fill-parent"}
-                        hoverStyle={{ fill: colors.neutral[100] }}
-                        onClick={() => { toggle(key) }}
-                        verticalAlignItems={"center"}
-                    >
-                        <Text
-                            fill={colors.neutral[700]}
-                            fontWeight={"bold"}
-                            fontSize={14}
-                            lineHeight={22}
-                            width={"fill-parent"}
-                        >
-                            {title}
-                        </Text>
-
-                        <AutoLayout
-                            name="Accordion Chevron Container"
-                            width={24}
-                            height={24}
-                            padding={6}
-                            cornerRadius={4}
-                        >
-                            {
-                                activeKeys.indexOf(key) >= 0 ? <IconChevronIconUp color={colors.neutral[400]} /> : <IconChevronIconDown color={colors.neutral[400]} />
-                            }
-                        </AutoLayout>
-                    </AutoLayout>
-
+                    name="Accordion Chevron Container" {...chevronContainer}>
                     {
-                        activeKeys.indexOf(key) >= 0 ?
-                            <AutoLayout
-                                width={"fill-parent"}
-                                padding={{ horizontal: 8, vertical: 4 }}
-                            >
-                                <Text
-                                    width={"fill-parent"}
-                                    fontSize={14}
-                                    lineHeight={22}
-                                    fill={colors.neutral[500]}
-                                >
-                                    {content}
-                                </Text>
-                            </AutoLayout> : null
+                        activeKeys.indexOf(key) >= 0 ? <IconChevronIconUp {...chevron} /> : <IconChevronIconDown {...chevron} />
                     }
                 </AutoLayout>
-            ))
+            </AutoLayout>
+
+            {
+                activeKeys.indexOf(key) >= 0 ?
+                    <AutoLayout name="Accordion Panel" {...panel}>
+                        {renderChildren(content, { textProps: contentStyles })}
+                    </AutoLayout> : null
+            }
+        </AutoLayout>
+    }
+
+    return <AutoLayout
+        name="Accordion"
+        {...container}
+        width={width}
+    >
+        {
+            data.map((item) => renderItem(item))
         }
     </AutoLayout>
 }

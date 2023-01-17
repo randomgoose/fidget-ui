@@ -1,6 +1,6 @@
 {
-  "name": "widget-component-library",
-  "version": "1.0.0",
+  "name": "@randomgoose/widget-component-library",
+  "version": "1.0.1",
   "description": "Your Figma widget",
   "scripts": {
     "build": "esbuild widget-src/code.tsx --bundle --outfile=dist/code.js --target=es6",
@@ -16,6 +16,7 @@
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@rollup/plugin-typescript": "^8.3.0",
+    "@types/chroma-js": "^2.1.4",
     "esbuild": "*",
     "rollup": "^2.60.0",
     "rollup-plugin-dts": "^4.1.0",
@@ -23,7 +24,9 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "crypto": "^1.0.1"
+    "chroma-js": "^2.4.2",
+    "crypto": "^1.0.1",
+    "dayjs": "^1.11.7"
   },
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
@@ -31,5 +34,8 @@
   "files": [
     "build"
   ],
-  "types": "build/index.d.ts"
+  "types": "build/index.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/randomgoose"
+  }
 }
