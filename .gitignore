@@ -7,3 +7,5 @@ out/
 dist/
 code.js
 build/
+
+.DS_Store
