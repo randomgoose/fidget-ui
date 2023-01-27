@@ -4,7 +4,7 @@ const { widget } = figma
 const { AutoLayout } = widget
 
 export function Menu(props: any) {
-    return <AutoLayout>
+    return <AutoLayout name="Menu">
         { }
     </AutoLayout>
 }

@@ -1,6 +1,8 @@
+import dayjs from "dayjs";
 import { colors } from "../../styles";
-import { IconButton } from "../button";
-import { IconChevronIconDown, IconChevronIconUp, IconClock } from "../icons";
+import { Button, IconButton } from "../button";
+import { Divider } from "../divider";
+import { IconChevronDown, IconChevronUp, IconClock } from "../icons";
 import { getDropdownStyles } from "../_dropdown/styles";
 import { getFieldStyles } from "../_field/styles"
 import { TimePickerProps } from "./interface";
@@ -9,35 +11,134 @@ import { getTimePickerStyles } from "./styles";
 const { widget } = figma
 const { AutoLayout, Text, useSyncedState } = widget
 
-export function TimePicker({ ...rest }: TimePickerProps) {
-    const { field, text } = getFieldStyles({});
-    const { list } = getDropdownStyles({});
+function Digit({ value, onDecrement, onIncrement }:
+    {
+        value: string;
+        onIncrement: () => void;
+        onDecrement: () => void;
+    }) {
+
+    return (
+        <AutoLayout name="TimePicker Digit" direction={"vertical"} spacing={2}>
+            <IconButton onClick={onDecrement} icon={<IconChevronUp />} size={"sm"} variant={"ghost"} />
+            <AutoLayout
+                name="TimePicker Digit Display"
+                verticalAlignItems={"center"}
+                horizontalAlignItems={"center"}
+                width={28}
+                height={28}
+                cornerRadius={4}
+                fill={colors.neutral[100]}
+            >
+                <Text
+                    name="Number"
+                    fontSize={16}
+                    lineHeight={24}
+                >
+                    {value}
+                </Text>
+            </AutoLayout>
+            <IconButton onClick={onIncrement} icon={<IconChevronDown />} size={"sm"} variant={"ghost"} />
+        </AutoLayout>
+    )
+}
+
+export function TimePicker({
+    id,
+    onChange,
+    disabled,
+    size = "md",
+    placement,
+    ...rest }: TimePickerProps) {
+
+    const [open, setOpen] = useSyncedState(`open/${id}`, false);
+    const [time, setTime] = useSyncedState(`time/${id}`, () => dayjs().format("HH:mm"));
+    const [temp, setTemp] = useSyncedState(`temp/${id}`, time)
+
+    const { field, text, input } = getFieldStyles({ disabled, size });
     const { text: pickerText } = getTimePickerStyles({});
+    const { list } = getDropdownStyles({ size, placement });
+
+    const openDropdown = () => {
+        if (!disabled) {
+            setOpen(true);
+            setTemp(time);
+        }
+    };
+
+    const closeDropdown = () => setOpen(false);
+
+    const changeTemp = (by: number, unit: "hour" | "minute") => {
+        const t = dayjs().hour(parseInt(hour)).minute(parseInt(minute));
+
+        if (by >= 0) {
+            return setTemp(t.add(by, unit).format("HH:mm"))
+        } else {
+            return setTemp(t.subtract(Math.abs(by), unit).format("HH:mm"))
+        }
+    }
+
+    const assignTime = () => {
+        setTime(temp)
+        closeDropdown()
+        onChange && !disabled && onChange(time);
+    };
+
+    const [hour, minute] = temp.split(":")
+
+    const panel = <AutoLayout {...list}
+        x={{ type: "left", offset: 0, }}
+        width={"hug-contents"}
+        name="TimePicker Dropdown"
+        padding={8}
+        direction={"vertical"}
+    >
+        <AutoLayout name="TimePicker Actions" verticalAlignItems={"center"}>
+            <AutoLayout name="Flex" spacing={4}>
+                <Digit value={hour[0]} onIncrement={(() => changeTemp(10, "hour"))} onDecrement={() => changeTemp(-10, "hour")} />
+                <Digit value={hour[1]} onIncrement={(() => changeTemp(1, "hour"))} onDecrement={() => changeTemp(-1, "hour")} />
+            </AutoLayout>
+
+            <AutoLayout padding={8} name={"colon"}>
+                <Text fontWeight={"bold"} fill={colors.neutral[400]}>:</Text>
+            </AutoLayout>
+
+            <AutoLayout name="Flex" spacing={4}>
+                <Digit value={minute[0]} onIncrement={(() => changeTemp(10, "minute"))} onDecrement={() => changeTemp(-10, "minute")} />
+                <Digit value={minute[1]} onIncrement={(() => changeTemp(1, "minute"))} onDecrement={() => changeTemp(-1, "minute")} />
+            </AutoLayout>
+        </AutoLayout>
+
+        <Divider margin={{ bottom: 8 }} />
+
+        <AutoLayout width={"fill-parent"}>
+            <Button block variant={"ghost"} onClick={closeDropdown} size={"sm"}>Close</Button>
+            <Button onClick={assignTime} block variant={"filled"} colorScheme={"blue"} size={"sm"}>Done</Button>
+        </AutoLayout>
+    </AutoLayout >
 
     return <AutoLayout
-        {...field}
-        {...rest}
-        name="TimePicker"
+        name="TimePicker Container"
+        width={"hug-contents"}
+        overflow={"visible"}
     >
-        <Text {...text}>16:30:43</Text>
+        <AutoLayout
+            name="TimePicker Field"
+            {...field}
+            {...input}
+            {...rest}
+            onClick={open ? closeDropdown : openDropdown}
+            spacing={8}
+        >
+            <Text {...text}>
+                {time}
+                {/* {time.format("HH:mm")} */}
+            </Text>
 
-        <AutoLayout width={14} height={14}>
-            <IconClock color={colors.neutral[500]} />
+            <IconClock color={colors.neutral[500]} width={14} height={14} />
         </AutoLayout>
 
-        <AutoLayout {...list} name="TimePicker Dropdown" padding={24} direction={"horizontal"} verticalAlignItems={"center"}>
-            <AutoLayout direction={"vertical"} horizontalAlignItems={"center"} spacing={4}>
-                {/* <IconButton icon={<IconChevronIconDoubleIconUp />} /> */}
-                <IconButton variant="ghost" icon={<IconChevronIconUp />} onClick={() => { }} />
-                <Text fontSize={24}>16</Text>
-                <IconButton icon={<IconChevronIconDown />} />
-            </AutoLayout>
-            <Text>:</Text>
-            <AutoLayout direction={"vertical"} horizontalAlignItems={"center"} spacing={4}>
-                <IconButton icon={<IconChevronIconUp />} onClick={() => { }} />
-                <Text fontSize={24}>24</Text>
-                <IconButton icon={<IconChevronIconDown />} />
-            </AutoLayout>
-        </AutoLayout>
+        {open ? panel : null}
+
     </AutoLayout>
 }

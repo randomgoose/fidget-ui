@@ -1,4 +1,4 @@
-import { Heading, Tag } from "../components";
+import { Heading, SimpleGrid, Tag } from "../components";
 import { TagColorScheme } from "../components/tag/interface";
 import { docStyle } from "./styles";
 import { COLORS } from "./variables";
@@ -15,9 +15,17 @@ export function TagDoc() {
         <Heading as="h5">Color Schemes</Heading>
 
         <AutoLayout spacing={8}>
-            {
-                COLORS.map((color, index) => <Tag colorScheme={color as TagColorScheme} key={index}>{color}</Tag>)
-            }
+            <SimpleGrid columns={8} width={480} spacing={24}>
+                {
+                    ...COLORS.map((color, index) => (
+                        <Tag
+                            colorScheme={color as TagColorScheme} key={index}
+                        >
+                            {color}
+                        </Tag>
+                    ))
+                }
+            </SimpleGrid>
         </AutoLayout>
 
         <Heading as="h5">Variants</Heading>

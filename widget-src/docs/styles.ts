@@ -1,10 +1,29 @@
+import { colors } from "../styles"
+
 export const docStyle: AutoLayoutProps = {
-    verticalAlignItems: 'center',
+    // verticalAlignItems: 'center',
     direction: "vertical",
     spacing: 24,
-    padding: 32,
     cornerRadius: 8,
-    fill: '#FFFFFF',
-    stroke: '#E6E6E6',
-    overflow: "visible"
+    overflow: "visible",
+    width: 720,
+    // height: 1280
+}
+
+export const codeStyle: SpanProps = {
+    fontFamily: "Fira Code",
+    fill: colors.indigo[500]
+}
+
+export const paginationStyle: AutoLayoutProps = {
+    direction: "vertical",
+    stroke: colors.neutral[200],
+    height: 72,
+    width: "fill-parent",
+    cornerRadius: 6,
+    verticalAlignItems: "center",
+    padding: 16,
+    hoverStyle: {
+        stroke: colors.blue[500]
+    }
 }

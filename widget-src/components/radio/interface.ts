@@ -14,9 +14,11 @@ export interface RadioProps {
 
 export interface RadioGroupProps {
     name: string;
+    value?: string;
     options?: Option[];
     children?: FigmaDeclarativeNode;
     orientation?: "vertical" | "horizontal"
     spacing?: number;
     onChange?: (option: Option) => void;
+    render?: ({ checked, option }: { checked: boolean; option: Option }) => FigmaDeclarativeNode;
 }

@@ -31,6 +31,7 @@ export const getButtonStyles = (
                 hoverStyle = { fill: hue[800] }
             } else {
                 bg = hue[500]
+                hoverStyle = { fill: hue[600] }
             }
             color = colors.white;
             break;
@@ -42,6 +43,7 @@ export const getButtonStyles = (
             } else {
                 stroke = hue[500];
                 color = hue[500];
+                hoverStyle = { fill: hue[50] }
             }
             break;
         case "ghost":
@@ -102,7 +104,8 @@ export const getButtonStyles = (
         icon: {
             width: fontSize,
             height: fontSize,
-            fill: color
+            fill: color,
+            stroke: color
         }
     }
 }
@@ -114,7 +117,7 @@ export const getIconButtonStyles =
         disabled
     }: Pick<IconButtonProps, "size" | "variant" | "colorScheme" | "disabled">): {
         container: AutoLayoutProps;
-        icon: AutoLayoutProps;
+        icon: Omit<SVGProps, "src">;
     } => {
         const styles = getButtonStyles({ variant, size, colorScheme, disabled });
         let height: AutoLayoutProps['height'];

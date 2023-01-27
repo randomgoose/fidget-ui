@@ -1,6 +1,6 @@
 import { TagProps } from "./interface";
 import { getTagStyles } from "./styles";
-import { IconXIconMark } from "../icons";
+import { IconXMark } from "../icons";
 
 const { widget } = figma
 const { AutoLayout, Text } = widget
@@ -26,7 +26,7 @@ export function Tag({
             </Text>
             {
                 dismissible
-                    ? <IconXIconMark
+                    ? <IconXMark
                         {...closeButton}
                         width={12}
                         height={12}

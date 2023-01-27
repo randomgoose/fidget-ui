@@ -39,6 +39,8 @@ export const getRadioStyles = (
             opacity
         },
         label: {
+            fontSize: 14,
+            lineHeight: 22,
             fill: colors.neutral[900]
         },
         ink: {

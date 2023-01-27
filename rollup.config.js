@@ -1,5 +1,4 @@
 import resolve from "@rollup/plugin-node-resolve"
-import commonjs from "@rollup/plugin-commonjs"
 import typescript from "@rollup/plugin-typescript"
 import dts from "rollup-plugin-dts"
 
@@ -10,11 +9,6 @@ export default [
         input: "./widget-src/components/index.ts",
         output: [
             {
-                file: packageJson.main,
-                format: "cjs",
-                sourcemap: true,
-            },
-            {
                 file: packageJson.module,
                 format: "esm",
                 sourcemap: true
@@ -22,8 +16,12 @@ export default [
         ],
         plugins: [
             resolve(),
-            commonjs(),
-            typescript({ tsconfig: "./widget-src/tsconfig.json" })
+            typescript({
+                tsconfig: "./widget-src/tsconfig.json",
+                exclude: [
+                    "./widget-src/docs/*"
+                ]
+            })
         ],
 
     },

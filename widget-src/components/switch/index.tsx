@@ -1,32 +1,38 @@
 import { colors } from "../../styles"
+import { SwitchProps } from "./interface";
+import { getSwitchStyles } from "./styles";
 
 const { widget } = figma
-const { AutoLayout } = widget
+const { AutoLayout, useSyncedState } = widget
 
-export interface SwitchProps {
-    checked: boolean;
-    onChange: (value: boolean) => void;
-}
+export function Switch({
+    id,
+    onChange,
+    colorScheme,
+    disabled,
+    size,
+    defaultChecked = false,
+    ...rest
+}: SwitchProps) {
+    const [checked, setChecked] = useSyncedState(`checked/${id}`, defaultChecked);
 
-export function Switch({ checked, onChange }: SwitchProps) {
-    
+    const mergedChecked = "checked" in rest ? rest.checked : checked;
+
+    const { container, thumb } = getSwitchStyles({ checked: mergedChecked, colorScheme, disabled, size });
+
     return <AutoLayout
         name="Switch"
-        fill={checked ? colors.blue[500] : colors.neutral[200]}
-        width={44}
-        height={24}
-        cornerRadius={100}
-        horizontalAlignItems={checked ? "end" : "start"}
-        verticalAlignItems={"center"}
-        padding={2}
-        onClick={() => onChange(!checked)}
+        {...container}
+        {...rest}
+        onClick={() => {
+            if (!disabled) {
+                onChange && onChange(!mergedChecked)
+                if (id !== undefined) {
+                    setChecked(() => !mergedChecked)
+                }
+            }
+        }}
     >
-        <AutoLayout
-            name="Switch Knob"
-            width={20}
-            height={20}
-            fill={colors.white}
-            cornerRadius={100}
-        />
+        <AutoLayout name="Switch Thumb" {...thumb} />
     </AutoLayout>
 }

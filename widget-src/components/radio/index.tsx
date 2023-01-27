@@ -4,7 +4,7 @@ import { RadioGroupProps, RadioProps } from "./interface"
 import { getRadioStyles } from "./styles"
 
 const { widget } = figma
-const { AutoLayout, Text, Ellipse, useSyncedState } = widget
+const { AutoLayout, Ellipse, useSyncedState } = widget
 
 export function Radio({
     value,
@@ -37,11 +37,14 @@ export function RadioGroup(
         children,
         options,
         onChange,
-        spacing=12,
+        spacing = 12,
+        render,
         ...rest
     }: RadioGroupProps) {
-    const [value, setValue] = useSyncedState(`radio-group/${name}`, options?.[0].value || "");
-
+    const [value, setValue] = useSyncedState(
+        `radio-group/${name}`,
+        rest.value ? rest.value : options?.[0].value || ""
+    );
 
     return <AutoLayout
         name="Radio Group"
@@ -50,20 +53,38 @@ export function RadioGroup(
         spacing={spacing}
     >
         {options?.map(({ value: v, label, disabled }, index) => {
-            return <Radio
-                checked={v === value}
-                disabled={disabled}
-                value={v}
-                key={index}
-                onClick={(value) => {
-                    setValue(value);
-                    onChange && onChange({ value, label })
-                }}
-            >
-                {label}
-            </Radio>
+            if (render) {
+                return (
+                    <AutoLayout
+                        name="Radio"
+                        key={index}
+                        opacity={disabled ? 0.3 : 1}
+                        onClick={() => {
+                            if (!disabled) {
+                                setValue(v);
+                                onChange && onChange({ value: v, label })
+                            }
+                        }}>
+                        {render({
+                            checked: v === (rest.value ? rest.value : value),
+                            option: { value: v, label, disabled }
+                        })}
+                    </AutoLayout>
+                )
+            } else {
+                return <Radio
+                    checked={v === (rest.value ? rest.value : value)}
+                    disabled={disabled}
+                    value={v}
+                    key={index}
+                    onClick={(value) => {
+                        setValue(value);
+                        onChange && onChange({ value, label })
+                    }}
+                >
+                    {label}
+                </Radio>
+            }
         })}
     </AutoLayout>
 }
-
-Radio.displayName = "";

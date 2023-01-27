@@ -115,7 +115,7 @@ export const getTextFieldStyles = (
             fill,
             stroke,
             cornerRadius,
-            padding: 1,
+            // padding: 1,
         },
         input: {
             width: "fill-parent",

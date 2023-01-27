@@ -1,8 +1,8 @@
 import { colors } from "../../styles";
 import { renderChildren } from "../../utils";
-import { IconXIconMark } from "../icons";
+import { IconXMark } from "../icons";
+import { getFieldStyles } from "../_field/styles";
 import { TextFieldProps } from "./interface";
-import { getTextFieldStyles } from "./styles";
 
 const { widget } = figma
 const { Input, AutoLayout } = widget
@@ -32,11 +32,11 @@ export function TextField(
         leftAddon: leftAddonStyles,
         rightAddon: rightAddonStyles,
         input
-    } = getTextFieldStyles({
+    } = getFieldStyles({
         variant, size, leftElement, rightElement, disabled, leftAddon, rightAddon
     });
 
-    const clearIcon = <IconXIconMark
+    const clearIcon = <IconXMark
         {...clearIconStyles}
         name="Input Clear Icon"
         onClick={() => onClear && onClear()}
@@ -81,7 +81,7 @@ export function TextField(
                 {...rest}
             />
         </AutoLayout>
-        {value?.length && value.length > 0 ? clearIcon : null}
+        {(value?.length && value.length > 0 && rest.showClearIcon) ? clearIcon : null}
 
         {rightAddon
             ? <AutoLayout
@@ -106,6 +106,8 @@ export function TextField(
             positioning={"absolute"}
             x={{ type: 'left', offset: 8 }}
             y={{ type: 'center', offset: 0 }}
+            verticalAlignItems={"center"}
+            horizontalAlignItems={"center"}
         >
             {leftElement ? leftElement : null}
         </AutoLayout>
@@ -117,6 +119,8 @@ export function TextField(
             positioning={"absolute"}
             x={{ type: 'right', offset: 8 }}
             y={{ type: 'center', offset: 0 }}
+            verticalAlignItems={"center"}
+            horizontalAlignItems={"center"}
         >
             {rightElement ? rightElement : null}
         </AutoLayout>

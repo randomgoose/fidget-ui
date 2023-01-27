@@ -1,6 +1,8 @@
-import { Accordion, Button, Heading, IconArrowIconRight } from "../components"
+import { Accordion, Button, Heading, IconArrowRight } from "../components"
+import { Divider } from "../components/divider"
 import { colors } from "../styles"
 import { docStyle } from "./styles"
+import { Code, P } from "./typography"
 
 const { widget } = figma
 const { AutoLayout, Text, Span } = widget
@@ -9,8 +11,14 @@ export function AccordionDoc() {
     return <AutoLayout
         {...docStyle}
     >
-        <Heading as="h3">Accordion</Heading>
+        <Heading as="h1">Accordion</Heading>
+        <P>Accordion renders a list of collapsible contents.</P>
+        <Divider />
+
+        <Heading as="h5">Usage</Heading>
+
         <Accordion
+            width={"fill-parent"}
             data={[
                 {
                     key: 1,
@@ -18,20 +26,24 @@ export function AccordionDoc() {
                 },
                 {
                     key: 2,
-                    title: <Text
-                        fontWeight={"bold"}
-                        fill={colors.neutral[900]}
-                        fontSize={14}
-                        lineHeight={22}
-                    >
-                        Why use this <Span fill={colors.blue[500]}>library</Span>?
-                    </Text>, content: "You should definitely use this library."
+                    title: (
+                        <Text
+                            fontWeight={"bold"}
+                            fill={colors.neutral[900]}
+                            fontSize={14}
+                            lineHeight={22}
+                        >
+                            Why use this <Span fill={colors.blue[500]}>library</Span>?
+                        </Text>
+                    ),
+                    content: "You should definitely use this library."
                 },
                 {
                     key: 3,
                     title: "Start with an Accordion component",
-                    content: <Button rightIcon={<IconArrowIconRight />}>Documentation</Button>
+                    content: <Button rightIcon={<IconArrowRight />}>Documentation</Button>
                 }
             ]} />
+        {/* <Code></Code> */}
     </AutoLayout>
 }

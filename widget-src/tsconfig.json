@@ -22,5 +22,8 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
-  }
+  },
+  "exclude": [
+    "./components/index.ts"
+  ]
 }

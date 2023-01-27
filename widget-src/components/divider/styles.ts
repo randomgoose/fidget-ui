@@ -39,11 +39,13 @@ export const getDividerStyles = (
             spacing: 4,
         },
         text: {
+            fontSize: 14,
+            lineHeight: 22,
             fill: color,
             fontWeight: "normal"
         },
         divider: {
-            fill: colors.neutral[400]
+            fill: colors.neutral[200]
         }
     }
 }

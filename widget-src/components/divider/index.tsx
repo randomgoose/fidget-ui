@@ -1,4 +1,4 @@
-import { colors } from "../../styles"
+import { renderChildren } from "../../utils"
 import { DividerProps } from "./interface"
 import { getDividerStyles } from "./styles"
 
@@ -31,14 +31,15 @@ export function Divider(
         padding={margin || defaultMargin}
     >
         {
-            (Array.isArray(children) && children[0] && typeof children[0] === "string") ? (
+            ((Array.isArray(children) && children.length > 0) ? (
                 <>
                     {renderDivider(orientation)}
-                    <Text name="Divider Text" {...text}>{children[0]}</Text>
+                    {renderChildren(children, { textProps: { ...text } })}
+                    {/* <Text name="Divider Text" {...text}>{children[0]}</Text> */}
                     {renderDivider(orientation)}
                 </>
             )
-                : (renderDivider(orientation))
+                : (renderDivider(orientation)))
         }
     </AutoLayout>
 } 

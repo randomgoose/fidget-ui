@@ -1,10 +1,10 @@
 import { colors } from "../../styles"
 import { renderChildren } from "../../utils"
-import { CheckboxGroupProps, CheckboxProps } from "./interface"
+import { CheckboxGroupProps, CheckboxProps, Option } from "./interface"
 import { getCheckboxStyles } from "./styles"
 
 const { widget } = figma
-const { AutoLayout, Text, SVG, h } = widget
+const { AutoLayout, SVG, useSyncedState } = widget
 
 const icon = <SVG
     width={10}
@@ -13,16 +13,23 @@ const icon = <SVG
 />
 
 export function Checkbox({
-    children, checked, disabled, onChange
+    children,
+    checked,
+    disabled,
+    onChange,
+    colorScheme,
+    ...rest
 }: CheckboxProps) {
-    const { control, container } = getCheckboxStyles({ checked, disabled })
+    const { control, container, label } = getCheckboxStyles({ checked, disabled, colorScheme })
 
+    console.log(container.fill)
     const toggle = () => { (checked !== undefined && onChange && !disabled) && onChange(!checked) }
 
     return (
         <AutoLayout
             name="Checkbox Container"
             {...container}
+            {...rest}
             onClick={toggle}
         >
             <AutoLayout
@@ -31,14 +38,45 @@ export function Checkbox({
             >
                 {icon}
             </AutoLayout>
-            {renderChildren(children, { textProps: {name: "Checkbox Label", fontSize: 14, lineHeight: 22, fill: colors.neutral[900] } })}
+            {renderChildren(children, { textProps: { name: "Checkbox Label", fill: colors.neutral[900], ...label } })}
         </AutoLayout>
     )
 }
 
-export function CheckboxGroup({ name, children }: CheckboxGroupProps) {
-    console.log("Checkbox", children)
-    return <AutoLayout name="Checkbox Group">
+export function CheckboxGroup({
+    name,
+    children,
+    options,
+    onChange,
+    spacing = 12,
+    ...rest
+}: CheckboxGroupProps) {
+    const [values, setValues] = useSyncedState<Option[]>(`checkbox-group/${name}`, [])
 
-    </AutoLayout>
+    return (
+        <AutoLayout
+            name="Checkbox Group"
+            {...rest}
+            spacing={spacing}
+        >
+            {
+                options?.map((option) => (
+                    <Checkbox
+                        colorScheme={"emerald"}
+                        disabled={option.disabled}
+                        checked={values.find(item => item.value === option.value) ? true : false}
+                        onChange={(checked) => {
+                            if (checked) {
+                                setValues(prev => [...prev, option])
+                            } else {
+                                setValues(prev => prev.filter(item => item.value !== option.value))
+                            }
+                        }}
+                    >
+                        {option.label}
+                    </Checkbox>
+                ))
+            }
+        </AutoLayout>
+    )
 }

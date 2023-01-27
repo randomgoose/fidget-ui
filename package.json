@@ -1,23 +1,28 @@
 {
-  "name": "@randomgoose/widget-component-library",
-  "version": "1.0.1",
+  "name": "fidget-ui",
+  "version": "0.0.1",
   "description": "Your Figma widget",
   "scripts": {
     "build": "esbuild widget-src/code.tsx --bundle --outfile=dist/code.js --target=es6",
     "tsc": "tsc --noEmit -p widget-src",
     "watch": "npm run build -- --watch",
-    "rollup": "rollup -c"
+    "rollup": "rollup -c",
+    "prepare": "husky install"
   },
   "author": "",
   "license": "",
   "devDependencies": {
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
     "@figma/plugin-typings": "*",
     "@figma/widget-typings": "*",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@rollup/plugin-typescript": "^8.3.0",
     "@types/chroma-js": "^2.1.4",
+    "@types/lodash": "^4.14.191",
     "esbuild": "*",
+    "husky": "^8.0.0",
     "rollup": "^2.60.0",
     "rollup-plugin-dts": "^4.1.0",
     "tslib": "^2.4.1",
@@ -26,7 +31,8 @@
   "dependencies": {
     "chroma-js": "^2.4.2",
     "crypto": "^1.0.1",
-    "dayjs": "^1.11.7"
+    "dayjs": "^1.11.7",
+    "lodash": "^4.17.21"
   },
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
@@ -36,6 +42,6 @@
   ],
   "types": "build/index.d.ts",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/randomgoose"
+    "registry": "https://registry.npmjs.org"
   }
 }

@@ -5,7 +5,7 @@ export const getAccordionStyles = (): {
     item: AutoLayoutProps;
     button: AutoLayoutProps;
     chevronContainer: AutoLayoutProps;
-    chevron: { color: string };
+    chevron: Omit<SVGProps, "src"> & { color: string};
     title: TextProps;
     content: TextProps;
     panel: AutoLayoutProps;
@@ -36,6 +36,8 @@ export const getAccordionStyles = (): {
             width: 24, height: 24, padding: 6, cornerRadius: 4
         },
         chevron: {
+            width: "fill-parent",
+            height: "fill-parent",
             color: colors.neutral[400]
         },
         title: {

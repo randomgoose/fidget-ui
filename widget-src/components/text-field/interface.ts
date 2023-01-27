@@ -1,5 +1,7 @@
-export interface TextFieldProps extends InputProps {
-    id: string;
+import { FieldProps } from "../_field/interface";
+
+export interface TextFieldProps extends FieldProps {
+    id?: string;
     variant?: "filled" | "outline" | "flush";
     onClear?: () => void;
     size?: "sm" | "md" | "lg";
@@ -9,4 +11,5 @@ export interface TextFieldProps extends InputProps {
     leftAddon?: FigmaDeclarativeNode;
     rightAddon?: FigmaDeclarativeNode;
     disabled?: boolean;
+    showClearIcon?: boolean;
 }

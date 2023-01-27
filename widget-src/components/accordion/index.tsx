@@ -1,4 +1,4 @@
-import { IconChevronIconDown, IconChevronIconUp } from "../icons"
+import { IconChevronDown, IconChevronUp } from "../icons"
 import { AccordionItemProps, AccordionProps } from "./interface"
 import { renderChildren } from "../../utils"
 import { getAccordionStyles } from "./styles"
@@ -52,7 +52,7 @@ export function Accordion({
                 <AutoLayout
                     name="Accordion Chevron Container" {...chevronContainer}>
                     {
-                        activeKeys.indexOf(key) >= 0 ? <IconChevronIconUp {...chevron} /> : <IconChevronIconDown {...chevron} />
+                        activeKeys.indexOf(key) >= 0 ? <IconChevronUp {...chevron} /> : <IconChevronDown {...chevron} />
                     }
                 </AutoLayout>
             </AutoLayout>

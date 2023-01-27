@@ -1,9 +1,10 @@
 
+import { renderIcon } from "../../utils";
 import { IconButtonProps } from "./interface";
 import { getIconButtonStyles } from "./styles";
 
 const { widget } = figma
-const { AutoLayout, Text, h, SVG } = widget
+const { AutoLayout } = widget
 
 export function IconButton({
     icon,
@@ -21,13 +22,7 @@ export function IconButton({
             {...rest}
             name="Icon Button"
         >
-            <AutoLayout width={iconStyle.width} height={iconStyle.height} name={"Icon"}>
-                {h(SVG, {
-                    src: (icon as any)?.props?.src.replace("stroke='#000000'", `stroke='${iconStyle.fill}'`),
-                    width: "fill-parent",
-                    height: "fill-parent"
-                })}
-            </AutoLayout>
+            {icon ? renderIcon({ svg: icon as any, options: { width: iconStyle.width, height: iconStyle.height, stroke: iconStyle.stroke } }) : null}
         </AutoLayout>
     )
 }

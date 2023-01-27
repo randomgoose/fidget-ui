@@ -1,7 +1,7 @@
 import { AvatarProps } from "./interface"
 
 export const getAvatarStyles = ({ size }: Pick<AvatarProps, "size">): {
-    container: Omit<AutoLayoutProps, "width" | "height"> & { width: number; height: number }
+    avatar: Omit<AutoLayoutProps, "width" | "height"> & { width: number; height: number }
 } => {
     let width: number
     let height: number
@@ -43,11 +43,12 @@ export const getAvatarStyles = ({ size }: Pick<AvatarProps, "size">): {
     }
 
     return {
-        container: {
+        avatar: {
             width,
             height,
             padding,
-            cornerRadius: 100
+            cornerRadius: 100,
+            stroke: { r: 0, g: 0, b: 0, a: 0.04 },
         }
     }
 }

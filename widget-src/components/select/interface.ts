@@ -1,12 +1,13 @@
 import { FieldProps } from "../_field/interface";
 
-export type Option = {
+export type OptionProps = {
     value: string;
     label: string;
 }
 
-export interface SelectProps extends FieldProps {
+export interface SelectProps extends Omit<FieldProps, "value" | "onTextEditEnd"> {
     id: string;
-    options: Option[];
-    onChange?: (value: string) => void;
+    options: OptionProps[];
+    onChange?: (selected: OptionProps) => void;
+    placement?: "bottom" | "top"
 }

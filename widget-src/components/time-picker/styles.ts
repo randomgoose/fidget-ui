@@ -2,6 +2,8 @@ export const getTimePickerStyles = ({ }): {
     text: TextProps
 } => {
     return {
-        text: {}
+        text: {
+            width: "hug-contents"
+        }
     }
 }

@@ -1,11 +1,13 @@
 import { colors, isNeutralColor } from "../../styles";
 import { TabsProps } from "./interface";
+import chroma from "chroma-js";
 
 export const getTabsStyles = ({
     variant,
     isFitted,
-    colorScheme = "neutral"
-}: Pick<TabsProps, "variant" | "isFitted" | "colorScheme">): {
+    colorScheme = "neutral",
+    width = "fill-parent"
+}: Pick<TabsProps, "variant" | "isFitted" | "colorScheme" | "width">): {
     container: AutoLayoutProps;
     tab: AutoLayoutProps;
     activeTab: AutoLayoutProps;
@@ -13,12 +15,18 @@ export const getTabsStyles = ({
     tabList: AutoLayoutProps;
     tabLabel: TextProps;
     tabPanels: AutoLayoutProps;
+    tabPanel: AutoLayoutProps;
 } => {
 
+    /* ---- Tabs Container ---- */
     let bg: AutoLayoutProps['fill'];
     let activeBg: AutoLayoutProps['fill'];
+
+    /* ---- Tabs List ---- */
     let tabListStroke: AutoLayoutProps['effect'];
     let tabListPadding: AutoLayoutProps['padding'];
+
+    /* ---- Tab ---- */
     let stroke: AutoLayoutProps['stroke'];
     let strokeAlign: AutoLayoutProps['strokeAlign'] = "inside";
     let border: AutoLayoutProps['effect'];
@@ -27,53 +35,86 @@ export const getTabsStyles = ({
     let labelFill: TextProps['fill'];
     let activeLabelFill: TextProps['fill']
 
+    /* ---- Tab Panels ---- */
+    let tabPanelsWidth: AutoLayoutProps['width'];
+
+    /* ---- Tab Panel ---- */
+    let tabPanelWidth: AutoLayoutProps['width']
+
+
+    let activeColor = isNeutralColor(colorScheme) ? colors[colorScheme][900] : colors[colorScheme][500];
+    let [r, g, b, a] = chroma(activeColor).rgba()
+
+    switch (width) {
+        case "fill-parent":
+            tabPanelWidth = "fill-parent"
+            break
+        case "hug-contents":
+            tabPanelWidth = "hug-contents"
+            break
+        default:
+            tabPanelWidth = "hug-contents"
+            break
+
+    }
 
     switch (variant) {
         case "enclosed":
             bg = undefined;
             activeBg = colors.white;
-            stroke = colors[colorScheme][200];
+            stroke = colors.neutral[200];
             strokeAlign = "outside"
             cornerRadius = { topLeft: 6, topRight: 6, bottomLeft: 0, bottomRight: 0 }
             border = [{ type: "inner-shadow", offset: { x: 0, y: -1 }, blur: 0, spread: -1, color: { r: 1, g: 1, b: 1, a: 1 } }]
-            // tabListStroke = [{ type: "drop-shadow", offset: { x: 0, y: 1 }, blur: 0, color: { r: 0.8980392157, g: 0.8980392157, b: 0.8980392157, a: 1 } }]
             spacing = 1
             tabListPadding = { vertical: 1, horizontal: 1, bottom: 0 }
-            labelFill = colors[colorScheme][500]
+            labelFill = colors.neutral[500]
             activeLabelFill = isNeutralColor(colorScheme) ? colors[colorScheme][900] : colors[colorScheme][500];
             break
         case "soft-rounded":
             bg = colors.white;
             cornerRadius = 100;
-            activeBg = isNeutralColor(colorScheme) ? colors[colorScheme][900] : colors[colorScheme][500];
-            border = [
-                // { type: "drop-shadow", offset: { x: 0, y: 1 }, blur: 0, color: { r: 1, g: 1, b: 1, a: 1 } },
-                { type: "inner-shadow", offset: { x: 0, y: -1 }, blur: 0, spread: -1, color: { r: 1, g: 1, b: 1, a: 1 } }
-            ]
-            // tabListStroke = [{ type: "drop-shadow", offset: { x: 0, y: 1 }, blur: 0, color: { r: 0.8980392157, g: 0.8980392157, b: 0.8980392157, a: 1 } }]
+            activeBg = isNeutralColor(colorScheme) ? colors[colorScheme][900] : colors[colorScheme][200];
             spacing = 1
             tabListPadding = { vertical: 1, horizontal: 1, bottom: 0 }
-            labelFill = colors[colorScheme][500]
+            labelFill = colors.neutral[700];
+            activeLabelFill = colors[colorScheme][900];
+            break
+        case "solid-rounded":
+            bg = colors.white;
+            cornerRadius = 100;
+            activeBg = isNeutralColor(colorScheme) ? colors[colorScheme][900] : colors[colorScheme][500];
+            spacing = 1
+            tabListPadding = { vertical: 1, horizontal: 1, bottom: 0 }
+            labelFill = colors.neutral[700];
             activeLabelFill = colors.white;
             break
         default:
             bg = colors.white;
             activeBg = colors.white;
+            activeLabelFill = isNeutralColor(colorScheme) ? colors[colorScheme][900] : colors[colorScheme][500]
             tabListStroke = [{ type: "drop-shadow", offset: { x: 0, y: 1 }, blur: 0, color: { r: 0.8980392157, g: 0.8980392157, b: 0.8980392157, a: 1 } }]
-            border = [{ type: "drop-shadow", offset: { x: 0, y: 1 }, blur: 0, color: { r: 0.0901960784, g: 0.0901960784, b: 0.0901960784, a: 1 } }]
+            border = [{
+                type: "drop-shadow",
+                offset: { x: 0, y: 1 },
+                blur: 0,
+                color: { r: r / 255, g: g / 255, b: b / 255, a: a }
+            }]
             spacing = 0
             tabListPadding = 0
-            labelFill = colors[colorScheme][500]
+            labelFill = colors["neutral"][500]
             break
     }
 
-    const baseTab = {
+    const baseTab: AutoLayoutProps = {
+        width: isFitted ? "fill-parent" : "hug-contents",
+        horizontalAlignItems: "center",
         padding: { vertical: 5, horizontal: 12 },
         cornerRadius,
         strokeAlign
     }
 
-    const baseTabLabel = {
+    const baseTabLabel: TextProps = {
         fontSize: 14,
         lineHeight: 22,
     }
@@ -81,11 +122,11 @@ export const getTabsStyles = ({
 
     return {
         container: {
-            width: "hug-contents",
+            width,
             direction: "vertical"
         },
         tabList: {
-            width: "hug-contents",
+            width: "fill-parent",
             overflow: "visible",
             // effect: tabListStroke,
             spacing,
@@ -111,7 +152,11 @@ export const getTabsStyles = ({
             fill: activeLabelFill
         },
         tabPanels: {
+            width,
             padding: 12
+        },
+        tabPanel: {
+            width: tabPanelWidth
         }
     }
 }

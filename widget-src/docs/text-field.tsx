@@ -1,25 +1,21 @@
-import { Heading, IconCheck, IconEnvelope, TextField } from "../components"
+import { Heading, IconCheck, IconEnvelope, Select, TextField } from "../components"
 import { colors } from "../styles"
+import { codeStyle, docStyle } from "./styles"
+import { P } from "./typography"
 
 const { widget } = figma
-const { useSyncedState, AutoLayout, Text } = widget
+const { useSyncedState, AutoLayout, Text, Span } = widget
 
 export function TextFieldDoc() {
     const [value, setValue] = useSyncedState("value", "")
     const [email, setEmail] = useSyncedState("email", "")
 
     return <AutoLayout
-        verticalAlignItems={'center'}
-        direction={"vertical"}
-        spacing={24}
-        padding={32}
-        cornerRadius={8}
-        fill={'#FFFFFF'}
-        stroke={'#E6E6E6'}
-        overflow={"visible"}
-        width={480}
+        name="Text Field Doc"
+        {...docStyle}
     >
-        <Heading as={"h3"}>Text Field</Heading>
+        <Heading as={"h3"}>TextField</Heading>
+        <P>TextField extends the built-in <Span {...codeStyle}>Input</Span> component.</P>
         <Heading as="h5">Variants</Heading>
 
         <AutoLayout spacing={8} direction={"vertical"} width={240} overflow={"visible"}>
@@ -36,6 +32,9 @@ export function TextFieldDoc() {
         </AutoLayout>
 
         <Heading as="h5">Input elements</Heading>
+        <Text width={"fill-parent"}>
+            Pass in <Span {...codeStyle}>leftElement</Span> and <Span {...codeStyle}>rightElement</Span> prop to add elements inside TextField components.
+        </Text>
         <TextField
             id="text-field/email"
             leftElement={<IconEnvelope color={colors.neutral[500]} />}
@@ -70,36 +69,29 @@ export function TextFieldDoc() {
         <Heading as="h5">Input addons</Heading>
         <AutoLayout direction={"vertical"} spacing={8} overflow={"visible"}>
             <TextField
-                width={240}
+                width={480}
                 id=""
                 value={""}
                 onTextEditEnd={e => { }}
                 leftAddon={"https://"}
-                rightAddon={".com"}
-                placeholder={"Your website"}
-            />
-
-            <TextField
-                width={240}
-                id=""
-                value={""}
-                variant={"flush"}
-                onTextEditEnd={e => { }}
-                leftAddon={"https://"}
-                rightAddon={".com"}
-                placeholder={"Your website"}
-            />
-
-            <TextField
-                width={240}
-                id=""
-                value={""}
-                variant={"filled"}
-                onTextEditEnd={e => { }}
-                leftAddon={"https://"}
-                rightAddon={".com"}
+                rightAddon={
+                    <Select
+                        id="text-field/addon"
+                        options={[
+                            { label: ".com", value: ".com" },
+                            { label: ".app", value: ".app" },
+                            { label: ".info", value: ".info" }
+                        ]}
+                        placeholder={"select"}
+                        variant={"filled"}
+                        width={72}
+                    />
+                }
                 placeholder={"Your website"}
             />
         </AutoLayout>
+
+        <Heading as="h5">Disabled Text Field</Heading>
+        <TextField id="v74k" value={""} onTextEditEnd={e => { }} disabled placeholder="disabled" />
     </AutoLayout>
 }
