@@ -17,20 +17,23 @@ export const getFieldStyles = (
             clearIcon: Omit<SVGProps, "src" | "fill"> & { color: string };
             leftAddon: AutoLayoutProps;
             rightAddon: AutoLayoutProps;
+            element: AutoLayoutProps;
         } => {
 
-    /*---- Field ----*/
+    /* ---- Field ---- */
     let fill: AutoLayoutProps['fill'];
     let stroke: AutoLayoutProps['stroke'];
     let padding: AutoLayoutProps['padding'];
     let effect: AutoLayoutProps['effect'];
     let cornerRadius: AutoLayoutProps['cornerRadius'];
-    /*---- Text ----*/
+    /* ---- Text ---- */
     let fontSize: TextProps['fontSize'];
     let lineHeight: TextProps['lineHeight'];
-    /*---- Clear Icon ----*/
+    /* ---- Clear Icon ---- */
     let clearIconOffsetX: number;
-    /*---- Addon ----*/
+    /* ---- Element ---- */
+    let elementWidth: AutoLayoutProps['width'];
+    /* ---- Addon ---- */
     // This is a workaround because setting height to "fill-parent" also sets width to 100px;
     let addonFill: AutoLayoutProps['fill'];
     // let addonCornerRadius: AutoLayoutProps['cornerRadius'];
@@ -77,17 +80,19 @@ export const getFieldStyles = (
             lineHeight = 24;
             clearIconOffsetX = rightElement ? 36 : 8;
             addonHeight = 40;
+            elementWidth = 40;
             break
         case "sm":
             padding = {
                 left: leftElement ? 28 : 6,
                 right: rightElement ? 28 : 6,
-                vertical: 3
+                vertical: 4
             }
             fontSize = 12;
             lineHeight = 20;
             clearIconOffsetX = rightElement ? 28 : 8;
             addonHeight = 28;
+            elementWidth = 28;
             break
         default:
             padding = {
@@ -99,6 +104,7 @@ export const getFieldStyles = (
             lineHeight = 22;
             clearIconOffsetX = rightElement ? 32 : 8;
             addonHeight = 32;
+            elementWidth = 32;
             break;
     }
 
@@ -110,7 +116,6 @@ export const getFieldStyles = (
         height: addonHeight,
         padding: { horizontal: 8 },
         stroke: addonStroke,
-        strokeAlign: "outside",
         overflow: "visible"
     }
 
@@ -142,6 +147,9 @@ export const getFieldStyles = (
             positioning: "absolute",
             y: { offset: 0, type: "center" },
             x: { offset: clearIconOffsetX, type: "right" }
+        },
+        element: {
+            width: elementWidth
         },
         leftAddon: {
             ...addon,

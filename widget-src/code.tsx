@@ -42,7 +42,7 @@ const COMPONENTS: WidgetPropertyMenuDropdownOption[] = [
 ]
 
 function Widget() {
-  const [currentPage, setCurrentPage] = useSyncedState("currentPage", "colors")
+  const [currentPage, setCurrentPage] = useSyncedState("currentPage", "intro")
   const index = COMPONENTS.findIndex(item => item.option === currentPage);
 
   const COMPONENT_DOC: { [key: string]: FigmaDeclarativeNode } = {
@@ -103,7 +103,7 @@ function Widget() {
     }
 
     {
-      (index < COMPONENTS.length - 1 && index >= 1) ? <AutoLayout
+      (index < COMPONENTS.length - 1 && index >= 0) ? <AutoLayout
         horizontalAlignItems={"end"}
         {...paginationStyle}
 

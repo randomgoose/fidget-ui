@@ -1,9 +1,9 @@
-import { Avatar, Heading, SimpleGrid } from "../components";
+import { Heading } from "../components";
 import { Divider } from "../components/divider";
 import { Tabs } from "../components/tabs";
 import { colors } from "../styles";
 import { docStyle } from "./styles";
-import { Code, P } from "./typography";
+import { Code, P, Pre } from "./typography";
 
 const { widget } = figma;
 const { AutoLayout, Text, useSyncedState, SVG } = widget;
@@ -14,13 +14,17 @@ export default function Intro() {
     const [registry, setRegistry] = useSyncedState<number | string>("registry", "npm")
 
     return <AutoLayout {...docStyle} name={"Intro"}>
-        <Heading as="h1">Fidget UI</Heading>
-        <AutoLayout>
-            <SVG src={GIT_ICON} />
+        <AutoLayout verticalAlignItems={"center"} width={"fill-parent"}>
+            <Heading as="h1" width={"fill-parent"}>Fidget UI</Heading>
+            <AutoLayout verticalAlignItems={"center"} spacing={4}>
+                <SVG src={GIT_ICON} width={20} height={20} />
+                <Text fill={colors.neutral[900]} href={"https://github.com/randomgoose/fidget-ui"} textDecoration={"underline"}>GitHub</Text>
+            </AutoLayout>
         </AutoLayout>
         <Divider />
         <Heading as="h3">Introduction</Heading>
-        <P>Fidget UI is a component library for building Figma widgets. This widget serves as an interactive document for Fidget UI.</P>
+        <P>Fidget UI is a component library for building Figma widgets. It provides essential building blocks to help developers build widgets faster, without repetitively writing basic Figma node tags and style code.</P>
+        <P>This widget serves as an interactive document for Fidget UI.</P>
 
         <AutoLayout name="Comparison" width={"fill-parent"} spacing={8}>
             <AutoLayout name="Box" direction="vertical" horizontalAlignItems={"center"} width={"fill-parent"}>
@@ -69,6 +73,7 @@ export default function Intro() {
         </AutoLayout>
 
         <Heading as="h3">Installation</Heading>
+        <P>To use Fidget components, install the <Pre>fidget-ui</Pre> package.</P>
         <Tabs
             activeKey={registry}
             onChange={(key) => setRegistry(key)}
@@ -77,10 +82,7 @@ export default function Intro() {
                 { key: "yarn ", tab: "yarn", children: <Code width={"fill-parent"}>yarn add fidget-ui</Code> }
             ]} />
 
-        <Heading as="h3">Contributors</Heading>
-        <SimpleGrid width={'fill-parent'}>
-            <Avatar displayName="Chen Chen" fill={colors.blue[500]} />
-        </SimpleGrid>
-        {/* <Text href="https://www.baidu.com">Github</Text> */}
+        <Heading as="h3">Documentation</Heading>
+        <P>This widget itself contains documents for colors, styles and components of Fidget UI. There are also two exmaple widgets to demonstrate the usage of components. Navigate to other pages with the property menu.</P>
     </AutoLayout>
 }

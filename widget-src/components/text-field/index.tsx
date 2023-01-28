@@ -5,13 +5,13 @@ import { getFieldStyles } from "../_field/styles";
 import { TextFieldProps } from "./interface";
 
 const { widget } = figma
-const { Input, AutoLayout } = widget
+const { Input, AutoLayout, useSyncedState } = widget
 
 export function TextField(
     {
-        width,
-        onTextEditEnd,
+        width = "fill-parent",
         value,
+        onTextEditEnd,
         placeholder,
         size = "md",
         variant = "outline",
@@ -31,6 +31,7 @@ export function TextField(
         clearIcon: clearIconStyles,
         leftAddon: leftAddonStyles,
         rightAddon: rightAddonStyles,
+        element,
         input
     } = getFieldStyles({
         variant, size, leftElement, rightElement, disabled, leftAddon, rightAddon
@@ -73,12 +74,12 @@ export function TextField(
                 name="Input"
                 onTextEditEnd={onTextEditEnd}
                 inputBehavior={"multiline"}
-                value={value}
                 placeholder={placeholder}
                 inputFrameProps={{
                     name: "Input Container",
                 }}
                 {...rest}
+                value={value}
             />
         </AutoLayout>
         {(value?.length && value.length > 0 && rest.showClearIcon) ? clearIcon : null}
@@ -101,11 +102,11 @@ export function TextField(
 
         <AutoLayout
             name={"Left Element Container"}
-            width={16}
-            height={16}
+            width={element.width}
+            height={element.width}
             positioning={"absolute"}
-            x={{ type: 'left', offset: 8 }}
-            y={{ type: 'center', offset: 0 }}
+            x={{ type: 'left', offset: 0 }}
+            y={{ type: 'top-bottom', topOffset: 0, bottomOffset: 0 }}
             verticalAlignItems={"center"}
             horizontalAlignItems={"center"}
         >
@@ -114,11 +115,11 @@ export function TextField(
 
         <AutoLayout
             name={"Right Element Container"}
-            width={16}
-            height={16}
+            width={element.width}
+            height={element.width}
             positioning={"absolute"}
-            x={{ type: 'right', offset: 8 }}
-            y={{ type: 'center', offset: 0 }}
+            x={{ type: 'right', offset: 0 }}
+            y={{ type: 'top-bottom', topOffset: 0, bottomOffset: 0 }}
             verticalAlignItems={"center"}
             horizontalAlignItems={"center"}
         >
