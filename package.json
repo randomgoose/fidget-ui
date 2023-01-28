@@ -9,8 +9,8 @@
     "rollup": "rollup -c",
     "prepare": "husky install"
   },
-  "author": "",
-  "license": "",
+  "author": "Chen Chen",
+  "license": "MIT",
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
