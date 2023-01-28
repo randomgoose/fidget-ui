@@ -1,6 +1,6 @@
 {
   "name": "fidget-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A component library for building Figma widgets.",
   "scripts": {
     "build": "esbuild widget-src/code.tsx --bundle --outfile=dist/code.js --target=es6",

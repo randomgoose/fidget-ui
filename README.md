@@ -12,3 +12,6 @@ $ yarn add fidget-ui
 
 $ npm i fidget-ui
 ```
+
+## Usage
+If you are using Figma's widget template. Set the `moduleResolution` option to `node` in `tsconfig.json`

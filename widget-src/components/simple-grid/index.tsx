@@ -1,13 +1,7 @@
+import { SimpleGridProps } from "./interface"
 
 const { widget } = figma
 const { AutoLayout } = widget
-
-export interface SimpleGridProps extends AutoLayoutProps {
-    columns?: number;
-    spacing?: number;
-    spacingX?: number;
-    spacingY?: number;
-}
 
 export function SimpleGrid({
     children,
