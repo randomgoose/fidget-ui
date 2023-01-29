@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { colors } from "../../styles";
 import { Button, IconButton } from "../button";
 import { Divider } from "../divider";
-import { IconChevronDown, IconChevronUp, IconClock } from "../icons";
+import { IconChevronDown, IconChevronUp, IconClock } from "../../icons";
 import { getDropdownStyles } from "../_dropdown/styles";
 import { getFieldStyles } from "../_field/styles"
 import { TimePickerProps } from "./interface";

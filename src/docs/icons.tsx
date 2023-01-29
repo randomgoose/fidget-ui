@@ -1,5 +1,5 @@
 import { docStyle } from "./styles";
-import * as icons from "../components/icons";
+import * as icons from "../icons";
 import { Heading, IconCogSolid, SimpleGrid, TextField } from "../components";
 import { Divider } from "../components/divider";
 import { colors } from "../styles";

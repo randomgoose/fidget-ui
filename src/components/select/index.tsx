@@ -1,6 +1,6 @@
 import { colors } from "../../styles"
 import { renderChildren } from "../../utils";
-import { IconChevronDown, IconChevronUp } from "../icons";
+import { IconChevronDown, IconChevronUp } from "../../icons";
 import { getDropdownStyles } from "../_dropdown/styles";
 import { getFieldStyles } from "../_field/styles";
 import { OptionProps, SelectProps } from "./interface";

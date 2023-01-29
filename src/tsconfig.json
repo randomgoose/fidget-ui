@@ -23,7 +23,7 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
   },
-  "exclude": [
-    "./components/index.ts"
-  ]
+  // "exclude": [
+  //   "components/index.tsx",
+  // ]
 }

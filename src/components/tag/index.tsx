@@ -1,6 +1,6 @@
 import { TagProps } from "./interface";
 import { getTagStyles } from "./styles";
-import { IconXMark } from "../icons";
+import { IconXMark } from "../../icons";
 
 const { widget } = figma
 const { AutoLayout, Text } = widget

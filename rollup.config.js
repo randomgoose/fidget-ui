@@ -7,7 +7,7 @@ const packageJson = require("./package.json")
 
 export default [
     {
-        input: "./widget-src/components/index.ts",
+        input: "./src/components/index.ts",
         output: [
             {
                 file: packageJson.module,
@@ -19,9 +19,10 @@ export default [
             resolve(),
             commonjs(),
             typescript({
-                tsconfig: "./widget-src/tsconfig.json",
+                tsconfig: "./src/tsconfig.json",
                 exclude: [
-                    "./widget-src/docs/*"
+                    "./src/docs/*",
+                    "./src/code.tsx",
                 ]
             })
         ],

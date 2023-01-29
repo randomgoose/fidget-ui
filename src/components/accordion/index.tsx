@@ -1,4 +1,4 @@
-import { IconChevronDown, IconChevronUp } from "../icons"
+import { IconChevronDown, IconChevronUp } from "../../icons"
 import { AccordionItemProps, AccordionProps } from "./interface"
 import { renderChildren } from "../../utils"
 import { getAccordionStyles } from "./styles"

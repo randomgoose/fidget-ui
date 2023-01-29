@@ -1,5 +1,5 @@
 import { colors } from "../../styles"
-import { IconUser } from "../icons"
+import { IconUser } from "../../icons"
 import { AvatarGroupProps, AvatarProps } from "./interface"
 import { getAvatarStyles } from "./styles"
 

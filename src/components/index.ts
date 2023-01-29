@@ -7,10 +7,8 @@ export type { AvatarGroupProps, AvatarProps } from "./avatar/interface"
 export * from "./button"
 export type { ButtonProps } from "./button/interface"
 
-// export * from "./carousel"
-
 export * from "./checkbox"
-export type { Checkbox, CheckboxGroup } from "./checkbox/index"
+export type { CheckboxProps, CheckboxGroupProps } from "./checkbox/interface"
 
 export * from "./description-list"
 export type { DescriptionListProps } from "./description-list/interface"
@@ -21,7 +19,7 @@ export type { DividerProps } from "./divider/interface"
 export * from "./heading"
 export type { HeadingProps } from "./heading/interface"
 
-export * from "./icons"
+export * from "../icons"
 
 export * from "./radio"
 export type { RadioGroupProps, RadioProps } from "./radio/interface"
@@ -46,3 +44,5 @@ export type { TextFieldProps } from "./text-field/interface"
 
 export * from "./time-picker"
 export type { TimePickerProps } from "./time-picker/interface"
+
+export * from "../styles"
