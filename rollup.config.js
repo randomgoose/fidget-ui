@@ -36,7 +36,7 @@ export default [
         input: "./src/icons/index.ts",
         output: [
             {
-                file: iconsPackageJson.module,
+                file: "icons/index.js",
                 format: "esm",
                 sourcemap: true
             }
@@ -53,10 +53,5 @@ export default [
         input: "build/esm/components/index.d.ts",
         output: [{ file: "build/index.d.ts", format: "esm" }],
         plugins: [dts()],
-    },
-    {
-        input: "icons/esm/index.d.ts",
-        output: [{ file: "icons/index.d.ts", format: "esm" }],
-        plugins: [dts()]
     }
 ]

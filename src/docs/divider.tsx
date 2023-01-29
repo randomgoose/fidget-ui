@@ -1,5 +1,6 @@
-import { Heading, IconCog } from "../components"
+import { Heading } from "../components"
 import { Divider } from "../components/divider"
+import { IconCog } from "../icons"
 import { colors } from "../styles"
 import { docStyle } from "./styles"
 import { Code, P, Pre } from "./typography"

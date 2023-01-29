@@ -1,6 +1,7 @@
-import { Heading, IconButton, IconMagnifyingGlass, IconMinus, IconPlus, TextField } from "../components";
+import { Heading, IconButton, TextField } from "../components";
 import { colors } from "../styles";
 import { Checkbox } from "../components/checkbox";
+import { IconMagnifyingGlass, IconMinus, IconPlus, } from "../icons"
 
 const { AutoLayout, useSyncedState, Text } = figma.widget;
 

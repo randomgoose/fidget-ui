@@ -1,12 +1,13 @@
-import { Button, Heading, IconCheck, RadioGroup } from "../components"
+import { Button, Heading, RadioGroup } from "../components"
 import { Divider } from "../components/divider";
+import { IconCheck } from "../icons";
 import { colors } from "../styles";
 import { renderChildren } from "../utils";
 import { docStyle } from "./styles";
 import { Code, P, Pre } from "./typography";
 
 const { widget } = figma
-const { AutoLayout, Text, useSyncedState } = widget
+const { AutoLayout, useSyncedState } = widget
 
 export function RadioDoc() {
     const [animals, setAnimals] = useSyncedState("animals", "cats")

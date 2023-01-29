@@ -4,5 +4,6 @@
     "version": "0.0.0",
     "main": "./index.js",
     "module": "icons/esm/index.js",
-    "type": "module"
+    "type": "module",
+    "types": "icons/index.d.ts"
 }

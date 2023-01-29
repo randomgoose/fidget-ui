@@ -1,5 +1,6 @@
-import { Button, Heading, IconAcademicCap, TextField } from "../components"
+import { Button, Heading, TextField } from "../components"
 import { Divider } from "../components/divider";
+import { IconAcademicCap } from "../icons";
 import { colors } from "../styles";
 import { codeStyle, docStyle } from "./styles";
 import { P, Pre } from "./typography";

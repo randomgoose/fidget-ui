@@ -1,5 +1,6 @@
-import { Accordion, Button, Heading, IconArrowRight } from "../components"
+import { Accordion, Button, Heading } from "../components"
 import { Divider } from "../components/divider"
+import { IconArrowRight } from "../icons"
 import { colors } from "../styles"
 import { docStyle } from "./styles"
 import { Code, P } from "./typography"

@@ -5,7 +5,7 @@
         "declaration": true,
         // "declarationDir": "build/types",
         "sourceMap": true,
-        "outDir": "build",
+        "outDir": "icons",
         "jsxFactory": "figma.widget.h",
         "jsxFragmentFactory": "figma.widget.Fragment",
         "target": "es5",

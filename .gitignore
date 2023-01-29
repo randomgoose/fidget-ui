@@ -3,9 +3,11 @@
 *.log.*
 node_modules
 
+# Build
 out/
 dist/
 code.js
 build/
+icons/
 
 .DS_Store

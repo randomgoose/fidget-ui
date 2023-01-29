@@ -1,8 +1,9 @@
-import { Heading, IconButton, IconGlobeAlt, IconAcademicCap, IconCog6Tooth } from "../components";
+import { Heading, IconButton } from "../components";
 import { ButtonSize } from "../components/button/interface";
 import { Divider } from "../components/divider";
 import { docStyle } from "./styles";
 import { P, Pre } from "./typography";
+import { IconGlobeAlt, IconAcademicCap, IconCog6Tooth } from "../icons"
 
 const { widget } = figma;
 const { AutoLayout } = widget;

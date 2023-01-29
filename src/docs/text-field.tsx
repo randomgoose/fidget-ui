@@ -1,5 +1,6 @@
-import { Heading, IconCheck, IconEnvelope, Select, TextField } from "../components"
+import { Heading, Select, TextField } from "../components"
 import { Divider } from "../components/divider"
+import { IconCheck, IconEnvelope } from "../icons"
 import { colors } from "../styles"
 import { codeStyle, docStyle } from "./styles"
 import { P, Pre } from "./typography"

@@ -1,11 +1,12 @@
 import { docStyle } from "./styles";
 import * as icons from "../icons";
-import { Heading, IconCogSolid, SimpleGrid, TextField } from "../components";
+import { Heading, SimpleGrid, TextField } from "../components";
 import { Divider } from "../components/divider";
 import { colors } from "../styles";
 import { Tabs } from "../components/tabs";
 import _ from "lodash"
 import { P, Pre } from "./typography";
+import { IconCogSolid } from "../icons"
 
 const { AutoLayout, Text, useSyncedState, Span } = figma.widget;
 
