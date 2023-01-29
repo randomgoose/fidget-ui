@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "module": "ESNext",
+        "declaration": true,
+        // "declarationDir": "build/types",
+        "sourceMap": true,
+        "outDir": "build",
+        "jsxFactory": "figma.widget.h",
+        "jsxFragmentFactory": "figma.widget.Fragment",
+        "target": "es5",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "lib": [
+            "es6"
+        ],
+        "strict": true,
+        "typeRoots": [
+            "../../node_modules/@types",
+            "../..//node_modules/@figma"
+        ],
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "emitDeclarationOnly": true,
+    },
+}

@@ -19,8 +19,6 @@ export type { DividerProps } from "./divider/interface"
 export * from "./heading"
 export type { HeadingProps } from "./heading/interface"
 
-export * from "../icons"
-
 export * from "./radio"
 export type { RadioGroupProps, RadioProps } from "./radio/interface"
 
