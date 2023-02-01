@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { colors } from "../../styles";
 import { Button, IconButton } from "../button";
 import { Divider } from "../divider";
-import { IconChevronDown, IconChevronUp, IconClock } from "../../icons";
+import { IconChevronDown, IconChevronUp, IconClock, IconMinusSmallSolid, IconPlusSmallSolid } from "../../icons";
 import { getDropdownStyles } from "../_dropdown/styles";
 import { getFieldStyles } from "../_field/styles"
 import { TimePickerProps } from "./interface";
@@ -19,8 +19,14 @@ function Digit({ value, onDecrement, onIncrement }:
     }) {
 
     return (
-        <AutoLayout name="TimePicker Digit" direction={"vertical"} spacing={2}>
-            <IconButton onClick={onDecrement} icon={<IconChevronUp />} size={"sm"} variant={"ghost"} />
+        <AutoLayout name="TimePicker Digit" direction={"vertical"}>
+            <IconButton
+                onClick={onIncrement}
+                fontSize={12}
+                icon={<IconPlusSmallSolid fill={colors.neutral[100]} />}
+                size={"sm"}
+                variant={"ghost"}
+            />
             <AutoLayout
                 name="TimePicker Digit Display"
                 verticalAlignItems={"center"}
@@ -28,7 +34,6 @@ function Digit({ value, onDecrement, onIncrement }:
                 width={28}
                 height={28}
                 cornerRadius={4}
-                fill={colors.neutral[100]}
             >
                 <Text
                     name="Number"
@@ -38,7 +43,13 @@ function Digit({ value, onDecrement, onIncrement }:
                     {value}
                 </Text>
             </AutoLayout>
-            <IconButton onClick={onIncrement} icon={<IconChevronDown />} size={"sm"} variant={"ghost"} />
+            <IconButton
+                onClick={onDecrement}
+                fontSize={12}
+                icon={<IconMinusSmallSolid />}
+                size={"sm"}
+                variant={"ghost"}
+            />
         </AutoLayout>
     )
 }
@@ -99,8 +110,8 @@ export function TimePicker({
                 <Digit value={hour[1]} onIncrement={(() => changeTemp(1, "hour"))} onDecrement={() => changeTemp(-1, "hour")} />
             </AutoLayout>
 
-            <AutoLayout padding={8} name={"colon"}>
-                <Text fontWeight={"bold"} fill={colors.neutral[400]}>:</Text>
+            <AutoLayout name={"colon"} padding={8}>
+                <Text fontWeight={"bold"} fill={colors.neutral[900]}>:</Text>
             </AutoLayout>
 
             <AutoLayout name="Flex" spacing={4}>
@@ -109,10 +120,10 @@ export function TimePicker({
             </AutoLayout>
         </AutoLayout>
 
-        <Divider margin={{ bottom: 8 }} />
+        <Divider margin={{ vertical: 8 }} />
 
-        <AutoLayout width={"fill-parent"}>
-            <Button block variant={"ghost"} onClick={closeDropdown} size={"sm"}>Close</Button>
+        <AutoLayout width={"fill-parent"} spacing={4}>
+            <Button block variant={"ghost"} onClick={closeDropdown} size={"sm"}>Cancel</Button>
             <Button onClick={assignTime} block variant={"filled"} colorScheme={"blue"} size={"sm"}>Done</Button>
         </AutoLayout>
     </AutoLayout >

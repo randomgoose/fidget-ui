@@ -14,6 +14,8 @@ import { Issue } from "./docs/issue"
 import { TimePickerDoc } from "./docs/time-picker"
 import { Todo } from "./docs/todo"
 import { colors } from "./styles"
+import { MenuDoc } from "./docs/menu"
+import { NoticeDoc } from "./docs/notice"
 
 const { widget } = figma
 const { AutoLayout, usePropertyMenu, useSyncedState, Text } = widget
@@ -30,6 +32,7 @@ const COMPONENTS: WidgetPropertyMenuDropdownOption[] = [
   { option: "switch", label: "Switch" },
   { option: "text-field", label: "Text Field" },
   { option: "select", label: "Select" },
+  { option: "menu", label: "Menu" },
   { option: "tag", label: "Tag" },
   { option: "accordion", label: "Accordion" },
   { option: "tabs", label: "Tabs" },
@@ -37,8 +40,9 @@ const COMPONENTS: WidgetPropertyMenuDropdownOption[] = [
   { option: "avatar", label: "Avatar" },
   { option: "time-picker", label: "Time Picker" },
   { option: "description-list", label: "Description List" },
+  { option: "notice", label: "Notice"},
   { option: "demo1", label: "Demo: Todo" },
-  { option: "demo2", label: "Demo: Issue" }
+  { option: "demo2", label: "Demo: Issue" },
 ]
 
 function Widget() {
@@ -56,6 +60,7 @@ function Widget() {
     checkbox: <CheckboxDoc />,
     switch: <SwitchDoc />,
     "text-field": <TextFieldDoc />,
+    menu: <MenuDoc />,
     accordion: <AccordionDoc />,
     tabs: <TabsDoc />,
     divider: <DividerDoc />,
@@ -65,6 +70,7 @@ function Widget() {
     colors: <ColorsDoc />,
     "description-list": <DescriptionListDoc />,
     "simple-grid": <SimpleGridDoc />,
+    notice: <NoticeDoc />,
     demo1: <Todo />,
     demo2: <Issue />
   }

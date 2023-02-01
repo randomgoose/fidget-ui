@@ -1,6 +1,6 @@
 import { Button, Heading, TextField } from "../components"
 import { Divider } from "../components/divider";
-import { IconAcademicCap } from "../icons";
+import { IconShare } from "../icons";
 import { colors } from "../styles";
 import { codeStyle, docStyle } from "./styles";
 import { P, Pre } from "./typography";
@@ -61,8 +61,8 @@ export function ButtonDoc() {
         <Heading as="h5">Button with icon</Heading>
         <P>Add left and right icons to Button components with <Pre>leftIcon</Pre> and <Pre>rightIcon</Pre> props. You can pass in Heroicons or custom <Pre>Svg</Pre> component.</P>
         <AutoLayout spacing={8}>
-            <Button leftIcon={<IconAcademicCap />}>Share</Button>
-            <Button rightIcon={<IconAcademicCap />} variant={"outline"} colorScheme={"blue"}>Share</Button>
+            <Button leftIcon={<IconShare />}>Share</Button>
+            <Button rightIcon={<IconShare />} variant={"outline"} colorScheme={"blue"}>Share</Button>
         </AutoLayout>
 
         <Heading as="h5">Block button</Heading>

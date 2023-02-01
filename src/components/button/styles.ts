@@ -111,11 +111,13 @@ export const getButtonStyles = (
 }
 
 export const getIconButtonStyles =
-    ({ size,
+    ({
+        size,
         variant,
         colorScheme = "neutral",
-        disabled
-    }: Pick<IconButtonProps, "size" | "variant" | "colorScheme" | "disabled">): {
+        disabled,
+        fontSize
+    }: Pick<IconButtonProps, "size" | "variant" | "colorScheme" | "disabled" | "fontSize">): {
         container: AutoLayoutProps;
         icon: Omit<SVGProps, "src">;
     } => {
@@ -149,7 +151,10 @@ export const getIconButtonStyles =
                 height,
             },
             icon: {
-                ...styles.icon
+                ...styles.icon,
+                width: fontSize ? fontSize : styles.icon.width,
+                height: fontSize ? fontSize : styles.icon.height,
+                fill: color
             }
         }
     }

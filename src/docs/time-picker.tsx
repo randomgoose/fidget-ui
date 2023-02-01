@@ -1,6 +1,7 @@
-import { Heading, Switch } from "../components";
+import { Divider, Heading, Switch } from "../components";
 import { TimePicker } from "../components/time-picker";
 import { docStyle } from "./styles";
+import { P, Pre } from "./typography";
 
 const { widget } = figma;
 const { AutoLayout, useSyncedState, Text } = widget;
@@ -11,8 +12,11 @@ export function TimePickerDoc() {
     return (
         <AutoLayout name="Time Picker Doc" {...docStyle}>
             <Heading as="h1">Time Picker</Heading>
+            <P>Allow users to select a time in the format of <Pre>hh:mm</Pre>.</P>
+            <Divider />
             <Heading as="h5">Usage</Heading>
-            <TimePicker id="ak3v" />
+            <P></P>
+            <TimePicker id="ak3v" placement="top" />
 
             <Heading as="h5">Disabled TimePicker</Heading>
 

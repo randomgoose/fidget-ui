@@ -4,7 +4,6 @@ import dts from "rollup-plugin-dts"
 import commonjs from "@rollup/plugin-commonjs"
 
 const packageJson = require("./package.json")
-const iconsPackageJson = require("./src/icons/package.json")
 
 export default [
     {

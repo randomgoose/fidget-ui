@@ -8,8 +8,7 @@ const { AutoLayout } = widget
 export function MenuDoc() {
     return <AutoLayout {...docStyle} name={"Menu Doc"}>
         <Heading as={"h3"}>Menu</Heading>
-
         <Heading as={"h5"}></Heading>
-        <Menu></Menu>
+        <Menu />
     </AutoLayout>
 }

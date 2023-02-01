@@ -21,4 +21,5 @@ export interface IconButtonProps extends Omit<AutoLayoutProps, "onClick"> {
     size?: ButtonSize;
     disabled?: boolean;
     onClick?: () => void;
+    fontSize?: TextProps['fontSize'];
 }

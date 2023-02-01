@@ -3,7 +3,7 @@ import { Divider } from "../components/divider"
 import { IconArrowRight } from "../icons"
 import { colors } from "../styles"
 import { docStyle } from "./styles"
-import { Code, P } from "./typography"
+import { P } from "./typography"
 
 const { widget } = figma
 const { AutoLayout, Text, Span } = widget

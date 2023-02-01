@@ -51,7 +51,7 @@ export const getDropdownStyles = (
             fill: colors.white,
             direction: "vertical",
             positioning: "absolute",
-            stroke: colors.neutral[300],
+            stroke: colors.neutral[200],
             x,
             y
         },
