@@ -6,25 +6,6 @@ import { getTabsStyles } from "./styles";
 const { widget } = figma
 const { AutoLayout, Rectangle, useSyncedState } = widget
 
-export function TabPanel({ children, tab, ...rest }: TabPaneProps) {
-
-    return <AutoLayout
-        name="Tab Panel"
-        height={"hug-contents"}
-        {...rest}
-    >
-        {renderChildren(children)}
-    </AutoLayout>
-}
-
-function Tab() {
-    return (
-        <AutoLayout name="Tab tab">
-
-        </AutoLayout>
-    )
-}
-
 export function Tabs({
     id,
     variant = "line",
@@ -45,17 +26,15 @@ export function Tabs({
 
     const tabPanels = Array.isArray(items)
         ? items.filter(({ key }) => key === mergedActiveKey).map(({ tab, key, children, }) => (
-            <TabPanel {...tabPanel} key={key} tab={tab}>
+            <AutoLayout name="Tab Panel" height={"hug-contents"} key={key} {...rest}>
                 {renderChildren(children, { textProps: { fontSize: 14, lineHeight: 22, fill: colors.neutral[900] } })}
-            </TabPanel>
+            </AutoLayout>
         ))
         : null
 
     const tabs = Array.isArray(items)
         ? items.map(({ tab, key }) => {
-
             const isActive = key === mergedActiveKey
-
             return <AutoLayout
                 name="Tabs Tab"
                 {...isActive ? { ...activeTab } : { ...tabStyles }}
