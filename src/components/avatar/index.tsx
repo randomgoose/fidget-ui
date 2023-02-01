@@ -98,7 +98,7 @@ export function AvatarGroup(
                             children
                                 .filter((child: FigmaDeclarativeNode) => isAvatar(child))
                                 .slice(0, max)
-                                .map((child: any) => {
+                                .map((child: any, index: number) => {
                                     return h(
                                         Avatar,
                                         {
@@ -107,7 +107,8 @@ export function AvatarGroup(
                                             displayName: child.props.tooltip,
                                             fill: child.props.src
                                                 ? { type: "image", src: child.props.src }
-                                                : child.props.fill
+                                                : child.props.fill,
+                                            key: index
                                         },
                                         child?.children
                                     )

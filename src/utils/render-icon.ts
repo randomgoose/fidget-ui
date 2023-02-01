@@ -17,8 +17,8 @@ export function renderIcon(
                 (svg as any)?.
                     props
                     ?.src
-                    .replace("stroke='#000000'", `stroke='${options.stroke}'`)
-                    .replace("fill='#000000'", `fill='${options.fill}'`),
+                    .replaceAll("stroke='#000000'", `stroke='${options.stroke}'`)
+                    .replaceAll("fill='#000000'", `fill='${options.fill}'`),
             width: options.width || 16,
             height: options.width || 16,
         })

@@ -46,6 +46,11 @@ export function NoticeDoc() {
                 description={"Component updates available."}
                 icon={false} />
 
+            <Notice
+                title={"Info"}
+                icon={false}>
+                Component updates available.
+            </Notice>
         </AutoLayout>
     )
 }

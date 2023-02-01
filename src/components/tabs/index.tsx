@@ -45,11 +45,7 @@ export function Tabs({
 
     const tabPanels = Array.isArray(items)
         ? items.filter(({ key }) => key === mergedActiveKey).map(({ tab, key, children, }) => (
-            <TabPanel
-                key={key}
-                tab={tab}
-                {...tabPanel}
-            >
+            <TabPanel {...tabPanel} key={key} tab={tab}>
                 {renderChildren(children, { textProps: { fontSize: 14, lineHeight: 22, fill: colors.neutral[900] } })}
             </TabPanel>
         ))
@@ -63,11 +59,11 @@ export function Tabs({
             return <AutoLayout
                 name="Tabs Tab"
                 {...isActive ? { ...activeTab } : { ...tabStyles }}
-                key={key}
                 onClick={() => {
                     onChange && onChange(key)
                     setActiveKey(key)
                 }}
+                key={key}
             >
                 {renderChildren(tab, { textProps: !isActive ? tabLabel : activeTabLabel })}
             </AutoLayout>
@@ -90,17 +86,13 @@ export function Tabs({
         {...rest}
         width={width}
     >
-        <AutoLayout
-            name="Tabs Tab List"
-            {...tabList}
-        >
+        <AutoLayout name="Tabs Tab List" {...tabList}>
             {(variant === "line" || variant === "enclosed") ? divider : null}
-
             {tabs}
         </AutoLayout>
 
         <AutoLayout name="Tabs Tab Panels" {...tabPanelsStyles}>
             {tabPanels}
         </AutoLayout>
-    </AutoLayout>
+    </AutoLayout >
 }

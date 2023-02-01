@@ -7,4 +7,5 @@ export interface NoticeProps extends AutoLayoutProps {
     description?: FigmaDeclarativeNode;
     status?: NoticeStatus
     variant?: NoticeVariant
+    children?: FigmaDeclarativeNode
 }

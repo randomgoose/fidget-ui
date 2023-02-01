@@ -12,6 +12,7 @@ export function Notice({
     icon = true,
     title,
     description,
+    children,
     ...rest
 }: NoticeProps) {
 
@@ -60,6 +61,7 @@ export function Notice({
             <AutoLayout name="Notice Content" direction={"vertical"} width={"fill-parent"}>
                 {renderChildren(title, { textProps: titleStyle })}
                 {renderChildren(description, { textProps: descriptionStyle })}
+                {renderChildren(children, { textProps: descriptionStyle })}
             </AutoLayout>
         </AutoLayout>
     )
