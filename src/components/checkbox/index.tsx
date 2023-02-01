@@ -60,8 +60,9 @@ export function CheckboxGroup({
             spacing={spacing}
         >
             {
-                options?.map((option) => (
+                options?.map((option, index) => (
                     <Checkbox
+                        key={index}
                         colorScheme={"emerald"}
                         disabled={option.disabled}
                         checked={values.find(item => item.value === option.value) ? true : false}

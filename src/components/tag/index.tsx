@@ -1,6 +1,7 @@
 import { TagProps } from "./interface";
 import { getTagStyles } from "./styles";
 import { IconXMark } from "../../icons";
+import { isSvg, renderChildren, renderIcon } from "../../utils";
 
 const { widget } = figma
 const { AutoLayout, Text } = widget
@@ -12,18 +13,24 @@ export function Tag({
     size = "md",
     dismissible,
     onClose,
+    leftIcon,
+    rightIcon,
     ...rest
 }: TagProps) {
 
-    const { container, label, closeButton } = getTagStyles({ variant, colorScheme, size })
+    const { container, label, closeButton, icon } = getTagStyles({ variant, colorScheme, size })
 
-    const text = (Array.isArray(children) && children[0] && typeof children[0] === "string") ? children[0] : ""
+    const leftIconNode = isSvg(leftIcon) ? renderIcon({ svg: leftIcon as any, options: { width: icon.width, height: icon.height, stroke: icon.stroke, fill: icon.fill } }) : null
+    const rightIconNode = isSvg(rightIcon) ? renderIcon({ svg: rightIcon as any, options: { width: icon.width, height: icon.height, stroke: icon.stroke, fill: icon.fill } }) : null
 
     return (
         <AutoLayout name="Tag" {...container} {...rest}>
-            <Text name="Tag Label" {...label}>
-                {text}
-            </Text>
+            {leftIconNode}
+
+            {renderChildren(children, { textProps: label })}
+
+            {rightIconNode}
+
             {
                 dismissible
                     ? <IconXMark

@@ -34,7 +34,7 @@ export function IconButtonDoc() {
         <P>Identical to Button <Pre>size</Pre> prop.</P>
         <AutoLayout spacing={4}>
             {
-                ["sm", "md", "lg"].map(size => <IconButton icon={<IconAcademicCap />} size={size as ButtonSize} />)
+                ["sm", "md", "lg"].map(size => <IconButton key={size} icon={<IconAcademicCap />} size={size as ButtonSize} />)
             }
         </AutoLayout>
 

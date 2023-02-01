@@ -1,6 +1,6 @@
 import { colors } from "../../styles"
 import { renderChildren } from "../../utils";
-import { TabPaneProps, TabsProps } from "./interface";
+import { TabsProps } from "./interface";
 import { getTabsStyles } from "./styles";
 
 const { widget } = figma

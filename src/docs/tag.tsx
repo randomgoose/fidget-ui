@@ -1,5 +1,6 @@
 import { Heading, SimpleGrid, Tag } from "../components";
 import { TagColorScheme } from "../components/tag/interface";
+import { IconFaceSmileSolid } from "../icons";
 import { docStyle } from "./styles";
 import { COLORS } from "./variables";
 
@@ -10,15 +11,16 @@ export function TagDoc() {
     const [tags, setTags] = useSyncedState("tags", ["art rock", "prog", "britpop", "psychedelic rock"])
 
     return <AutoLayout {...docStyle} name={"Tag Doc"}>
-        <Heading as="h3">Tag</Heading>
+        <Heading as="h1">Tag</Heading>
 
         <Heading as="h5">Color Schemes</Heading>
 
-        <AutoLayout spacing={8}>
-            <SimpleGrid columns={8} width={480} spacing={24}>
+        <AutoLayout spacing={8} width={"fill-parent"}>
+            <SimpleGrid columns={8} width={'fill-parent'} spacing={24}>
                 {
                     ...COLORS.map((color, index) => (
                         <Tag
+                            width={"fill-parent"}
                             colorScheme={color as TagColorScheme} key={index}
                         >
                             {color}
@@ -60,5 +62,9 @@ export function TagDoc() {
                 ))
             }
         </AutoLayout>
+        
+        <Tag leftIcon={<IconFaceSmileSolid />}>Smile</Tag>
+        <Tag rightIcon={<IconFaceSmileSolid />}>Smile</Tag>
+        <Tag leftIcon={<IconFaceSmileSolid />} />
     </AutoLayout>
 }

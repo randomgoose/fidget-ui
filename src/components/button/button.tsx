@@ -22,12 +22,7 @@ export function Button({
     const leftIconNode = leftIcon ? renderIcon({ svg: leftIcon as any, options: { stroke: icon.stroke, width: icon.width, height: icon.height } }) : null
     const rightIconNode = rightIcon ? renderIcon({ svg: rightIcon as any, options: { stroke: icon.stroke, width: icon.width, height: icon.height } }) : null
 
-    return <AutoLayout
-        name="Button"
-        {...container}
-        {...rest}
-        onClick={(onClick && !disabled) ? onClick : undefined}
-    >
+    return <AutoLayout name="Button" {...container} {...rest} onClick={(onClick && !disabled) ? onClick : undefined}>
         {leftIconNode}
 
         {Array.isArray(leftIcon) ? leftIcon.map(item => item) : null}
