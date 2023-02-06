@@ -1,4 +1,4 @@
-import { colors } from "../../styles";
+import { colors, shadows } from "../../styles";
 
 export const getDropdownStyles = (
     { size, placement }: {
@@ -53,7 +53,7 @@ export const getDropdownStyles = (
             positioning: "absolute",
             stroke: colors.neutral[200],
             x,
-            y
+            y,
         },
         item: {
             width: "fill-parent",

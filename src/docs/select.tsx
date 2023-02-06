@@ -2,7 +2,7 @@ import { Heading, Select } from "../components"
 import { Divider } from "../components/divider"
 import { OptionProps } from "../components/select/interface"
 import { FieldProps } from "../components/_field/interface"
-import { colors } from "../styles"
+import { colors, shadows } from "../styles"
 import { codeStyle, docStyle } from "./styles"
 import { P, Pre } from "./typography"
 

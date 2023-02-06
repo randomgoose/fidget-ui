@@ -1,6 +1,7 @@
 import { IconCake } from "../../icons"
 import { renderChildren, renderIcon } from "../../utils"
 import { Button } from "../button"
+import { getDropdownStyles } from "../_dropdown/styles"
 import { MenuItemProps, MenuProps } from "./interface"
 import { getMenuStyles } from "./styles"
 
@@ -11,6 +12,7 @@ export function Menu(props: MenuProps) {
     const [isOpen, setIsOpen] = useSyncedState(`open/${props.id}`, false);
 
     const { list, item } = getMenuStyles()
+    // getDropdownStyles()
 
     return <AutoLayout
         name="Menu"

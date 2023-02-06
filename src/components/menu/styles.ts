@@ -8,8 +8,11 @@ export const getMenuStyles = (): {
     return {
         list: {
             padding: 4,
-            stroke: colors.neutral[300],
-            cornerRadius: 8
+            stroke: colors.neutral[100],
+            cornerRadius: 8,
+            effect: [
+                { type: "drop-shadow", offset: { x: 0, y: 10 }, color: { r: 1, g: 1, b: 1, a: 0.1 }, blur: 10 }
+            ]
         },
         item: {
             fill: colors.white,

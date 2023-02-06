@@ -23,6 +23,7 @@ const { AutoLayout, usePropertyMenu, useSyncedState, Text } = widget
 const COMPONENTS: WidgetPropertyMenuDropdownOption[] = [
   { option: "intro", label: "Introduction" },
   { option: "colors", label: "Colors" },
+  { option: "shadows", label: "Shadows"},
   { option: "icons", label: "Icons" },
   { option: "heading", label: "Heading" },
   { option: "button", label: "Button" },
