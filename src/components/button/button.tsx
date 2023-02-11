@@ -17,6 +17,7 @@ export function Button({
     block,
     ...rest
 }: ButtonProps) {
+    
     const { container, text, icon } = getButtonStyles({ variant, size, colorScheme, disabled, block });
 
     const leftIconNode = leftIcon ? renderIcon({ svg: leftIcon as any, options: { stroke: icon.stroke, width: icon.width, height: icon.height } }) : null

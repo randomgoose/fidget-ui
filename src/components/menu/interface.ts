@@ -5,7 +5,15 @@ export interface MenuProps extends AutoLayoutProps {
     items?: FigmaDeclarativeNode;
 }
 
+export interface MenuDividerProps {
+    type: "divider"
+}
+
 export interface MenuItemProps extends AutoLayoutProps {
+    type?: "item";
     children?: FigmaDeclarativeNode;
+    label?: FigmaDeclarativeNode;
     icon?: FigmaDeclarativeNode;
+    command?: FigmaDeclarativeNode;
+    disabled?: boolean;
 }

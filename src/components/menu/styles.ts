@@ -1,32 +1,49 @@
-import { colors } from "../../styles"
+import { colors, shadows } from "../../styles"
+import { MenuItemProps } from "./interface"
 
-export const getMenuStyles = (): {
+export const getMenuStyles = (
+    { disabled }: Pick<MenuItemProps, "disabled">
+): {
     list: AutoLayoutProps,
     item: AutoLayoutProps,
-    text: TextProps
+    text: TextProps,
+    command: TextProps
 } => {
     return {
         list: {
+            fill: colors.white,
             padding: 4,
             stroke: colors.neutral[100],
             cornerRadius: 8,
             effect: [
-                { type: "drop-shadow", offset: { x: 0, y: 10 }, color: { r: 1, g: 1, b: 1, a: 0.1 }, blur: 10 }
-            ]
+                ...shadows.lg
+            ],
+            direction: "vertical",
+            positioning: "absolute",
+            y: { type: "top",offset: 0}
         },
         item: {
             fill: colors.white,
             cornerRadius: 4,
             padding: { horizontal: 8, vertical: 5 },
-            hoverStyle: {
+            hoverStyle: disabled ? undefined : {
                 fill: colors.neutral[100]
             },
             verticalAlignItems: "center",
-            spacing: 4
+            spacing: 4,
+            opacity: disabled ? 0.3 : 1
         },
         text: {
             fontSize: 14,
-            lineHeight: 22
+            lineHeight: 22,
+            width: "fill-parent"
+        },
+        command: {
+            fontSize: 12,
+            lineHeight: 20,
+            fill: colors.neutral[500]
         }
     }
 }
+
+// export const getMenuItemStyles
