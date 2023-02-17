@@ -1,23 +1,27 @@
 import { IconFilmSolid } from "../../icons";
-import { renderChildren, renderIcon } from "../../utils";
 import { Button } from "../button";
 import { MenuDividerProps, MenuItemProps, MenuProps } from "./interface";
 import { getMenuStyles } from "./styles";
 import _ from "lodash";
 import { Divider } from "../divider";
+import { MenuItem } from "./item";
 
 const { widget } = figma;
 const { AutoLayout, useSyncedState, h } = widget;
 
 const items: (MenuDividerProps | MenuItemProps)[] = [
   {
-    label: "Create a rectangle",
+    label: "Create",
     command: "⌘N",
     onClick: () => {
       figma.notify("hi");
     },
+    items: [{ label: "Rectangle" }, { label: "Ellipse" }],
   },
-  { label: "Open Stream URL..." },
+  {
+    label: "Open Stream URL...",
+    items: [{ label: "a", items: [{ label: "b" }] }],
+  },
   { label: "Close Window" },
   { label: "Library" },
   { label: "Import...", icon: <IconFilmSolid /> },
@@ -27,7 +31,9 @@ const items: (MenuDividerProps | MenuItemProps)[] = [
 
 export function Menu(props: MenuProps) {
   const [isOpen, setIsOpen] = useSyncedState(`open/${props.id}`, false);
-  const { list, item } = getMenuStyles({});
+
+  const { placement } = props;
+  const { list, positioner } = getMenuStyles({ placement });
 
   const renderTrigger = () => {
     if (props.trigger) {
@@ -42,11 +48,11 @@ export function Menu(props: MenuProps) {
       if (item.type === "divider") {
         return <Divider key={index} />;
       } else {
-        return <MenuItem key={index} {...item} />;
+        return <MenuItem key={index} {...item} id={`${props.id}/${index}`} />;
       }
     } else {
       if ("label" in item) {
-        return <MenuItem key={index} {...item} />;
+        return <MenuItem key={index} {...item} id={`${props.id}/${index}`} />;
       }
     }
   });
@@ -54,9 +60,14 @@ export function Menu(props: MenuProps) {
   return (
     <AutoLayout name="Menu" overflow="visible" direction="vertical">
       {renderTrigger()}
-      <AutoLayout name="Menu List Positioner" overflow={"scroll"} height={1}>
+      <AutoLayout
+        name="Menu List Positioner"
+        overflow={"scroll"}
+        {...positioner}
+      >
         {isOpen ? (
-          <AutoLayout {...list} name="Menu Item List" width={240}>
+          <AutoLayout {...list} name="Menu Item List" width={240} overflow="visible"
+          >
             {menuItems}
           </AutoLayout>
         ) : null}
@@ -65,29 +76,4 @@ export function Menu(props: MenuProps) {
   );
 }
 
-export function MenuTrigger() {}
-
-export function MenuItem(props: MenuItemProps) {
-  const { children, icon, command, disabled, label, ...rest } = props;
-  const { text, command: commandStyles, item } = getMenuStyles({ disabled });
-
-  const iconNode = icon
-    ? renderIcon({ svg: icon as any, options: { width: 16, height: 16 } })
-    : null;
-  const commandNode = command
-    ? renderChildren(command, { textProps: commandStyles })
-    : null;
-
-  return (
-    <AutoLayout
-      {...rest}
-      {...item}
-      name="Menu Item"
-      width={"fill-parent"}
-    >
-      {iconNode}
-      {renderChildren(label, { textProps: text })}
-      {commandNode}
-    </AutoLayout>
-  );
-}
+export function MenuTrigger() { }
