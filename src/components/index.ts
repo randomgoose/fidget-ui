@@ -16,8 +16,14 @@ export type { DescriptionListProps } from "./description-list/interface"
 export * from "./divider"
 export type { DividerProps } from "./divider/interface"
 
+export * from "./date-picker"
+export type { DatePickerProps } from "./date-picker/interface"
+
 export * from "./heading"
 export type { HeadingProps } from "./heading/interface"
+
+// export * from "./menu"
+// export type { MenuProps } from "./menu/interface"
 
 export * from "./radio"
 export type { RadioGroupProps, RadioProps } from "./radio/interface"

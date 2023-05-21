@@ -1,4 +1,5 @@
 import { IconChevronRight } from "../../icons";
+import { colors } from "../../styles";
 import { renderIcon, renderChildren } from "../../utils";
 import { MenuItemProps } from "./interface";
 import { getMenuStyles } from "./styles";
@@ -6,7 +7,7 @@ import { getMenuStyles } from "./styles";
 const { useSyncedState, AutoLayout } = figma.widget
 
 export function MenuItem(props: MenuItemProps) {
-    const { children, icon, command, disabled, label, items, id, ...rest } = props;
+    const { children, icon, command, disabled, label, items, id, color, ...rest } = props;
     const {
         text,
         command: commandStyles,
@@ -33,7 +34,7 @@ export function MenuItem(props: MenuItemProps) {
             onClick={onClick}
         >
             {iconNode}
-            {renderChildren(label, { textProps: text })}
+            {renderChildren(label, { textProps: { ...text, fill: color || colors.neutral[900] } })}
             {commandNode}
             {items && items.length > 0 ? (
                 <>

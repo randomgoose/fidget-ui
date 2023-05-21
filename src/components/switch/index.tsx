@@ -1,4 +1,3 @@
-import { colors } from "../../styles"
 import { SwitchProps } from "./interface";
 import { getSwitchStyles } from "./styles";
 

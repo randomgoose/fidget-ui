@@ -1,4 +1,4 @@
-import { Divider, Heading } from "../components"
+import { Button, Divider, Heading } from "../components"
 import { Notice } from "../components/notice"
 import { IconBookmarkSolid } from "../icons"
 import { docStyle } from "./styles"

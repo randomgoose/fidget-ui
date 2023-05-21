@@ -3,22 +3,23 @@ import { DividerProps } from "./interface"
 import { getDividerStyles } from "./styles"
 
 const { widget } = figma
-const { AutoLayout, Rectangle, Text } = widget
+const { AutoLayout, Rectangle } = widget
 
 
 export function Divider(
     {
         orientation = "horizontal",
         children,
-        margin
+        margin,
+        stroke
     }: DividerProps) {
 
     const { container, text, divider } = getDividerStyles({ orientation });
 
     const renderDivider = (orientation: "horizontal" | "vertical") => {
         return orientation === "horizontal"
-            ? <Rectangle name="Divider" width={"fill-parent"} height={1} fill={divider.fill} />
-            : <Rectangle name="Divider" height={"fill-parent"} width={1} fill={divider.fill} />
+            ? <Rectangle name="Divider" width={"fill-parent"} height={1} fill={stroke || divider.fill} />
+            : <Rectangle name="Divider" height={"fill-parent"} width={1} fill={stroke || divider.fill} />
     }
 
     const defaultMargin: AutoLayoutProps['padding'] = orientation === "horizontal"

@@ -10,6 +10,7 @@ export function SimpleGrid({
     spacingX,
     spacingY,
     width = "fill-parent",
+    height = "fill-parent",
     ...rest
 }: SimpleGridProps) {
 
@@ -37,6 +38,7 @@ export function SimpleGrid({
         spacing={computedSpacing.y}
         overflow={"visible"}
         width={width}
+        height={height}
     >
         {
             Array.isArray(children)
@@ -47,6 +49,7 @@ export function SimpleGrid({
                         width={"fill-parent"}
                         spacing={computedSpacing.x}
                         overflow={"visible"}
+                        height={typeof height === "number" ? "fill-parent" : height}
                     >
                         {group.map((item, index) => (
                             <AutoLayout
@@ -54,6 +57,7 @@ export function SimpleGrid({
                                 name="Cell"
                                 key={index}
                                 width={width}
+                                height={typeof height === "number" ? "fill-parent" : height}
                             >
                                 {item}
                             </AutoLayout>

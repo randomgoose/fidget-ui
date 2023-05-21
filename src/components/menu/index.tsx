@@ -5,34 +5,28 @@ import { getMenuStyles } from "./styles";
 import _ from "lodash";
 import { Divider } from "../divider";
 import { MenuItem } from "./item";
+import { colors } from "../../styles";
 
 const { widget } = figma;
 const { AutoLayout, useSyncedState, h } = widget;
 
 const items: (MenuDividerProps | MenuItemProps)[] = [
   {
-    label: "Create",
-    command: "⌘N",
-    onClick: () => {
-      figma.notify("hi");
-    },
-    items: [{ label: "Rectangle" }, { label: "Ellipse" }],
+    label: "Create", command: "⌘N", onClick: () => { figma.notify("hi"); },
   },
-  {
-    label: "Open Stream URL...",
-    items: [{ label: "a", items: [{ label: "b" }] }],
-  },
+  { label: "Open Stream URL...", },
   { label: "Close Window" },
   { label: "Library" },
   { label: "Import...", icon: <IconFilmSolid /> },
   { label: "Bury Playlist to disc", disabled: true },
-  { type: "divider" },
+  { type: "divider", margin: 4, },
+  { label: "Delete", color: colors.red[500] }
 ];
 
 export function Menu(props: MenuProps) {
   const [isOpen, setIsOpen] = useSyncedState(`open/${props.id}`, false);
 
-  const { placement } = props;
+  const { placement, items } = props;
   const { list, positioner } = getMenuStyles({ placement });
 
   const renderTrigger = () => {
@@ -43,16 +37,32 @@ export function Menu(props: MenuProps) {
     }
   };
 
-  const menuItems = items.map((item, index) => {
+  const menuItems = items?.map((item, index) => {
     if ("type" in item) {
       if (item.type === "divider") {
-        return <Divider key={index} />;
+        return <Divider {...item} key={index} />;
       } else {
-        return <MenuItem key={index} {...item} id={`${props.id}/${index}`} />;
+        return <MenuItem
+          {...item}
+          id={`${props.id}/${index}`}
+          onClick={e => {
+            item.onClick && item.onClick(e);
+            setIsOpen(false)
+          }}
+          key={index}
+        />;
       }
     } else {
       if ("label" in item) {
-        return <MenuItem key={index} {...item} id={`${props.id}/${index}`} />;
+        return <MenuItem
+          {...item}
+          id={`${props.id}/${index}`}
+          onClick={e => {
+            item.onClick && item.onClick(e);
+            setIsOpen(false)
+          }}
+          key={index}
+        />;
       }
     }
   });
@@ -66,8 +76,7 @@ export function Menu(props: MenuProps) {
         {...positioner}
       >
         {isOpen ? (
-          <AutoLayout {...list} name="Menu Item List" width={240} overflow="visible"
-          >
+          <AutoLayout {...list} name="Menu Item List" width={240} overflow="visible">
             {menuItems}
           </AutoLayout>
         ) : null}

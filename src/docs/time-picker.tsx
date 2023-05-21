@@ -1,4 +1,5 @@
 import { Divider, Heading, Switch } from "../components";
+import { DatePicker } from "../components/date-picker";
 import { TimePicker } from "../components/time-picker";
 import { docStyle } from "./styles";
 import { P, Pre } from "./typography";
@@ -25,6 +26,7 @@ export function TimePickerDoc() {
                 <Switch checked={disabled} onChange={(v) => setDisabled(v)} />
             </AutoLayout>
             <TimePicker id="tkw8" disabled={disabled} />
+            <DatePicker id="w85k" size="lg"/>
 
         </AutoLayout>
     )

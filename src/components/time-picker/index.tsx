@@ -35,11 +35,7 @@ function Digit({ value, onDecrement, onIncrement }:
                 height={28}
                 cornerRadius={4}
             >
-                <Text
-                    name="Number"
-                    fontSize={16}
-                    lineHeight={24}
-                >
+                <Text name="Number" fontSize={16} lineHeight={24}>
                     {value}
                 </Text>
             </AutoLayout>
@@ -60,7 +56,8 @@ export function TimePicker({
     disabled,
     size = "md",
     placement,
-    ...rest }: TimePickerProps) {
+    ...rest
+}: TimePickerProps) {
 
     const [open, setOpen] = useSyncedState(`open/${id}`, false);
     const [time, setTime] = useSyncedState(`time/${id}`, () => dayjs().format("HH:mm"));
