@@ -1,3 +1,1 @@
-export function isMenuItem() {
-    
-}
+export function isMenuItem() {}

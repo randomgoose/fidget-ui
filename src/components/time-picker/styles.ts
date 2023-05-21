@@ -1,9 +1,9 @@
-export const getTimePickerStyles = ({ }): {
-    text: TextProps
+export const getTimePickerStyles = ({}): {
+  text: TextProps;
 } => {
-    return {
-        text: {
-            width: "hug-contents"
-        }
-    }
-}
+  return {
+    text: {
+      width: 'hug-contents',
+    },
+  };
+};

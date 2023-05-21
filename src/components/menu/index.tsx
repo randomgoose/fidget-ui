@@ -1,26 +1,30 @@
-import { IconFilmSolid } from "../../icons";
-import { Button } from "../button";
-import { MenuDividerProps, MenuItemProps, MenuProps } from "./interface";
-import { getMenuStyles } from "./styles";
-import _ from "lodash";
-import { Divider } from "../divider";
-import { MenuItem } from "./item";
-import { colors } from "../../styles";
+import { IconFilmSolid } from '../../icons';
+import { Button } from '../button';
+import { MenuDividerProps, MenuItemProps, MenuProps } from './interface';
+import { getMenuStyles } from './styles';
+import { Divider } from '../divider';
+import { MenuItem } from './item';
+import { colors } from '../../styles';
 
 const { widget } = figma;
 const { AutoLayout, useSyncedState, h } = widget;
 
+// eslint-disable-next-line
 const items: (MenuDividerProps | MenuItemProps)[] = [
   {
-    label: "Create", command: "⌘N", onClick: () => { figma.notify("hi"); },
+    label: 'Create',
+    command: '⌘N',
+    onClick: () => {
+      figma.notify('hi');
+    },
   },
-  { label: "Open Stream URL...", },
-  { label: "Close Window" },
-  { label: "Library" },
-  { label: "Import...", icon: <IconFilmSolid /> },
-  { label: "Bury Playlist to disc", disabled: true },
-  { type: "divider", margin: 4, },
-  { label: "Delete", color: colors.red[500] }
+  { label: 'Open Stream URL...' },
+  { label: 'Close Window' },
+  { label: 'Library' },
+  { label: 'Import...', icon: <IconFilmSolid /> },
+  { label: 'Bury Playlist to disc', disabled: true },
+  { type: 'divider', margin: 4 },
+  { label: 'Delete', color: colors.red[500] },
 ];
 
 export function Menu(props: MenuProps) {
@@ -38,31 +42,35 @@ export function Menu(props: MenuProps) {
   };
 
   const menuItems = items?.map((item, index) => {
-    if ("type" in item) {
-      if (item.type === "divider") {
+    if ('type' in item) {
+      if (item.type === 'divider') {
         return <Divider {...item} key={index} />;
       } else {
-        return <MenuItem
-          {...item}
-          id={`${props.id}/${index}`}
-          onClick={e => {
-            item.onClick && item.onClick(e);
-            setIsOpen(false)
-          }}
-          key={index}
-        />;
+        return (
+          <MenuItem
+            {...item}
+            id={`${props.id}/${index}`}
+            onClick={(e) => {
+              item.onClick && item.onClick(e);
+              setIsOpen(false);
+            }}
+            key={index}
+          />
+        );
       }
     } else {
-      if ("label" in item) {
-        return <MenuItem
-          {...item}
-          id={`${props.id}/${index}`}
-          onClick={e => {
-            item.onClick && item.onClick(e);
-            setIsOpen(false)
-          }}
-          key={index}
-        />;
+      if ('label' in item) {
+        return (
+          <MenuItem
+            {...item}
+            id={`${props.id}/${index}`}
+            onClick={(e) => {
+              item.onClick && item.onClick(e);
+              setIsOpen(false);
+            }}
+            key={index}
+          />
+        );
       }
     }
   });
@@ -70,11 +78,7 @@ export function Menu(props: MenuProps) {
   return (
     <AutoLayout name="Menu" overflow="visible" direction="vertical">
       {renderTrigger()}
-      <AutoLayout
-        name="Menu List Positioner"
-        overflow={"scroll"}
-        {...positioner}
-      >
+      <AutoLayout name="Menu List Positioner" overflow={'scroll'} {...positioner}>
         {isOpen ? (
           <AutoLayout {...list} name="Menu Item List" width={240} overflow="visible">
             {menuItems}
@@ -85,4 +89,4 @@ export function Menu(props: MenuProps) {
   );
 }
 
-export function MenuTrigger() { }
+export function MenuTrigger() {}

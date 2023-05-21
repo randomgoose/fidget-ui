@@ -12,6 +12,9 @@ icons/
 
 .DS_Store
 
+# JetBrain
+.idea
+
 # Yarn
 .yarn/
 .yarnrc.yml

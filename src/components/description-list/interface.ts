@@ -1,8 +1,8 @@
 export type DescriptionListItem = {
-    label: string;
-    value: FigmaDeclarativeNode;
-}
+  label: string;
+  value: FigmaDeclarativeNode;
+};
 
 export interface DescriptionListProps extends AutoLayoutProps {
-    items?: DescriptionListItem[];
+  items?: DescriptionListItem[];
 }

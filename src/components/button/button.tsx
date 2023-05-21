@@ -1,43 +1,62 @@
-import { renderIcon } from "../../utils";
-import { ButtonProps } from "./interface";
-import { getButtonStyles } from "./styles";
+import { renderIcon } from '../../utils';
+import { ButtonProps } from './interface';
+import { getButtonStyles } from './styles';
 
-const { widget } = figma
-const { AutoLayout, Text } = widget
+const { widget } = figma;
+const { AutoLayout, Text } = widget;
 
 export function Button({
-    variant = "filled",
-    children,
-    disabled = false,
-    size = "md",
-    colorScheme,
-    onClick,
-    leftIcon,
-    rightIcon,
-    block,
-    ...rest
+  variant = 'filled',
+  children,
+  disabled = false,
+  size = 'md',
+  colorScheme,
+  onClick,
+  leftIcon,
+  rightIcon,
+  block,
+  ...rest
 }: ButtonProps) {
+  if (variant !== 'filled') {
+  }
 
-    if (variant !== "filled") {
+  const { container, text, icon } = getButtonStyles({
+    variant,
+    size,
+    colorScheme,
+    disabled,
+    block,
+  });
 
-    }
+  const leftIconNode = leftIcon
+    ? renderIcon({
+        svg: leftIcon as any,
+        options: { stroke: icon.stroke, width: icon.width, height: icon.height },
+      })
+    : null;
+  const rightIconNode = rightIcon
+    ? renderIcon({
+        svg: rightIcon as any,
+        options: { stroke: icon.stroke, width: icon.width, height: icon.height },
+      })
+    : null;
 
-    const { container, text, icon } = getButtonStyles({ variant, size, colorScheme, disabled, block });
+  return (
+    <AutoLayout
+      name="Button"
+      {...container}
+      {...rest}
+      onClick={onClick && !disabled ? onClick : undefined}
+    >
+      {leftIconNode}
 
-    const leftIconNode = leftIcon ? renderIcon({ svg: leftIcon as any, options: { stroke: icon.stroke, width: icon.width, height: icon.height } }) : null
-    const rightIconNode = rightIcon ? renderIcon({ svg: rightIcon as any, options: { stroke: icon.stroke, width: icon.width, height: icon.height } }) : null
+      {Array.isArray(leftIcon) ? leftIcon.map((item) => item) : null}
 
-    return <AutoLayout
-        name="Button"
-        {...container}
-        {...rest}
-        onClick={(onClick && !disabled) ? onClick : undefined}>
-        {leftIconNode}
+      <Text name="Button Text" {...text}>
+        {children}
+      </Text>
 
-        {Array.isArray(leftIcon) ? leftIcon.map(item => item) : null}
-
-        <Text name="Button Text" {...text}>{children}</Text>
-
-        {rightIconNode}
+      {rightIconNode}
     </AutoLayout>
+  );
 }

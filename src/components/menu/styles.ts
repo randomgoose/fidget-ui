@@ -1,21 +1,21 @@
-import { colors, shadows } from "../../styles";
-import { MenuItemProps, MenuProps } from "./interface";
+import { colors, shadows } from '../../styles';
+import { MenuItemProps, MenuProps } from './interface';
 
 export const getMenuStyles = ({
   disabled,
-  placement = "bottom",
-}: Pick<MenuItemProps, "disabled"> & Pick<MenuProps, "placement">): {
+  placement = 'bottom',
+}: Pick<MenuItemProps, 'disabled'> & Pick<MenuProps, 'placement'>): {
   list: AutoLayoutProps;
   item: AutoLayoutProps;
   text: TextProps;
   command: TextProps;
-  icon: Omit<SVGProps, "src">;
-  chevron: Omit<SVGProps, "src"> & { color: string };
+  icon: Omit<SVGProps, 'src'>;
+  chevron: Omit<SVGProps, 'src'> & { color: string };
   positioner: AutoLayoutProps;
 } => {
   /* ---- Positioner ---- */
-  let x: AutoLayoutProps["x"];
-  let y: AutoLayoutProps["y"];
+  // let x: AutoLayoutProps['x'];
+  // let y: AutoLayoutProps['y'];
 
   switch (placement) {
   }
@@ -27,14 +27,14 @@ export const getMenuStyles = ({
       stroke: colors.neutral[100],
       cornerRadius: 8,
       effect: [...shadows.lg],
-      direction: "vertical",
-      positioning: "absolute",
-      y: { type: "top", offset: 0 },
+      direction: 'vertical',
+      positioning: 'absolute',
+      y: { type: 'top', offset: 0 },
       width: 240,
     },
     item: {
-      width: "fill-parent",
-      overflow: "visible",
+      width: 'fill-parent',
+      overflow: 'visible',
       cornerRadius: 4,
       padding: { horizontal: 8, vertical: 5 },
       hoverStyle: disabled
@@ -42,14 +42,14 @@ export const getMenuStyles = ({
         : {
             fill: colors.neutral[100],
           },
-      verticalAlignItems: "center",
+      verticalAlignItems: 'center',
       spacing: 4,
       opacity: disabled ? 0.3 : 1,
     },
     text: {
       fontSize: 14,
       lineHeight: 22,
-      width: "fill-parent",
+      width: 'fill-parent',
     },
     command: {
       fontSize: 12,
@@ -68,7 +68,7 @@ export const getMenuStyles = ({
       color: colors.neutral[500],
     },
     positioner: {
-      overflow: "scroll",
+      overflow: 'scroll',
       height: 1,
       width: 1,
     },
