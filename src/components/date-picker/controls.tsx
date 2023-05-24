@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
-import { IconButton, colors } from '..';
+import { colors } from '../styles';
+import { IconButton } from '../button';
 import { getDatePickerStyles } from './styles';
 import { CalendarView } from './interface';
 import { IconChevronLeft, IconChevronRight } from '../../icons';

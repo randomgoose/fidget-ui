@@ -5,7 +5,7 @@ import {
   IconInformationCircleSolid,
   IconXCircleSolid,
 } from '../../icons';
-import { isSvg, renderChildren, renderIcon } from '../../utils';
+import { isSvg, renderChildren, renderIcon } from '../utils';
 import { NoticeProps } from './interface';
 import { getNoticeStyles } from './styles';
 

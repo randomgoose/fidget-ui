@@ -1,4 +1,4 @@
-import { colors } from '../../styles';
+import { colors } from '../styles';
 import { FieldProps } from './interface';
 
 export const getFieldStyles = ({

@@ -1,5 +1,4 @@
-import { Heading, SimpleGrid } from '../components';
-import { colors } from '../styles';
+import { Heading, SimpleGrid, colors } from '../src/components';
 import { codeStyle, docStyle } from './styles';
 
 const { widget } = figma;

@@ -1,8 +1,6 @@
-import { Heading, RadioGroup, Select } from '../components';
-import { Divider } from '../components/divider';
-import { Option } from '../components/radio/interface';
-import { Tabs } from '../components/tabs';
-import { TabPaneProps, TabsColorScheme, TabsVariant } from '../components/tabs/interface';
+import { Heading, RadioGroup, Select, Divider, Tabs } from '../src/components';
+import { Option } from '../src/components/radio/interface';
+import { TabPaneProps, TabsColorScheme, TabsVariant } from '../src/components/tabs/interface';
 import { docStyle } from './styles';
 import { P, Pre } from './typography';
 

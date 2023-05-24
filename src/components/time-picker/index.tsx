@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { colors } from '../../styles';
+import { colors } from '../styles';
 import { Button, IconButton } from '../button';
 import { Divider } from '../divider';
 import { IconClock, IconMinusSmallSolid, IconPlusSmallSolid } from '../../icons';

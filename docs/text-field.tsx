@@ -1,7 +1,5 @@
-import { Heading, Select, TextField } from '../components';
-import { Divider } from '../components/divider';
-import { IconCheck, IconEnvelope } from '../icons';
-import { colors } from '../styles';
+import { Heading, Select, TextField, Divider, colors } from '../src/components';
+import { IconCheck, IconEnvelope } from '../src/icons';
 import { codeStyle, docStyle } from './styles';
 import { P, Pre } from './typography';
 

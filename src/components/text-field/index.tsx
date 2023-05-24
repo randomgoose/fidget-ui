@@ -1,5 +1,5 @@
-import { colors } from '../../styles';
-import { renderChildren } from '../../utils';
+import { colors } from '../styles';
+import { renderChildren } from '../utils';
 import { IconXMark } from '../../icons';
 import { getFieldStyles } from '../_field/styles';
 import { TextFieldProps } from './interface';

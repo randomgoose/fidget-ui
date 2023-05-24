@@ -1,5 +1,5 @@
-import { colors } from '../../styles';
-import { renderChildren } from '../../utils';
+import { colors } from '../styles';
+import { renderChildren } from '../utils';
 import { TabsProps } from './interface';
 import { getTabsStyles } from './styles';
 

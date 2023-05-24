@@ -52,4 +52,4 @@ export type { TimePickerProps } from './time-picker/interface';
 export * from './notice';
 export type { NoticeProps } from './notice/interface';
 
-export * from '../styles';
+export * from './styles';

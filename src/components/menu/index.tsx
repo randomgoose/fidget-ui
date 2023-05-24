@@ -4,7 +4,7 @@ import { MenuDividerProps, MenuItemProps, MenuProps } from './interface';
 import { getMenuStyles } from './styles';
 import { Divider } from '../divider';
 import { MenuItem } from './item';
-import { colors } from '../../styles';
+import { colors } from '../styles';
 
 const { widget } = figma;
 const { AutoLayout, useSyncedState, h } = widget;

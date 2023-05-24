@@ -1,4 +1,4 @@
-import { renderIcon } from '../../utils';
+import { renderIcon } from '../utils';
 import { ButtonProps } from './interface';
 import { getButtonStyles } from './styles';
 

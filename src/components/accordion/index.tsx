@@ -1,6 +1,6 @@
 import { IconChevronDown, IconChevronUp } from '../../icons';
 import { AccordionItemProps, AccordionProps } from './interface';
-import { renderChildren } from '../../utils';
+import { renderChildren } from '../utils';
 import { getAccordionStyles } from './styles';
 
 const { widget } = figma;

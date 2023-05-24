@@ -1,8 +1,5 @@
-import { Heading } from '../components';
-import { Avatar, AvatarGroup } from '../components/avatar';
-import { AvatarSize } from '../components/avatar/interface';
-import { Divider } from '../components/divider';
-import { colors } from '../styles';
+import { Heading, Avatar, AvatarGroup, Divider, colors } from '../src/components';
+import { AvatarSize } from '../src/components/avatar/interface';
 import { codeStyle, docStyle } from './styles';
 import { Code } from './typography';
 

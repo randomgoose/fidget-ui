@@ -1,8 +1,6 @@
-import { Button, Heading, RadioGroup } from '../components';
-import { Divider } from '../components/divider';
-import { IconCheck } from '../icons';
-import { colors } from '../styles';
-import { renderChildren } from '../utils';
+import { Button, Heading, RadioGroup, Divider, colors } from '../src/components';
+import { IconCheck } from '../src/icons';
+import { renderChildren } from '../src/components/utils';
 import { docStyle } from './styles';
 import { Code, P, Pre } from './typography';
 

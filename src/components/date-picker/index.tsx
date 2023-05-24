@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { getFieldStyles } from '../_field/styles';
 import { CalendarView, DatePickerProps } from './interface';
-import { colors } from '../../styles';
+import { colors } from '../styles';
 import { Button } from '../button';
 import { IconCalendar } from '../../icons';
 import { getDatePickerStyles } from './styles';

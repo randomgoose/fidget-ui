@@ -6,9 +6,8 @@ node_modules
 # Build
 out/
 dist/
-code.js
-build/
 icons/
+preview/
 
 .DS_Store
 

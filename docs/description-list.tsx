@@ -1,7 +1,5 @@
-import { DescriptionList, Heading, Tag } from '../components';
-import { Avatar } from '../components/avatar';
-import { DescriptionListItem } from '../components/description-list/interface';
-import { TimePicker } from '../components/time-picker';
+import { DescriptionList, Heading, Tag, Avatar, TimePicker } from '../src/components';
+import { DescriptionListItem } from '../src/components/description-list/interface';
 import { docStyle } from './styles';
 
 const { widget } = figma;

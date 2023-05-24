@@ -1,4 +1,4 @@
-import { colors } from '../../styles';
+import { colors } from '../styles';
 import { NoticeProps } from './interface';
 
 export const getNoticeStyles = ({

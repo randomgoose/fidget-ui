@@ -1,4 +1,4 @@
-import { colors, isNeutralColor } from '../../styles';
+import { colors, isNeutralColor } from '../styles';
 import { CheckboxProps } from './interface';
 
 export const getCheckboxStyles = ({

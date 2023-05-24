@@ -1,6 +1,4 @@
-import { Button, Heading, Switch } from '../components';
-import { Divider } from '../components/divider';
-import { colors } from '../styles';
+import { Button, Heading, Switch, Divider, colors } from '../src/components';
 import { codeStyle, docStyle } from './styles';
 import { Code, P, Pre } from './typography';
 

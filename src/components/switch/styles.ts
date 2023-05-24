@@ -1,4 +1,4 @@
-import { colors, isNeutralColor } from '../../styles';
+import { colors, isNeutralColor } from '../styles';
 import { SwitchProps } from './interface';
 
 export const getSwitchStyles = ({

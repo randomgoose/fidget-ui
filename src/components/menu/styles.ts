@@ -1,4 +1,4 @@
-import { colors, shadows } from '../../styles';
+import { colors, shadows } from '../styles';
 import { MenuItemProps, MenuProps } from './interface';
 
 export const getMenuStyles = ({

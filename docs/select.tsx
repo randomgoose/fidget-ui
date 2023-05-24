@@ -1,8 +1,6 @@
-import { Heading, Select } from '../components';
-import { Divider } from '../components/divider';
-import { OptionProps } from '../components/select/interface';
-import { FieldProps } from '../components/_field/interface';
-import { colors } from '../styles';
+import { Heading, Select, Divider, colors } from '../src/components';
+import { OptionProps } from '../src/components/select/interface';
+import { FieldProps } from '../src/components/_field/interface';
 import { codeStyle, docStyle } from './styles';
 import { P, Pre } from './typography';
 

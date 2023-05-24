@@ -1,6 +1,4 @@
-import { Divider, Heading, Switch } from '../components';
-import { DatePicker } from '../components/date-picker';
-import { TimePicker } from '../components/time-picker';
+import { Divider, Heading, Switch, DatePicker, TimePicker } from '../src/components';
 import { docStyle } from './styles';
 import { P, Pre } from './typography';
 

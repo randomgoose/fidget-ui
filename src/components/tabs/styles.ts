@@ -1,4 +1,4 @@
-import { colors, isNeutralColor } from '../../styles';
+import { colors, isNeutralColor } from '../styles';
 import { TabsProps } from './interface';
 import chroma from 'chroma-js';
 

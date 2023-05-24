@@ -1,5 +1,5 @@
-import { colors } from '../../styles';
-import { renderChildren } from '../../utils';
+import { colors } from '../styles';
+import { renderChildren } from '../utils';
 import { RadioGroupProps, RadioProps } from './interface';
 import { getRadioStyles } from './styles';
 

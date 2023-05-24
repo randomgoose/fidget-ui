@@ -1,4 +1,4 @@
-import { colors } from '../../styles';
+import { colors } from '../styles';
 import { DividerProps } from './interface';
 
 export const getDividerStyles = ({

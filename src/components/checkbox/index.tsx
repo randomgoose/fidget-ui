@@ -1,5 +1,5 @@
-import { colors } from '../../styles';
-import { renderChildren } from '../../utils';
+import { colors } from '../styles';
+import { renderChildren } from '../utils';
 import { CheckboxGroupProps, CheckboxProps, Option } from './interface';
 import { getCheckboxStyles } from './styles';
 

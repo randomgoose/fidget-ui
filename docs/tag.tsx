@@ -1,6 +1,6 @@
-import { Heading, SimpleGrid, Tag } from '../components';
-import { TagColorScheme } from '../components/tag/interface';
-import { IconFaceSmileSolid } from '../icons';
+import { Heading, SimpleGrid, Tag } from '../src/components';
+import { TagColorScheme } from '../src/components/tag/interface';
+import { IconFaceSmileSolid } from '../src/icons';
 import { docStyle } from './styles';
 import { COLORS } from './variables';
 

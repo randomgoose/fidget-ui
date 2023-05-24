@@ -1,4 +1,4 @@
-import { renderChildren } from '../../utils';
+import { renderChildren } from '../utils';
 import { DividerProps } from './interface';
 import { getDividerStyles } from './styles';
 

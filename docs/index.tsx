@@ -1,31 +1,29 @@
-import { Heading } from './components';
-import {
-  ButtonDoc,
-  TextFieldDoc,
-  AccordionDoc,
-  TabsDoc,
-  RadioDoc,
-  DividerDoc,
-  CheckboxDoc,
-  TagDoc,
-  AvatarDoc,
-} from './docs';
-import ColorsDoc from './docs/colors';
-import { DescriptionListDoc } from './docs/description-list';
-import HeadingDoc from './docs/heading';
-import { IconButtonDoc } from './docs/icon-button';
-import { IconsDoc } from './docs/icons';
-import Intro from './docs/intro';
-import { SelectDoc } from './docs/select';
-import { SimpleGridDoc } from './docs/simple-grid';
-import { paginationStyle } from './docs/styles';
-import { SwitchDoc } from './docs/switch';
-import { Issue } from './docs/issue';
-import { TimePickerDoc } from './docs/time-picker';
-import { Todo } from './docs/todo';
-import { colors } from './styles';
-import { MenuDoc } from './docs/menu';
-import { NoticeDoc } from './docs/notice';
+import { Heading } from '../src/components';
+import { ButtonDoc } from './button';
+import { TextFieldDoc } from './text-field';
+import { AccordionDoc } from './accordion';
+import { TabsDoc } from './tabs';
+import { RadioDoc } from './radio';
+import { DividerDoc } from './divider';
+import { CheckboxDoc } from './checkbox';
+import { TagDoc } from './tag';
+import { AvatarDoc } from './avatar';
+import ColorsDoc from './colors';
+import { DescriptionListDoc } from './description-list';
+import HeadingDoc from './heading';
+import { IconButtonDoc } from './icon-button';
+import { IconsDoc } from './icons';
+import Intro from './intro';
+import { SelectDoc } from './select';
+import { SimpleGridDoc } from './simple-grid';
+import { paginationStyle } from './styles';
+import { SwitchDoc } from './switch';
+import { Issue } from './issue';
+import { TimePickerDoc } from './time-picker';
+import { Todo } from './todo';
+import { colors } from '../src/components';
+import { MenuDoc } from './menu';
+import { NoticeDoc } from './notice';
 
 const { widget } = figma;
 const { AutoLayout, usePropertyMenu, useSyncedState, Text } = widget;

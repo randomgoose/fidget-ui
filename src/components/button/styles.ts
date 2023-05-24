@@ -1,4 +1,4 @@
-import { colors, isNeutralColor } from '../../styles';
+import { colors, isNeutralColor } from '../styles';
 import { ButtonProps, IconButtonProps } from './interface';
 
 export const getButtonStyles = ({

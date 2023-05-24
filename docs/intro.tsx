@@ -1,7 +1,4 @@
-import { Heading } from '../components';
-import { Divider } from '../components/divider';
-import { Tabs } from '../components/tabs';
-import { colors } from '../styles';
+import { Heading, Tabs, Divider, colors } from '../src/components';
 import { docStyle } from './styles';
 import { Code, P, Pre } from './typography';
 

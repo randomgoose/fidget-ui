@@ -1,7 +1,5 @@
-import { Accordion, Button, Heading } from '../components';
-import { Divider } from '../components/divider';
-import { IconArrowRight } from '../icons';
-import { colors } from '../styles';
+import { colors, Accordion, Button, Heading, Divider } from '../src/components';
+import { IconArrowRight } from '../src/icons';
 import { docStyle } from './styles';
 import { P } from './typography';
 

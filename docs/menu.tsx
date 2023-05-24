@@ -1,6 +1,6 @@
-import { Avatar, Heading } from '../components';
-import { Menu } from '../components/menu';
-import { MenuItem } from '../components/menu/item';
+import { Avatar, Heading } from '../src/components';
+import { Menu } from '../src/components/menu';
+import { MenuItem } from '../src/components/menu/item';
 import { docStyle } from './styles';
 
 const { widget } = figma;

@@ -1,4 +1,4 @@
-import { colors } from '../../styles';
+import { colors } from '../styles';
 import { HeadingProps } from './interface';
 
 const { widget } = figma;

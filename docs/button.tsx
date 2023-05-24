@@ -1,7 +1,5 @@
-import { Button, Heading, TextField } from '../components';
-import { Divider } from '../components/divider';
-import { IconShare } from '../icons';
-import { colors } from '../styles';
+import { Button, Heading, TextField, Divider, colors } from '../src/components';
+import { IconShare } from '../src/icons';
 import { codeStyle, docStyle } from './styles';
 import { P, Pre } from './typography';
 

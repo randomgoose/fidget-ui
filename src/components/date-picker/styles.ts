@@ -1,4 +1,4 @@
-import { colors, shadows } from '../../styles';
+import { colors, shadows } from '../styles';
 
 export const getDatePickerStyles = (): {
   calendar: AutoLayoutProps;

@@ -1,6 +1,4 @@
-import { Heading } from '../components';
-import { Checkbox, CheckboxGroup } from '../components/checkbox';
-import { Divider } from '../components/divider';
+import { Heading, Checkbox, CheckboxGroup, Divider } from '../src/components';
 import { docStyle } from './styles';
 import { Code, P } from './typography';
 

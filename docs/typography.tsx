@@ -1,4 +1,4 @@
-import { colors } from '../styles';
+import { colors } from '../src/components';
 
 const { widget } = figma;
 const { AutoLayout, Text, Span } = widget;

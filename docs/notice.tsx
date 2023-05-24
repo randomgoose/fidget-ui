@@ -1,6 +1,5 @@
-import { Divider, Heading } from '../components';
-import { Notice } from '../components/notice';
-import { IconBookmarkSolid } from '../icons';
+import { Divider, Heading, Notice } from '../src/components';
+import { IconBookmarkSolid } from '../src/icons';
 import { docStyle } from './styles';
 
 const { AutoLayout } = figma.widget;

@@ -1,4 +1,4 @@
-import { colors } from '../styles';
+import { colors } from '../src/components/styles';
 
 export const docStyle: AutoLayoutProps = {
   // verticalAlignItems: 'center',

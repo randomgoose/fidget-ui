@@ -1,4 +1,4 @@
-import { colors } from '../../styles';
+import { colors } from '../styles';
 import { TagProps } from './interface';
 
 export const getTagStyles = ({

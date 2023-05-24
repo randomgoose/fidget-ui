@@ -1,4 +1,4 @@
-import { colors } from '../../styles';
+import { colors } from '../styles';
 import { SelectProps } from './interface';
 
 export const getSelectStyles = ({

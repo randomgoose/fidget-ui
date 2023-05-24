@@ -2,7 +2,7 @@
   "name": "fidget-ui-documentation",
   "id": "1188853556594196977",
   "api": "1.0.0",
-  "main": "dist/code.js",
+  "main": "preview/code.js",
   "editorType": [
     "figma",
     "figjam"

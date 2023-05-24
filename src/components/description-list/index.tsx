@@ -1,4 +1,4 @@
-import { renderChildren } from '../../utils';
+import { renderChildren } from '../utils';
 import { DescriptionListItem, DescriptionListProps } from './interface';
 import { getDescriptionListStyles } from './styles';
 

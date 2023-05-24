@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "./icons"
+  },
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/icons"
+  ]
+}

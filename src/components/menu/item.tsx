@@ -1,6 +1,6 @@
 import { IconChevronRight } from '../../icons';
-import { colors } from '../../styles';
-import { renderIcon, renderChildren } from '../../utils';
+import { colors } from '../styles';
+import { renderIcon, renderChildren } from '../utils';
 import { MenuItemProps } from './interface';
 import { getMenuStyles } from './styles';
 

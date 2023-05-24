@@ -1,8 +1,6 @@
-import { Button, DescriptionList, Select, Tag, TextField } from '../components';
-import { DescriptionListItem } from '../components/description-list/interface';
-import { Divider } from '../components/divider';
-import { TimePicker } from '../components/time-picker';
-import { colors } from '../styles';
+import { Button, DescriptionList, Select, Tag, TextField, Divider, TimePicker } from '../src/components';
+import { DescriptionListItem } from '../src/components/description-list/interface';
+import { colors } from '../src/components/styles';
 
 const { AutoLayout, useSyncedState } = figma.widget;
 

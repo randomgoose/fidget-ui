@@ -1,7 +1,7 @@
 import { TagProps } from './interface';
 import { getTagStyles } from './styles';
 import { IconXMark } from '../../icons';
-import { isSvg, renderChildren, renderIcon } from '../../utils';
+import { isSvg, renderChildren, renderIcon } from '../utils';
 
 const { widget } = figma;
 const { AutoLayout } = widget;
