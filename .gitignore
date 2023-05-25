@@ -4,10 +4,7 @@
 node_modules
 
 # Build
-out/
 dist/
-icons/
-preview/
 
 .DS_Store
 

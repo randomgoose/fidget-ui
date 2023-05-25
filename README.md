@@ -1,21 +1,11 @@
-# Fidget UI
+# Quick Start
 
-## About
+Since this project uses [pnpm](https://pnpm.io/) to manage the project, please use `npm i pnpm -g` to install pnpm globally before starting.
 
-Fidget UI is a component library for building Figma widgets.
+```bash
+# build fidget-ui and documents
+pnpm build
 
-## Installation
+// into dev mode
+pnpm watch
 ```
-$ yarn add fidget-ui
-
-# or
-
-$ npm i fidget-ui
-```
-
-# Documentation
-
-The [Fidget UI Docs](https://www.figma.com/community/widget/1201159593446925144/Fidget-UI-Docs) widget serves as an interactive document. You can find it in Figma community.
-
-## Usage
-If you are using Figma's widget template. Set the `moduleResolution` option to `node` in `tsconfig.json`
