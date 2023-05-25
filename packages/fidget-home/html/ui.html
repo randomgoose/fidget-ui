@@ -1,0 +1,21 @@
+<input type="text" value="" id="input">
+
+<script>
+
+  window.onmessage = (msg) => {
+    switch (msg.data.pluginMessage.type) {
+      case "COPY":
+        copy(msg.data.pluginMessage.payload)
+        break
+    }
+  }
+
+  function copy(text) {
+    const input = document.querySelector("#input");
+    input.value = text;
+    input.select();
+
+    return new Promise((res, rej) => document.execCommand("copy") ? res() : rej())
+    // input.setSelectRange(0, 99999);
+  }
+</script>

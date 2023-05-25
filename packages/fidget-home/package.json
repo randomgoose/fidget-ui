@@ -1,0 +1,19 @@
+{
+  "name": "fidget-ui-docs",
+  "version": "1.0.0",
+  "description": "Your Figma widget",
+  "scripts": {
+    "build": "esbuild src/code.tsx --bundle --outfile=dist/code.js --target=es6",
+    "tsc": "tsc --noEmit -p src",
+    "watch": "npm run build -- --watch"
+  },
+  "dependencies": {
+    "fidget-ui": "~0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "*",
+    "@figma/widget-typings": "*",
+    "esbuild": "*"
+  }
+}
