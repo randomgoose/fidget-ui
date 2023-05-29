@@ -1,3 +1,5 @@
+import { omit } from 'lodash';
+
 import { colors } from '../styles';
 import { renderChildren } from '../utils';
 import { CheckboxGroupProps, CheckboxProps, Option } from './interface';
@@ -5,6 +7,13 @@ import { getCheckboxStyles } from './styles';
 
 const { widget } = figma;
 const { AutoLayout, SVG, useSyncedState } = widget;
+
+const NODE_NAME_MAP = {
+  root: 'Checkbox',
+  control: 'Checkbox Control',
+  label: 'Checkbox Label',
+  group: 'Checkbox Group',
+};
 
 const icon = (
   <SVG
@@ -14,28 +23,35 @@ const icon = (
   />
 );
 
-export function Checkbox({
-  children,
-  checked,
-  disabled,
-  onChange,
-  colorScheme,
-  ...rest
-}: CheckboxProps) {
-  const { control, container, label } = getCheckboxStyles({ checked, disabled, colorScheme });
+export function Checkbox(props: CheckboxProps) {
+  const { children, disabled, onChange, colorScheme, ...rest } = props;
+  const [stateChecked, setStateChecked] = useSyncedState('checked', false);
+  const mergedChecked = 'checked' in props ? props.checked : stateChecked;
+  const styles = getCheckboxStyles({ checked: mergedChecked, disabled, colorScheme });
 
-  console.log(container.fill);
-  const toggle = () => {
-    checked !== undefined && onChange && !disabled && onChange(!checked);
+  const tryUpdateChecked = () => {
+    if (!disabled) {
+      const nextChecked = !mergedChecked;
+      setStateChecked(nextChecked);
+      onChange?.(nextChecked);
+    }
   };
 
   return (
-    <AutoLayout name="Checkbox Container" {...container} {...rest} onClick={toggle}>
-      <AutoLayout name="Checkbox Control" {...control}>
+    <AutoLayout
+      name={NODE_NAME_MAP.root}
+      {...styles.container}
+      {...omit(rest, 'checked')}
+      onClick={(event) => {
+        tryUpdateChecked();
+        rest.onClick?.(event);
+      }}
+    >
+      <AutoLayout name={NODE_NAME_MAP.control} {...styles.control}>
         {icon}
       </AutoLayout>
       {renderChildren(children, {
-        textProps: { name: 'Checkbox Label', fill: colors.neutral[900], ...label },
+        textProps: { name: NODE_NAME_MAP.label, fill: colors.neutral[900], ...styles.label },
       })}
     </AutoLayout>
   );
@@ -43,28 +59,32 @@ export function Checkbox({
 
 export function CheckboxGroup({
   name,
-  children,
+  // TODO @cc never used
   options,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onChange,
   spacing = 12,
   ...rest
 }: CheckboxGroupProps) {
+  // TODO maybe we have to use useSyncedMap here
   const [values, setValues] = useSyncedState<Option[]>(`checkbox-group/${name}`, []);
 
   return (
-    <AutoLayout name="Checkbox Group" {...rest} spacing={spacing}>
+    <AutoLayout name={NODE_NAME_MAP.group} {...rest} spacing={spacing}>
       {options?.map((option, index) => (
         <Checkbox
           key={index}
-          colorScheme={'emerald'}
+          colorScheme="emerald"
           disabled={option.disabled}
-          checked={values.find((item) => item.value === option.value) ? true : false}
+          checked={!!values.find((item) => item.value === option.value)}
           onChange={(checked) => {
-            if (checked) {
-              setValues((prev) => [...prev, option]);
-            } else {
-              setValues((prev) => prev.filter((item) => item.value !== option.value));
-            }
+            setValues((prev) => {
+              const next = checked
+                ? [...prev, option]
+                : prev.filter((item) => item.value !== option.value);
+              // onChange?.(next);
+              return next;
+            });
           }}
         >
           {option.label}

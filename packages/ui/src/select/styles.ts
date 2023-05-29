@@ -4,7 +4,6 @@ import { SelectProps } from './interface';
 export const getSelectStyles = ({
   size,
   variant,
-  disabled,
 }: Pick<SelectProps, 'size' | 'variant' | 'disabled'>): {
   field: AutoLayoutProps;
   list: AutoLayoutProps;

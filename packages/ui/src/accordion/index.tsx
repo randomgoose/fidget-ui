@@ -6,22 +6,22 @@ import { getAccordionStyles } from './styles';
 const { widget } = figma;
 const { AutoLayout, useSyncedState } = widget;
 
+const NODE_NAME_MAP = {
+  root: 'Accordion',
+  panel: 'Accordion Panel',
+  item: 'Accordion Item',
+  itemButton: 'Accordion Button',
+  itemTitle: 'Accordion Title Container',
+  itemChevron: 'Accordion Chevron Container',
+};
+
 export function Accordion({ data, width = 320 }: AccordionProps) {
-  const [activeKeys, setActiveKeys] = useSyncedState<(string | number)[]>('activeKeys', []);
+  const styles = getAccordionStyles();
+  const [activeKeys, setActiveKeys] = useSyncedState<AccordionItemProps['key'][]>('activeKeys', []);
 
-  const {
-    container,
-    item,
-    title: titleStyles,
-    content: contentStyles,
-    panel,
-    button,
-    chevronContainer,
-    chevron,
-  } = getAccordionStyles();
-
-  const toggle = (key: string | number) => {
-    if (activeKeys.indexOf(key) >= 0) {
+  const isActiveKey = (key: AccordionItemProps['key']) => activeKeys.indexOf(key) > -1;
+  const toggleActive = (key: AccordionItemProps['key']) => {
+    if (isActiveKey(key)) {
       setActiveKeys([...activeKeys].filter((item) => item !== key));
     } else {
       setActiveKeys((prev) => [...prev, key]);
@@ -29,42 +29,39 @@ export function Accordion({ data, width = 320 }: AccordionProps) {
   };
 
   const renderItem = ({ title, content, key }: AccordionItemProps) => {
+    const isActive = isActiveKey(key);
     return (
-      <AutoLayout name="Accordion Item" key={key} {...item}>
+      <AutoLayout name={NODE_NAME_MAP.item} key={key} {...styles.item}>
         <AutoLayout
-          name="Accordion Button"
-          onClick={() => {
-            toggle(key);
-          }}
-          {...button}
+          name={NODE_NAME_MAP.itemButton}
+          onClick={() => toggleActive(key)}
+          {...styles.button}
         >
-          <AutoLayout name="Accordion Title Container" width={'fill-parent'}>
-            {renderChildren(title, { textProps: titleStyles })}
+          <AutoLayout name={NODE_NAME_MAP.itemTitle} width="fill-parent">
+            {renderChildren(title, { textProps: styles.title })}
           </AutoLayout>
 
-          <AutoLayout name="Accordion Chevron Container" {...chevronContainer}>
-            {activeKeys.indexOf(key) >= 0 ? (
-              <IconChevronUp {...chevron} />
+          <AutoLayout name={NODE_NAME_MAP.itemChevron} {...styles.chevronContainer}>
+            {isActive ? (
+              <IconChevronUp {...styles.chevron} />
             ) : (
-              <IconChevronDown {...chevron} />
+              <IconChevronDown {...styles.chevron} />
             )}
           </AutoLayout>
         </AutoLayout>
 
-        {activeKeys.indexOf(key) >= 0 ? (
-          <AutoLayout name="Accordion Panel" {...panel}>
-            {renderChildren(content, { textProps: contentStyles })}
+        {isActive && (
+          <AutoLayout name={NODE_NAME_MAP.panel} {...styles.panel}>
+            {renderChildren(content, { textProps: styles.content })}
           </AutoLayout>
-        ) : null}
+        )}
       </AutoLayout>
     );
   };
 
   return (
-    <AutoLayout name="Accordion" {...container} width={width}>
+    <AutoLayout name={NODE_NAME_MAP.root} {...styles.container} width={width}>
       {data.map((item) => renderItem(item))}
     </AutoLayout>
   );
 }
-
-// export function

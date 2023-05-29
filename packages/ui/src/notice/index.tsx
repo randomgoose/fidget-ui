@@ -11,6 +11,12 @@ import { getNoticeStyles } from './styles';
 
 const { AutoLayout } = figma.widget;
 
+const NODE_NAME_MAP = {
+  root: 'Notice',
+  icon: 'Notice Icon Container',
+  content: 'Notice Content',
+};
+
 export function Notice({
   variant,
   status,
@@ -20,78 +26,68 @@ export function Notice({
   children,
   ...rest
 }: NoticeProps) {
-  const {
-    container,
-    title: titleStyle,
-    description: descriptionStyle,
-    icon: iconStyle,
-  } = getNoticeStyles({ variant, status });
+  const styles = getNoticeStyles({ variant, status });
 
   const renderIconNode = () => {
-    if (typeof icon === 'boolean') {
-      if (!icon) {
-        return null;
-      } else {
-        switch (status) {
-          case 'warning':
-            return (
-              <IconExclamationCircleSolid
-                width={iconStyle.width}
-                height={iconStyle.height}
-                color={iconStyle.fill as string}
-              />
-            );
-          case 'error':
-            return (
-              <IconXCircleSolid
-                width={iconStyle.width}
-                height={iconStyle.height}
-                color={iconStyle.fill as string}
-              />
-            );
-          case 'success':
-            return (
-              <IconCheckCircleSolid
-                width={iconStyle.width}
-                height={iconStyle.height}
-                color={iconStyle.fill as string}
-              />
-            );
-          default:
-            return (
-              <IconInformationCircleSolid
-                width={iconStyle.width}
-                height={iconStyle.height}
-                color={iconStyle.fill as string}
-              />
-            );
-        }
-      }
-    } else if (icon) {
-      if (isSvg(icon)) {
-        return renderIcon({
-          svg: icon,
-          options: {
-            stroke: iconStyle.stroke,
-            fill: iconStyle.fill,
-          },
-        });
+    const { icon: iconStyle } = styles;
+    if (isSvg(icon)) {
+      return renderIcon({
+        svg: icon,
+        options: {
+          stroke: iconStyle.stroke,
+          fill: iconStyle.fill,
+        },
+      });
+    } else {
+      switch (status) {
+        case 'warning':
+          return (
+            <IconExclamationCircleSolid
+              width={iconStyle.width}
+              height={iconStyle.height}
+              color={iconStyle.fill as string}
+            />
+          );
+        case 'error':
+          return (
+            <IconXCircleSolid
+              width={iconStyle.width}
+              height={iconStyle.height}
+              color={iconStyle.fill as string}
+            />
+          );
+        case 'success':
+          return (
+            <IconCheckCircleSolid
+              width={iconStyle.width}
+              height={iconStyle.height}
+              color={iconStyle.fill as string}
+            />
+          );
+        default:
+          return (
+            <IconInformationCircleSolid
+              width={iconStyle.width}
+              height={iconStyle.height}
+              color={iconStyle.fill as string}
+            />
+          );
       }
     }
   };
 
   return (
-    <AutoLayout {...container} {...rest} name="Notice">
+    <AutoLayout {...styles.container} {...rest} name={NODE_NAME_MAP.root}>
       {icon ? (
-        <AutoLayout name="Notice Icon Container" padding={{ top: 2 }}>
+        <AutoLayout name={NODE_NAME_MAP.icon} padding={{ top: 2 }}>
           {renderIconNode()}
         </AutoLayout>
       ) : null}
 
-      <AutoLayout name="Notice Content" direction={'vertical'} width={'fill-parent'}>
-        {renderChildren(title, { textProps: titleStyle })}
-        {renderChildren(description, { textProps: descriptionStyle })}
-        {renderChildren(children, { textProps: descriptionStyle })}
+      <AutoLayout name={NODE_NAME_MAP.content} direction="vertical" width="fill-parent">
+        {renderChildren(title, { textProps: styles.title })}
+        {renderChildren(description, { textProps: styles.description })}
+        {renderChildren(children, { textProps: styles.description })}
       </AutoLayout>
     </AutoLayout>
   );

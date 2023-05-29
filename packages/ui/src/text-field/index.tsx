@@ -7,6 +7,16 @@ import { TextFieldProps } from './interface';
 const { widget } = figma;
 const { Input, AutoLayout } = widget;
 
+const NODE_NAME_MAP = {
+  containerLeft: '',
+  containerRight: '',
+  iconClear: 'Input Clear Icon',
+  inputGroup: 'Input Group',
+  inputContainer: 'Input Container',
+  addonLeft: 'Input Addon Left',
+  addonRight: 'Input Addon Right',
+};
+
 export function TextField({
   width = 'fill-parent',
   value,
@@ -14,60 +24,52 @@ export function TextField({
   placeholder,
   size = 'md',
   variant = 'outline',
-  leftElement,
-  rightElement,
-  leftAddon,
-  rightAddon,
+  elementLeft,
+  elementRight,
+  addonLeft,
+  addonRight,
   disabled = false,
   onClear,
   ...rest
 }: TextFieldProps) {
-  const {
-    field,
-    text,
-    clearIcon: clearIconStyles,
-    leftAddon: leftAddonStyles,
-    rightAddon: rightAddonStyles,
-    element,
-    input,
-  } = getFieldStyles({
+  const styles = getFieldStyles({
     variant,
     size,
-    leftElement,
-    rightElement,
+    elementLeft,
+    elementRight,
     disabled,
-    leftAddon,
-    rightAddon,
+    addonLeft,
+    addonRight,
   });
 
   const clearIcon = (
-    <IconXMark {...clearIconStyles} name="Input Clear Icon" onClick={() => onClear && onClear()} />
+    <IconXMark name={NODE_NAME_MAP.iconClear} {...styles.clearIcon} onClick={() => onClear?.()} />
   );
 
   return (
-    <AutoLayout width={width} name="Input Group" overflow="visible" {...field}>
-      {leftAddon ? (
-        <AutoLayout name="Input Left Addon" {...leftAddonStyles}>
-          {renderChildren(leftAddon, {
+    <AutoLayout width={width} name={NODE_NAME_MAP.inputGroup} overflow="visible" {...styles.field}>
+      {addonLeft ? (
+        <AutoLayout name={NODE_NAME_MAP.addonLeft} {...styles.leftAddon}>
+          {renderChildren(addonLeft, {
             textProps: {
-              fontSize: text.fontSize,
-              lineHeight: text.lineHeight,
+              fontSize: styles.text.fontSize,
+              lineHeight: styles.text.lineHeight,
               fill: colors.neutral[700],
             },
           })}
         </AutoLayout>
       ) : null}
 
-      <AutoLayout name="Input Container" {...input}>
+      <AutoLayout name={NODE_NAME_MAP.inputContainer} {...styles.input}>
         <Input
-          {...text}
-          width={'fill-parent'}
+          {...styles.text}
+          width="fill-parent"
           name="Input"
           onTextEditEnd={onTextEditEnd}
-          inputBehavior={'multiline'}
+          inputBehavior="multiline"
           placeholder={placeholder}
           inputFrameProps={{
-            name: 'Input Container',
+            name: NODE_NAME_MAP.inputContainer,
           }}
           {...rest}
           value={value}
@@ -75,12 +77,12 @@ export function TextField({
       </AutoLayout>
       {value?.length && value.length > 0 && rest.showClearIcon ? clearIcon : null}
 
-      {rightAddon ? (
-        <AutoLayout name="Input Right Addon" {...rightAddonStyles}>
-          {renderChildren(rightAddon, {
+      {addonRight ? (
+        <AutoLayout name={NODE_NAME_MAP.addonRight} {...styles.rightAddon}>
+          {renderChildren(addonRight, {
             textProps: {
-              fontSize: text.fontSize,
-              lineHeight: text.lineHeight,
+              fontSize: styles.text.fontSize,
+              lineHeight: styles.text.lineHeight,
               fill: colors.neutral[700],
             },
           })}
@@ -88,29 +90,29 @@ export function TextField({
       ) : null}
 
       <AutoLayout
-        name={'Left Element Container'}
-        width={element.width}
-        height={element.width}
-        positioning={'absolute'}
+        name={NODE_NAME_MAP.containerLeft}
+        width={styles.element.width}
+        height={styles.element.width}
+        positioning="absolute"
         x={{ type: 'left', offset: 0 }}
         y={{ type: 'top-bottom', topOffset: 0, bottomOffset: 0 }}
-        verticalAlignItems={'center'}
-        horizontalAlignItems={'center'}
+        verticalAlignItems="center"
+        horizontalAlignItems="center"
       >
-        {leftElement ? leftElement : null}
+        {elementLeft || null}
       </AutoLayout>
 
       <AutoLayout
-        name={'Right Element Container'}
-        width={element.width}
-        height={element.width}
-        positioning={'absolute'}
+        name={NODE_NAME_MAP.containerRight}
+        width={styles.element.width}
+        height={styles.element.width}
+        positioning="absolute"
         x={{ type: 'right', offset: 0 }}
         y={{ type: 'top-bottom', topOffset: 0, bottomOffset: 0 }}
-        verticalAlignItems={'center'}
-        horizontalAlignItems={'center'}
+        verticalAlignItems="center"
+        horizontalAlignItems="center"
       >
-        {rightElement ? rightElement : null}
+        {elementRight || null}
       </AutoLayout>
     </AutoLayout>
   );

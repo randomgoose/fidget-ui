@@ -11,16 +11,14 @@ export function renderIcon({
     height?: SVGProps['height'];
   };
 }) {
-  if (svg?.type === 'SVG') {
-    return h(SVG, {
-      name: 'Icon',
-      src: (svg as any)?.props?.src
-        .replaceAll("stroke='#000000'", `stroke='${options.stroke}'`)
-        .replaceAll("fill='#000000'", `fill='${options.fill}'`),
-      width: options.width || 16,
-      height: options.width || 16,
-    });
-  } else {
-    return null;
-  }
+  return svg?.type === 'SVG'
+    ? h(SVG, {
+        name: 'Icon',
+        src: (svg as any)?.props?.src
+          .replaceAll("stroke='#000000'", `stroke='${options.stroke}'`)
+          .replaceAll("fill='#000000'", `fill='${options.fill}'`),
+        width: options.width || 16,
+        height: options.width || 16,
+      })
+    : null;
 }

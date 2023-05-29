@@ -63,14 +63,14 @@ export function Controls({
       {view === 'year' ? (
         <Text
           {...buttonStyles}
-          width={'fill-parent'}
+          width="fill-parent"
           horizontalAlignText="center"
           onClick={() => setView('date')}
         >
           {decade[0]} - {decade[decade.length - 1]}
         </Text>
       ) : view === 'date' ? (
-        <AutoLayout width={'fill-parent'} horizontalAlignItems={'center'} spacing={4}>
+        <AutoLayout width="fill-parent" horizontalAlignItems="center" spacing={4}>
           <Text
             {...buttonStyles}
             onClick={() => {
@@ -89,7 +89,7 @@ export function Controls({
           </Text>
         </AutoLayout>
       ) : (
-        <Text fontSize={12} width={'fill-parent'} horizontalAlignText="center">
+        <Text fontSize={12} width="fill-parent" horizontalAlignText="center">
           Select month
         </Text>
       )}

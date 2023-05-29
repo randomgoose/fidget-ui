@@ -19,6 +19,7 @@ export interface CheckboxGroupProps {
   options?: Option[];
   orientation?: 'vertical' | 'horizontal';
   spacing?: number;
+  // TODO expose checkbox values
   onChange?: (option: Option) => void;
   children?: FigmaDeclarativeChildren<CheckboxProps>;
   render?: ({ checked, option }: { checked: boolean; option: Option }) => FigmaDeclarativeNode;
