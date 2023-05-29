@@ -14,7 +14,7 @@ export function IconButton({
   fontSize,
   ...rest
 }: IconButtonProps) {
-  const { container, icon: iconStyle } = getIconButtonStyles({
+  const { container: containerStyle, icon: iconStyle } = getIconButtonStyles({
     variant,
     size,
     colorScheme,
@@ -23,7 +23,7 @@ export function IconButton({
   });
 
   return (
-    <AutoLayout {...container} {...rest} name="Icon Button">
+    <AutoLayout {...containerStyle} {...rest} name="Icon Button">
       {icon
         ? renderIcon({
             svg: icon as any,

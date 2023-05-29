@@ -3,6 +3,12 @@ import { SimpleGridProps } from './interface';
 const { widget } = figma;
 const { AutoLayout } = widget;
 
+const NODE_NAME_MAP = {
+  grid: 'Simple Grid',
+  row: 'Row',
+  cell: 'Cell',
+};
+
 export function SimpleGrid({
   children,
   columns = 3,
@@ -17,8 +23,12 @@ export function SimpleGrid({
     x: spacingX ? spacingX : spacing ? spacing : 0,
     y: spacingY ? spacingY : spacing ? spacing : 0,
   };
+  const rowHeight = typeof height === 'number' ? 'fill-parent' : height;
 
-  const splitChildren = (children: FigmaDeclarativeNode, columns: number) => {
+  const splitChildren = (
+    children: FigmaDeclarativeNode,
+    columns: number
+  ): FigmaDeclarativeNode[][] => {
     const res = [];
 
     if (Array.isArray(children)) {
@@ -32,31 +42,31 @@ export function SimpleGrid({
 
   return (
     <AutoLayout
-      name="Simple Grid"
+      name={NODE_NAME_MAP.grid}
       {...rest}
-      direction={'vertical'}
+      direction="vertical"
       spacing={computedSpacing.y}
-      overflow={'visible'}
+      overflow="visible"
       width={width}
       height={height}
     >
       {Array.isArray(children)
         ? splitChildren(children, columns).map((group, index) => (
             <AutoLayout
-              name="Row"
               key={index}
-              width={'fill-parent'}
+              name={NODE_NAME_MAP.row}
+              width="fill-parent"
               spacing={computedSpacing.x}
-              overflow={'visible'}
-              height={typeof height === 'number' ? 'fill-parent' : height}
+              overflow="visible"
+              height={rowHeight}
             >
               {group.map((item, index) => (
                 <AutoLayout
-                  overflow="visible"
-                  name="Cell"
                   key={index}
+                  name={NODE_NAME_MAP.cell}
+                  overflow="visible"
                   width={width}
-                  height={typeof height === 'number' ? 'fill-parent' : height}
+                  height={rowHeight}
                 >
                   {item}
                 </AutoLayout>

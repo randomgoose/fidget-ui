@@ -61,7 +61,7 @@ export function DatePicker(props: DatePickerProps) {
       case 'date':
         return (
           <>
-            <AutoLayout name="Calendar Weekdays" width={'fill-parent'}>
+            <AutoLayout name="Calendar Weekdays" width="fill-parent">
               {generateWeeksOfTheMonth()[0].map((day, index) => (
                 <AutoLayout {...weekday} key={index}>
                   <Text {...digit} key={index}>
@@ -71,9 +71,9 @@ export function DatePicker(props: DatePickerProps) {
               ))}
             </AutoLayout>
 
-            <AutoLayout direction={'vertical'} width={'fill-parent'} spacing={2}>
+            <AutoLayout direction="vertical" width="fill-parent" spacing={2}>
               {generateWeeksOfTheMonth().map((week, index) => (
-                <AutoLayout key={index} width={'fill-parent'} name="Calendar Row" spacing={2}>
+                <AutoLayout key={index} width="fill-parent" name="Calendar Row" spacing={2}>
                   {
                     /*---- Render date cell ----*/
                     week.map((day, index) => {
@@ -132,21 +132,21 @@ export function DatePicker(props: DatePickerProps) {
         );
       case 'year':
         return (
-          <SimpleGrid columns={3} width={'fill-parent'} height={207}>
+          <SimpleGrid columns={3} width="fill-parent" height={207}>
             {...decade.map((y) => {
               const isCurrentYear = y === dayjs(date).year();
 
               return (
                 <AutoLayout
-                  width={'fill-parent'}
-                  height={'fill-parent'}
+                  width="fill-parent"
+                  height="fill-parent"
                   onClick={() => {
                     setDate(dayjs(date).year(y).toString());
                     setPivot(dayjs(date).year(y).toString());
                     toggleView();
                   }}
                   verticalAlignItems="center"
-                  horizontalAlignItems={'center'}
+                  horizontalAlignItems="center"
                 >
                   <AutoLayout
                     fill={isCurrentYear ? colors.blue[500] : undefined}
@@ -173,9 +173,9 @@ export function DatePicker(props: DatePickerProps) {
         return (
           <SimpleGrid
             columns={3}
-            width={'fill-parent'}
-            height={'hug-contents'}
-            horizontalAlignItems={'center'}
+            width="fill-parent"
+            height="hug-contents"
+            horizontalAlignItems="center"
             spacing={8}
           >
             {...CALENDAR_MONTHS.map((month, index) => {

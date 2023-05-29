@@ -14,10 +14,10 @@ export function TextField({
   placeholder,
   size = 'md',
   variant = 'outline',
-  leftElement,
-  rightElement,
-  leftAddon,
-  rightAddon,
+  elementLeft,
+  elementRight,
+  addonLeft,
+  addonRight,
   disabled = false,
   onClear,
   ...rest
@@ -33,11 +33,11 @@ export function TextField({
   } = getFieldStyles({
     variant,
     size,
-    leftElement,
-    rightElement,
+    elementLeft,
+    elementRight,
     disabled,
-    leftAddon,
-    rightAddon,
+    addonLeft,
+    addonRight,
   });
 
   const clearIcon = (
@@ -46,9 +46,9 @@ export function TextField({
 
   return (
     <AutoLayout width={width} name="Input Group" overflow="visible" {...field}>
-      {leftAddon ? (
+      {addonLeft ? (
         <AutoLayout name="Input Left Addon" {...leftAddonStyles}>
-          {renderChildren(leftAddon, {
+          {renderChildren(addonLeft, {
             textProps: {
               fontSize: text.fontSize,
               lineHeight: text.lineHeight,
@@ -61,10 +61,10 @@ export function TextField({
       <AutoLayout name="Input Container" {...input}>
         <Input
           {...text}
-          width={'fill-parent'}
+          width="fill-parent"
           name="Input"
           onTextEditEnd={onTextEditEnd}
-          inputBehavior={'multiline'}
+          inputBehavior="multiline"
           placeholder={placeholder}
           inputFrameProps={{
             name: 'Input Container',
@@ -75,9 +75,9 @@ export function TextField({
       </AutoLayout>
       {value?.length && value.length > 0 && rest.showClearIcon ? clearIcon : null}
 
-      {rightAddon ? (
+      {addonRight ? (
         <AutoLayout name="Input Right Addon" {...rightAddonStyles}>
-          {renderChildren(rightAddon, {
+          {renderChildren(addonRight, {
             textProps: {
               fontSize: text.fontSize,
               lineHeight: text.lineHeight,
@@ -88,29 +88,29 @@ export function TextField({
       ) : null}
 
       <AutoLayout
-        name={'Left Element Container'}
+        name="Left Element Container"
         width={element.width}
         height={element.width}
-        positioning={'absolute'}
+        positioning="absolute"
         x={{ type: 'left', offset: 0 }}
         y={{ type: 'top-bottom', topOffset: 0, bottomOffset: 0 }}
-        verticalAlignItems={'center'}
-        horizontalAlignItems={'center'}
+        verticalAlignItems="center"
+        horizontalAlignItems="center"
       >
-        {leftElement ? leftElement : null}
+        {elementLeft || null}
       </AutoLayout>
 
       <AutoLayout
-        name={'Right Element Container'}
+        name="Right Element Container"
         width={element.width}
         height={element.width}
-        positioning={'absolute'}
+        positioning="absolute"
         x={{ type: 'right', offset: 0 }}
         y={{ type: 'top-bottom', topOffset: 0, bottomOffset: 0 }}
-        verticalAlignItems={'center'}
-        horizontalAlignItems={'center'}
+        verticalAlignItems="center"
+        horizontalAlignItems="center"
       >
-        {rightElement ? rightElement : null}
+        {elementRight || null}
       </AutoLayout>
     </AutoLayout>
   );

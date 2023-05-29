@@ -5,6 +5,11 @@ import { getButtonStyles } from './styles';
 const { widget } = figma;
 const { AutoLayout, Text } = widget;
 
+const NODE_NAME_MAP = {
+  button: 'Button',
+  buttonText: 'Button Text',
+};
+
 export function Button({
   variant = 'filled',
   children,
@@ -18,9 +23,10 @@ export function Button({
   ...rest
 }: ButtonProps) {
   if (variant !== 'filled') {
+    // TODO @cc, for what?
   }
 
-  const { container, text, icon } = getButtonStyles({
+  const styles = getButtonStyles({
     variant,
     size,
     colorScheme,
@@ -28,35 +34,36 @@ export function Button({
     block,
   });
 
-  const leftIconNode = leftIcon
-    ? renderIcon({
-        svg: leftIcon as any,
-        options: { stroke: icon.stroke, width: icon.width, height: icon.height },
-      })
-    : null;
-  const rightIconNode = rightIcon
-    ? renderIcon({
-        svg: rightIcon as any,
-        options: { stroke: icon.stroke, width: icon.width, height: icon.height },
-      })
-    : null;
+  const [nodeIconLeft, nodeIconRight] = [leftIcon, rightIcon].map((icon) =>
+    icon
+      ? renderIcon({
+          svg: icon as any,
+          options: {
+            stroke: styles.icon.stroke,
+            width: styles.icon.width,
+            height: styles.icon.height,
+          },
+        })
+      : null
+  );
 
   return (
     <AutoLayout
-      name="Button"
-      {...container}
+      name={NODE_NAME_MAP.button}
+      {...styles.container}
       {...rest}
-      onClick={onClick && !disabled ? onClick : undefined}
+      onClick={!disabled ? onClick : undefined}
     >
-      {leftIconNode}
+      {nodeIconLeft}
 
+      {/*TODO: don't understand*/}
       {Array.isArray(leftIcon) ? leftIcon.map((item) => item) : null}
 
-      <Text name="Button Text" {...text}>
+      <Text name={NODE_NAME_MAP.buttonText} {...styles.text}>
         {children}
       </Text>
 
-      {rightIconNode}
+      {nodeIconRight}
     </AutoLayout>
   );
 }

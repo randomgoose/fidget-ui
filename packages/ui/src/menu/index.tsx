@@ -78,7 +78,7 @@ export function Menu(props: MenuProps) {
   return (
     <AutoLayout name="Menu" overflow="visible" direction="vertical">
       {renderTrigger()}
-      <AutoLayout name="Menu List Positioner" overflow={'scroll'} {...positioner}>
+      <AutoLayout name="Menu List Positioner" overflow="scroll" {...positioner}>
         {isOpen ? (
           <AutoLayout {...list} name="Menu Item List" width={240} overflow="visible">
             {menuItems}

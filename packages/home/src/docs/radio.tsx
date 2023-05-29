@@ -137,7 +137,7 @@ return <RadioGroup
           console.log(option);
           figma.notify(option.value);
         }}
-        render={({ checked, option: { label, value } }) => (
+        render={({ checked, option: { label } }) => (
           <AutoLayout
             stroke={checked ? colors.blue[500] : colors.neutral[300]}
             fill={checked ? colors.blue[500] : undefined}

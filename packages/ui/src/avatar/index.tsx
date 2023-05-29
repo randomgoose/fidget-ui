@@ -6,55 +6,52 @@ import { getAvatarStyles } from './styles';
 const { widget } = figma;
 const { AutoLayout, Text, h } = widget;
 
-const isAvatar = (component: any) => {
-  if ('props' in component) {
-    if ('name' in component.props && component.props.name.startsWith('Avatar')) {
-      return true;
-    }
-  }
-  return false;
+const NODE_NAME_MAP = {
+  avatar: 'Avatar',
+  avatarGroup: 'Avatar Group',
+  excessLabel: 'Avatar Group Excess Label',
+};
+
+const isAvatar = (node: any) => {
+  return node.props?.name?.startsWith('Avatar');
 };
 
 export function Avatar({ src, size = 'md', fill, displayName, ...props }: AvatarProps) {
   const {
-    avatar: { padding, ...rest },
+    avatar: { padding, ...restAvatarStyles },
   } = getAvatarStyles({ size });
-
-  const getInitials = (name: string) => {
-    const [firstName, lastName] = name.split(' ');
-    return firstName && lastName
-      ? `${firstName.charAt(0)}${lastName.charAt(0)}`
-      : firstName.charAt(0);
-  };
-
-  const initials = displayName ? getInitials(displayName) : null;
+  const initials =
+    displayName
+      ?.split(/\s+/)
+      .map((str) => str[0])
+      .join('') || '';
 
   const fallbackAvatar = (
     <AutoLayout
-      name={`Avatar`}
+      name={NODE_NAME_MAP.avatar}
       {...props}
       tooltip={displayName}
       fill={fill || colors.neutral[300]}
       padding={padding}
       verticalAlignItems="center"
-      horizontalAlignItems={'center'}
-      {...rest}
+      horizontalAlignItems="center"
+      {...restAvatarStyles}
     >
       {initials ? (
-        <Text fill={'#ffffff'}>{initials}</Text>
+        <Text fill="#ffffff">{initials}</Text>
       ) : typeof fill === 'object' ? null : (
-        <IconUser width={'fill-parent'} height={'fill-parent'} color={colors.white} />
+        <IconUser width="fill-parent" height="fill-parent" color={colors.white} />
       )}
     </AutoLayout>
   );
 
-  return src !== undefined ? (
+  return src ? (
     <AutoLayout
-      name="Avatar"
+      name={NODE_NAME_MAP.avatar}
       {...props}
-      fill={{ type: 'image', src }}
       tooltip={displayName}
-      {...rest}
+      fill={{ type: 'image', src }}
+      {...restAvatarStyles}
     />
   ) : (
     fallbackAvatar
@@ -69,44 +66,43 @@ export function AvatarGroup({
   spacing,
   ...rest
 }: AvatarGroupProps) {
-  const { avatar } = getAvatarStyles({ size });
+  const { avatar: avatarStyle } = getAvatarStyles({ size });
 
   const renderExcessLabel = (count: number, max: number) => {
-    if (max > count) {
-      return null;
-    } else {
-      return (
-        <AutoLayout
-          name="Avatar Group Excess Label"
-          {...avatar}
-          horizontalAlignItems={'center'}
-          verticalAlignItems={'center'}
-          fill={colors.neutral[100]}
-        >
-          <Text fontSize={14}>+{count - (max || 0)}</Text>
-        </AutoLayout>
-      );
-    }
+    return count > max ? (
+      <AutoLayout
+        name={NODE_NAME_MAP.excessLabel}
+        {...avatarStyle}
+        horizontalAlignItems="center"
+        verticalAlignItems="center"
+        fill={colors.neutral[100]}
+      >
+        <Text fontSize={14}>+{count - (max || 0)}</Text>
+      </AutoLayout>
+    ) : null;
   };
 
   return (
-    <AutoLayout name="Avatar Group" {...rest} spacing={spacing ? spacing : stacked ? -8 : 4}>
+    <AutoLayout
+      name={NODE_NAME_MAP.avatarGroup}
+      {...rest}
+      spacing={spacing ? spacing : stacked ? -8 : 4}
+    >
       {Array.isArray(children) ? (
         <>
           {children
             .filter((child: FigmaDeclarativeNode) => isAvatar(child))
             .slice(0, max)
             .map((child: any, index: number) => {
+              const childProps: AvatarProps = child?.props || {};
               return h(
                 Avatar,
                 {
-                  ...child?.props,
+                  ...childProps,
                   size,
-                  displayName: child.props.tooltip,
-                  fill: child.props.src
-                    ? { type: 'image', src: child.props.src }
-                    : child.props.fill,
                   key: index,
+                  displayName: childProps.tooltip,
+                  fill: childProps.src ? { type: 'image', src: childProps.src } : childProps.fill,
                 },
                 child?.children
               );

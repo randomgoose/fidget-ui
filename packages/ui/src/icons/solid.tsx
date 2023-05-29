@@ -10,7 +10,7 @@ export const IconAcademicCapSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconAcademicCapSolid'}
+    name="IconAcademicCapSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path d='M11.7 2.805a.75.75 0 01.6 0A60.65 60.65 0 0122.83 8.72a.75.75 0 01-.231 1.337 49.949 49.949 0 00-9.902 3.912l-.003.002-.34.18a.75.75 0 01-.707 0A50.009 50.009 0 007.5 12.174v-.224c0-.131.067-.248.172-.311a54.614 54.614 0 014.653-2.52.75.75 0 00-.65-1.352 56.129 56.129 0 00-4.78 2.589 1.858 1.858 0 00-.859 1.228 49.803 49.803 0 00-4.634-1.527.75.75 0 01-.231-1.337A60.653 60.653 0 0111.7 2.805z'></path>n  <path d='M13.06 15.473a48.45 48.45 0 017.666-3.282c.134 1.414.22 2.843.255 4.285a.75.75 0 01-.46.71 47.878 47.878 0 00-8.105 4.342.75.75 0 01-.832 0 47.877 47.877 0 00-8.104-4.342.75.75 0 01-.461-.71c.035-1.442.121-2.87.255-4.286A48.4 48.4 0 016 13.18v1.27a1.5 1.5 0 00-.14 2.508c-.09.38-.222.753-.397 1.11.452.213.901.434 1.346.661a6.729 6.729 0 00.551-1.608 1.5 1.5 0 00.14-2.67v-.645a48.549 48.549 0 013.44 1.668 2.25 2.25 0 002.12 0z'></path>n  <path d='M4.462 19.462c.42-.419.753-.89 1-1.394.453.213.902.434 1.347.661a6.743 6.743 0 01-1.286 1.794.75.75 0 11-1.06-1.06z'></path>n</svg>`}
   />
 );
@@ -24,7 +24,7 @@ export const IconAdjustmentsHorizontalSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconAdjustmentsHorizontalSolid'}
+    name="IconAdjustmentsHorizontalSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path d='M18.75 12.75h1.5a.75.75 0 000-1.5h-1.5a.75.75 0 000 1.5zM12 6a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 0112 6zM12 18a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 0112 18zM3.75 6.75h1.5a.75.75 0 100-1.5h-1.5a.75.75 0 000 1.5zM5.25 18.75h-1.5a.75.75 0 010-1.5h1.5a.75.75 0 010 1.5zM3 12a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 013 12zM9 3.75a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zM12.75 12a2.25 2.25 0 114.5 0 2.25 2.25 0 01-4.5 0zM9 15.75a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z'></path>n</svg>`}
   />
 );
@@ -38,7 +38,7 @@ export const IconAdjustmentsVerticalSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconAdjustmentsVerticalSolid'}
+    name="IconAdjustmentsVerticalSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path d='M6 12a.75.75 0 01-.75-.75v-7.5a.75.75 0 111.5 0v7.5A.75.75 0 016 12zM18 12a.75.75 0 01-.75-.75v-7.5a.75.75 0 011.5 0v7.5A.75.75 0 0118 12zM6.75 20.25v-1.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0zM18.75 18.75v1.5a.75.75 0 01-1.5 0v-1.5a.75.75 0 011.5 0zM12.75 5.25v-1.5a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0zM12 21a.75.75 0 01-.75-.75v-7.5a.75.75 0 011.5 0v7.5A.75.75 0 0112 21zM3.75 15a2.25 2.25 0 104.5 0 2.25 2.25 0 00-4.5 0zM12 11.25a2.25 2.25 0 110-4.5 2.25 2.25 0 010 4.5zM15.75 15a2.25 2.25 0 104.5 0 2.25 2.25 0 00-4.5 0z'></path>n</svg>`}
   />
 );
@@ -52,7 +52,7 @@ export const IconArchiveBoxArrowDownSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArchiveBoxArrowDownSolid'}
+    name="IconArchiveBoxArrowDownSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path d='M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375z'></path>n  <path fill-rule='evenodd' d='M3.087 9l.54 9.176A3 3 0 006.62 21h10.757a3 3 0 002.995-2.824L20.913 9H3.087zM12 10.5a.75.75 0 01.75.75v4.94l1.72-1.72a.75.75 0 111.06 1.06l-3 3a.75.75 0 01-1.06 0l-3-3a.75.75 0 111.06-1.06l1.72 1.72v-4.94a.75.75 0 01.75-.75z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -66,7 +66,7 @@ export const IconArchiveBoxXMarkSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArchiveBoxXMarkSolid'}
+    name="IconArchiveBoxXMarkSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path d='M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375z'></path>n  <path fill-rule='evenodd' d='M3.087 9l.54 9.176A3 3 0 006.62 21h10.757a3 3 0 002.995-2.824L20.913 9H3.087zm6.133 2.845a.75.75 0 011.06 0l1.72 1.72 1.72-1.72a.75.75 0 111.06 1.06l-1.72 1.72 1.72 1.72a.75.75 0 11-1.06 1.06L12 15.685l-1.72 1.72a.75.75 0 11-1.06-1.06l1.72-1.72-1.72-1.72a.75.75 0 010-1.06z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -80,7 +80,7 @@ export const IconArchiveBoxSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArchiveBoxSolid'}
+    name="IconArchiveBoxSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path d='M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375z'></path>n  <path fill-rule='evenodd' d='M3.087 9l.54 9.176A3 3 0 006.62 21h10.757a3 3 0 002.995-2.824L20.913 9H3.087zm6.163 3.75A.75.75 0 0110 12h4a.75.75 0 010 1.5h-4a.75.75 0 01-.75-.75z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -94,7 +94,7 @@ export const IconArrowDownCircleSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowDownCircleSolid'}
+    name="IconArrowDownCircleSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-.53 14.03a.75.75 0 001.06 0l3-3a.75.75 0 10-1.06-1.06l-1.72 1.72V8.25a.75.75 0 00-1.5 0v5.69l-1.72-1.72a.75.75 0 00-1.06 1.06l3 3z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -108,7 +108,7 @@ export const IconArrowDownLeftSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowDownLeftSolid'}
+    name="IconArrowDownLeftSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M20.03 3.97a.75.75 0 010 1.06L6.31 18.75h9.44a.75.75 0 010 1.5H4.5a.75.75 0 01-.75-.75V8.25a.75.75 0 011.5 0v9.44L18.97 3.97a.75.75 0 011.06 0z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -122,7 +122,7 @@ export const IconArrowDownOnSquareStackSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowDownOnSquareStackSolid'}
+    name="IconArrowDownOnSquareStackSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M9.75 6.75h-3a3 3 0 00-3 3v7.5a3 3 0 003 3h7.5a3 3 0 003-3v-7.5a3 3 0 00-3-3h-3V1.5a.75.75 0 00-1.5 0v5.25zm0 0h1.5v5.69l1.72-1.72a.75.75 0 111.06 1.06l-3 3a.75.75 0 01-1.06 0l-3-3a.75.75 0 111.06-1.06l1.72 1.72V6.75z' clip-rule='evenodd'></path>n  <path d='M7.151 21.75a2.999 2.999 0 002.599 1.5h7.5a3 3 0 003-3v-7.5c0-1.11-.603-2.08-1.5-2.599v7.099a4.5 4.5 0 01-4.5 4.5H7.151z'></path>n</svg>`}
   />
 );
@@ -136,7 +136,7 @@ export const IconArrowDownOnSquareSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowDownOnSquareSolid'}
+    name="IconArrowDownOnSquareSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path d='M12 1.5a.75.75 0 01.75.75V7.5h-1.5V2.25A.75.75 0 0112 1.5zM11.25 7.5v5.69l-1.72-1.72a.75.75 0 00-1.06 1.06l3 3a.75.75 0 001.06 0l3-3a.75.75 0 10-1.06-1.06l-1.72 1.72V7.5h3.75a3 3 0 013 3v9a3 3 0 01-3 3h-9a3 3 0 01-3-3v-9a3 3 0 013-3h3.75z'></path>n</svg>`}
   />
 );
@@ -150,7 +150,7 @@ export const IconArrowDownRightSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowDownRightSolid'}
+    name="IconArrowDownRightSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M3.97 3.97a.75.75 0 011.06 0l13.72 13.72V8.25a.75.75 0 011.5 0V19.5a.75.75 0 01-.75.75H8.25a.75.75 0 010-1.5h9.44L3.97 5.03a.75.75 0 010-1.06z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -164,7 +164,7 @@ export const IconArrowDownTraySolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowDownTraySolid'}
+    name="IconArrowDownTraySolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M12 2.25a.75.75 0 01.75.75v11.69l3.22-3.22a.75.75 0 111.06 1.06l-4.5 4.5a.75.75 0 01-1.06 0l-4.5-4.5a.75.75 0 111.06-1.06l3.22 3.22V3a.75.75 0 01.75-.75zm-9 13.5a.75.75 0 01.75.75v2.25a1.5 1.5 0 001.5 1.5h13.5a1.5 1.5 0 001.5-1.5V16.5a.75.75 0 011.5 0v2.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V16.5a.75.75 0 01.75-.75z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -178,7 +178,7 @@ export const IconArrowDownSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowDownSolid'}
+    name="IconArrowDownSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M12 2.25a.75.75 0 01.75.75v16.19l6.22-6.22a.75.75 0 111.06 1.06l-7.5 7.5a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 111.06-1.06l6.22 6.22V3a.75.75 0 01.75-.75z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -192,7 +192,7 @@ export const IconArrowLeftCircleSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowLeftCircleSolid'}
+    name="IconArrowLeftCircleSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-4.28 9.22a.75.75 0 000 1.06l3 3a.75.75 0 101.06-1.06l-1.72-1.72h5.69a.75.75 0 000-1.5h-5.69l1.72-1.72a.75.75 0 00-1.06-1.06l-3 3z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -206,7 +206,7 @@ export const IconArrowLeftOnRectangleSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowLeftOnRectangleSolid'}
+    name="IconArrowLeftOnRectangleSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -220,7 +220,7 @@ export const IconArrowLeftSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowLeftSolid'}
+    name="IconArrowLeftSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M11.03 3.97a.75.75 0 010 1.06l-6.22 6.22H21a.75.75 0 010 1.5H4.81l6.22 6.22a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -234,7 +234,7 @@ export const IconArrowLongDownSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowLongDownSolid'}
+    name="IconArrowLongDownSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M12 2.25a.75.75 0 01.75.75v16.19l2.47-2.47a.75.75 0 111.06 1.06l-3.75 3.75a.75.75 0 01-1.06 0l-3.75-3.75a.75.75 0 111.06-1.06l2.47 2.47V3a.75.75 0 01.75-.75z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -248,7 +248,7 @@ export const IconArrowLongLeftSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowLongLeftSolid'}
+    name="IconArrowLongLeftSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M7.28 7.72a.75.75 0 010 1.06l-2.47 2.47H21a.75.75 0 010 1.5H4.81l2.47 2.47a.75.75 0 11-1.06 1.06l-3.75-3.75a.75.75 0 010-1.06l3.75-3.75a.75.75 0 011.06 0z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -262,7 +262,7 @@ export const IconArrowLongRightSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowLongRightSolid'}
+    name="IconArrowLongRightSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M16.72 7.72a.75.75 0 011.06 0l3.75 3.75a.75.75 0 010 1.06l-3.75 3.75a.75.75 0 11-1.06-1.06l2.47-2.47H3a.75.75 0 010-1.5h16.19l-2.47-2.47a.75.75 0 010-1.06z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -276,7 +276,7 @@ export const IconArrowLongUpSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowLongUpSolid'}
+    name="IconArrowLongUpSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M11.47 2.47a.75.75 0 011.06 0l3.75 3.75a.75.75 0 01-1.06 1.06l-2.47-2.47V21a.75.75 0 01-1.5 0V4.81L8.78 7.28a.75.75 0 01-1.06-1.06l3.75-3.75z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -290,7 +290,7 @@ export const IconArrowPathRoundedSquareSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowPathRoundedSquareSolid'}
+    name="IconArrowPathRoundedSquareSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M12 5.25c1.213 0 2.415.046 3.605.135a3.256 3.256 0 013.01 3.01c.044.583.077 1.17.1 1.759L17.03 8.47a.75.75 0 10-1.06 1.06l3 3a.75.75 0 001.06 0l3-3a.75.75 0 00-1.06-1.06l-1.752 1.751c-.023-.65-.06-1.296-.108-1.939a4.756 4.756 0 00-4.392-4.392 49.422 49.422 0 00-7.436 0A4.756 4.756 0 003.89 8.282c-.017.224-.033.447-.046.672a.75.75 0 101.497.092c.013-.217.028-.434.044-.651a3.256 3.256 0 013.01-3.01c1.19-.09 2.392-.135 3.605-.135zm-6.97 6.22a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.752-1.751c.023.65.06 1.296.108 1.939a4.756 4.756 0 004.392 4.392 49.413 49.413 0 007.436 0 4.756 4.756 0 004.392-4.392c.017-.223.032-.447.046-.672a.75.75 0 00-1.497-.092c-.013.217-.028.434-.044.651a3.256 3.256 0 01-3.01 3.01 47.953 47.953 0 01-7.21 0 3.256 3.256 0 01-3.01-3.01 47.759 47.759 0 01-.1-1.759L6.97 15.53a.75.75 0 001.06-1.06l-3-3z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -304,7 +304,7 @@ export const IconArrowPathSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowPathSolid'}
+    name="IconArrowPathSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M4.755 10.059a7.5 7.5 0 0112.548-3.364l1.903 1.903h-3.183a.75.75 0 100 1.5h4.992a.75.75 0 00.75-.75V4.356a.75.75 0 00-1.5 0v3.18l-1.9-1.9A9 9 0 003.306 9.67a.75.75 0 101.45.388zm15.408 3.352a.75.75 0 00-.919.53 7.5 7.5 0 01-12.548 3.364l-1.902-1.903h3.183a.75.75 0 000-1.5H2.984a.75.75 0 00-.75.75v4.992a.75.75 0 001.5 0v-3.18l1.9 1.9a9 9 0 0015.059-4.035.75.75 0 00-.53-.918z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -318,7 +318,7 @@ export const IconArrowRightCircleSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowRightCircleSolid'}
+    name="IconArrowRightCircleSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -332,7 +332,7 @@ export const IconArrowRightOnRectangleSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowRightOnRectangleSolid'}
+    name="IconArrowRightOnRectangleSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm10.72 4.72a.75.75 0 011.06 0l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H9a.75.75 0 010-1.5h10.94l-1.72-1.72a.75.75 0 010-1.06z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -346,7 +346,7 @@ export const IconArrowRightSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowRightSolid'}
+    name="IconArrowRightSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M12.97 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06l6.22-6.22H3a.75.75 0 010-1.5h16.19l-6.22-6.22a.75.75 0 010-1.06z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -360,7 +360,7 @@ export const IconArrowSmallDownSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowSmallDownSolid'}
+    name="IconArrowSmallDownSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M12 3.75a.75.75 0 01.75.75v13.19l5.47-5.47a.75.75 0 111.06 1.06l-6.75 6.75a.75.75 0 01-1.06 0l-6.75-6.75a.75.75 0 111.06-1.06l5.47 5.47V4.5a.75.75 0 01.75-.75z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -374,7 +374,7 @@ export const IconArrowSmallLeftSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowSmallLeftSolid'}
+    name="IconArrowSmallLeftSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M20.25 12a.75.75 0 01-.75.75H6.31l5.47 5.47a.75.75 0 11-1.06 1.06l-6.75-6.75a.75.75 0 010-1.06l6.75-6.75a.75.75 0 111.06 1.06l-5.47 5.47H19.5a.75.75 0 01.75.75z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -388,7 +388,7 @@ export const IconArrowSmallRightSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowSmallRightSolid'}
+    name="IconArrowSmallRightSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M3.75 12a.75.75 0 01.75-.75h13.19l-5.47-5.47a.75.75 0 011.06-1.06l6.75 6.75a.75.75 0 010 1.06l-6.75 6.75a.75.75 0 11-1.06-1.06l5.47-5.47H4.5a.75.75 0 01-.75-.75z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -402,7 +402,7 @@ export const IconArrowSmallUpSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowSmallUpSolid'}
+    name="IconArrowSmallUpSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M12 20.25a.75.75 0 01-.75-.75V6.31l-5.47 5.47a.75.75 0 01-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l6.75 6.75a.75.75 0 11-1.06 1.06l-5.47-5.47V19.5a.75.75 0 01-.75.75z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -416,7 +416,7 @@ export const IconArrowTopRightOnSquareSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowTopRightOnSquareSolid'}
+    name="IconArrowTopRightOnSquareSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M15.75 2.25H21a.75.75 0 01.75.75v5.25a.75.75 0 01-1.5 0V4.81L8.03 17.03a.75.75 0 01-1.06-1.06L19.19 3.75h-3.44a.75.75 0 010-1.5zm-10.5 4.5a1.5 1.5 0 00-1.5 1.5v10.5a1.5 1.5 0 001.5 1.5h10.5a1.5 1.5 0 001.5-1.5V10.5a.75.75 0 011.5 0v8.25a3 3 0 01-3 3H5.25a3 3 0 01-3-3V8.25a3 3 0 013-3h8.25a.75.75 0 010 1.5H5.25z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -430,7 +430,7 @@ export const IconArrowTrendingDownSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowTrendingDownSolid'}
+    name="IconArrowTrendingDownSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M1.72 5.47a.75.75 0 011.06 0L9 11.69l3.756-3.756a.75.75 0 01.985-.066 12.698 12.698 0 014.575 6.832l.308 1.149 2.277-3.943a.75.75 0 111.299.75l-3.182 5.51a.75.75 0 01-1.025.275l-5.511-3.181a.75.75 0 01.75-1.3l3.943 2.277-.308-1.149a11.194 11.194 0 00-3.528-5.617l-3.809 3.81a.75.75 0 01-1.06 0L1.72 6.53a.75.75 0 010-1.061z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -444,7 +444,7 @@ export const IconArrowTrendingUpSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowTrendingUpSolid'}
+    name="IconArrowTrendingUpSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M15.22 6.268a.75.75 0 01.968-.432l5.942 2.28a.75.75 0 01.431.97l-2.28 5.941a.75.75 0 11-1.4-.537l1.63-4.251-1.086.483a11.2 11.2 0 00-5.45 5.174.75.75 0 01-1.199.19L9 12.31l-6.22 6.22a.75.75 0 11-1.06-1.06l6.75-6.75a.75.75 0 011.06 0l3.606 3.605a12.694 12.694 0 015.68-4.973l1.086-.484-4.251-1.631a.75.75 0 01-.432-.97z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -458,7 +458,7 @@ export const IconArrowUpCircleSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowUpCircleSolid'}
+    name="IconArrowUpCircleSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.53 5.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72v5.69a.75.75 0 001.5 0v-5.69l1.72 1.72a.75.75 0 101.06-1.06l-3-3z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -472,7 +472,7 @@ export const IconArrowUpLeftSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowUpLeftSolid'}
+    name="IconArrowUpLeftSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M5.25 6.31v9.44a.75.75 0 01-1.5 0V4.5a.75.75 0 01.75-.75h11.25a.75.75 0 010 1.5H6.31l13.72 13.72a.75.75 0 11-1.06 1.06L5.25 6.31z' clip-rule='evenodd'></path>n</svg>`}
   />
 );
@@ -486,7 +486,7 @@ export const IconArrowUpOnSquareStackSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowUpOnSquareStackSolid'}
+    name="IconArrowUpOnSquareStackSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path d='M9.97.97a.75.75 0 011.06 0l3 3a.75.75 0 01-1.06 1.06l-1.72-1.72v3.44h-1.5V3.31L8.03 5.03a.75.75 0 01-1.06-1.06l3-3zM9.75 6.75v6a.75.75 0 001.5 0v-6h3a3 3 0 013 3v7.5a3 3 0 01-3 3h-7.5a3 3 0 01-3-3v-7.5a3 3 0 013-3h3z'></path>n  <path d='M7.151 21.75a2.999 2.999 0 002.599 1.5h7.5a3 3 0 003-3v-7.5c0-1.11-.603-2.08-1.5-2.599v7.099a4.5 4.5 0 01-4.5 4.5H7.151z'></path>n</svg>`}
   />
 );
@@ -500,7 +500,7 @@ export const IconArrowUpOnSquareSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowUpOnSquareSolid'}
+    name="IconArrowUpOnSquareSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path d='M11.47 1.72a.75.75 0 011.06 0l3 3a.75.75 0 01-1.06 1.06l-1.72-1.72V7.5h-1.5V4.06L9.53 5.78a.75.75 0 01-1.06-1.06l3-3zM11.25 7.5V15a.75.75 0 001.5 0V7.5h3.75a3 3 0 013 3v9a3 3 0 01-3 3h-9a3 3 0 01-3-3v-9a3 3 0 013-3h3.75z'></path>n</svg>`}
   />
 );
@@ -514,7 +514,7 @@ export const IconArrowUpRightSolid = ({
     width={width || 'fill-parent'}
     height={height || 'fill-parent'}
     {...props}
-    name={'IconArrowUpRightSolid'}
+    name="IconArrowUpRightSolid"
     src={`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='${color}' aria-hidden='true' class='w-6 h-6'>n  <path fill-rule='evenodd' d='M8.25 3.75H19.5a.75.75 0 01.75.75v11.25a.75.75 0 01-1.5 0V6.31L5.03 20.03a.75.75 0 01-1.06-1.06L17.69 5.25H8.25a.75.75 0 010-1.5z' clip-rule='evenodd'></path>n</svg>`}
   />
 );

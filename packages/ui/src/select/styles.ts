@@ -1,10 +1,11 @@
 import { colors } from '../styles';
 import { SelectProps } from './interface';
 
+// TODO @cc style for disable
+// disabled,
 export const getSelectStyles = ({
   size,
   variant,
-  disabled,
 }: Pick<SelectProps, 'size' | 'variant' | 'disabled'>): {
   field: AutoLayoutProps;
   list: AutoLayoutProps;
