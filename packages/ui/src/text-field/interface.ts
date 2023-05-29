@@ -6,10 +6,10 @@ export interface TextFieldProps extends FieldProps {
   onClear?: () => void;
   size?: 'sm' | 'md' | 'lg';
   placeholder?: string;
-  leftElement?: FigmaDeclarativeNode;
-  rightElement?: FigmaDeclarativeNode;
-  leftAddon?: FigmaDeclarativeNode;
-  rightAddon?: FigmaDeclarativeNode;
+  elementLeft?: FigmaDeclarativeNode;
+  elementRight?: FigmaDeclarativeNode;
+  addonLeft?: FigmaDeclarativeNode;
+  addonRight?: FigmaDeclarativeNode;
   disabled?: boolean;
   showClearIcon?: boolean;
 }

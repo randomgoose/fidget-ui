@@ -28,7 +28,8 @@ export function Radio({ value, children, disabled = false, checked, onClick }: R
 export function RadioGroup({
   name,
   orientation = 'horizontal',
-  children,
+  // TODO @cc children for what
+  // children,
   options,
   onChange,
   spacing = 12,

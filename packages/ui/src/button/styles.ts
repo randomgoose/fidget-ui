@@ -33,6 +33,7 @@ export const getButtonStyles = ({
       }
       color = colors.white;
       break;
+
     case 'outline':
       if (isNeutralColor(colorScheme)) {
         stroke = hue[900];
@@ -44,6 +45,7 @@ export const getButtonStyles = ({
         hoverStyle = { fill: hue[50] };
       }
       break;
+
     case 'ghost':
       if (isNeutralColor(colorScheme)) {
         color = hue[900];
@@ -57,6 +59,7 @@ export const getButtonStyles = ({
         };
       }
       break;
+
     default:
       color = hue[700];
       break;
@@ -68,16 +71,19 @@ export const getButtonStyles = ({
       fontSize = 16;
       lineHeight = 24;
       break;
+
     case 'md':
       padding = { vertical: 5, horizontal: 12 };
       fontSize = 14;
       lineHeight = 22;
       break;
+
     case 'sm':
       padding = { vertical: 4, horizontal: 12 };
       fontSize = 12;
       lineHeight = 20;
       break;
+
     default:
       padding = { vertical: 5, horizontal: 12 };
       fontSize = 14;
@@ -153,8 +159,9 @@ export const getIconButtonStyles = ({
     },
     icon: {
       ...styles.icon,
-      width: fontSize ? fontSize : styles.icon.width,
-      height: fontSize ? fontSize : styles.icon.height,
+      width: fontSize || styles.icon.width,
+      height: fontSize || styles.icon.height,
+      // TODO @cc, check this. It's undefined
       fill: color,
     },
   };

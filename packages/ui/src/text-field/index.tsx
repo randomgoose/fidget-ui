@@ -14,10 +14,10 @@ export function TextField({
   placeholder,
   size = 'md',
   variant = 'outline',
-  leftElement,
-  rightElement,
-  leftAddon,
-  rightAddon,
+  elementLeft,
+  elementRight,
+  addonLeft,
+  addonRight,
   disabled = false,
   onClear,
   ...rest
@@ -33,11 +33,11 @@ export function TextField({
   } = getFieldStyles({
     variant,
     size,
-    leftElement,
-    rightElement,
+    elementLeft,
+    elementRight,
     disabled,
-    leftAddon,
-    rightAddon,
+    addonLeft,
+    addonRight,
   });
 
   const clearIcon = (
@@ -46,9 +46,9 @@ export function TextField({
 
   return (
     <AutoLayout width={width} name="Input Group" overflow="visible" {...field}>
-      {leftAddon ? (
+      {addonLeft ? (
         <AutoLayout name="Input Left Addon" {...leftAddonStyles}>
-          {renderChildren(leftAddon, {
+          {renderChildren(addonLeft, {
             textProps: {
               fontSize: text.fontSize,
               lineHeight: text.lineHeight,
@@ -75,9 +75,9 @@ export function TextField({
       </AutoLayout>
       {value?.length && value.length > 0 && rest.showClearIcon ? clearIcon : null}
 
-      {rightAddon ? (
+      {addonRight ? (
         <AutoLayout name="Input Right Addon" {...rightAddonStyles}>
-          {renderChildren(rightAddon, {
+          {renderChildren(addonRight, {
             textProps: {
               fontSize: text.fontSize,
               lineHeight: text.lineHeight,
@@ -97,7 +97,7 @@ export function TextField({
         verticalAlignItems={'center'}
         horizontalAlignItems={'center'}
       >
-        {leftElement ? leftElement : null}
+        {elementLeft || null}
       </AutoLayout>
 
       <AutoLayout
@@ -110,7 +110,7 @@ export function TextField({
         verticalAlignItems={'center'}
         horizontalAlignItems={'center'}
       >
-        {rightElement ? rightElement : null}
+        {elementRight || null}
       </AutoLayout>
     </AutoLayout>
   );

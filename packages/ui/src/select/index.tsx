@@ -8,7 +8,7 @@ import { OptionProps, SelectProps } from './interface';
 const { widget } = figma;
 const { AutoLayout, Text, useSyncedState } = widget;
 
-export function Option({ value, label }: OptionProps) {
+export function Option({}: OptionProps) {
   return <AutoLayout name="Select Option"></AutoLayout>;
 }
 

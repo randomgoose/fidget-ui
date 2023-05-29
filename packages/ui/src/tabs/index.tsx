@@ -38,7 +38,7 @@ export function Tabs({
   const tabPanels = Array.isArray(items)
     ? items
         .filter(({ key }) => key === mergedActiveKey)
-        .map(({ tab, key, children }) => (
+        .map(({ key, children }) => (
           <AutoLayout name="Tab Panel" height={'hug-contents'} key={key} {...rest}>
             {renderChildren(children, {
               textProps: { fontSize: 14, lineHeight: 22, fill: colors.neutral[900] },

@@ -125,7 +125,7 @@ export function TextFieldDoc() {
           width={480}
           id=""
           value={''}
-          onTextEditEnd={(e) => {}}
+          onTextEditEnd={() => {}}
           leftAddon={'https://'}
           rightAddon={
             <Select
@@ -147,7 +147,7 @@ export function TextFieldDoc() {
       </AutoLayout>
 
       <Heading as="h5">Disabled Text Field</Heading>
-      <TextField id="v74k" value={''} onTextEditEnd={(e) => {}} disabled placeholder="disabled" />
+      <TextField id="v74k" value={''} onTextEditEnd={() => {}} disabled placeholder="disabled" />
     </AutoLayout>
   );
 }
