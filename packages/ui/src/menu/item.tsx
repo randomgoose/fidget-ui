@@ -39,13 +39,13 @@ export function MenuItem(props: MenuItemProps) {
               name="Sub Menu Positioner"
               width={1}
               height={1}
-              positioning={'absolute'}
+              positioning="absolute"
               x={{ type: 'right', offset: 0 }}
               overflow="visible"
             >
               <AutoLayout
                 name="Sub Menu"
-                positioning={'absolute'}
+                positioning="absolute"
                 x={{ type: 'left', offset: 8 }}
                 overflow="visible"
                 {...list}

@@ -8,8 +8,16 @@ import { OptionProps, SelectProps } from './interface';
 const { widget } = figma;
 const { AutoLayout, Text, useSyncedState } = widget;
 
+const NODE_MAP_MAP = {
+  select: 'Select',
+  value: 'Select Value',
+  option: 'Select Option',
+  optionText: 'Select Option Text',
+  optionList: 'Select Option List',
+};
+
 export function Option({}: OptionProps) {
-  return <AutoLayout name="Select Option"></AutoLayout>;
+  return <AutoLayout name={NODE_MAP_MAP.option}></AutoLayout>;
 }
 
 export function Select({
@@ -26,8 +34,8 @@ export function Select({
   const [open, setOpen] = useSyncedState<boolean>(`open/${id}`, false);
   const [selected, setSelected] = useSyncedState<OptionProps | null>(`selected/${id}`, null);
 
-  const { field, text: fieldText, input } = getFieldStyles({ size, variant, disabled, open });
-  const { list, item, text } = getDropdownStyles({ size, placement });
+  const fieldStyles = getFieldStyles({ size, variant, disabled, open });
+  const dropdownStyles = getDropdownStyles({ size, placement });
 
   const chevron = open ? (
     <IconChevronUp color={colors.neutral[500]} width={12} height={12} />
@@ -41,46 +49,48 @@ export function Select({
 
   const select = (option: OptionProps) => {
     if (option.value !== selected?.value) {
-      onChange && onChange(option);
+      onChange?.(option);
     }
     setSelected(option);
   };
 
   return (
-    <AutoLayout name="Select" {...field} {...input} {...rest} onClick={toggleOptionList}>
+    <AutoLayout
+      name={NODE_MAP_MAP.select}
+      {...fieldStyles.field}
+      {...fieldStyles.input}
+      {...rest}
+      onClick={toggleOptionList}
+    >
       <Text
-        name="Select Text"
-        {...fieldText}
+        name={NODE_MAP_MAP.value}
+        {...fieldStyles.text}
         fill={selected?.value ? colors.neutral[900] : colors.neutral[500]}
-        width={'fill-parent'}
+        width="fill-parent"
       >
         {selected?.label || placeholder}
       </Text>
 
       {chevron}
+
       {open ? (
-        <AutoLayout {...list} name="Select Option List">
-          <AutoLayout
-            {...item}
-            key={''}
-            onClick={() => {
-              setSelected(null);
-            }}
-          >
-            <Text {...text} fill={colors.neutral[400]}>
+        <AutoLayout name={NODE_MAP_MAP.optionList} {...dropdownStyles.list}>
+          <AutoLayout {...dropdownStyles.item} onClick={() => setSelected(null)}>
+            <Text {...dropdownStyles.text} fill={colors.neutral[400]}>
               {placeholder}
             </Text>
           </AutoLayout>
+
           {options.map((option, index) => (
             <AutoLayout
-              {...item}
-              name="Select Item"
               key={index}
-              onClick={() => {
-                select(option);
-              }}
+              name={NODE_MAP_MAP.option}
+              {...dropdownStyles.item}
+              onClick={() => select(option)}
             >
-              {renderChildren(option.label, { textProps: { ...text, name: 'Select Item Text' } })}
+              {renderChildren(option.label !== undefined ? option.label : option.value, {
+                textProps: { name: NODE_MAP_MAP.optionText, ...dropdownStyles.text },
+              })}
             </AutoLayout>
           ))}
         </AutoLayout>

@@ -20,18 +20,18 @@ function Digit({
   onDecrement: () => void;
 }) {
   return (
-    <AutoLayout name="TimePicker Digit" direction={'vertical'}>
+    <AutoLayout name="TimePicker Digit" direction="vertical">
       <IconButton
         onClick={onIncrement}
         fontSize={12}
         icon={<IconPlusSmallSolid fill={colors.neutral[100]} />}
-        size={'sm'}
-        variant={'ghost'}
+        size="sm"
+        variant="ghost"
       />
       <AutoLayout
         name="TimePicker Digit Display"
-        verticalAlignItems={'center'}
-        horizontalAlignItems={'center'}
+        verticalAlignItems="center"
+        horizontalAlignItems="center"
         width={28}
         height={28}
         cornerRadius={4}
@@ -44,8 +44,8 @@ function Digit({
         onClick={onDecrement}
         fontSize={12}
         icon={<IconMinusSmallSolid />}
-        size={'sm'}
-        variant={'ghost'}
+        size="sm"
+        variant="ghost"
       />
     </AutoLayout>
   );
@@ -96,12 +96,12 @@ export function TimePicker({
     <AutoLayout
       {...list}
       x={{ type: 'left', offset: 0 }}
-      width={'hug-contents'}
+      width="hug-contents"
       name="TimePicker Dropdown"
       padding={8}
-      direction={'vertical'}
+      direction="vertical"
     >
-      <AutoLayout name="TimePicker Actions" verticalAlignItems={'center'}>
+      <AutoLayout name="TimePicker Actions" verticalAlignItems="center">
         <AutoLayout name="Flex" spacing={4}>
           <Digit
             value={hour[0]}
@@ -115,8 +115,8 @@ export function TimePicker({
           />
         </AutoLayout>
 
-        <AutoLayout name={'colon'} padding={8}>
-          <Text fontWeight={'bold'} fill={colors.neutral[900]}>
+        <AutoLayout name="colon" padding={8}>
+          <Text fontWeight="bold" fill={colors.neutral[900]}>
             :
           </Text>
         </AutoLayout>
@@ -137,11 +137,11 @@ export function TimePicker({
 
       <Divider margin={{ vertical: 8 }} />
 
-      <AutoLayout width={'fill-parent'} spacing={4}>
-        <Button block variant={'ghost'} onClick={closeDropdown} size={'sm'}>
+      <AutoLayout width="fill-parent" spacing={4}>
+        <Button block variant="ghost" onClick={closeDropdown} size="sm">
           Cancel
         </Button>
-        <Button onClick={assignTime} block variant={'filled'} colorScheme={'blue'} size={'sm'}>
+        <Button onClick={assignTime} block variant="filled" colorScheme="blue" size="sm">
           Done
         </Button>
       </AutoLayout>
@@ -149,7 +149,7 @@ export function TimePicker({
   );
 
   return (
-    <AutoLayout name="TimePicker Container" width={'hug-contents'} overflow={'visible'}>
+    <AutoLayout name="TimePicker Container" width="hug-contents" overflow="visible">
       <AutoLayout
         name="TimePicker Field"
         {...field}

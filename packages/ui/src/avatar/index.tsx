@@ -34,7 +34,7 @@ export function Avatar({ src, size = 'md', fill, displayName, ...props }: Avatar
       fill={fill || colors.neutral[300]}
       padding={padding}
       verticalAlignItems="center"
-      horizontalAlignItems={'center'}
+      horizontalAlignItems="center"
       {...restAvatarStyles}
     >
       {initials ? (

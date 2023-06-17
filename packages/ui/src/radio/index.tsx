@@ -6,79 +6,87 @@ import { getRadioStyles } from './styles';
 const { widget } = figma;
 const { AutoLayout, Ellipse, useSyncedState } = widget;
 
-export function Radio({ value, children, disabled = false, checked, onClick }: RadioProps) {
-  const { control, container, label } = getRadioStyles({ checked, disabled });
+const NODE_NAME_MAP = {
+  root: 'Radio',
+  control: 'Radio Control',
+  ink: 'Radio Ink',
+  group: 'Radio Group',
+};
+
+export function Radio({ value, children, disabled = false, checked = false, onClick }: RadioProps) {
+  const styles = getRadioStyles({ checked, disabled });
 
   return (
     <AutoLayout
-      name={'Radio Container'}
+      name={NODE_NAME_MAP.root}
       onClick={() => {
-        onClick && !disabled && onClick(value);
+        !disabled && onClick?.(value);
       }}
-      {...container}
+      {...styles.container}
     >
-      <AutoLayout name={'Radio Control'} {...control}>
-        {checked ? <Ellipse width={6} height={6} fill={colors.white} name={'Radio Ink'} /> : null}
+      <AutoLayout name={NODE_NAME_MAP.control} {...styles.control}>
+        {checked ? (
+          <Ellipse width={6} height={6} fill={colors.white} name={NODE_NAME_MAP.ink} />
+        ) : null}
       </AutoLayout>
-      {children ? renderChildren(children, { textProps: label }) : null}
+      {children ? renderChildren(children, { textProps: styles.label }) : null}
     </AutoLayout>
   );
 }
 
-export function RadioGroup({
-  name,
-  orientation = 'horizontal',
-  // TODO @cc children for what
-  // children,
-  options,
-  onChange,
-  spacing = 12,
-  render,
-  ...rest
-}: RadioGroupProps) {
-  const [value, setValue] = useSyncedState(
+export function RadioGroup(props: RadioGroupProps) {
+  const {
+    name,
+    value: propValue,
+    orientation = 'horizontal',
+    // TODO @cc children for what
+    // children,
+    options,
+    onChange,
+    spacing = 12,
+    render,
+    ...rest
+  } = props;
+  const [stateValue, setStateValue] = useSyncedState(
     `radio-group/${name}`,
-    rest.value ? rest.value : options?.[0].value || ''
+    'value' in props ? propValue : options?.[0]?.value || ''
   );
+  const value = 'value' in props ? propValue : stateValue;
 
   return (
-    <AutoLayout name="Radio Group" {...rest} direction={orientation} spacing={spacing}>
-      {options?.map(({ value: v, label, disabled }, index) => {
-        if (render) {
-          return (
-            <AutoLayout
-              name="Radio"
-              key={index}
-              opacity={disabled ? 0.3 : 1}
-              onClick={() => {
-                if (!disabled) {
-                  setValue(v);
-                  onChange && onChange({ value: v, label });
-                }
-              }}
-            >
-              {render({
-                checked: v === (rest.value ? rest.value : value),
-                option: { value: v, label, disabled },
-              })}
-            </AutoLayout>
-          );
-        } else {
-          return (
-            <Radio
-              checked={v === (rest.value ? rest.value : value)}
-              disabled={disabled}
-              value={v}
-              key={index}
-              onClick={(value) => {
-                setValue(value);
-                onChange && onChange({ value, label });
-              }}
-            >
-              {label}
-            </Radio>
-          );
-        }
+    <AutoLayout name={NODE_NAME_MAP.group} {...rest} direction={orientation} spacing={spacing}>
+      {options?.map(({ value: currentRadioValue, label, disabled }, index) => {
+        const checked = currentRadioValue === value;
+        const clickHandler = () => {
+          if (!disabled) {
+            setStateValue(currentRadioValue);
+            onChange?.({ value: currentRadioValue, label });
+          }
+        };
+
+        return typeof render === 'function' ? (
+          <AutoLayout
+            key={index}
+            name={NODE_NAME_MAP.root}
+            opacity={disabled ? 0.3 : 1}
+            onClick={clickHandler}
+          >
+            {render({
+              checked,
+              option: { value: currentRadioValue, label, disabled },
+            })}
+          </AutoLayout>
+        ) : (
+          <Radio
+            key={index}
+            value={currentRadioValue}
+            checked={checked}
+            disabled={disabled}
+            onClick={clickHandler}
+          >
+            {label}
+          </Radio>
+        );
       })}
     </AutoLayout>
   );

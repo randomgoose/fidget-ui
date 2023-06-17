@@ -39,7 +39,7 @@ export function Tabs({
     ? items
         .filter(({ key }) => key === mergedActiveKey)
         .map(({ key, children }) => (
-          <AutoLayout name="Tab Panel" height={'hug-contents'} key={key} {...rest}>
+          <AutoLayout name="Tab Panel" height="hug-contents" key={key} {...rest}>
             {renderChildren(children, {
               textProps: { fontSize: 14, lineHeight: 22, fill: colors.neutral[900] },
             })}
@@ -69,10 +69,10 @@ export function Tabs({
   const divider = (
     <Rectangle
       name="Divider"
-      width={'fill-parent'}
+      width="fill-parent"
       height={1}
       fill={colors.neutral[200]}
-      positioning={'absolute'}
+      positioning="absolute"
       x={{ type: 'left-right', leftOffset: 0, rightOffset: 0 }}
       y={{ type: 'bottom', offset: variant === 'line' ? -1 : 0 }}
     />

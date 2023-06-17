@@ -61,10 +61,10 @@ export function TextField({
       <AutoLayout name="Input Container" {...input}>
         <Input
           {...text}
-          width={'fill-parent'}
+          width="fill-parent"
           name="Input"
           onTextEditEnd={onTextEditEnd}
-          inputBehavior={'multiline'}
+          inputBehavior="multiline"
           placeholder={placeholder}
           inputFrameProps={{
             name: 'Input Container',
@@ -88,27 +88,27 @@ export function TextField({
       ) : null}
 
       <AutoLayout
-        name={'Left Element Container'}
+        name="Left Element Container"
         width={element.width}
         height={element.width}
-        positioning={'absolute'}
+        positioning="absolute"
         x={{ type: 'left', offset: 0 }}
         y={{ type: 'top-bottom', topOffset: 0, bottomOffset: 0 }}
-        verticalAlignItems={'center'}
-        horizontalAlignItems={'center'}
+        verticalAlignItems="center"
+        horizontalAlignItems="center"
       >
         {elementLeft || null}
       </AutoLayout>
 
       <AutoLayout
-        name={'Right Element Container'}
+        name="Right Element Container"
         width={element.width}
         height={element.width}
-        positioning={'absolute'}
+        positioning="absolute"
         x={{ type: 'right', offset: 0 }}
         y={{ type: 'top-bottom', topOffset: 0, bottomOffset: 0 }}
-        verticalAlignItems={'center'}
-        horizontalAlignItems={'center'}
+        verticalAlignItems="center"
+        horizontalAlignItems="center"
       >
         {elementRight || null}
       </AutoLayout>
