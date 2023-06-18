@@ -6,6 +6,10 @@ import { isSvg, renderChildren, renderIcon } from '../utils';
 const { widget } = figma;
 const { AutoLayout } = widget;
 
+const NODE_NAM_MAP = {
+  tag: 'Tag',
+};
+
 export function Tag({
   children,
   variant,
@@ -17,31 +21,37 @@ export function Tag({
   rightIcon,
   ...rest
 }: TagProps) {
-  const { container, label, closeButton, icon } = getTagStyles({ variant, colorScheme, size });
+  const styles = getTagStyles({ variant, colorScheme, size });
 
+  const renderIconOptions = {
+    width: styles.icon.width,
+    height: styles.icon.height,
+    stroke: styles.icon.stroke,
+    fill: styles.icon.fill,
+  };
   const leftIconNode = isSvg(leftIcon)
     ? renderIcon({
         svg: leftIcon as any,
-        options: { width: icon.width, height: icon.height, stroke: icon.stroke, fill: icon.fill },
+        options: renderIconOptions,
       })
     : null;
   const rightIconNode = isSvg(rightIcon)
     ? renderIcon({
         svg: rightIcon as any,
-        options: { width: icon.width, height: icon.height, stroke: icon.stroke, fill: icon.fill },
+        options: renderIconOptions,
       })
     : null;
 
   return (
-    <AutoLayout name="Tag" {...container} {...rest}>
+    <AutoLayout name={NODE_NAM_MAP.tag} {...styles.container} {...rest}>
       {leftIconNode}
 
-      {renderChildren(children, { textProps: label })}
+      {renderChildren(children, { textProps: styles.label })}
 
       {rightIconNode}
 
       {dismissible ? (
-        <IconXMark {...closeButton} width={12} height={12} onClick={() => onClose && onClose()} />
+        <IconXMark {...styles.closeButton} width={12} height={12} onClick={() => onClose?.()} />
       ) : null}
     </AutoLayout>
   );

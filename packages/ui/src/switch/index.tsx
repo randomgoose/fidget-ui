@@ -4,6 +4,11 @@ import { getSwitchStyles } from './styles';
 const { widget } = figma;
 const { AutoLayout, useSyncedState } = widget;
 
+const NODE_NAME_MAP = {
+  switch: 'Switch',
+  switchThumb: 'Switch Thumb',
+};
+
 export function Switch({
   id,
   onChange,
@@ -13,11 +18,12 @@ export function Switch({
   defaultChecked = false,
   ...rest
 }: SwitchProps) {
+  // TODO 确定哪些组件需要受控模式
+  // TODO 是否由组件内部自动生成 ID
   const [checked, setChecked] = useSyncedState(`checked/${id}`, defaultChecked);
-
   const mergedChecked = 'checked' in rest ? rest.checked : checked;
 
-  const { container, thumb } = getSwitchStyles({
+  const styles = getSwitchStyles({
     checked: mergedChecked,
     colorScheme,
     disabled,
@@ -26,19 +32,20 @@ export function Switch({
 
   return (
     <AutoLayout
-      name="Switch"
-      {...container}
+      name={NODE_NAME_MAP.switch}
+      {...styles.container}
       {...rest}
       onClick={() => {
         if (!disabled) {
-          onChange && onChange(!mergedChecked);
+          onChange?.(!mergedChecked);
+          // TODO control mode
           if (id !== undefined) {
-            setChecked(() => !mergedChecked);
+            setChecked(!mergedChecked);
           }
         }
       }}
     >
-      <AutoLayout name="Switch Thumb" {...thumb} />
+      <AutoLayout name={NODE_NAME_MAP.switchThumb} {...styles.thumb} />
     </AutoLayout>
   );
 }

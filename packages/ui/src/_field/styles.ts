@@ -4,13 +4,13 @@ import { FieldProps } from './interface';
 export const getFieldStyles = ({
   variant,
   size,
-  leftElement,
-  rightElement,
+  elementLeft,
+  elementRight,
   disabled,
   open,
 }: Pick<
   FieldProps,
-  'size' | 'disabled' | 'leftElement' | 'rightElement' | 'variant' | 'leftAddon' | 'rightAddon'
+  'size' | 'disabled' | 'elementLeft' | 'elementRight' | 'variant' | 'addonLeft' | 'addonRight'
 > & { open?: boolean }): {
   field: AutoLayoutProps;
   input: AutoLayoutProps;
@@ -47,6 +47,7 @@ export const getFieldStyles = ({
       cornerRadius = 6;
       addonFill = colors.neutral[100];
       break;
+
     case 'flush':
       fill = colors.white;
       effect = [
@@ -59,6 +60,7 @@ export const getFieldStyles = ({
       ];
       cornerRadius = 0;
       break;
+
     default:
       fill = colors.white;
       stroke = colors.neutral[300];
@@ -79,37 +81,39 @@ export const getFieldStyles = ({
   switch (size) {
     case 'lg':
       padding = {
-        left: leftElement ? 36 : 12,
-        right: rightElement ? 36 : 12,
+        left: elementLeft ? 36 : 12,
+        right: elementRight ? 36 : 12,
         vertical: 8,
       };
       fontSize = 16;
       lineHeight = 24;
-      clearIconOffsetX = rightElement ? 36 : 8;
+      clearIconOffsetX = elementRight ? 36 : 8;
       addonHeight = 40;
       elementWidth = 40;
       break;
+
     case 'sm':
       padding = {
-        left: leftElement ? 28 : 6,
-        right: rightElement ? 28 : 6,
+        left: elementLeft ? 28 : 6,
+        right: elementRight ? 28 : 6,
         vertical: 4,
       };
       fontSize = 12;
       lineHeight = 20;
-      clearIconOffsetX = rightElement ? 28 : 8;
+      clearIconOffsetX = elementRight ? 28 : 8;
       addonHeight = 28;
       elementWidth = 28;
       break;
+
     default:
       padding = {
-        left: leftElement ? 32 : 8,
-        right: rightElement ? 32 : 8,
+        left: elementLeft ? 32 : 8,
+        right: elementRight ? 32 : 8,
         vertical: 5,
       };
       fontSize = 14;
       lineHeight = 22;
-      clearIconOffsetX = rightElement ? 32 : 8;
+      clearIconOffsetX = elementRight ? 32 : 8;
       addonHeight = 32;
       elementWidth = 32;
       break;

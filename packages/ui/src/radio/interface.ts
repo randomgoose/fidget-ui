@@ -8,7 +8,7 @@ export interface RadioProps {
   value: string;
   children?: FigmaDeclarativeNode;
   disabled?: boolean;
-  checked: boolean;
+  checked?: boolean;
   onClick?: (value: string) => void;
 }
 
