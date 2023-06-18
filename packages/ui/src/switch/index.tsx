@@ -1,6 +1,5 @@
 import { SwitchProps } from './interface';
 import { getSwitchStyles } from './styles';
-import { merge } from 'lodash';
 
 const { widget } = figma;
 const { AutoLayout, useSyncedState } = widget;
