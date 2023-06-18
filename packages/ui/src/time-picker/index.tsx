@@ -10,6 +10,17 @@ import { TimePickerProps } from './interface';
 const { widget } = figma;
 const { AutoLayout, Text, useSyncedState } = widget;
 
+const NODE_NAME_MAP = {
+  container: 'TimePicker Container',
+  field: 'TimePicker Field',
+  digit: 'TimePicker Digit',
+  digitDisplay: 'TimePicker Digit Display',
+  digitDisplayNumber: 'Number',
+  dropdown: 'TimerDropdown',
+  actions: 'TimePicker Actions',
+  colon: 'TimePicker Colon',
+};
+
 function Digit({
   value,
   onDecrement,
@@ -20,7 +31,7 @@ function Digit({
   onDecrement: () => void;
 }) {
   return (
-    <AutoLayout name="TimePicker Digit" direction="vertical">
+    <AutoLayout name={NODE_NAME_MAP.digit} direction="vertical">
       <IconButton
         onClick={onIncrement}
         fontSize={12}
@@ -29,14 +40,14 @@ function Digit({
         variant="ghost"
       />
       <AutoLayout
-        name="TimePicker Digit Display"
+        name={NODE_NAME_MAP.digitDisplay}
         verticalAlignItems="center"
         horizontalAlignItems="center"
         width={28}
         height={28}
         cornerRadius={4}
       >
-        <Text name="Number" fontSize={16} lineHeight={24}>
+        <Text name={NODE_NAME_MAP.digitDisplayNumber} fontSize={16} lineHeight={24}>
           {value}
         </Text>
       </AutoLayout>
@@ -63,8 +74,8 @@ export function TimePicker({
   const [time, setTime] = useSyncedState(`time/${id}`, () => dayjs().format('HH:mm'));
   const [temp, setTemp] = useSyncedState(`temp/${id}`, time);
 
-  const { field, text, input } = getFieldStyles({ disabled, size });
-  const { list } = getDropdownStyles({ size, placement });
+  const fieldStyles = getFieldStyles({ disabled, size });
+  const dropdownStyles = getDropdownStyles({ size, placement });
   const [hour, minute] = temp.split(':');
 
   const openDropdown = () => {
@@ -94,14 +105,14 @@ export function TimePicker({
 
   const panel = (
     <AutoLayout
-      {...list}
+      {...dropdownStyles.list}
       x={{ type: 'left', offset: 0 }}
       width="hug-contents"
-      name="TimePicker Dropdown"
+      name={NODE_NAME_MAP.dropdown}
       padding={8}
       direction="vertical"
     >
-      <AutoLayout name="TimePicker Actions" verticalAlignItems="center">
+      <AutoLayout name={NODE_NAME_MAP.actions} verticalAlignItems="center">
         <AutoLayout name="Flex" spacing={4}>
           <Digit
             value={hour[0]}
@@ -115,7 +126,7 @@ export function TimePicker({
           />
         </AutoLayout>
 
-        <AutoLayout name="colon" padding={8}>
+        <AutoLayout name={NODE_NAME_MAP.colon} padding={8}>
           <Text fontWeight="bold" fill={colors.neutral[900]}>
             :
           </Text>
@@ -149,16 +160,16 @@ export function TimePicker({
   );
 
   return (
-    <AutoLayout name="TimePicker Container" width="hug-contents" overflow="visible">
+    <AutoLayout name={NODE_NAME_MAP.container} width="hug-contents" overflow="visible">
       <AutoLayout
-        name="TimePicker Field"
-        {...field}
-        {...input}
+        name={NODE_NAME_MAP.field}
+        {...fieldStyles.field}
+        {...fieldStyles.input}
         {...rest}
-        onClick={open ? closeDropdown : openDropdown}
         spacing={8}
+        onClick={open ? closeDropdown : openDropdown}
       >
-        <Text {...text}>
+        <Text {...fieldStyles.text}>
           {time}
           {/* {time.format("HH:mm")} */}
         </Text>

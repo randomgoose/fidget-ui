@@ -23,7 +23,7 @@ export function Button({
   ...rest
 }: ButtonProps) {
   if (variant !== 'filled') {
-    // TODO @cc, for what?
+    // TODO
   }
 
   const styles = getButtonStyles({

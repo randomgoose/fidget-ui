@@ -6,6 +6,15 @@ import { getTabsStyles } from './styles';
 const { widget } = figma;
 const { AutoLayout, Rectangle, useSyncedState } = widget;
 
+const NODE_NAME_MAP = {
+  root: 'Tabs Container',
+  tabs: 'Tabs Tab List',
+  tab: 'Tabs Tab',
+  panels: 'Tabs Tab Panels',
+  panel: 'Tab Panel',
+  divider: 'Divider',
+};
+
 export function Tabs({
   id,
   variant = 'line',
@@ -23,23 +32,14 @@ export function Tabs({
   );
 
   /* ---- Styles ---- */
-  const {
-    container,
-    tabList,
-    tabLabel,
-    tab: tabStyles,
-    tabPanels: tabPanelsStyles,
-    activeTab,
-    activeTabLabel,
-  } = getTabsStyles({ variant, isFitted, colorScheme, width });
-
+  const styles = getTabsStyles({ variant, isFitted, colorScheme, width });
   const mergedActiveKey = rest.activeKey ? rest.activeKey : activeKey;
 
   const tabPanels = Array.isArray(items)
     ? items
         .filter(({ key }) => key === mergedActiveKey)
         .map(({ key, children }) => (
-          <AutoLayout name="Tab Panel" height="hug-contents" key={key} {...rest}>
+          <AutoLayout name={NODE_NAME_MAP.tab} height="hug-contents" key={key} {...rest}>
             {renderChildren(children, {
               textProps: { fontSize: 14, lineHeight: 22, fill: colors.neutral[900] },
             })}
@@ -52,15 +52,17 @@ export function Tabs({
         const isActive = key === mergedActiveKey;
         return (
           <AutoLayout
-            name="Tabs Tab"
-            {...(isActive ? { ...activeTab } : { ...tabStyles })}
+            key={key}
+            name={NODE_NAME_MAP.tab}
+            {...(isActive ? { ...styles.activeTab } : { ...styles.tab })}
             onClick={() => {
-              onChange && onChange(key);
+              onChange?.(key);
               setActiveKey(key);
             }}
-            key={key}
           >
-            {renderChildren(tab, { textProps: !isActive ? tabLabel : activeTabLabel })}
+            {renderChildren(tab, {
+              textProps: !isActive ? styles.tabLabel : styles.activeTabLabel,
+            })}
           </AutoLayout>
         );
       })
@@ -68,7 +70,7 @@ export function Tabs({
 
   const divider = (
     <Rectangle
-      name="Divider"
+      name={NODE_NAME_MAP.divider}
       width="fill-parent"
       height={1}
       fill={colors.neutral[200]}
@@ -79,13 +81,13 @@ export function Tabs({
   );
 
   return (
-    <AutoLayout name="Tabs Container" {...container} {...rest} width={width}>
-      <AutoLayout name="Tabs Tab List" {...tabList}>
+    <AutoLayout name={NODE_NAME_MAP.root} {...styles.container} {...rest} width={width}>
+      <AutoLayout name={NODE_NAME_MAP.tabs} {...styles.tabList}>
         {variant === 'line' || variant === 'enclosed' ? divider : null}
         {tabs}
       </AutoLayout>
 
-      <AutoLayout name="Tabs Tab Panels" {...tabPanelsStyles}>
+      <AutoLayout name={NODE_NAME_MAP.panels} {...styles.tabPanels}>
         {tabPanels}
       </AutoLayout>
     </AutoLayout>

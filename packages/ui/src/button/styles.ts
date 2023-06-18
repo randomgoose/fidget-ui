@@ -161,7 +161,6 @@ export const getIconButtonStyles = ({
       ...styles.icon,
       width: fontSize || styles.icon.width,
       height: fontSize || styles.icon.height,
-      // TODO @cc, check this. It's undefined
       fill: color,
     },
   };

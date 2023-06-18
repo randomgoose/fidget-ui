@@ -7,15 +7,15 @@ export function renderChildren(
     textProps?: TextProps;
   }
 ): FigmaDeclarativeNode {
-  if (typeof children === 'boolean') {
-    return null;
-  } else if (typeof children === 'string') {
+  if (typeof children === 'string') {
     return (
       <Text name="Text" {...options?.textProps}>
         {children}
       </Text>
     );
-  } else if (typeof children === 'object') {
+  }
+
+  if (typeof children === 'object') {
     if (Array.isArray(children)) {
       if (children.length === 1 && typeof children[0] === 'string') {
         return (
@@ -29,7 +29,7 @@ export function renderChildren(
     } else {
       return children;
     }
-  } else {
-    return null;
   }
+
+  return null;
 }

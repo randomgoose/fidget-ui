@@ -39,7 +39,7 @@ export function Switch({
       onClick={() => {
         if (!disabled) {
           onChange?.(!mergedChecked);
-          // TODO @cc 为什么需要 undefined 判断
+          // TODO control mode
           if (id !== undefined) {
             setChecked(!mergedChecked);
           }

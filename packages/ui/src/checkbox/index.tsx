@@ -29,7 +29,6 @@ export function Checkbox(props: CheckboxProps) {
   const mergedChecked = 'checked' in props ? props.checked : stateChecked;
   const styles = getCheckboxStyles({ checked: mergedChecked, disabled, colorScheme });
 
-  // TODO @cc why not useSyncedState
   const tryUpdateChecked = () => {
     if (!disabled) {
       const nextChecked = !mergedChecked;
@@ -67,7 +66,7 @@ export function CheckboxGroup({
   spacing = 12,
   ...rest
 }: CheckboxGroupProps) {
-  // TODO @cc don't understand, and maybe we have to use useSyncedMap here
+  // TODO maybe we have to use useSyncedMap here
   const [values, setValues] = useSyncedState<Option[]>(`checkbox-group/${name}`, []);
 
   return (
