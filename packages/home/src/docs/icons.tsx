@@ -23,7 +23,7 @@ function IconDisplay({ name, component }: { name: string; component: any }) {
       spacing={8}
       stroke={colors.neutral[200]}
       hoverStyle={{ stroke: colors.blue[500] }}
-      onClick={() => { }}
+      onClick={() => {}}
     >
       <Icon width={24} height={24} name={name} />
       <Text

@@ -1,4 +1,4 @@
-import { Button, IconButton, colors } from 'fidget-ui';
+import { IconButton, colors } from 'fidget-ui';
 import { IconDocument } from 'fidget-ui/icons';
 
 const { widget } = figma;
@@ -19,21 +19,23 @@ export function Code({ children, ...rest }: AutoLayoutProps) {
       </Text>
 
       <IconButton
-        positioning='absolute'
-        x={{ type: "right", offset: 8 }}
-        y={{ type: "bottom", offset: 8 }}
+        positioning="absolute"
+        x={{ type: 'right', offset: 8 }}
+        y={{ type: 'bottom', offset: 8 }}
         icon={<IconDocument />}
-        onClick={() => new Promise(() => {
-          figma.showUI(__html__, {
-            position: { x: -99999, y: -99999 },
-            width: 0,
-            height: 0
+        onClick={() =>
+          new Promise(() => {
+            figma.showUI(__html__, {
+              position: { x: -99999, y: -99999 },
+              width: 0,
+              height: 0,
+            });
+            figma.ui.postMessage({
+              type: 'COPY',
+              payload: children,
+            });
           })
-          figma.ui.postMessage({
-            type: "COPY",
-            payload: children
-          })
-        })}
+        }
       />
     </AutoLayout>
   );

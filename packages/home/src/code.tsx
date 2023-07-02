@@ -40,12 +40,12 @@ function Widget() {
 
   useEffect(() => {
     figma.ui.onmessage = (msg) => {
-      if (msg.type === "CODE_COPIED") {
-        figma.notify("Code copied!")
-        figma.closePlugin()
+      if (msg.type === 'CODE_COPIED') {
+        figma.notify('Code copied!');
+        figma.closePlugin();
       }
-    }
-  })
+    };
+  });
 
   const COMPONENT_DOC: { [key: string]: FigmaDeclarativeNode } = {
     intro: <Intro />,
