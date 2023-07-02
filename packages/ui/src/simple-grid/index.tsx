@@ -52,27 +52,27 @@ export function SimpleGrid({
     >
       {Array.isArray(children)
         ? splitChildren(children, columns).map((group, index) => (
-            <AutoLayout
-              key={index}
-              name={NODE_NAME_MAP.row}
-              width="fill-parent"
-              spacing={computedSpacing.x}
-              overflow="visible"
-              height={rowHeight}
-            >
-              {group.map((item, index) => (
-                <AutoLayout
-                  key={index}
-                  name={NODE_NAME_MAP.cell}
-                  overflow="visible"
-                  width={width}
-                  height={rowHeight}
-                >
-                  {item}
-                </AutoLayout>
-              ))}
-            </AutoLayout>
-          ))
+          <AutoLayout
+            key={index}
+            name={NODE_NAME_MAP.row}
+            width="fill-parent"
+            spacing={computedSpacing.x}
+            overflow="visible"
+            height={rowHeight}
+          >
+            {group.map((item, index) => (
+              <AutoLayout
+                key={index}
+                name={NODE_NAME_MAP.cell}
+                overflow="visible"
+                width={width}
+                height={rowHeight}
+              >
+                {item}
+              </AutoLayout>
+            ))}
+          </AutoLayout>
+        ))
         : null}
     </AutoLayout>
   );

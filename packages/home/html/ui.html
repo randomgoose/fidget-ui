@@ -1,21 +1,28 @@
-<input type="text" value="" id="input">
+<!-- <textarea id="input"></textarea> -->
 
 <script>
-
   window.onmessage = (msg) => {
     switch (msg.data.pluginMessage.type) {
-      case "COPY":
-        copy(msg.data.pluginMessage.payload)
-        break
+      case 'COPY':
+        copy(msg.data.pluginMessage.payload);
+        break;
     }
-  }
+  };
 
   function copy(text) {
-    const input = document.querySelector("#input");
+    const input = 
+    document.createElement('textarea');
+    document.body.appendChild(input);
     input.value = text;
     input.select();
+    input.setSelectionRange(0, 99999);
 
-    return new Promise((res, rej) => document.execCommand("copy") ? res() : rej())
-    // input.setSelectRange(0, 99999);
+    document.execCommand('copy');
+
+    // The plugin cannot write content to the clipboard
+    // if closed immediately
+    setInterval(() => {
+      window.parent.postMessage({ pluginMessage: { type: 'CODE_COPIED' } }, '*');
+    }, 500);
   }
 </script>

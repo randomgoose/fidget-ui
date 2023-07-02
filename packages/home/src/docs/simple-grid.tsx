@@ -33,7 +33,7 @@ export function SimpleGridDoc() {
       <Text>
         Specify the number of <Span {...codeStyle}>columns</Span> for the grid layout.
       </Text>
-      <SimpleGrid>{...blocks}</SimpleGrid>
+      <SimpleGrid height={"hug-contents"}>{...blocks}</SimpleGrid>
 
       <Heading as="h5">Spacing</Heading>
       <Text>
@@ -41,14 +41,14 @@ export function SimpleGridDoc() {
         columns.
       </Text>
 
-      <SimpleGrid spacing={24}>{...blocks}</SimpleGrid>
+      <SimpleGrid spacing={24} height={"hug-contents"}>{...blocks}</SimpleGrid>
 
       <Text>
         Or assign <Span {...codeStyle}>spacingX</Span> and <Span {...codeStyle}>spacingY</Span>{' '}
         respectively.
       </Text>
 
-      <SimpleGrid spacingX={72} spacingY={16}>
+      <SimpleGrid height={"hug-contents"} spacingX={72} spacingY={16}>
         {...blocks}
       </SimpleGrid>
     </AutoLayout>

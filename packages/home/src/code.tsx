@@ -32,11 +32,20 @@ import { DatePickerDoc } from './docs/date-picker';
 import { MenuDoc } from './docs/menu';
 
 const { widget } = figma;
-const { AutoLayout, usePropertyMenu, useSyncedState, Text } = widget;
+const { AutoLayout, usePropertyMenu, useSyncedState, Text, useEffect } = widget;
 
 function Widget() {
   const [currentPage, setCurrentPage] = useSyncedState('currentPage', 'intro');
   const index = COMPONENTS.findIndex((item) => item.option === currentPage);
+
+  useEffect(() => {
+    figma.ui.onmessage = (msg) => {
+      if (msg.type === "CODE_COPIED") {
+        figma.notify("Code copied!")
+        figma.closePlugin()
+      }
+    }
+  })
 
   const COMPONENT_DOC: { [key: string]: FigmaDeclarativeNode } = {
     intro: <Intro />,

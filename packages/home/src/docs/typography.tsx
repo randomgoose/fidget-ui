@@ -1,4 +1,5 @@
-import { colors } from 'fidget-ui';
+import { Button, IconButton, colors } from 'fidget-ui';
+import { IconDocument } from 'fidget-ui/icons';
 
 const { widget } = figma;
 const { AutoLayout, Text, Span } = widget;
@@ -16,6 +17,24 @@ export function Code({ children, ...rest }: AutoLayoutProps) {
       <Text fontFamily="Fira Code" fill={'#ffffff'} fontSize={12}>
         {children as string}
       </Text>
+
+      <IconButton
+        positioning='absolute'
+        x={{ type: "right", offset: 8 }}
+        y={{ type: "bottom", offset: 8 }}
+        icon={<IconDocument />}
+        onClick={() => new Promise(() => {
+          figma.showUI(__html__, {
+            position: { x: -99999, y: -99999 },
+            width: 0,
+            height: 0
+          })
+          figma.ui.postMessage({
+            type: "COPY",
+            payload: children
+          })
+        })}
+      />
     </AutoLayout>
   );
 }
