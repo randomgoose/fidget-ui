@@ -8,7 +8,7 @@ import { OptionProps, SelectProps } from './interface';
 const { widget } = figma;
 const { AutoLayout, Text, useSyncedState } = widget;
 
-const NODE_MAP_MAP = {
+const NODE_NAME_MAP = {
   select: 'Select',
   value: 'Select Value',
   option: 'Select Option',
@@ -17,7 +17,7 @@ const NODE_MAP_MAP = {
 };
 
 export function Option({}: OptionProps) {
-  return <AutoLayout name={NODE_MAP_MAP.option}></AutoLayout>;
+  return <AutoLayout name={NODE_NAME_MAP.option}></AutoLayout>;
 }
 
 export function Select({
@@ -56,14 +56,14 @@ export function Select({
 
   return (
     <AutoLayout
-      name={NODE_MAP_MAP.select}
+      name={NODE_NAME_MAP.select}
       {...fieldStyles.field}
       {...fieldStyles.input}
       {...rest}
       onClick={toggleOptionList}
     >
       <Text
-        name={NODE_MAP_MAP.value}
+        name={NODE_NAME_MAP.value}
         {...fieldStyles.text}
         fill={selected?.value ? colors.neutral[900] : colors.neutral[500]}
         width="fill-parent"
@@ -74,7 +74,7 @@ export function Select({
       {chevron}
 
       {open ? (
-        <AutoLayout name={NODE_MAP_MAP.optionList} {...dropdownStyles.list}>
+        <AutoLayout name={NODE_NAME_MAP.optionList} {...dropdownStyles.list}>
           <AutoLayout {...dropdownStyles.item} onClick={() => setSelected(null)}>
             <Text {...dropdownStyles.text} fill={colors.neutral[400]}>
               {placeholder}
@@ -84,12 +84,12 @@ export function Select({
           {options.map((option, index) => (
             <AutoLayout
               key={index}
-              name={NODE_MAP_MAP.option}
+              name={NODE_NAME_MAP.option}
               {...dropdownStyles.item}
               onClick={() => select(option)}
             >
               {renderChildren(option.label !== undefined ? option.label : option.value, {
-                textProps: { name: NODE_MAP_MAP.optionText, ...dropdownStyles.text },
+                textProps: { name: NODE_NAME_MAP.optionText, ...dropdownStyles.text },
               })}
             </AutoLayout>
           ))}

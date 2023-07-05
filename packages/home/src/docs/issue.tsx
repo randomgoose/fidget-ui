@@ -9,6 +9,7 @@ import {
   TimePicker,
   colors,
   Heading,
+  DatePicker,
 } from 'fidget-ui';
 
 const { AutoLayout, useSyncedState, Text } = figma.widget;
@@ -43,6 +44,10 @@ export function Issue() {
     {
       label: 'Due Time',
       value: <TimePicker id="v76m" placement="top" />,
+    },
+    {
+      label: 'Due Date',
+      value: <DatePicker id="c4m1" />,
     },
     {
       label: 'Status',

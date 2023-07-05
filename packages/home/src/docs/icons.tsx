@@ -84,7 +84,7 @@ export function IconsDoc() {
             tab: 'Solid',
             key: 'solid',
             children: (
-              <SimpleGrid columns={12} spacing={8} width={'hug-contents'}>
+              <SimpleGrid columns={8} spacing={8} width={'hug-contents'} height={'hug-contents'}>
                 {...solidIconEntries
                   .filter(([k]) => k.toLowerCase().includes(keyword.toLowerCase()))
                   .map(([k, Icon]) => <IconDisplay name={k} component={Icon} key={k} />)}
@@ -95,7 +95,7 @@ export function IconsDoc() {
             tab: 'Outline',
             key: 'outline',
             children: (
-              <SimpleGrid columns={12} spacing={8} width={'hug-contents'} height={'hug-contents'}>
+              <SimpleGrid columns={8} spacing={8} width={'hug-contents'} height={'hug-contents'}>
                 {...outlineIconEntries
                   .filter(([k]) => k.toLowerCase().includes(keyword.toLowerCase()))
                   .map(([k, Icon]) => <IconDisplay name={k} component={Icon} key={k} />)}
