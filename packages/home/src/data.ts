@@ -22,6 +22,7 @@ export const COMPONENTS: { option: string; label: string; type: string }[] = [
   { option: 'time-picker', label: 'TimePicker', type: 'form' },
   { option: 'date-picker', label: 'DatePicker', type: 'form' },
   { option: 'description-list', label: 'DescriptionList', type: 'data display' },
+  { option: 'table', label: 'Table', type: 'data display' },
   { option: 'demo1', label: 'Demo: Todo', type: 'demos' },
   { option: 'demo2', label: 'Demo: Issue', type: 'demos' },
 ];

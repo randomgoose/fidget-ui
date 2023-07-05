@@ -9,6 +9,13 @@ import { SimpleGrid } from '../simple-grid';
 import { generateDecade, generateFirstDayOfEachWeek, generateWeek } from './utils';
 import { Controls } from './controls';
 
+const NODE_NAME_MAP = {
+  datepicker: 'DatePicker',
+  field: 'DatePicker Field',
+  calendar: 'DatePicker Calendar',
+  locator: 'DatePicker Locator',
+};
+
 const { AutoLayout, Text, Ellipse, useSyncedState } = figma.widget;
 const CALENDAR_MONTHS = [
   'Jan',
@@ -26,17 +33,19 @@ const CALENDAR_MONTHS = [
 ];
 
 export function DatePicker(props: DatePickerProps) {
-  const { variant, size, disabled } = props;
-
-  /*---- Styles ----*/
-  const { field, input } = getFieldStyles({ variant, size, disabled });
-  const { cell, calendar, digit, weekday, indicator } = getDatePickerStyles();
+  const { variant, size, disabled, placement = 'top-start', format } = props;
 
   /*---- States ----*/
   const [open, setOpen] = useSyncedState<boolean>(`open/${props.id}`, false);
   const [date, setDate] = useSyncedState<string>(`date/${props.id}`, dayjs().toString());
   const [pivot, setPivot] = useSyncedState<string>(`pivot/${props.id}`, dayjs().toString());
   const [view, setView] = useSyncedState<CalendarView>(`view/${props.id}`, 'date');
+
+  /*---- Styles ----*/
+  const { field, input, text } = getFieldStyles({ variant, size, disabled, open });
+  const { cell, calendar, digit, weekday, indicator, container } = getDatePickerStyles({
+    placement: props.placement || 'top-start',
+  });
 
   const firstDayOfTheMonth = dayjs(pivot).clone().startOf('month');
   const firstDayOfFirstWeekOfMonth = dayjs(firstDayOfTheMonth).startOf('week');
@@ -202,24 +211,48 @@ export function DatePicker(props: DatePickerProps) {
     }
   };
 
-  return (
+  const locatorNode = (
+    <AutoLayout width={1} height={1} name={NODE_NAME_MAP.locator} overflow="visible" hidden={!open}>
+      <AutoLayout name={NODE_NAME_MAP.calendar} {...calendar} hidden={!open}>
+        <Controls pivot={pivot} setPivot={setPivot} view={view} setView={setView} />
+        {renderView(view)}
+      </AutoLayout>
+    </AutoLayout>
+  );
+
+  const fieldNode = (
     <AutoLayout
-      {...field}
       {...input}
-      name="DatePicker"
-      onClick={open ? undefined : toggleCalendar}
+      {...field}
+      name={NODE_NAME_MAP.field}
+      onClick={toggleCalendar}
       spacing={4}
+      width={'hug-contents'}
     >
       <IconCalendar width={16} height={16} color={colors.neutral[500]} />
-      <Text fontSize={12}>{dayjs(date).format('YYYY-MM-DD')}</Text>
+      <Text {...text}>{dayjs(date).format(format || 'YYYY-MM-DD')}</Text>
+    </AutoLayout>
+  );
 
-      {open ? (
-        <AutoLayout name="DatePicker Calendar" {...calendar}>
-          <Controls pivot={pivot} setPivot={setPivot} view={view} setView={setView} />
-          {/* {renderControls(view)} */}
-          {renderView(view)}
-        </AutoLayout>
-      ) : null}
+  return (
+    <AutoLayout
+      name={NODE_NAME_MAP.datepicker}
+      {...container}
+      direction="vertical"
+      overflow="visible"
+      spacing={4}
+    >
+      {placement?.startsWith('top') ? (
+        <>
+          {locatorNode}
+          {fieldNode}
+        </>
+      ) : (
+        <>
+          {fieldNode}
+          {locatorNode}
+        </>
+      )}
     </AutoLayout>
   );
 }

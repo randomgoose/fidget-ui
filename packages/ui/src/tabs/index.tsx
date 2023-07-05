@@ -39,7 +39,14 @@ export function Tabs({
     ? items
         .filter(({ key }) => key === mergedActiveKey)
         .map(({ key, children }) => (
-          <AutoLayout name={NODE_NAME_MAP.tab} height="hug-contents" key={key} {...rest}>
+          // UPDATE: The width of tab panels should follow the set of Tabs component
+          <AutoLayout
+            name={NODE_NAME_MAP.panel}
+            height="hug-contents"
+            width={width || 'fill-parent'}
+            key={key}
+            {...rest}
+          >
             {renderChildren(children, {
               textProps: { fontSize: 14, lineHeight: 22, fill: colors.neutral[900] },
             })}

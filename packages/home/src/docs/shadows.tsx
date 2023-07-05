@@ -1,6 +1,7 @@
-import { Heading, colors, shadows } from 'fidget-ui';
+import { Divider, Heading, colors, shadows } from 'fidget-ui';
 import { docStyle } from './styles';
-import { P } from './typography';
+import { Code, P, Pre } from './typography';
+import { Case } from '../components/case';
 
 const { AutoLayout, Text } = figma.widget;
 
@@ -8,7 +9,17 @@ export function ShadowsDoc() {
   return (
     <AutoLayout {...docStyle} overflow="visible">
       <Heading as="h1">Shadows</Heading>
-      <AutoLayout spacing={16} overflow="visible">
+      <P>Use shadow styles from TailwindCSS.</P>
+      <Divider />
+
+      <Code>{`import { shadows } from 'fidget-ui'`}</Code>
+
+      <Heading as="h5">Usage</Heading>
+      <P>
+        Import the <Pre>shadows</Pre> object
+      </P>
+
+      <Case spacing={32}>
         {Object.entries(shadows).map(([name, effect]) => (
           <AutoLayout
             direction={'vertical'}
@@ -28,7 +39,7 @@ export function ShadowsDoc() {
             <Text fontSize={12}>{name}</Text>
           </AutoLayout>
         ))}
-      </AutoLayout>
+      </Case>
       {/* <Code>import { shadows } from</Code> */}
       <P></P>
     </AutoLayout>

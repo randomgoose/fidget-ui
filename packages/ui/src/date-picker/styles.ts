@@ -1,6 +1,10 @@
 import { colors, shadows } from '../styles';
+import { DatePickerProps } from './interface';
 
-export const getDatePickerStyles = (): {
+export const getDatePickerStyles = (
+  { placement }: { placement: DatePickerProps['placement'] } = { placement: 'top' }
+): {
+  container: AutoLayoutProps;
   calendar: AutoLayoutProps;
   controls: AutoLayoutProps;
   weekday: AutoLayoutProps;
@@ -8,12 +12,30 @@ export const getDatePickerStyles = (): {
   digit: TextProps;
   indicator: EllipseProps;
 } => {
+  const horizontalAlignItems: AutoLayoutProps['horizontalAlignItems'] = placement?.endsWith('start')
+    ? 'start'
+    : placement?.endsWith('end')
+    ? 'end'
+    : 'center';
+  const y: AutoLayoutProps['y'] = placement?.startsWith('top')
+    ? { type: 'bottom', offset: 0 }
+    : { type: 'top', offset: 0 };
+  const x: AutoLayoutProps['x'] = placement?.endsWith('start')
+    ? { type: 'left', offset: 0 }
+    : placement?.endsWith('end')
+    ? { type: 'right', offset: 0 }
+    : { type: 'center', offset: 0 };
+
   return {
+    container: {
+      horizontalAlignItems,
+    },
     calendar: {
       width: 260,
       effect: shadows['xl'],
       positioning: 'absolute',
-      y: { type: 'bottom', offset: 48 },
+      x,
+      y,
       direction: 'vertical',
       fill: colors.white,
       cornerRadius: 12,

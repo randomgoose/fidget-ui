@@ -9,4 +9,6 @@ export interface DatePickerProps extends Omit<FieldProps, 'onTextEditEnd' | 'val
   date?: DateType;
   onChange?: (date: Date) => void;
   excludeDates?: Date[];
+  placement?: 'bottom' | 'top' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end';
+  format?: string;
 }
