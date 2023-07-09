@@ -15,16 +15,16 @@ export const getDatePickerStyles = (
   const horizontalAlignItems: AutoLayoutProps['horizontalAlignItems'] = placement?.endsWith('start')
     ? 'start'
     : placement?.endsWith('end')
-    ? 'end'
-    : 'center';
+      ? 'end'
+      : 'center';
   const y: AutoLayoutProps['y'] = placement?.startsWith('top')
-    ? { type: 'bottom', offset: 0 }
-    : { type: 'top', offset: 0 };
+    ? { type: 'bottom', offset: 4 }
+    : { type: 'top', offset: 4 };
   const x: AutoLayoutProps['x'] = placement?.endsWith('start')
     ? { type: 'left', offset: 0 }
     : placement?.endsWith('end')
-    ? { type: 'right', offset: 0 }
-    : { type: 'center', offset: 0 };
+      ? { type: 'right', offset: 0 }
+      : { type: 'center', offset: 0 };
 
   return {
     container: {
