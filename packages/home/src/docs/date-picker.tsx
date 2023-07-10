@@ -19,22 +19,7 @@ export function DatePickerDoc() {
       <P>Select a date from a calendar.</P>
       <Divider />
       <Heading as="h5">Usage</Heading>
-
-      <Case height={180}>
-        <DatePicker width={240} />
-      </Case>
-
-      <Heading as="h5">Placement</Heading>
-      <RadioGroup
-        name="placement"
-        value={placement}
-        onChange={(option) => setPlacement(option.value as DatePickerProps['placement'])}
-        options={PLACEMENT_OPTIONS.map((option) => ({ value: option, label: option }))}
-      />
-
-      <Case height={180}>
-        <DatePicker placement={placement} id="w83n" />
-      </Case>
+      <DatePicker />
 
       <Heading as="h5">Field styles</Heading>
       <P>

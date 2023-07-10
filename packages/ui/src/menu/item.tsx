@@ -7,7 +7,7 @@ import { getMenuStyles } from './styles';
 const { useSyncedState, AutoLayout } = figma.widget;
 
 export function MenuItem(props: MenuItemProps) {
-  const { icon, command, disabled, label, items, color, ...rest } = props;
+  const { icon, command, disabled, label, items, color, children, ...rest } = props;
   const {
     text,
     command: commandStyles,
@@ -31,6 +31,7 @@ export function MenuItem(props: MenuItemProps) {
   return (
     <AutoLayout {...rest} {...item} name="Menu Item" onClick={onClick}>
       {iconNode}
+      {renderChildren(children, { textProps: { ...text, fill: color || colors.neutral[700] } })}
       {renderChildren(label, { textProps: { ...text, fill: color || colors.neutral[900] } })}
       {commandNode}
       {items && items.length > 0 ? (

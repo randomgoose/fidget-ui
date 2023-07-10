@@ -5,6 +5,9 @@ export interface MenuItemProps extends AutoLayoutProps {
   id: string;
   type?: 'item';
   children?: FigmaDeclarativeNode;
+  /**
+   * @deprecated This prop is deprecated. Use 'children' instead.
+   */
   label?: FigmaDeclarativeNode;
   icon?: FigmaDeclarativeNode;
   command?: FigmaDeclarativeNode;
@@ -12,6 +15,11 @@ export interface MenuItemProps extends AutoLayoutProps {
   items?: MenuItemProps[];
   /*---- New ----*/
   color?: TextProps['fill'];
+  onClick?: (e: WidgetClickEvent) => void;
+}
+
+export interface MenuTriggerProps extends AutoLayoutProps {
+  children: FigmaDeclarativeNode
 }
 
 export interface MenuDividerProps extends DividerProps {
@@ -23,5 +31,5 @@ export interface MenuProps extends AutoLayoutProps {
   trigger?: FigmaDeclarativeNode;
   children?: FigmaDeclarativeNode;
   items?: (MenuItemProps | MenuDividerProps)[];
-  placement?: 'bottom' | 'top' | 'left' | 'right';
+  placement?: 'bottom' | 'top' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end';
 }
