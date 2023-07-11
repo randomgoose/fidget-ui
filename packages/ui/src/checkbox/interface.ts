@@ -7,6 +7,7 @@ export type Option = {
 };
 
 export interface CheckboxProps extends AutoLayoutProps {
+  id: string;
   colorScheme?: ColorScheme;
   checked?: boolean;
   children?: FigmaDeclarativeNode;

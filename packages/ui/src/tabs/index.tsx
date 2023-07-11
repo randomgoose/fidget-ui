@@ -1,5 +1,5 @@
 import { colors } from '../styles';
-import { renderChildren } from '../utils';
+import { renderChildren, getSyncedKeys } from '../utils';
 import { TabsProps } from './interface';
 import { getTabsStyles } from './styles';
 
@@ -26,8 +26,9 @@ export function Tabs({
   onChange,
   ...rest
 }: TabsProps) {
+  const [syncedKeyActiveKey] = getSyncedKeys('Tabs', id, ['activeKey']);
   const [activeKey, setActiveKey] = useSyncedState(
-    `fidget/tabs/${id}/activeKey`,
+    syncedKeyActiveKey,
     defaultActiveKey || items?.[0].key
   );
 

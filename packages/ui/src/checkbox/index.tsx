@@ -1,7 +1,7 @@
 import { omit } from 'lodash';
 
 import { colors } from '../styles';
-import { renderChildren } from '../utils';
+import { renderChildren, getSyncedKeys } from '../utils';
 import { CheckboxGroupProps, CheckboxProps, Option } from './interface';
 import { getCheckboxStyles } from './styles';
 
@@ -24,8 +24,9 @@ const icon = (
 );
 
 export function Checkbox(props: CheckboxProps) {
-  const { children, disabled, onChange, colorScheme, ...rest } = props;
-  const [stateChecked, setStateChecked] = useSyncedState('checked', false);
+  const { id, children, disabled, onChange, colorScheme, ...rest } = props;
+  const [syncedKeyChecked] = getSyncedKeys('Checkbox', id, ['checked']);
+  const [stateChecked, setStateChecked] = useSyncedState(syncedKeyChecked, false);
   const mergedChecked = 'checked' in props ? props.checked : stateChecked;
   const styles = getCheckboxStyles({ checked: mergedChecked, disabled, colorScheme });
 
@@ -67,12 +68,16 @@ export function CheckboxGroup({
   ...rest
 }: CheckboxGroupProps) {
   // TODO maybe we have to use useSyncedMap here
-  const [values, setValues] = useSyncedState<Option[]>(`checkbox-group/${name}`, []);
+  // TODO name 是否应该改为 id
+  const [syncedKeyValues] = getSyncedKeys('Checkbox', name, [`group/values`]);
+  const [values, setValues] = useSyncedState<Option[]>(syncedKeyValues, []);
 
   return (
     <AutoLayout name={NODE_NAME_MAP.group} {...rest} spacing={spacing}>
       {options?.map((option, index) => (
         <Checkbox
+          // TODO id is necessary
+          id={`${index}`}
           key={index}
           colorScheme="emerald"
           disabled={option.disabled}

@@ -1,6 +1,6 @@
 import { IconChevronDown, IconChevronUp } from '../icons';
 import { AccordionItemProps, AccordionProps } from './interface';
-import { renderChildren } from '../utils';
+import { renderChildren, getSyncedKeys } from '../utils';
 import { getAccordionStyles } from './styles';
 
 const { widget } = figma;
@@ -15,9 +15,13 @@ const NODE_NAME_MAP = {
   itemChevron: 'Accordion Chevron Container',
 };
 
-export function Accordion({ data, width = 320 }: AccordionProps) {
+export function Accordion({ id, data, width = 320 }: AccordionProps) {
   const styles = getAccordionStyles();
-  const [activeKeys, setActiveKeys] = useSyncedState<AccordionItemProps['key'][]>('activeKeys', []);
+  const [syncedKeyActiveKeys] = getSyncedKeys('Accordion', id, ['activeKeys']);
+  const [activeKeys, setActiveKeys] = useSyncedState<AccordionItemProps['key'][]>(
+    syncedKeyActiveKeys,
+    []
+  );
 
   const isActiveKey = (key: AccordionItemProps['key']) => activeKeys.indexOf(key) > -1;
   const toggleActive = (key: AccordionItemProps['key']) => {
