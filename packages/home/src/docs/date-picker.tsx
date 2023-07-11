@@ -1,18 +1,13 @@
-import { DatePicker, DatePickerProps, Divider, Heading, RadioGroup } from 'fidget-ui';
+import { DatePicker, Divider, Heading } from 'fidget-ui';
 import { docStyle } from './styles';
 import { P, Pre } from './typography';
 import { Case } from '../components/case';
 
-const { AutoLayout, useSyncedState } = figma.widget;
+const { AutoLayout } = figma.widget;
 
-const PLACEMENT_OPTIONS = ['top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end'];
+// const PLACEMENT_OPTIONS = ['top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end'];
 
 export function DatePickerDoc() {
-  const [placement, setPlacement] = useSyncedState<DatePickerProps['placement']>(
-    'datepicker-doc/placement',
-    'top'
-  );
-
   return (
     <AutoLayout name="Date Picker Doc" {...docStyle} overflow="visible">
       <Heading as="h1">Date Picker</Heading>

@@ -1,6 +1,22 @@
-import { Divider, Heading, Menu, MenuDivider, MenuItem, colors } from 'fidget-ui';
+import {
+  Avatar,
+  Divider,
+  Heading,
+  Menu,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+  MenuTrigger,
+  colors,
+} from 'fidget-ui';
 import { docStyle } from './styles';
-import { IconArrowDownTray, IconCodeBracket, IconDocument, IconDocumentText, IconTrash } from 'fidget-ui/icons';
+import {
+  IconArrowDownTray,
+  IconCodeBracket,
+  IconDocument,
+  IconDocumentText,
+  IconTrash,
+} from 'fidget-ui/icons';
 import { Case } from '../components/case';
 
 const { widget } = figma;
@@ -27,20 +43,21 @@ export function MenuDoc() {
         ></Menu>
       </Case>
 
+      <Heading as="h5">Custom Menu Trigger</Heading>
 
       <Case>
-        <Menu id='md93' placement='top-start'>
-          <MenuItem
-            onClick={() => { figma.notify("Message!") }}
-            icon={<IconDocument />}>Copy SVG
-          </MenuItem>
-          <MenuDivider />
-          <MenuItem icon={<IconCodeBracket />}>Copy Code</MenuItem>
-          <MenuItem icon={<IconArrowDownTray />}>Download</MenuItem>
+        <Menu id="md93" placement="top-start">
+          <MenuTrigger>
+            <Avatar fill={colors.indigo[500]} />
+          </MenuTrigger>
+          <MenuList>
+            <MenuItem icon={<IconDocument />}>Edit Profile</MenuItem>
+            <MenuDivider />
+            <MenuItem icon={<IconCodeBracket />}>Copy Code</MenuItem>
+            <MenuItem icon={<IconArrowDownTray />}>Download</MenuItem>
+          </MenuList>
         </Menu>
       </Case>
-
-      <Heading as='h5'>Custom Menu Trigger</Heading>
-    </AutoLayout >
+    </AutoLayout>
   );
 }

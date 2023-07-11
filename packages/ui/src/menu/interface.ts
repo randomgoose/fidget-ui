@@ -19,12 +19,14 @@ export interface MenuItemProps extends AutoLayoutProps {
 }
 
 export interface MenuTriggerProps extends AutoLayoutProps {
-  children: FigmaDeclarativeNode
+  onClick?: (e: WidgetClickEvent) => void;
 }
 
 export interface MenuDividerProps extends DividerProps {
   type: 'divider';
 }
+
+export type MenuListProps = AutoLayoutProps;
 
 export interface MenuProps extends AutoLayoutProps {
   id: string;
