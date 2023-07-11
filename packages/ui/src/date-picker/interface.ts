@@ -5,7 +5,7 @@ export type DateType = Date | Dayjs | string;
 export type CalendarView = 'date' | 'month' | 'year';
 
 export interface DatePickerProps extends Omit<FieldProps, 'onTextEditEnd' | 'value'> {
-  id?: string;
+  id: string;
   date?: DateType;
   onChange?: (date: Date) => void;
   excludeDates?: Date[];

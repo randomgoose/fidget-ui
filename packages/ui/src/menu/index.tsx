@@ -1,34 +1,16 @@
-import { IconFilmSolid } from '../icons';
 import { Button } from '../button';
-import { MenuDividerProps, MenuItemProps, MenuProps } from './interface';
+import { MenuProps } from './interface';
 import { getMenuStyles } from './styles';
 import { Divider } from '../divider';
 import { MenuItem } from './item';
-import { colors } from '../styles';
+import { getSyncedKeys } from '../utils';
 
 const { widget } = figma;
 const { AutoLayout, useSyncedState, h } = widget;
 
-// eslint-disable-next-line
-const items: (MenuDividerProps | MenuItemProps)[] = [
-  {
-    label: 'Create',
-    command: '⌘N',
-    onClick: () => {
-      figma.notify('hi');
-    },
-  },
-  { label: 'Open Stream URL...' },
-  { label: 'Close Window' },
-  { label: 'Library' },
-  { label: 'Import...', icon: <IconFilmSolid /> },
-  { label: 'Bury Playlist to disc', disabled: true },
-  { type: 'divider', margin: 4 },
-  { label: 'Delete', color: colors.red[500] },
-];
-
 export function Menu(props: MenuProps) {
-  const [isOpen, setIsOpen] = useSyncedState(`open/${props.id}`, false);
+  const [syncedKeyOpen] = getSyncedKeys('Menu', props.id, ['open']);
+  const [isOpen, setIsOpen] = useSyncedState(syncedKeyOpen, false);
 
   const { placement, items } = props;
   const { list, positioner } = getMenuStyles({ placement });

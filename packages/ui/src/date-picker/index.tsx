@@ -8,6 +8,7 @@ import { getDatePickerStyles } from './styles';
 import { SimpleGrid } from '../simple-grid';
 import { generateDecade, generateFirstDayOfEachWeek, generateWeek } from './utils';
 import { Controls } from './controls';
+import { getSyncedKeys } from '../utils';
 
 const NODE_NAME_MAP = {
   datepicker: 'DatePicker',
@@ -34,12 +35,17 @@ const CALENDAR_MONTHS = [
 
 export function DatePicker(props: DatePickerProps) {
   const { variant, size, disabled, placement = 'top-start', format } = props;
+  const [syncedKeyOpen, syncedKeyDate, syncedKeyPivot, syncedKeyView] = getSyncedKeys(
+    'DatePicker',
+    props.id,
+    ['open', 'date', 'pivot', 'view']
+  );
 
   /*---- States ----*/
-  const [open, setOpen] = useSyncedState<boolean>(`open/${props.id}`, false);
-  const [date, setDate] = useSyncedState<string>(`date/${props.id}`, dayjs().toString());
-  const [pivot, setPivot] = useSyncedState<string>(`pivot/${props.id}`, dayjs().toString());
-  const [view, setView] = useSyncedState<CalendarView>(`view/${props.id}`, 'date');
+  const [open, setOpen] = useSyncedState(syncedKeyOpen, false);
+  const [date, setDate] = useSyncedState(syncedKeyDate, dayjs().toString());
+  const [pivot, setPivot] = useSyncedState(syncedKeyPivot, dayjs().toString());
+  const [view, setView] = useSyncedState<CalendarView>(syncedKeyView, 'date');
 
   /*---- Styles ----*/
   const { field, input, text } = getFieldStyles({ variant, size, disabled, open });
@@ -112,8 +118,8 @@ export function DatePicker(props: DatePickerProps) {
                               selected
                                 ? colors.white
                                 : isInThisMonth
-                                  ? colors.neutral[900]
-                                  : colors.neutral[300]
+                                ? colors.neutral[900]
+                                : colors.neutral[300]
                             }
                           >
                             {day.getDate()}

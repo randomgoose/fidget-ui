@@ -27,7 +27,7 @@ export interface TabPaneProps extends AutoLayoutProps {
 }
 
 export interface TabsProps extends AutoLayoutProps {
-  id?: string;
+  id: string;
   variant?: TabsVariant;
   colorScheme?: TabsColorScheme;
   defaultActiveKey?: string | number;

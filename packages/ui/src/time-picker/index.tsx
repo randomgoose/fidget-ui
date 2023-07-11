@@ -6,6 +6,7 @@ import { IconClock, IconMinusSmallSolid, IconPlusSmallSolid } from '../icons';
 import { getDropdownStyles } from '../_dropdown/styles';
 import { getFieldStyles } from '../_field/styles';
 import { TimePickerProps } from './interface';
+import { getSyncedKeys } from '../utils';
 
 const { widget } = figma;
 const { AutoLayout, Text, useSyncedState } = widget;
@@ -70,9 +71,14 @@ export function TimePicker({
   placement,
   ...rest
 }: TimePickerProps) {
-  const [open, setOpen] = useSyncedState(`open/${id}`, false);
-  const [time, setTime] = useSyncedState(`time/${id}`, () => dayjs().format('HH:mm'));
-  const [temp, setTemp] = useSyncedState(`temp/${id}`, time);
+  const [syncedKeyOpen, syncedKeyTime, syncedKeyTemp] = getSyncedKeys('TimePicker', id, [
+    'open',
+    'time',
+    'temp',
+  ]);
+  const [open, setOpen] = useSyncedState(syncedKeyOpen, false);
+  const [time, setTime] = useSyncedState(syncedKeyTime, () => dayjs().format('HH:mm'));
+  const [temp, setTemp] = useSyncedState(syncedKeyTemp, time);
 
   const fieldStyles = getFieldStyles({ disabled, size });
   const dropdownStyles = getDropdownStyles({ size, placement });

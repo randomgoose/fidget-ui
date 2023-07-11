@@ -1,5 +1,5 @@
 import { colors } from '../styles';
-import { renderChildren } from '../utils';
+import { renderChildren, getSyncedKeys } from '../utils';
 import { IconChevronDown, IconChevronUp } from '../icons';
 import { getDropdownStyles } from '../_dropdown/styles';
 import { getFieldStyles } from '../_field/styles';
@@ -31,8 +31,9 @@ export function Select({
   placement = 'bottom',
   ...rest
 }: SelectProps) {
-  const [open, setOpen] = useSyncedState<boolean>(`open/${id}`, false);
-  const [selected, setSelected] = useSyncedState<OptionProps | null>(`selected/${id}`, null);
+  const [syncedKeyOpen, syncedKeySelected] = getSyncedKeys('Select', id, ['open', 'selected']);
+  const [open, setOpen] = useSyncedState(syncedKeyOpen, false);
+  const [selected, setSelected] = useSyncedState<OptionProps | null>(syncedKeySelected, null);
 
   const fieldStyles = getFieldStyles({ size, variant, disabled, open });
   const dropdownStyles = getDropdownStyles({ size, placement });

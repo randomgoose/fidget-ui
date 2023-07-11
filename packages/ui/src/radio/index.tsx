@@ -1,5 +1,5 @@
 import { colors } from '../styles';
-import { renderChildren } from '../utils';
+import { renderChildren, getSyncedKeys } from '../utils';
 import { RadioGroupProps, RadioProps } from './interface';
 import { getRadioStyles } from './styles';
 
@@ -36,6 +36,7 @@ export function Radio({ value, children, disabled = false, checked = false, onCl
 
 export function RadioGroup(props: RadioGroupProps) {
   const {
+    // TODO 使用 name 还是 id 作为唯一标识
     name,
     value: propValue,
     orientation = 'horizontal',
@@ -47,8 +48,9 @@ export function RadioGroup(props: RadioGroupProps) {
     render,
     ...rest
   } = props;
+  const [syncedKeyValue] = getSyncedKeys('Radio', name, ['group/value']);
   const [stateValue, setStateValue] = useSyncedState(
-    `radio-group/${name}`,
+    syncedKeyValue,
     'value' in props ? propValue : options?.[0]?.value || ''
   );
   const value = 'value' in props ? propValue : stateValue;

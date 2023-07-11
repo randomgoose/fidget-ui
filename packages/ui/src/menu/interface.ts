@@ -1,7 +1,8 @@
 import { DividerProps } from '../divider/interface';
 
 export interface MenuItemProps extends AutoLayoutProps {
-  id?: string;
+  // TODO 此处应该可以叫 key，同时以它构建的 syncedStatedKey
+  id: string;
   type?: 'item';
   children?: FigmaDeclarativeNode;
   label?: FigmaDeclarativeNode;

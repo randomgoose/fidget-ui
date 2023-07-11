@@ -1,6 +1,6 @@
 import { IconChevronRight } from '../icons';
 import { colors } from '../styles';
-import { renderIcon, renderChildren } from '../utils';
+import { renderIcon, renderChildren, getSyncedKeys } from '../utils';
 import { MenuItemProps } from './interface';
 import { getMenuStyles } from './styles';
 
@@ -16,7 +16,9 @@ export function MenuItem(props: MenuItemProps) {
     icon: iconStyles,
     chevron,
   } = getMenuStyles({ disabled });
-  const [isOpen, setIsOpen] = useSyncedState(`open/${props.id}`, false);
+  // TODO 第二个参数应该为 MenuID + MenuItemId
+  const [syncedKeyOpen] = getSyncedKeys('Menu', props.id, [`item/open`]);
+  const [isOpen, setIsOpen] = useSyncedState(syncedKeyOpen, false);
 
   const iconNode = icon ? renderIcon({ svg: icon as any, options: iconStyles }) : null;
   const commandNode = command ? renderChildren(command, { textProps: commandStyles }) : null;
