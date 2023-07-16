@@ -1,6 +1,7 @@
-import { Button, Heading, Switch, Divider, colors } from 'fidget-ui';
-import { codeStyle, docStyle } from './styles';
+import { Button, Heading, Switch, Divider, colors, Tabs } from 'fidget-ui';
+import { docStyle } from './styles';
 import { Code, P, Pre } from './typography';
+import { Case } from '../components/case';
 
 const { AutoLayout, useSyncedState, Span } = figma.widget;
 
@@ -24,17 +25,38 @@ export function SwitchDoc() {
           · Pass a <Pre>onChange</Pre> callback to get
         </P>
       </AutoLayout>
-      <AutoLayout width={'fill-parent'} fill={colors.blue[50]} padding={16} cornerRadius={6}>
-        <P fill={colors.blue[900]}>
-          Notice: A unique <Span {...codeStyle}>id</Span> is required to differentiate states of
-          multiple Switch components.
-        </P>
-      </AutoLayout>
-      <Switch
-        id="ht5o"
-        onChange={(checked) => {
-          figma.notify(`Switched ${checked ? 'on' : 'off'}.`);
-        }}
+
+      <Tabs
+        id="swtich/single-checkbox"
+        items={[
+          {
+            key: 'preview',
+            tab: 'Preview',
+            children: (
+              <Case height={240}>
+                <Switch
+                  id="ht5o"
+                  onChange={(checked) => {
+                    figma.notify(`Switched ${checked ? 'on' : 'off'}.`);
+                  }}
+                />
+              </Case>
+            ),
+          },
+          {
+            key: 'code',
+            tab: 'Code',
+            children: (
+              <Code height={240}>
+                {`<Checkbox
+  checked={checked}
+  onChange={(value) => setChecked(value)}>
+  <Text>Happy? {checked ? 'Yes!' : 'No.'}</Text>
+</Checkbox>`}
+              </Code>
+            ),
+          },
+        ]}
       />
 
       <Heading as="h5">Controlled Switch</Heading>
@@ -42,40 +64,136 @@ export function SwitchDoc() {
         Pass a <Pre>checked</Pre> prop to control the state of a Switch. Controlled Switch
         components do not require an <Pre>id</Pre>.
       </P>
-      <AutoLayout spacing={8} verticalAlignItems={'center'}>
-        <Button size="sm" variant="outline" onClick={() => setChecked((prev) => !prev)}>
-          Toggle
-        </Button>
-        <Switch checked={checked} />
-      </AutoLayout>
+
+      <Tabs
+        id="swtich/controlled-swtich"
+        items={[
+          {
+            key: 'preview',
+            tab: 'Preview',
+            children: (
+              <Case height={240}>
+                <AutoLayout spacing={8} verticalAlignItems={'center'}>
+                  <Button size="sm" variant="outline" onClick={() => setChecked((prev) => !prev)}>
+                    Toggle
+                  </Button>
+                  <Switch id="hk91" checked={checked} />
+                </AutoLayout>
+              </Case>
+            ),
+          },
+          {
+            key: 'code',
+            tab: 'Code',
+            children: (
+              <Code height={240}>
+                {`<AutoLayout spacing={8} verticalAlignItems={'center'}>
+  <Button size="sm" variant="outline" onClick={() => setChecked((prev) => !prev)}>
+    Toggle
+  </Button>
+  <Switch id='hk91' checked={checked} />
+</AutoLayout>`}
+              </Code>
+            ),
+          },
+        ]}
+      />
 
       <Heading as="h5">Sizes</Heading>
       <P>
         Switch component comes in three sizes: <Pre>sm(16px), md(20px)</Pre> and <Pre>lg(28px)</Pre>
         .
       </P>
-      <AutoLayout spacing={8}>
-        <Switch size="sm" id="s" />
-        <Switch id="m" />
-        <Switch size="lg" id="l" />
-      </AutoLayout>
+
+      <Tabs
+        id="swtich/sizes"
+        items={[
+          {
+            key: 'preview',
+            tab: 'Preview',
+            children: (
+              <Case height={240} spacing={8}>
+                <Switch size="sm" id="s" />
+                <Switch id="m" />
+                <Switch size="lg" id="l" />
+              </Case>
+            ),
+          },
+          {
+            key: 'code',
+            tab: 'Code',
+            children: (
+              <Code height={240}>
+                {`<Switch size="sm" id="s" />
+<Switch id="m" />
+<Switch size="lg" id="l" />`}
+              </Code>
+            ),
+          },
+        ]}
+      />
 
       <Heading as="h5">Customize Switch colors</Heading>
       <P onClick={() => setCurrentPage('colors')}>
         Pass a <Pre>colorScheme</Pre> prop to set the background color of Switch components. See{' '}
         <Span fill={colors.blue[500]}>Colors</Span> for available color schemes.
       </P>
-      <AutoLayout spacing={8}>
-        <Switch id="kfrh" colorScheme="emerald" defaultChecked />
-        <Switch id="21jd" colorScheme="orange" defaultChecked />
-        <Switch id="39dk" colorScheme="neutral" defaultChecked />
-      </AutoLayout>
+
+      <Tabs
+        id="swtich/customize-switch-colors"
+        items={[
+          {
+            key: 'preview',
+            tab: 'Preview',
+            children: (
+              <Case height={240} spacing={8}>
+                <Switch id="kfrh" colorScheme="emerald" defaultChecked />
+                <Switch id="21jd" colorScheme="orange" defaultChecked />
+                <Switch id="39dk" colorScheme="neutral" defaultChecked />
+              </Case>
+            ),
+          },
+          {
+            key: 'code',
+            tab: 'Code',
+            children: (
+              <Code height={240}>
+                {`<Switch id="kfrh" colorScheme="emerald" defaultChecked />
+<Switch id="21jd" colorScheme="orange" defaultChecked />
+<Switch id="39dk" colorScheme="neutral" defaultChecked />`}
+              </Code>
+            ),
+          },
+        ]}
+      />
 
       <Heading as="h5">Disabled Switch</Heading>
-      <AutoLayout spacing={8}>
-        <Switch disabled checked />
-        <Switch disabled checked={false} />
-      </AutoLayout>
+
+      <Tabs
+        id="swtich/disabled-switch"
+        items={[
+          {
+            key: 'preview',
+            tab: 'Preview',
+            children: (
+              <Case height={240} spacing={8}>
+                <Switch id="p2j5" disabled checked />
+                <Switch id="j6k3" disabled checked={false} />
+              </Case>
+            ),
+          },
+          {
+            key: 'code',
+            tab: 'Code',
+            children: (
+              <Code height={240}>
+                {`<Switch id='p2j5' disabled checked />
+<Switch id='j6k3' disabled checked={false} />`}
+              </Code>
+            ),
+          },
+        ]}
+      />
     </AutoLayout>
   );
 }

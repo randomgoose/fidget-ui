@@ -1,5 +1,6 @@
 /* ---- Basics ---- */
 export * from './intro';
+export * from './changelog';
 export * from './colors';
 export * from './heading';
 export * from './icons';

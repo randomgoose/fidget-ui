@@ -1,7 +1,8 @@
-import { Heading, IconButton, Divider } from 'fidget-ui';
-import { IconGlobeAlt, IconAcademicCap, IconCog6Tooth } from 'fidget-ui/icons';
+import { Heading, IconButton, Divider, Tabs } from 'fidget-ui';
+import { IconArrowUp } from 'fidget-ui/icons';
 import { docStyle } from './styles';
-import { P, Pre } from './typography';
+import { Code, P, Pre } from './typography';
+import { Case } from '../components/case';
 
 const { widget } = figma;
 const { AutoLayout } = widget;
@@ -16,64 +17,138 @@ export function IconButtonDoc() {
       </P>
       <Divider />
 
+      <Code>{`import { IconButton } from 'fidget-ui'`}</Code>
+
       <Heading as="h5">Variants</Heading>
       <P>
         Identical to Button <Pre>variant</Pre> prop.
       </P>
-      <AutoLayout spacing={4}>
-        <IconButton icon={<IconGlobeAlt />} onClick={() => {}} />
-        <IconButton variant="outline" icon={<IconGlobeAlt />} onClick={() => {}} />
-        <IconButton variant="ghost" icon={<IconGlobeAlt />} onClick={() => {}} />
-      </AutoLayout>
-      <AutoLayout spacing={4}>
-        <IconButton colorScheme="blue" icon={<IconGlobeAlt />} onClick={() => {}} />
-        <IconButton
-          colorScheme="blue"
-          variant="outline"
-          icon={<IconGlobeAlt />}
-          onClick={() => {}}
-        />
-        <IconButton colorScheme="blue" variant="ghost" icon={<IconGlobeAlt />} onClick={() => {}} />
-      </AutoLayout>
+
+      <Tabs
+        id="icon-button/variants"
+        items={[
+          {
+            key: 'preview',
+            tab: 'Preview',
+            children: (
+              <Case spacing={8} height={240}>
+                <IconButton icon={<IconArrowUp />} onClick={() => {}} />
+                <IconButton variant="outline" icon={<IconArrowUp />} onClick={() => {}} />
+                <IconButton variant="ghost" icon={<IconArrowUp />} onClick={() => {}} />
+              </Case>
+            ),
+          },
+          {
+            key: 'code',
+            tab: 'Code',
+            children: (
+              <Code height={240}>
+                {`<IconButton icon={<IconArrowUp />} onClick={() => { }} />
+<IconButton variant="outline" icon={<IconArrowUp />} onClick={() => { }} />
+<IconButton variant="ghost" icon={<IconArrowUp />} onClick={() => { }} />`}
+              </Code>
+            ),
+          },
+        ]}
+      />
 
       <Heading as="h5">Sizes</Heading>
       <P>
         Identical to Button <Pre>size</Pre> prop.
       </P>
-      <AutoLayout spacing={4}>
-        {['sm', 'md', 'lg'].map((size) => (
-          <IconButton icon={<IconAcademicCap />} size={size as any} />
-        ))}
-      </AutoLayout>
+
+      <Tabs
+        id="icon-button/sizes"
+        items={[
+          {
+            key: 'preview',
+            tab: 'Preview',
+            children: (
+              <Case height={240} spacing={8}>
+                {['sm', 'md', 'lg'].map((size) => (
+                  <IconButton key={size} icon={<IconArrowUp />} size={size as any} />
+                ))}
+              </Case>
+            ),
+          },
+          {
+            key: 'code',
+            tab: 'Code',
+            children: (
+              <Code height={240}>
+                {`<AutoLayout spacing={4}>
+  {['sm', 'md', 'lg'].map((size) => (
+    <IconButton key={size} icon={<IconArrowUp />} size={size as any} />
+  ))}
+</AutoLayout>`}
+              </Code>
+            ),
+          },
+        ]}
+      />
 
       <Heading as="h5">Color Schemes</Heading>
       <P>
         Identical to Button <Pre>colorScheme</Pre> prop.
       </P>
-      <AutoLayout spacing={4}>
-        <IconButton icon={<IconCog6Tooth />} variant="filled" colorScheme="blue">
-          Disabled
-        </IconButton>
-        <IconButton icon={<IconCog6Tooth />} variant="outline" colorScheme="cyan">
-          Disabled
-        </IconButton>
-        <IconButton icon={<IconCog6Tooth />} variant="ghost" colorScheme="rose">
-          Disabled
-        </IconButton>
-      </AutoLayout>
+
+      <Tabs
+        id="icon-button/color-schemes"
+        items={[
+          {
+            key: 'preview',
+            tab: 'Preview',
+            children: (
+              <Case height={240} spacing={8}>
+                <IconButton icon={<IconArrowUp />} variant="filled" colorScheme="blue" />
+                <IconButton icon={<IconArrowUp />} variant="outline" colorScheme="cyan" />
+                <IconButton icon={<IconArrowUp />} variant="ghost" colorScheme="rose" />
+              </Case>
+            ),
+          },
+          {
+            key: 'code',
+            tab: 'Code',
+            children: (
+              <Code height={240}>
+                {`<IconButton icon={<IconArrowUp />} variant="filled" colorScheme="blue" />
+<IconButton icon={<IconArrowUp />} variant="outline" colorScheme="cyan" />
+<IconButton icon={<IconArrowUp />} variant="ghost" colorScheme="rose" />`}
+              </Code>
+            ),
+          },
+        ]}
+      />
 
       <Heading as="h5">Disabled Buttons</Heading>
-      <AutoLayout spacing={4}>
-        <IconButton icon={<IconCog6Tooth />} variant="filled" colorScheme="blue" disabled>
-          Disabled
-        </IconButton>
-        <IconButton icon={<IconCog6Tooth />} variant="outline" colorScheme="red" disabled>
-          Disabled
-        </IconButton>
-        <IconButton icon={<IconCog6Tooth />} disabled variant="ghost">
-          Disabled
-        </IconButton>
-      </AutoLayout>
+
+      <Tabs
+        id="icon-button/disabled-buttons"
+        items={[
+          {
+            key: 'preview',
+            tab: 'Preview',
+            children: (
+              <Case height={240} spacing={8}>
+                <IconButton icon={<IconArrowUp />} variant="filled" colorScheme="blue" disabled />
+                <IconButton icon={<IconArrowUp />} variant="outline" colorScheme="red" disabled />
+                <IconButton icon={<IconArrowUp />} disabled variant="ghost" />
+              </Case>
+            ),
+          },
+          {
+            key: 'code',
+            tab: 'Code',
+            children: (
+              <Code height={240}>
+                {`<IconButton icon={<IconArrowUp />} variant="filled" colorScheme="blue" disabled />
+<IconButton icon={<IconArrowUp />} variant="outline" colorScheme="red" disabled />
+<IconButton icon={<IconArrowUp />} disabled variant="ghost" />`}
+              </Code>
+            ),
+          },
+        ]}
+      />
     </AutoLayout>
   );
 }

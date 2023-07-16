@@ -24,6 +24,8 @@ export const getMenuStyles = ({
   let y: AutoLayoutProps['y'];
 
   switch (placement) {
+    case 'bottom-start':
+      x = { type: 'left', offset: 0 };
     case 'top-start':
       y = { type: 'top', offset: 0 };
       x = { type: 'left', offset: 0 };

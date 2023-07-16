@@ -18,13 +18,19 @@ export function MenuList(props: MenuListProps) {
                 case 'Menu Divider':
                   return h(MenuDivider, { ...child.props, key: index });
                 case 'Menu Item':
-                  return h(MenuItem, {
-                    onClick: (e: WidgetClickEvent) => {
-                      child.props?.onClick(e);
-                    },
-                    children: child.children,
-                    key: index,
-                  });
+                  return (
+                    <MenuItem
+                      key={child.props?.key || index}
+                      onClick={(e: WidgetClickEvent) => {
+                        // Pass the setter of Menu isOpen state to MenuItems.
+                        props.onClick && props.onClick(e);
+                        child.props?.onClick(e);
+                      }}
+                      {...child.props}
+                    >
+                      {child.children}
+                    </MenuItem>
+                  );
                 default:
                   return child;
               }

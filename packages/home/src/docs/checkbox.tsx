@@ -1,6 +1,7 @@
-import { Heading, Divider, Checkbox, CheckboxGroup } from 'fidget-ui';
+import { Heading, Divider, Checkbox, CheckboxGroup, Tabs } from 'fidget-ui';
 import { docStyle } from './styles';
 import { Code, P } from './typography';
+import { Case } from '../components/case';
 
 const { AutoLayout, useSyncedState, Text } = figma.widget;
 
@@ -15,24 +16,96 @@ export function CheckboxDoc() {
       <Code>{`import { Checkbox, CheckboxGroup } from "fidget-ui"`}</Code>
       <Heading as="h5">Single checkbox</Heading>
 
-      <Checkbox checked={checked} onChange={(value) => setChecked(value)}>
-        😊
-      </Checkbox>
-
-      <Text>Happy? {checked ? 'Yes!' : 'No.'}</Text>
+      <Tabs
+        id="checkbox/single-checkbox"
+        items={[
+          {
+            key: 'preview',
+            tab: 'Preview',
+            children: (
+              <Case height={240}>
+                <Checkbox checked={checked} onChange={(value) => setChecked(value)}>
+                  <Text>Happy? {checked ? 'Yes!' : 'No.'}</Text>
+                </Checkbox>
+              </Case>
+            ),
+          },
+          {
+            key: 'code',
+            tab: 'Code',
+            children: (
+              <Code height={240}>
+                {`<Checkbox
+  checked={checked}
+  onChange={(value) => setChecked(value)}>
+  <Text>Happy? {checked ? 'Yes!' : 'No.'}</Text>
+</Checkbox>`}
+              </Code>
+            ),
+          },
+        ]}
+      />
 
       <Heading>Disabled Checkbox</Heading>
-      <Checkbox disabled>Disabled</Checkbox>
+
+      <Tabs
+        id="checkbox/disabled-checkbox"
+        items={[
+          {
+            key: 'preview',
+            tab: 'Preview',
+            children: (
+              <Case height={240}>
+                <Checkbox disabled>Disabled</Checkbox>
+              </Case>
+            ),
+          },
+          {
+            key: 'code',
+            tab: 'Code',
+            children: <Code height={240}>{`<Checkbox disabled>Disabled</Checkbox>`}</Code>,
+          },
+        ]}
+      />
 
       <Heading as="h5">Checkbox group</Heading>
 
-      <CheckboxGroup
-        name="languages"
-        orientation="vertical"
-        options={[
-          { label: 'JavaScript', value: 'javascript' },
-          { label: 'TypeScript', value: 'typescript' },
-          { label: 'Rust', value: 'rust', disabled: true },
+      <Tabs
+        id="checkbox/checkbox-group"
+        items={[
+          {
+            key: 'preview',
+            tab: 'Preview',
+            children: (
+              <Case height={240}>
+                <CheckboxGroup
+                  name="languages"
+                  orientation="vertical"
+                  options={[
+                    { label: 'JavaScript', value: 'javascript' },
+                    { label: 'TypeScript', value: 'typescript' },
+                    { label: 'Rust', value: 'rust', disabled: true },
+                  ]}
+                />
+              </Case>
+            ),
+          },
+          {
+            key: 'code',
+            tab: 'Code',
+            children: (
+              <Code height={240}>
+                {`<CheckboxGroup
+  name="languages"
+  orientation="vertical"
+  options={[
+    { label: 'JavaScript', value: 'javascript' },
+    { label: 'TypeScript', value: 'typescript' },
+    { label: 'Rust', value: 'rust', disabled: true },
+]}/>`}
+              </Code>
+            ),
+          },
         ]}
       />
     </AutoLayout>

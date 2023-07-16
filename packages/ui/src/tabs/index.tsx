@@ -45,8 +45,8 @@ export function Tabs({
             name={NODE_NAME_MAP.panel}
             height="hug-contents"
             width={width || 'fill-parent'}
-            key={key}
             {...rest}
+            key={key}
           >
             {renderChildren(children, {
               textProps: { fontSize: 14, lineHeight: 22, fill: colors.neutral[900] },

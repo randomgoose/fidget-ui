@@ -1,7 +1,8 @@
 import { DatePicker, Divider, Heading } from 'fidget-ui';
-import { docStyle } from './styles';
-import { P, Pre } from './typography';
-import { Case } from '../components/case';
+import { docStyle } from '../styles';
+import { P, Pre } from '../typography';
+import { Case } from '../../components/case';
+import DatePickerUsage from './usage';
 
 const { AutoLayout } = figma.widget;
 
@@ -13,8 +14,8 @@ export function DatePickerDoc() {
       <Heading as="h1">Date Picker</Heading>
       <P>Select a date from a calendar.</P>
       <Divider />
-      <Heading as="h5">Usage</Heading>
-      <DatePicker />
+
+      <DatePickerUsage />
 
       <Heading as="h5">Field styles</Heading>
       <P>

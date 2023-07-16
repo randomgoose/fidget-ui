@@ -2,6 +2,7 @@ import { MenuProps } from './interface';
 import { getMenuStyles } from './styles';
 import { MenuTrigger } from './trigger';
 import { MenuList } from './list';
+import { getSyncedKeys } from '../utils';
 
 const { widget } = figma;
 const { AutoLayout, useSyncedState, h, Line, Fragment } = widget;
@@ -17,9 +18,10 @@ const NODE_NAME_MAP = {
 
 export function Menu(props: MenuProps) {
   //TODO: Find a proper way to generate unique ID
-  const [isOpen, setIsOpen] = useSyncedState(`open/${props.id}`, false);
+  const [syncedKeyOpen] = getSyncedKeys('Menu', props.id, ['open']);
+  const [isOpen, setIsOpen] = useSyncedState(syncedKeyOpen, false);
 
-  const { placement, children } = props;
+  const { placement = 'bottom-start', children } = props;
   const { list, container } = getMenuStyles({ placement });
 
   const renderMenuChildren = () => {
@@ -41,7 +43,13 @@ export function Menu(props: MenuProps) {
               <AutoLayout name="Menu List Locator" overflow="scroll">
                 <Line opacity={0} />
                 {isOpen ? (
-                  <MenuList {...child.props} {...list}>
+                  <MenuList
+                    {...list}
+                    {...child.props}
+                    onClick={() => {
+                      setIsOpen(false);
+                    }}
+                  >
                     {child.children}
                   </MenuList>
                 ) : null}
@@ -55,72 +63,6 @@ export function Menu(props: MenuProps) {
       return children;
     }
   };
-
-  // const menuItems = items?.map((item, index) => {
-  //   if ('type' in item) {
-  //     if (item.type === 'divider') {
-  //       return <Divider {...item} key={index} />;
-  //     } else {
-  //       return (
-  //         <MenuItem
-  //           {...item}
-  //           id={`${props.id}/${index}`}
-  //           onClick={(e) => {
-  //             item.onClick && item.onClick(e);
-  //             setIsOpen(false);
-  //           }}
-  //           key={index}
-  //         />
-  //       );
-  //     }
-  //   } else {
-  //     if ('label' in item) {
-  //       return (
-  //         <MenuItem
-  //           {...item}
-  //           id={`${props.id}/${index}`}
-  //           onClick={(e) => {
-  //             item.onClick && item.onClick(e);
-  //             setIsOpen(false);
-  //           }}
-  //           key={index}
-  //         />
-  //       );
-  //     }
-  //   }
-  // });
-
-  // const listNode = (
-  //   <AutoLayout {...list} name="Menu Item List" width={240} overflow="visible">
-  //     {(() => {
-  //       if (Array.isArray(children)) {
-  //         return children
-  //           .filter((child: any) => child.props?.name !== NODE_NAME_MAP.trigger)
-  //           .map((child: any, index) => {
-  //             switch (child.props?.name) {
-  //               case NODE_NAME_MAP.divider:
-  //                 return h(MenuDivider, { ...child.props });
-  //               case NODE_NAME_MAP.item:
-  //                 return h(MenuItem, {
-  //                   onClick: (e: WidgetClickEvent) => {
-  //                     child.props?.onClick(e);
-  //                     setIsOpen(false);
-  //                   },
-  //                   children: child.children,
-  //                   key: index,
-  //                 });
-  //               default:
-  //                 return child;
-  //             }
-  //           });
-  //       } else {
-  //         return children;
-  //       }
-  //     })()}
-  //     {/* {renderChildren(children)} */}
-  //     {menuItems}
-  //   </AutoLayout>
-  // );
 
   return (
     <AutoLayout

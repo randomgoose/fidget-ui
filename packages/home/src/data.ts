@@ -1,5 +1,6 @@
 export const COMPONENTS: { option: string; label: string; type: string }[] = [
   { option: 'intro', label: 'Introduction', type: 'introduction' },
+  { option: 'changelog', label: 'Changelog', type: 'introduction' },
   { option: 'colors', label: 'Colors', type: 'styles' },
   { option: 'shadows', label: 'Shadows', type: 'styles' },
   { option: 'icons', label: 'Icons', type: 'icons' },
