@@ -95,7 +95,11 @@ export function Tabs({
         {tabs}
       </AutoLayout>
 
-      <AutoLayout name={NODE_NAME_MAP.panels} {...styles.tabPanels}>
+      <AutoLayout
+        name={NODE_NAME_MAP.panels}
+        overflow={rest.overflow || 'hidden'}
+        {...styles.tabPanels}
+      >
         {tabPanels}
       </AutoLayout>
     </AutoLayout>

@@ -1,8 +1,9 @@
-import { DatePicker, Divider, Heading } from 'fidget-ui';
+import { Divider, Heading } from 'fidget-ui';
 import { docStyle } from '../styles';
-import { P, Pre } from '../typography';
-import { Case } from '../../components/case';
+import { P } from '../typography';
 import DatePickerUsage from './usage';
+import DatePickerFieldStyles from './field-styles';
+import DatePickerFormat from './format';
 
 const { AutoLayout } = figma.widget;
 
@@ -16,21 +17,8 @@ export function DatePickerDoc() {
       <Divider />
 
       <DatePickerUsage />
-
-      <Heading as="h5">Field styles</Heading>
-      <P>
-        The datepicker field extends a basic field component. Style props such as <Pre>variant</Pre>{' '}
-        and <Pre>size</Pre> also apply.
-      </P>
-
-      <Case height={180} direction="vertical" spacing={16}>
-        <DatePicker id="kw22" size="xs" />
-        <DatePicker id="l3ji" variant="filled" />
-        <DatePicker id="kw25" variant="flush" />
-      </Case>
-
-      <Heading as="h5">Format</Heading>
-      <DatePicker format={'DD/MM/YYYY'} />
+      <DatePickerFieldStyles />
+      <DatePickerFormat />
     </AutoLayout>
   );
 }

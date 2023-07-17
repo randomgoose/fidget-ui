@@ -2,11 +2,7 @@ import { colors } from 'fidget-ui';
 
 const { AutoLayout } = figma.widget;
 
-export function Case({
-  children,
-  height,
-  ...rest
-}: { children: FigmaDeclarativeNode; height?: AutoLayoutProps['height'] } & AutoLayoutProps) {
+export function Case({ children, height, ...rest }: AutoLayoutProps) {
   return (
     <AutoLayout
       verticalAlignItems="center"
@@ -18,7 +14,8 @@ export function Case({
       cornerRadius={6}
       {...rest}
     >
-      {children}
+      {/* { children} */}
+      {Array.isArray(children) ? <>{...children}</> : children}
     </AutoLayout>
   );
 }
