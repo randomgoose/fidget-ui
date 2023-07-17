@@ -4,7 +4,7 @@ import { CheckboxProps } from './interface';
 export const getCheckboxStyles = ({
   checked,
   disabled,
-  colorScheme,
+  colorScheme = 'neutral',
 }: Pick<CheckboxProps, 'checked' | 'disabled' | 'colorScheme'>): {
   control: AutoLayoutProps;
   container: AutoLayoutProps;

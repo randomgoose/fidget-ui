@@ -22,6 +22,7 @@ import {
   IconsDoc,
   TimePickerDoc,
   NoticeDoc,
+  Changelog,
 } from './docs';
 import { paginationStyle } from './docs/styles';
 import { Sidebar } from './components/sidebar';
@@ -49,6 +50,7 @@ function Widget() {
 
   const COMPONENT_DOC: { [key: string]: FigmaDeclarativeNode } = {
     intro: <Intro />,
+    changelog: <Changelog />,
     icons: <IconsDoc />,
     heading: <HeadingDoc />,
     button: <ButtonDoc />,

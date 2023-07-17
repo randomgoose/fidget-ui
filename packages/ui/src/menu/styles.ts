@@ -5,22 +5,41 @@ export const getMenuStyles = ({
   disabled,
   placement = 'bottom',
 }: Pick<MenuItemProps, 'disabled'> & Pick<MenuProps, 'placement'>): {
+  container: AutoLayoutProps;
   list: AutoLayoutProps;
   item: AutoLayoutProps;
   text: TextProps;
   command: TextProps;
   icon: Omit<SVGProps, 'src'>;
   chevron: Omit<SVGProps, 'src'> & { color: string };
-  positioner: AutoLayoutProps;
+  locator: AutoLayoutProps;
 } => {
-  /* ---- Positioner ---- */
-  // let x: AutoLayoutProps['x'];
-  // let y: AutoLayoutProps['y'];
+  /* ---- Locator ---- */
+  const horizontalAlignItems: AutoLayoutProps['horizontalAlignItems'] = placement.endsWith('start')
+    ? 'start'
+    : placement.endsWith('end')
+    ? 'end'
+    : 'center';
+  let x: AutoLayoutProps['x'];
+  let y: AutoLayoutProps['y'];
 
   switch (placement) {
+    case 'bottom-start':
+      x = { type: 'left', offset: 0 };
+    case 'top-start':
+      y = { type: 'top', offset: 0 };
+      x = { type: 'left', offset: 0 };
+      break;
+    case 'top-end':
+      y = { type: 'top', offset: 0 };
+      x = { type: 'right', offset: 0 };
+      break;
   }
 
   return {
+    container: {
+      horizontalAlignItems,
+    },
     list: {
       fill: colors.white,
       padding: 4,
@@ -29,7 +48,8 @@ export const getMenuStyles = ({
       effect: [...shadows.lg],
       direction: 'vertical',
       positioning: 'absolute',
-      y: { type: 'top', offset: 0 },
+      y,
+      x,
       width: 240,
     },
     item: {
@@ -43,7 +63,7 @@ export const getMenuStyles = ({
             fill: colors.neutral[100],
           },
       verticalAlignItems: 'center',
-      spacing: 4,
+      spacing: 6,
       opacity: disabled ? 0.3 : 1,
     },
     text: {
@@ -57,8 +77,8 @@ export const getMenuStyles = ({
       fill: colors.neutral[500],
     },
     icon: {
-      width: 16,
-      height: 16,
+      width: 14,
+      height: 14,
       fill: colors.neutral[900],
       stroke: colors.neutral[900],
     },
@@ -67,7 +87,7 @@ export const getMenuStyles = ({
       height: 12,
       color: colors.neutral[500],
     },
-    positioner: {
+    locator: {
       overflow: 'scroll',
       height: 1,
       width: 1,

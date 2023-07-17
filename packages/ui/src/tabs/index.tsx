@@ -45,8 +45,8 @@ export function Tabs({
             name={NODE_NAME_MAP.panel}
             height="hug-contents"
             width={width || 'fill-parent'}
-            key={key}
             {...rest}
+            key={key}
           >
             {renderChildren(children, {
               textProps: { fontSize: 14, lineHeight: 22, fill: colors.neutral[900] },
@@ -95,7 +95,11 @@ export function Tabs({
         {tabs}
       </AutoLayout>
 
-      <AutoLayout name={NODE_NAME_MAP.panels} {...styles.tabPanels}>
+      <AutoLayout
+        name={NODE_NAME_MAP.panels}
+        overflow={rest.overflow || 'hidden'}
+        {...styles.tabPanels}
+      >
         {tabPanels}
       </AutoLayout>
     </AutoLayout>
