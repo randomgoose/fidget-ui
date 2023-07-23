@@ -131,7 +131,7 @@ export const getIconButtonStyles = ({
   const styles = getButtonStyles({ variant, size, colorScheme, disabled });
   let height: AutoLayoutProps['height'];
   let width: AutoLayoutProps['width'];
-  let color: AutoLayoutProps['fill'];
+  const color: AutoLayoutProps['fill'] = styles.icon.fill;
 
   switch (size) {
     case 'md':

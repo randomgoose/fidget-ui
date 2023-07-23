@@ -4,15 +4,28 @@
   "description": "Your Figma widget",
   "scripts": {
     "build": "esbuild src/code.tsx --bundle --outfile=dist/code.js --target=es6",
+    "generate": "rollup -c",
     "watch": "npm run build -- --watch"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.1.9",
+    "@codemirror/language": "^6.0.0",
+    "@codemirror/state": "^6.0.0",
+    "@lezer/highlight": "^1.1.6",
+    "codemirror": "^6.0.1",
     "fidget-ui": "~0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "prismjs": "^1.29.0"
   },
   "devDependencies": {
     "@figma/plugin-typings": "*",
     "@figma/widget-typings": "*",
-    "esbuild": "*"
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.5.0",
+    "@types/codemirror": "^5.60.8",
+    "@types/prismjs": "^1.26.0",
+    "esbuild": "*",
+    "rollup-plugin-execute": "^1.1.1",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }

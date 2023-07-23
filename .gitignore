@@ -5,6 +5,7 @@ node_modules
 
 # Build
 dist/
+html/
 
 .DS_Store
 
@@ -17,3 +18,4 @@ dist/
 
 # ESlint
 .eslintcache
+packages/home/html.js

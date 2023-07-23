@@ -52,7 +52,7 @@ export function Sidebar({ onChangePage, currentPage }: SidebarProps) {
                   </Text>
 
                   {LATEST.includes(item.option) ? (
-                    <Tag size="sm" variant={active ? 'outline' : 'subtle'}>
+                    <Tag size="sm" variant={'subtle'}>
                       New
                     </Tag>
                   ) : undefined}

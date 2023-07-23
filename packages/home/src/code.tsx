@@ -23,6 +23,9 @@ import {
   TimePickerDoc,
   NoticeDoc,
   Changelog,
+  CardDoc,
+  MenuDoc,
+  StepperDoc,
 } from './docs';
 import { paginationStyle } from './docs/styles';
 import { Sidebar } from './components/sidebar';
@@ -30,7 +33,6 @@ import { COMPONENTS } from './data';
 import { Header } from './components/header';
 import { ShadowsDoc } from './docs/shadows';
 import { DatePickerDoc } from './docs/date-picker';
-import { MenuDoc } from './docs/menu';
 
 const { widget } = figma;
 const { AutoLayout, usePropertyMenu, useSyncedState, Text, useEffect } = widget;
@@ -72,6 +74,8 @@ function Widget() {
     shadows: <ShadowsDoc />,
     'description-list': <DescriptionListDoc />,
     'simple-grid': <SimpleGridDoc />,
+    stepper: <StepperDoc />,
+    card: <CardDoc />,
     notice: <NoticeDoc />,
     demo1: <Todo />,
     demo2: <Issue />,

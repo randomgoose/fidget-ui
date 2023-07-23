@@ -2,3 +2,4 @@
 **/dist/**
 *.json
 packages/ui/icons/**
+packages/home/generate.js
