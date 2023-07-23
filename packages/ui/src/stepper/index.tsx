@@ -45,19 +45,19 @@ export function Stepper(props: StepperProps) {
     }
   };
 
-  const { field, decrementButton, incrementButton } = getStepperStyles({ size });
+  const styles = getStepperStyles({ size });
 
   return (
     <AutoLayout spacing={-1} width={width} {...rest} name={NODE_NAME_MAP.container}>
       <IconButton
-        {...decrementButton}
+        {...styles.decrementButton}
         icon={<IconMinusSolid />}
         onClick={() => updateValue(-step)}
         name={NODE_NAME_MAP.decrement_button}
         disabled={value <= min}
       />
       <Input
-        {...field}
+        {...styles.field}
         name={NODE_NAME_MAP.field}
         value={precision ? value.toFixed(precision) : value.toString()}
         onTextEditEnd={(e) =>
@@ -71,7 +71,7 @@ export function Stepper(props: StepperProps) {
         }
       />
       <IconButton
-        {...incrementButton}
+        {...styles.incrementButton}
         icon={<IconPlusSolid />}
         onClick={() => updateValue(step)}
         name={NODE_NAME_MAP.increment_button}

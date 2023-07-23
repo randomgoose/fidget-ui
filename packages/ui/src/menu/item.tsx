@@ -2,33 +2,32 @@ import { colors } from '../styles';
 import { renderIcon, renderChildren } from '../utils';
 import { MenuItemProps } from './interface';
 import { getMenuStyles } from './styles';
+import { NODE_NAME_MAP } from './utils';
 
 const { AutoLayout } = figma.widget;
 
 export function MenuItem(props: MenuItemProps) {
-  const { icon, disabled, label, color, children, ...rest } = props;
-  const { text, item, icon: iconStyles } = getMenuStyles({ disabled });
+  const { icon, disabled, label, color, children, onClick, ...rest } = props;
+  const styles = getMenuStyles({ disabled });
 
   const iconNode = icon
     ? renderIcon({
         svg: icon as any,
         options: {
-          ...iconStyles,
+          ...styles.icon,
           fill: color,
           stroke: color,
         },
       })
     : null;
 
-  const onClick = (e: WidgetClickEvent) => {
-    props.onClick && props.onClick(e);
-  };
-
   return (
-    <AutoLayout {...item} {...rest} name="Menu Item" onClick={onClick}>
+    <AutoLayout {...styles.item} {...rest} name={NODE_NAME_MAP.item} onClick={onClick}>
       {iconNode}
-      {renderChildren(children, { textProps: { ...text, fill: color || colors.neutral[700] } })}
-      {renderChildren(label, { textProps: { ...text, fill: color || colors.neutral[900] } })}
+      {renderChildren(children, {
+        textProps: { ...styles.text, fill: color || colors.neutral[700] },
+      })}
+      {renderChildren(label, { textProps: { ...styles.text, fill: color || colors.neutral[900] } })}
     </AutoLayout>
   );
 }

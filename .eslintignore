@@ -3,3 +3,4 @@
 *.json
 packages/ui/icons/**
 packages/home/generate.js
+packages/home/html.js

@@ -27,6 +27,7 @@ export type MenuListProps = AutoLayoutProps;
 
 export interface MenuProps extends AutoLayoutProps {
   id: string;
+  // TODO 通过 trigger 和 items 使用的方式似乎还未实现？
   trigger?: FigmaDeclarativeNode;
   children?: FigmaDeclarativeNode;
   items?: (MenuItemProps | MenuDividerProps)[];
