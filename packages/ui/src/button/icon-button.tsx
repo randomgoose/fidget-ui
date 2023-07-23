@@ -1,11 +1,14 @@
+import { merge } from 'lodash-es';
 import { renderIcon } from '../utils';
 import { IconButtonProps } from './interface';
 import { getIconButtonStyles } from './styles';
+import { useFetchGlobalConfig } from '../config-provider';
 
 const { widget } = figma;
 const { AutoLayout } = widget;
 
 export function IconButton({
+  style,
   icon,
   variant = 'filled',
   size,
@@ -14,13 +17,18 @@ export function IconButton({
   fontSize,
   ...rest
 }: IconButtonProps) {
-  const { container: containerStyle, icon: iconStyle } = getIconButtonStyles({
-    variant,
-    size,
-    colorScheme,
-    disabled,
-    fontSize,
-  });
+  const globalConfig = useFetchGlobalConfig();
+  const { container: containerStyle, icon: iconStyle } = merge(
+    getIconButtonStyles({
+      variant,
+      size,
+      colorScheme,
+      disabled,
+      fontSize,
+    }),
+    globalConfig.Button?.style,
+    style
+  );
 
   return (
     <AutoLayout

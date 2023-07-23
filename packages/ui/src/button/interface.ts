@@ -1,3 +1,9 @@
+import { ComponentStyle } from '../types';
+
+export type ButtonSize = 'sm' | 'md' | 'lg';
+
+export type ButtonVariant = 'filled' | 'outline' | 'ghost';
+
 export type ButtonColorScheme =
   | 'slate'
   | 'gray'
@@ -21,11 +27,16 @@ export type ButtonColorScheme =
   | 'fuchsia'
   | 'pink'
   | 'rose';
-export type ButtonVariant = 'filled' | 'outline' | 'ghost';
-export type ButtonSize = 'sm' | 'md' | 'lg';
+
+export type ButtonStyle = {
+  container: AutoLayoutProps;
+  text: TextProps;
+  icon: Omit<SVGProps, 'src'>;
+};
 
 export interface ButtonProps extends Omit<AutoLayoutProps, 'onClick'> {
   children: string;
+  style?: ComponentStyle<ButtonSize, ButtonVariant, ButtonStyle>;
   variant?: ButtonVariant;
   colorScheme?: ButtonColorScheme;
   size?: ButtonSize;
@@ -37,6 +48,7 @@ export interface ButtonProps extends Omit<AutoLayoutProps, 'onClick'> {
 }
 
 export interface IconButtonProps extends Omit<AutoLayoutProps, 'onClick'> {
+  style?: ComponentStyle<ButtonSize, ButtonVariant, ButtonStyle>;
   icon?: FigmaDeclarativeNode;
   variant?: ButtonVariant;
   colorScheme?: ButtonColorScheme;

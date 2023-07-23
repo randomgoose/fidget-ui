@@ -1,29 +1,5 @@
-type FidgetComponentNames =
-  | 'Dropdown'
-  | 'Field'
-  | 'Accordion'
-  | 'Avatar'
-  | 'Button'
-  | 'Carousel'
-  | 'Checkbox'
-  | 'DatePicker'
-  | 'DescriptionList'
-  | 'Divider'
-  | 'Heading'
-  | 'Icon'
-  | 'Menu'
-  | 'Notice'
-  | 'Radio'
-  | 'Select'
-  | 'SimpleGrid'
-  | 'Switch'
-  | 'Tabs'
-  | 'Tag'
-  | 'TextField'
-  | 'TimePicker'
-  | 'Stepper';
-
-const KEY_PREFIX = '__fidget_ui_';
+import { SYNCED_KEY_PREFIX } from './constant';
+import type { FidgetComponentNames } from '../types';
 
 export function getSyncedKeys(
   componentName: FidgetComponentNames,
@@ -31,5 +7,7 @@ export function getSyncedKeys(
   innerKeys: string[]
 ): string[] {
   // e.g. __fidget_ui_Table_0001/data
-  return innerKeys.map((innerKey) => `${KEY_PREFIX}_${componentName}_${componentId}/${innerKey}`);
+  return innerKeys.map(
+    (innerKey) => `${SYNCED_KEY_PREFIX}_${componentName}_${componentId}/${innerKey}`
+  );
 }

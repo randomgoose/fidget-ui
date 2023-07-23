@@ -1,4 +1,4 @@
-import { Heading, colors } from 'fidget-ui';
+import { Heading, colors, useGlobalConfig } from 'fidget-ui';
 import {
   IconButtonDoc,
   HeadingDoc,
@@ -62,6 +62,38 @@ function Widget() {
         }
       }
     };
+  });
+
+  // TODO revert this
+  // test global component config
+  useGlobalConfig({
+    Button: {
+      style: {
+        baseStyle: { text: { fontSize: 20 } },
+        sizes: {
+          sm: { text: { fontSize: 8 } },
+          md: { text: { fontSize: 16 } },
+          lg: { text: { fontSize: 24 } },
+        },
+        variants: {
+          filled: {
+            container: {
+              fill: '#f00',
+            },
+          },
+          outline: {
+            container: {
+              fill: '#0f0',
+            },
+          },
+          ghost: {
+            container: {
+              fill: '#00f',
+            },
+          },
+        },
+      },
+    },
   });
 
   const COMPONENT_DOC: { [key: string]: FigmaDeclarativeNode } = {
