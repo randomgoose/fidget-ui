@@ -2,7 +2,7 @@ import { IconButton } from '../button';
 import { IconMinusSolid, IconPlusSolid } from '../icons';
 import { getSyncedKeys } from '../utils';
 import { StepperProps } from './interface';
-import _ from 'lodash';
+import { isNaN } from 'lodash-es';
 import { getStepperStyles } from './styles';
 import { Decimal } from 'decimal.js';
 
@@ -62,7 +62,7 @@ export function Stepper(props: StepperProps) {
         value={precision ? value.toFixed(precision) : value.toString()}
         onTextEditEnd={(e) =>
           setValue((prev) =>
-            _.isNaN(e.characters)
+            isNaN(e.characters)
               ? prev
               : parseFloat(e.characters) <= max && parseFloat(e.characters) >= min
               ? parseFloat(e.characters)
