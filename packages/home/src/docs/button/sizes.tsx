@@ -1,6 +1,7 @@
-import { Heading, Tabs, Button } from 'fidget-ui';
+import { Heading, Button } from 'fidget-ui';
 import { Case } from '../../components/case';
-import { P, Pre, Code } from '../typography';
+import { P, Pre } from '../typography';
+import { Preview } from '../../components/preview';
 
 export default function ButtonSizes() {
   return (
@@ -11,36 +12,20 @@ export default function ButtonSizes() {
         <Pre>sm(28px)</Pre>. The default value is <Pre>md</Pre>.
       </P>
 
-      <Tabs
+      <Preview
         id="button/sizes"
-        items={[
-          {
-            key: 'Design',
-            tab: 'Preview',
-            name: '',
-            children: (
-              <Case spacing={8} height={240}>
-                <Button size="lg">size=lg</Button>
-                <Button size="md">size=md</Button>
-                <Button size="sm">size=sm</Button>
-              </Case>
-            ),
-          },
-          {
-            key: 'Code',
-            tab: 'Code',
-            name: '',
-            children: (
-              <Code height={240}>
-                {`<Button size="lg">size=lg</Button>
-<Button size="md">size=md</Button>
-<Button size="sm">size=sm</Button>
-`}
-              </Code>
-            ),
-          },
-        ]}
-      />
+        code={`() => <>
+  <Button size="lg">size=lg</Button>
+  <Button size="md">size=md</Button>
+  <Button size="sm">size=sm</Button>
+</>`}
+      >
+        <Case height={240} spacing={8}>
+          <Button size="lg">size=lg</Button>
+          <Button size="md">size=md</Button>
+          <Button size="sm">size=sm</Button>
+        </Case>
+      </Preview>
     </>
   );
 }

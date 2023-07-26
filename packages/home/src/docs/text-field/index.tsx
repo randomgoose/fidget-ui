@@ -5,6 +5,7 @@ import { Case } from '../../components/case';
 import InputElements from './input-elements';
 import InputAddons from './input-addons';
 import DisabledTextFields from './disabled-text-fields';
+import { TextFieldUsage } from './usage';
 
 const { widget } = figma;
 const { useSyncedState, AutoLayout, Span } = widget;
@@ -19,47 +20,8 @@ export function TextFieldDoc() {
         TextField extends the built-in <Span {...codeStyle}>Input</Span> component.
       </P>
       <Divider />
-      <Heading as="h5">Usage</Heading>
-      <P>
-        Use <Pre>TextField</Pre> component in the same way of <Pre>Input</Pre>. Pass{' '}
-        <Pre>value</Pre> and <Pre>onTextEditEnd</Pre> to enable text editing.
-      </P>
 
-      <Tabs
-        id="text-field/usage"
-        items={[
-          {
-            key: 'preview',
-            tab: 'Preview',
-            children: (
-              <Case height={240} spacing={8} padding={{ horizontal: 48 }}>
-                <TextField
-                  id="p9o5"
-                  value={value}
-                  onTextEditEnd={(e) => setValue(e.characters)}
-                  placeholder={'Type something'}
-                  width={240}
-                />
-              </Case>
-            ),
-          },
-          {
-            key: 'code',
-            tab: 'Code',
-            children: (
-              <Code height={240}>
-                {`<TextField
-  id="p9o5"
-  value={value}
-  onTextEditEnd={(e) => setValue(e.characters)}
-  placeholder={'Type something'}
-  width={240}
-/>`}
-              </Code>
-            ),
-          },
-        ]}
-      />
+      <TextFieldUsage />
 
       <Heading as="h5">Variants</Heading>
       <P>

@@ -35,17 +35,31 @@ import { ShadowsDoc } from './docs/shadows';
 import { DatePickerDoc } from './docs/date-picker';
 
 const { widget } = figma;
-const { AutoLayout, usePropertyMenu, useSyncedState, Text, useEffect } = widget;
+const { AutoLayout, usePropertyMenu, useSyncedState, Text, useEffect, useWidgetId } = widget;
 
 function Widget() {
   const [currentPage, setCurrentPage] = useSyncedState('currentPage', 'intro');
   const index = COMPONENTS.findIndex((item) => item.option === currentPage);
+
+  const widgetId = useWidgetId();
 
   useEffect(() => {
     figma.ui.onmessage = (msg) => {
       if (msg.type === 'CODE_COPIED') {
         figma.notify('Code copied!');
         figma.closePlugin();
+      }
+      if (msg.type === 'SYNTAX_HIGHLIGHTED') {
+        const node = figma.getNodeById(widgetId);
+
+        if (node?.type === 'WIDGET') {
+          node?.setWidgetSyncedState({
+            ...node.widgetSyncedState,
+            [msg.payload.id]: msg.payload.tokens,
+          });
+
+          figma.closePlugin();
+        }
       }
     };
   });
