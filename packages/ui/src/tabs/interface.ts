@@ -35,5 +35,5 @@ export interface TabsProps extends AutoLayoutProps {
   isFitted?: boolean;
   children?: FigmaDeclarativeNode;
   items?: TabPaneProps[];
-  onChange?: (key: string | number) => void;
+  onChange?: (key: string | number) => Promise<void> | void;
 }

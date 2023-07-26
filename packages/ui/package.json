@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "chroma-js": "^2.4.2",
-    "crypto-js": "^4.1.1",
     "dayjs": "^1.11.9",
     "decimal.js": "^10.4.3",
     "lodash-es": "^4.17.21"

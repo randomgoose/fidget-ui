@@ -64,8 +64,8 @@ export function Tabs({
             name={NODE_NAME_MAP.tab}
             {...(isActive ? { ...styles.activeTab } : { ...styles.tab })}
             onClick={() => {
-              onChange?.(key);
               setActiveKey(key);
+              return onChange?.(key);
             }}
           >
             {renderChildren(tab, {
