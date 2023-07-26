@@ -9,5 +9,5 @@
   ],
   "containsWidget": true,
   "widgetApi": "1.0.0",
-  "ui": "html/ui.html"
+  "ui": "dist/ui.html"
 }

@@ -23,7 +23,12 @@ export function IconButton({
   });
 
   return (
-    <AutoLayout {...containerStyle} {...rest} name="Icon Button">
+    <AutoLayout
+      {...containerStyle}
+      {...rest}
+      onClick={!disabled ? rest.onClick : undefined}
+      name="Icon Button"
+    >
       {icon
         ? renderIcon({
             svg: icon as any,

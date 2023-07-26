@@ -10,6 +10,9 @@ export type { ButtonProps } from './button/interface';
 export * from './checkbox';
 export type { CheckboxProps, CheckboxGroupProps } from './checkbox/interface';
 
+export * from './card';
+// export type { } from './card/interface'
+
 export * from './description-list';
 export type { DescriptionListProps } from './description-list/interface';
 
@@ -29,6 +32,9 @@ export type { RadioGroupProps, RadioProps } from './radio/interface';
 
 export * from './select';
 export type { SelectProps } from './select/interface';
+
+export * from './stepper';
+export type { StepperProps } from './stepper/interface';
 
 export * from './simple-grid';
 export type { SimpleGridProps } from './simple-grid/interface';

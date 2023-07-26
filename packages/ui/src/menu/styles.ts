@@ -15,26 +15,41 @@ export const getMenuStyles = ({
   locator: AutoLayoutProps;
 } => {
   /* ---- Locator ---- */
-  const horizontalAlignItems: AutoLayoutProps['horizontalAlignItems'] = placement.endsWith('start')
+  // const horizontalAlignItems: AutoLayoutProps['horizontalAlignItems'] = placement.endsWith('start')
+  //   ? 'start'
+  //   : placement.endsWith('end')
+  //     ? 'end'
+  //     : 'center';
+  // let x: AutoLayoutProps['x'];
+  // let y: AutoLayoutProps['y'];
+
+  // switch (placement) {
+  //   case 'bottom-start':
+  //     x = { type: 'left', offset: 0 };
+
+  //   case 'top-start':
+  //     y = { type: 'top', offset: 0 };
+  //     x = { type: 'left', offset: 0 };
+  //     break;
+  //   case 'top-end':
+  //     y = { type: 'top', offset: 0 };
+  //     x = { type: 'right', offset: 0 };
+  //     break;
+  // }
+
+  const horizontalAlignItems: AutoLayoutProps['horizontalAlignItems'] = placement?.endsWith('start')
     ? 'start'
-    : placement.endsWith('end')
+    : placement?.endsWith('end')
     ? 'end'
     : 'center';
-  let x: AutoLayoutProps['x'];
-  let y: AutoLayoutProps['y'];
-
-  switch (placement) {
-    case 'bottom-start':
-      x = { type: 'left', offset: 0 };
-    case 'top-start':
-      y = { type: 'top', offset: 0 };
-      x = { type: 'left', offset: 0 };
-      break;
-    case 'top-end':
-      y = { type: 'top', offset: 0 };
-      x = { type: 'right', offset: 0 };
-      break;
-  }
+  const y: AutoLayoutProps['y'] = placement?.startsWith('top')
+    ? { type: 'bottom', offset: 4 }
+    : { type: 'top', offset: 4 };
+  const x: AutoLayoutProps['x'] = placement?.endsWith('start')
+    ? { type: 'left', offset: 0 }
+    : placement?.endsWith('end')
+    ? { type: 'right', offset: 0 }
+    : { type: 'center', offset: 0 };
 
   return {
     container: {

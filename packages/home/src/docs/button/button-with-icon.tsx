@@ -1,7 +1,8 @@
-import { Heading, Tabs, Button } from 'fidget-ui';
+import { Heading, Button } from 'fidget-ui';
 import { IconAcademicCap } from 'fidget-ui/icons';
 import { Case } from '../../components/case';
-import { P, Pre, Code } from '../typography';
+import { P, Pre } from '../typography';
+import { Preview } from '../../components/preview';
 
 export default function ButtonWithIcon() {
   return (
@@ -12,35 +13,22 @@ export default function ButtonWithIcon() {
         <Pre>rightIcon</Pre> props. You can pass in Heroicons or custom <Pre>Svg</Pre> component.
       </P>
 
-      <Tabs
+      <Preview
         id="button/button-with-icon"
-        items={[
-          {
-            key: 'preview',
-            tab: 'Preview',
-            children: (
-              <Case spacing={8} height={240}>
-                <Button leftIcon={<IconAcademicCap />}>Share</Button>
-                <Button rightIcon={<IconAcademicCap />} variant={'outline'} colorScheme={'blue'}>
-                  Share
-                </Button>
-              </Case>
-            ),
-          },
-          {
-            key: 'code',
-            tab: 'Code',
-            children: (
-              <Code height={240}>
-                {`<Button leftIcon={<IconAcademicCap />}>Share</Button>
-<Button rightIcon={<IconAcademicCap />} variant={'outline'} colorScheme={'blue'}>
-  Share
-</Button>`}
-              </Code>
-            ),
-          },
-        ]}
-      />
+        code={`<>
+  <Button leftIcon={<IconAcademicCap />}>Share</Button>
+  <Button rightIcon={<IconAcademicCap />} variant={'outline'} colorScheme={'blue'}>
+    Share
+  </Button>
+</>`}
+      >
+        <Case spacing={8} height={240}>
+          <Button leftIcon={<IconAcademicCap />}>Share</Button>
+          <Button rightIcon={<IconAcademicCap />} variant={'outline'} colorScheme={'blue'}>
+            Share
+          </Button>
+        </Case>
+      </Preview>
     </>
   );
 }

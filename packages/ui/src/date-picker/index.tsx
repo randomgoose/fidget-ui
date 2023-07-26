@@ -15,6 +15,10 @@ const NODE_NAME_MAP = {
   field: 'DatePicker Field',
   calendar: 'DatePicker Calendar',
   locator: 'DatePicker Locator',
+  calenderWeekdays: 'Calendar Weekdays',
+  calendarRow: 'Calendar Row',
+  calendarCell: 'Calendar Cell',
+  calendarTodayLocator: 'Calendar Today Locator',
 };
 
 const { AutoLayout, Text, Ellipse, useSyncedState, Line } = figma.widget;
@@ -48,8 +52,8 @@ export function DatePicker(props: DatePickerProps) {
   const [view, setView] = useSyncedState<CalendarView>(syncedKeyView, 'date');
 
   /*---- Styles ----*/
-  const { field, input, text } = getFieldStyles({ variant, size, disabled, open });
-  const { cell, calendar, digit, weekday, indicator, container } = getDatePickerStyles({
+  const fieldStyles = getFieldStyles({ variant, size, disabled, open });
+  const pickerStyles = getDatePickerStyles({
     placement: props.placement || 'top-start',
   });
 
@@ -76,19 +80,22 @@ export function DatePicker(props: DatePickerProps) {
       case 'date':
         return (
           <>
-            <AutoLayout name="Calendar Weekdays" width="fill-parent">
+            <AutoLayout name={NODE_NAME_MAP.calenderWeekdays} width="fill-parent">
               {generateWeeksOfTheMonth()[0].map((day, index) => (
-                <AutoLayout {...weekday} key={index}>
-                  <Text {...digit} key={index}>
-                    {dayjs(day).format('dd')}
-                  </Text>
+                <AutoLayout key={index} {...pickerStyles.weekday}>
+                  <Text {...pickerStyles.digit}>{dayjs(day).format('dd')}</Text>
                 </AutoLayout>
               ))}
             </AutoLayout>
 
             <AutoLayout direction="vertical" width="fill-parent" spacing={2}>
               {generateWeeksOfTheMonth().map((week, index) => (
-                <AutoLayout key={index} width="fill-parent" name="Calendar Row" spacing={2}>
+                <AutoLayout
+                  key={index}
+                  width="fill-parent"
+                  name={NODE_NAME_MAP.calendarRow}
+                  spacing={2}
+                >
                   {
                     /*---- Render date cell ----*/
                     week.map((day, index) => {
@@ -98,22 +105,27 @@ export function DatePicker(props: DatePickerProps) {
 
                       return (
                         <AutoLayout
-                          name="Calendar Cell"
-                          {...cell}
                           key={index}
+                          name={NODE_NAME_MAP.calendarCell}
+                          {...pickerStyles.cell}
+                          fill={selected ? colors.blue[500] : undefined}
+                          hoverStyle={{
+                            fill: selected ? colors.blue[500] : colors.neutral[100],
+                          }}
                           onClick={() => {
                             setPivot(dayjs(day).toString());
                             setDate(dayjs(day).toString());
                             setOpen(false);
                           }}
-                          fill={selected ? colors.blue[500] : undefined}
-                          hoverStyle={{
-                            fill: selected ? colors.blue[500] : colors.neutral[100],
-                          }}
                         >
-                          {isToday ? <Ellipse name="Today Indicator" {...indicator} /> : null}
+                          {isToday ? (
+                            <Ellipse
+                              name={NODE_NAME_MAP.calendarTodayLocator}
+                              {...pickerStyles.indicator}
+                            />
+                          ) : null}
                           <Text
-                            {...digit}
+                            {...pickerStyles.digit}
                             fill={
                               selected
                                 ? colors.white
@@ -145,23 +157,25 @@ export function DatePicker(props: DatePickerProps) {
             </AutoLayout>
           </>
         );
+
       case 'year':
         return (
           <SimpleGrid columns={3} width="fill-parent" height={207}>
-            {...decade.map((y) => {
-              const isCurrentYear = y === dayjs(date).year();
+            {...decade.map((year) => {
+              const isCurrentYear = year === dayjs(date).year();
 
               return (
                 <AutoLayout
+                  key={year}
                   width="fill-parent"
                   height="fill-parent"
-                  onClick={() => {
-                    setDate(dayjs(date).year(y).toString());
-                    setPivot(dayjs(date).year(y).toString());
-                    toggleView();
-                  }}
                   verticalAlignItems="center"
                   horizontalAlignItems="center"
+                  onClick={() => {
+                    setDate(dayjs(date).year(year).toString());
+                    setPivot(dayjs(date).year(year).toString());
+                    toggleView();
+                  }}
                 >
                   <AutoLayout
                     fill={isCurrentYear ? colors.blue[500] : undefined}
@@ -171,12 +185,8 @@ export function DatePicker(props: DatePickerProps) {
                       fill: isCurrentYear ? colors.blue[400] : colors.gray[100],
                     }}
                   >
-                    <Text
-                      fill={isCurrentYear ? colors.white : colors.neutral[900]}
-                      fontSize={12}
-                      key={y}
-                    >
-                      {y}
+                    <Text fill={isCurrentYear ? colors.white : colors.neutral[900]} fontSize={12}>
+                      {year}
                     </Text>
                   </AutoLayout>
                 </AutoLayout>
@@ -184,6 +194,7 @@ export function DatePicker(props: DatePickerProps) {
             })}
           </SimpleGrid>
         );
+
       case 'month':
         return (
           <SimpleGrid
@@ -197,10 +208,10 @@ export function DatePicker(props: DatePickerProps) {
               const isCurrentMonth = index === dayjs(date).month();
               return (
                 <Button
+                  key={month}
                   variant={isCurrentMonth ? 'filled' : 'ghost'}
                   colorScheme={isCurrentMonth ? 'blue' : undefined}
                   size="sm"
-                  key={month}
                   block
                   onClick={() => {
                     setDate(dayjs(date).month(index).toString());
@@ -221,7 +232,7 @@ export function DatePicker(props: DatePickerProps) {
     <AutoLayout name={NODE_NAME_MAP.locator} overflow="visible" hidden={!open}>
       {/* Limit the height of Locator to 0 with a zero-height Line component to avoid layer shifting. */}
       <Line opacity={0} />
-      <AutoLayout name={NODE_NAME_MAP.calendar} {...calendar} hidden={!open}>
+      <AutoLayout name={NODE_NAME_MAP.calendar} {...pickerStyles.calendar} hidden={!open}>
         <Controls pivot={pivot} setPivot={setPivot} view={view} setView={setView} />
         {renderView(view)}
       </AutoLayout>
@@ -230,22 +241,22 @@ export function DatePicker(props: DatePickerProps) {
 
   const fieldNode = (
     <AutoLayout
-      {...input}
-      {...field}
+      {...fieldStyles.input}
+      {...fieldStyles.field}
       name={NODE_NAME_MAP.field}
       onClick={toggleCalendar}
       spacing={4}
-      width={'hug-contents'}
+      width="hug-contents"
     >
       <IconCalendar width={16} height={16} color={colors.neutral[500]} />
-      <Text {...text}>{dayjs(date).format(format || 'YYYY-MM-DD')}</Text>
+      <Text {...fieldStyles.text}>{dayjs(date).format(format || 'YYYY-MM-DD')}</Text>
     </AutoLayout>
   );
 
   return (
     <AutoLayout
       name={NODE_NAME_MAP.datepicker}
-      {...container}
+      {...pickerStyles.container}
       direction="vertical"
       overflow="visible"
       spacing={0}

@@ -23,6 +23,9 @@ import {
   TimePickerDoc,
   NoticeDoc,
   Changelog,
+  CardDoc,
+  MenuDoc,
+  StepperDoc,
 } from './docs';
 import { paginationStyle } from './docs/styles';
 import { Sidebar } from './components/sidebar';
@@ -30,20 +33,33 @@ import { COMPONENTS } from './data';
 import { Header } from './components/header';
 import { ShadowsDoc } from './docs/shadows';
 import { DatePickerDoc } from './docs/date-picker';
-import { MenuDoc } from './docs/menu';
 
 const { widget } = figma;
-const { AutoLayout, usePropertyMenu, useSyncedState, Text, useEffect } = widget;
+const { AutoLayout, usePropertyMenu, useSyncedState, Text, useEffect, useWidgetId } = widget;
 
 function Widget() {
   const [currentPage, setCurrentPage] = useSyncedState('currentPage', 'intro');
   const index = COMPONENTS.findIndex((item) => item.option === currentPage);
+
+  const widgetId = useWidgetId();
 
   useEffect(() => {
     figma.ui.onmessage = (msg) => {
       if (msg.type === 'CODE_COPIED') {
         figma.notify('Code copied!');
         figma.closePlugin();
+      }
+      if (msg.type === 'SYNTAX_HIGHLIGHTED') {
+        const node = figma.getNodeById(widgetId);
+
+        if (node?.type === 'WIDGET') {
+          node?.setWidgetSyncedState({
+            ...node.widgetSyncedState,
+            [msg.payload.id]: msg.payload.tokens,
+          });
+
+          figma.closePlugin();
+        }
       }
     };
   });
@@ -72,6 +88,8 @@ function Widget() {
     shadows: <ShadowsDoc />,
     'description-list': <DescriptionListDoc />,
     'simple-grid': <SimpleGridDoc />,
+    stepper: <StepperDoc />,
+    card: <CardDoc />,
     notice: <NoticeDoc />,
     demo1: <Todo />,
     demo2: <Issue />,

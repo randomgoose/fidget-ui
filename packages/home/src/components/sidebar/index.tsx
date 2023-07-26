@@ -1,6 +1,6 @@
 import { Heading, Tag, colors } from 'fidget-ui';
 import { COMPONENTS, LATEST } from '../../data';
-import _ from 'lodash';
+import { groupBy } from 'lodash-es';
 
 const { AutoLayout, Text } = figma.widget;
 
@@ -12,7 +12,7 @@ interface SidebarProps {
 export function Sidebar({ onChangePage, currentPage }: SidebarProps) {
   return (
     <AutoLayout name="Sidebar" direction="vertical" width={160} spacing={12}>
-      {Object.entries(_.groupBy(COMPONENTS, 'type')).map(([group, items]) => (
+      {Object.entries(groupBy(COMPONENTS, 'type')).map(([group, items]) => (
         <AutoLayout
           name="Sidebar Item Group"
           key={group}
@@ -52,7 +52,7 @@ export function Sidebar({ onChangePage, currentPage }: SidebarProps) {
                   </Text>
 
                   {LATEST.includes(item.option) ? (
-                    <Tag size="sm" variant={active ? 'outline' : 'subtle'}>
+                    <Tag size="sm" variant={'subtle'}>
                       New
                     </Tag>
                   ) : undefined}

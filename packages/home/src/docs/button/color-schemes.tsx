@@ -1,6 +1,7 @@
-import { Heading, colors, Tabs, Button } from 'fidget-ui';
+import { Heading, colors, Button } from 'fidget-ui';
 import { Case } from '../../components/case';
-import { P, Code, Pre } from '../typography';
+import { P, Pre } from '../typography';
+import { Preview } from '../../components/preview';
 
 const { useSyncedState } = figma.widget;
 
@@ -15,37 +16,24 @@ export default function ButtonColorSchemes() {
         <Pre fill={colors.blue[500]}>Colors</Pre> for available color.
       </P>
 
-      <Tabs
-        id="button/color-schemes"
-        items={[
-          {
-            key: 'preview',
-            tab: 'Preview',
-            children: (
-              <Case spacing={4} height={240}>
-                <Button colorScheme="blue">Blue</Button>
-                <Button colorScheme="cyan" variant={'outline'}>
-                  Cyan
-                </Button>
-                <Button colorScheme="rose" variant={'ghost'}>
-                  Red
-                </Button>
-              </Case>
-            ),
-          },
-          {
-            key: 'code',
-            tab: 'Code',
-            children: (
-              <Code height={240}>
-                {`<Button colorScheme="blue">Blue</Button>
-<Button colorScheme="cyan" variant={'outline'}>Cyan</Button>
-<Button colorScheme="rose" variant={'ghost'}>Red</Button>`}
-              </Code>
-            ),
-          },
-        ]}
-      />
+      <Preview
+        id="button_color-schemes"
+        code={`() => <>
+  <Button colorScheme="blue">Blue</Button>
+  <Button colorScheme="cyan" variant={'outline'}>Cyan</Button>
+  <Button colorScheme="rose" variant={'ghost'}>Red</Button>
+</>`}
+      >
+        <Case spacing={4} height={240}>
+          <Button colorScheme="blue">Blue</Button>
+          <Button colorScheme="cyan" variant={'outline'}>
+            Cyan
+          </Button>
+          <Button colorScheme="rose" variant={'ghost'}>
+            Red
+          </Button>
+        </Case>
+      </Preview>
     </>
   );
 }

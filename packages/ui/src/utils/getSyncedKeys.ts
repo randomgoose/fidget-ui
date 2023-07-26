@@ -20,7 +20,8 @@ type FidgetComponentNames =
   | 'Tabs'
   | 'Tag'
   | 'TextField'
-  | 'TimePicker';
+  | 'TimePicker'
+  | 'Stepper';
 
 const KEY_PREFIX = '__fidget_ui_';
 
