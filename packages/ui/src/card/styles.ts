@@ -14,13 +14,16 @@ export const getCardStyles = (): {
       direction: 'vertical',
     },
     header: {
-      padding: 16,
+      width: 'fill-parent',
+      padding: { vertical: 16, horizontal: 20 },
     },
     body: {
-      padding: 16,
+      width: 'fill-parent',
+      padding: { top: 0, bottom: 20, horizontal: 20 },
     },
     footer: {
-      padding: 16,
+      width: 'fill-parent',
+      padding: { top: 0, bottom: 20, horizontal: 20 },
     },
   };
 };

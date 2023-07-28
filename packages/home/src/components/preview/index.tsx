@@ -2,6 +2,13 @@ import { IconButton, Tabs } from 'fidget-ui';
 import { IconDocument } from 'fidget-ui/icons';
 import { ControlledRadioGroup } from '../../docs/radio/controlled-radio-group';
 
+type Color = {
+  r: number;
+  g: number;
+  b: number;
+  a: number;
+};
+
 interface PreviewProps {
   id: string;
   children: FigmaDeclarativeNode;
@@ -12,8 +19,8 @@ const { useSyncedState, AutoLayout, Text } = figma.widget;
 
 export function Preview({ id, children, code }: PreviewProps) {
   const [tokens] = useSyncedState(`__fidget_ui_Preview_${id}_tokens`, {
-    width: 0,
-    height: 0,
+    width: 1,
+    height: 1,
     text: '',
     tokens: [],
   });
@@ -95,19 +102,20 @@ export function Preview({ id, children, code }: PreviewProps) {
               height={'fill-parent'}
             >
               <AutoLayout width={'fill-parent'} height={((tokens.height * 12) / 24) * 30}>
-                {tokens.tokens?.map((token: any) => (
-                  <Text
-                    fontSize={12}
-                    fontFamily="Source Code Pro"
-                    positioning="absolute"
-                    fill={fillMode(getFill(token.style.color), 'dark')}
-                    x={{ type: 'left', offset: token.x * 12 * 0.6 }}
-                    y={{ type: 'top', offset: ((token.y * 12) / 24) * 30 }}
-                    key={token.text}
-                  >
-                    {token.text}
-                  </Text>
-                ))}
+                {tokens.tokens.length > 0 &&
+                  tokens.tokens?.map((token: any) => (
+                    <Text
+                      fontSize={12}
+                      fontFamily="Source Code Pro"
+                      positioning="absolute"
+                      fill={fillMode(getFill(token.style.color), 'dark')}
+                      x={{ type: 'left', offset: token.x * 12 * 0.6 }}
+                      y={{ type: 'top', offset: ((token.y * 12) / 24) * 30 }}
+                      key={token?.text}
+                    >
+                      {token?.text}
+                    </Text>
+                  ))}
               </AutoLayout>
 
               <IconButton

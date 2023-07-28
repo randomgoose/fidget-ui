@@ -1,7 +1,7 @@
 export type CardProps = AutoLayoutProps;
 
-export type CardHeaderProps = AutoLayoutProps;
+export type CardHeaderProps = AutoLayoutProps & TextProps;
 
-export type CardBodyProps = AutoLayoutProps;
+export type CardBodyProps = AutoLayoutProps & TextProps;
 
-export type CardFooterProps = AutoLayoutProps;
+export type CardFooterProps = AutoLayoutProps & TextProps;
