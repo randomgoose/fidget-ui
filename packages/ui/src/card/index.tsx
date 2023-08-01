@@ -3,15 +3,9 @@ import { CardBody } from './card-body';
 import { CardFooter } from './card-footer';
 import { CardProps } from './interface';
 import { getCardStyles } from './styles';
+import { NODE_NAME_MAP } from './utils';
 
 const { AutoLayout } = figma.widget;
-
-const NODE_NAME_MAP = {
-  container: 'Card Container',
-  header: 'Card Header',
-  body: 'Card Body',
-  footer: 'Card Footer',
-};
 
 function Card(props: CardProps) {
   const { container } = getCardStyles();

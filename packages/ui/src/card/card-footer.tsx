@@ -1,51 +1,16 @@
-import { renderChildren } from '../utils';
+import { merge } from 'lodash-es';
+import { renderChildren, splitProps } from '../utils';
 import { CardFooterProps } from './interface';
 import { getCardStyles } from './styles';
 
 const { AutoLayout } = figma.widget;
 
 export function CardFooter(props: CardFooterProps) {
-  const {
-    fontFamily,
-    letterSpacing,
-    textDecoration,
-    fontSize,
-    italic,
-    textCase,
-    fontWeight,
-    fontPostScriptName,
-    href = '',
-    font,
-    paragraphIndent,
-    paragraphSpacing,
-    horizontalAlignText,
-    verticalAlignText,
-    lineHeight,
-  } = props;
-
   const { footer } = getCardStyles();
+  const mergedProps = merge(footer, props);
+  const { autolayoutProps, textProps } = splitProps(mergedProps);
 
   return (
-    <AutoLayout {...footer}>
-      {renderChildren(props.children, {
-        textProps: {
-          fontFamily,
-          letterSpacing,
-          textDecoration,
-          fontSize,
-          italic,
-          textCase,
-          fontWeight,
-          fontPostScriptName,
-          href,
-          font,
-          paragraphIndent,
-          paragraphSpacing,
-          horizontalAlignText,
-          verticalAlignText,
-          lineHeight,
-        },
-      })}
-    </AutoLayout>
+    <AutoLayout {...autolayoutProps}>{renderChildren(props.children, { textProps })}</AutoLayout>
   );
 }

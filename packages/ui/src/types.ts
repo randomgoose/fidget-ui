@@ -21,3 +21,6 @@ export type ColorScheme =
   | 'fuchsia'
   | 'pink'
   | 'rose';
+
+export type ElementProps = AutoLayoutProps &
+  Omit<TextProps, 'children'> & { color?: TextProps['fill'] };

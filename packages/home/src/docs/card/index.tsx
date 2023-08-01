@@ -1,21 +1,16 @@
-import { Button, Card, CardBody, CardFooter, CardHeader } from 'fidget-ui';
+import { Divider, Heading } from 'fidget-ui';
 import { docStyle } from '../styles';
+import { CardUsage } from './usage';
 
-const { AutoLayout, Text } = figma.widget;
+const { AutoLayout } = figma.widget;
 
 export function CardDoc() {
   return (
     <AutoLayout {...docStyle} name={'Card Doc'}>
-      <Text></Text>
-      <Card>
-        <CardHeader fontSize={18} lineHeight={'28px'}>
-          Fidget UI
-        </CardHeader>
-        <CardBody>A component library for Figma widgets.</CardBody>
-        <CardFooter>
-          <Button>View</Button>
-        </CardFooter>
-      </Card>
+      <Heading as="h1">Card</Heading>
+      <Divider />
+
+      <CardUsage />
     </AutoLayout>
   );
 }

@@ -33,6 +33,7 @@ import { COMPONENTS } from './data';
 import { Header } from './components/header';
 import { ShadowsDoc } from './docs/shadows';
 import { DatePickerDoc } from './docs/date-picker';
+import TableDoc from './docs/table';
 
 const { widget } = figma;
 const { AutoLayout, usePropertyMenu, useSyncedState, Text, useEffect, useWidgetId } = widget;
@@ -91,6 +92,7 @@ function Widget() {
     stepper: <StepperDoc />,
     card: <CardDoc />,
     notice: <NoticeDoc />,
+    table: <TableDoc />,
     demo1: <Todo />,
     demo2: <Issue />,
   };

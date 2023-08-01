@@ -26,6 +26,13 @@ export * from './heading';
 export type { HeadingProps } from './heading/interface';
 
 export * from './menu';
+export type {
+  MenuProps,
+  MenuItemProps,
+  MenuDividerProps,
+  MenuListProps,
+  MenuTriggerProps,
+} from './menu';
 
 export * from './radio';
 export type { RadioGroupProps, RadioProps } from './radio/interface';
@@ -56,5 +63,9 @@ export type { TimePickerProps } from './time-picker/interface';
 
 export * from './notice';
 export type { NoticeProps } from './notice/interface';
+
+export * from './table';
+
+export * from './card';
 
 export * from './styles';

@@ -1,6 +1,5 @@
 import { IconButton, Tabs } from 'fidget-ui';
 import { IconDocument } from 'fidget-ui/icons';
-import { ControlledRadioGroup } from '../../docs/radio/controlled-radio-group';
 
 type Color = {
   r: number;
@@ -130,9 +129,10 @@ export function Preview({ id, children, code }: PreviewProps) {
                       width: 0,
                       height: 0,
                     });
+
                     figma.ui.postMessage({
                       type: 'COPY',
-                      payload: ControlledRadioGroup,
+                      payload: code,
                     });
                   })
                 }
