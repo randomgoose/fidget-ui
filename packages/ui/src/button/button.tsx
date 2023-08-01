@@ -1,6 +1,8 @@
 import { renderIcon } from '../utils';
 import { ButtonProps } from './interface';
 import { getButtonStyles } from './styles';
+import { useFetchGlobalConfig } from '../config-provider';
+import { mergeUserDefinedStyle } from '../utils/mergeUserDefinedStyle';
 
 const { widget } = figma;
 const { AutoLayout, Text } = widget;
@@ -11,6 +13,7 @@ const NODE_NAME_MAP = {
 };
 
 export function Button({
+  style,
   variant = 'filled',
   children,
   disabled = false,
@@ -26,12 +29,19 @@ export function Button({
     // TODO
   }
 
-  const styles = getButtonStyles({
-    variant,
+  const globalConfig = useFetchGlobalConfig();
+  const styles = mergeUserDefinedStyle({
+    defaultStyle: getButtonStyles({
+      variant,
+      size,
+      colorScheme,
+      disabled,
+      block,
+    }),
+    globalStyle: globalConfig.Button?.style,
+    propStyle: style,
     size,
-    colorScheme,
-    disabled,
-    block,
+    variant,
   });
 
   const [nodeIconLeft, nodeIconRight] = [leftIcon, rightIcon].map((icon) =>

@@ -1,5 +1,5 @@
 import { colors, isNeutralColor } from '../styles';
-import { ButtonProps, IconButtonProps } from './interface';
+import type { ButtonProps, IconButtonProps, ButtonStyle } from './interface';
 
 export const getButtonStyles = ({
   variant,
@@ -7,11 +7,7 @@ export const getButtonStyles = ({
   size,
   disabled,
   block,
-}: Pick<ButtonProps, 'colorScheme' | 'size' | 'variant' | 'disabled' | 'block'>): {
-  container: AutoLayoutProps;
-  text: TextProps;
-  icon: Omit<SVGProps, 'src'>;
-} => {
+}: Pick<ButtonProps, 'colorScheme' | 'size' | 'variant' | 'disabled' | 'block'>): ButtonStyle => {
   const hue = colors[colorScheme];
 
   let bg: AutoLayoutProps['fill'];
@@ -124,10 +120,10 @@ export const getIconButtonStyles = ({
   colorScheme = 'neutral',
   disabled,
   fontSize,
-}: Pick<IconButtonProps, 'size' | 'variant' | 'colorScheme' | 'disabled' | 'fontSize'>): {
-  container: AutoLayoutProps;
-  icon: Omit<SVGProps, 'src'>;
-} => {
+}: Pick<IconButtonProps, 'size' | 'variant' | 'colorScheme' | 'disabled' | 'fontSize'>): Omit<
+  ButtonStyle,
+  'text'
+> => {
   const styles = getButtonStyles({ variant, size, colorScheme, disabled });
   let height: AutoLayoutProps['height'];
   let width: AutoLayoutProps['width'];

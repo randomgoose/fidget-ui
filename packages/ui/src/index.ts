@@ -67,5 +67,6 @@ export type { NoticeProps } from './notice/interface';
 export * from './table';
 
 export * from './card';
+export * from './config-provider';
 
 export * from './styles';
