@@ -1,12 +1,7 @@
 import { colors, shadows } from '../styles';
-import { CardBodyProps, CardFooterProps, CardHeaderProps, CardProps } from './interface';
+import { CardStyle } from './interface';
 
-export const getCardStyles = (): {
-  container: CardProps;
-  header: CardHeaderProps;
-  body: CardBodyProps;
-  footer: CardFooterProps;
-} => {
+export const getCardStyles = (): CardStyle => {
   return {
     container: {
       cornerRadius: 8,

@@ -3,7 +3,12 @@ import { getMenuStyles } from './styles';
 import { MenuTrigger } from './trigger';
 import { MenuList } from './list';
 import { getSyncedKeys } from '../utils';
-import { NODE_NAME_MAP } from './utils';
+import { NODE_NAME_MAP, isMenuDivider, isMenuItem } from './utils';
+import { useFetchGlobalConfig } from '../config-provider';
+import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
+import { flatten, merge } from 'lodash-es';
+import { MenuItem } from './item';
+import { MenuDivider } from './divider';
 
 const { widget } = figma;
 const { AutoLayout, useSyncedState, h, Line, Fragment } = widget;
@@ -13,7 +18,13 @@ export function Menu(props: MenuProps) {
   const [isOpen, setIsOpen] = useSyncedState(syncedKeyOpen, false);
 
   const { placement = 'bottom-start', children } = props;
-  const styles = getMenuStyles({ placement });
+
+  const globalConfig = useFetchGlobalConfig();
+  const styles = mergeUserDefinedStyles({
+    defaultStyle: getMenuStyles({ placement: placement }),
+    globalStyle: globalConfig.Menu?.style,
+    propStyle: props.style,
+  });
 
   const renderMenuChildren = () => {
     if (Array.isArray(children)) {
@@ -42,12 +53,28 @@ export function Menu(props: MenuProps) {
                   {isOpen ? (
                     <MenuList
                       {...styles.list}
-                      {...child.props}
+                      // {...child.props}
                       onClick={() => {
                         setIsOpen(false);
                       }}
                     >
-                      {child.children}
+                      {flatten(child.children).map((child: any, index) => {
+                        if (isMenuItem(child)) {
+                          const { children, ...rest } = merge(styles.item, child.props);
+                          return (
+                            <MenuItem {...rest} key={index}>
+                              {...children}
+                            </MenuItem>
+                          );
+                        } else if (isMenuDivider(child)) {
+                          const { children, ...rest } = merge(styles.item, child.props);
+                          return (
+                            <MenuDivider {...rest} key={index}>
+                              {...children}
+                            </MenuDivider>
+                          );
+                        }
+                      })}
                     </MenuList>
                   ) : null}
                 </AutoLayout>

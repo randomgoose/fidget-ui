@@ -70,7 +70,9 @@ function Widget() {
   useGlobalConfig({
     Button: {
       style: {
-        baseStyle: { text: { fontSize: 20 } },
+        baseStyle: {
+          text: { fontSize: 20 },
+        },
         sizes: {
           sm: { text: { fontSize: 8 } },
           md: { text: { fontSize: 16 } },
@@ -91,6 +93,37 @@ function Widget() {
             container: {
               fill: '#00f',
             },
+          },
+        },
+      },
+    },
+    Tag: {
+      style: {
+        baseStyle: {},
+        variants: {},
+      },
+    },
+    Menu: {},
+    Card: {
+      style: {
+        baseStyle: {
+          footer: {
+            fill: '#ffe400',
+          },
+          header: {
+            fontSize: 48,
+          },
+          body: {
+            color: colors.neutral[200],
+          },
+        },
+      },
+    },
+    Switch: {
+      style: {
+        baseStyle: {
+          container: {
+            fill: '#ffe400',
           },
         },
       },

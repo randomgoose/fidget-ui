@@ -24,6 +24,7 @@ export type ColorScheme =
 
 export type ElementProps = AutoLayoutProps &
   Omit<TextProps, 'children'> & { color?: TextProps['fill'] };
+
 export type FidgetComponentNames =
   | 'Dropdown'
   | 'Field'

@@ -1,10 +1,7 @@
-import { AvatarProps } from './interface';
+import { colors } from '../styles';
+import { AvatarProps, AvatarStyle } from './interface';
 
-export const getAvatarStyles = ({
-  size,
-}: Pick<AvatarProps, 'size'>): {
-  avatar: Omit<AutoLayoutProps, 'width' | 'height'> & { width: number; height: number };
-} => {
+export const getAvatarStyles = ({ size = 'md' }: Pick<AvatarProps, 'size'>): AvatarStyle => {
   let width: number;
   let height: number;
   let padding: AutoLayoutProps['padding'];
@@ -51,6 +48,18 @@ export const getAvatarStyles = ({
       padding,
       cornerRadius: 100,
       stroke: { r: 0, g: 0, b: 0, a: 0.04 },
+      color: '#ffffff',
+    },
+    avatarGroup: {},
+    excessLabel: {
+      width,
+      height,
+      padding,
+      cornerRadius: 100,
+      fill: colors.neutral[100],
+      color: colors.neutral[700],
+      horizontalAlignItems: 'center',
+      verticalAlignItems: 'center',
     },
   };
 };

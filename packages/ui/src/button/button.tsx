@@ -2,7 +2,7 @@ import { renderIcon } from '../utils';
 import { ButtonProps } from './interface';
 import { getButtonStyles } from './styles';
 import { useFetchGlobalConfig } from '../config-provider';
-import { mergeUserDefinedStyle } from '../utils/mergeUserDefinedStyle';
+import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
 
 const { widget } = figma;
 const { AutoLayout, Text } = widget;
@@ -25,12 +25,8 @@ export function Button({
   block,
   ...rest
 }: ButtonProps) {
-  if (variant !== 'filled') {
-    // TODO
-  }
-
   const globalConfig = useFetchGlobalConfig();
-  const styles = mergeUserDefinedStyle({
+  const styles = mergeUserDefinedStyles({
     defaultStyle: getButtonStyles({
       variant,
       size,

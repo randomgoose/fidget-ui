@@ -1,19 +1,10 @@
 import { colors, shadows } from '../styles';
-import { MenuItemProps, MenuProps } from './interface';
+import { MenuAnatomy, MenuItemProps, MenuProps } from './interface';
 
 export const getMenuStyles = ({
   disabled,
   placement = 'bottom',
-}: Pick<MenuItemProps, 'disabled'> & Pick<MenuProps, 'placement'>): {
-  container: AutoLayoutProps;
-  list: AutoLayoutProps;
-  item: AutoLayoutProps;
-  text: TextProps;
-  command: TextProps;
-  icon: Omit<SVGProps, 'src'>;
-  chevron: Omit<SVGProps, 'src'> & { color: string };
-  locator: AutoLayoutProps;
-} => {
+}: Pick<MenuItemProps, 'disabled'> & Pick<MenuProps, 'placement'>): MenuAnatomy => {
   /* ---- Locator ---- */
   // const horizontalAlignItems: AutoLayoutProps['horizontalAlignItems'] = placement.endsWith('start')
   //   ? 'start'
@@ -70,6 +61,9 @@ export const getMenuStyles = ({
     item: {
       width: 'fill-parent',
       overflow: 'visible',
+      fontSize: 14,
+      lineHeight: 22,
+      color: colors.neutral[700],
       cornerRadius: 4,
       padding: { horizontal: 8, vertical: 5 },
       hoverStyle: disabled
@@ -80,16 +74,6 @@ export const getMenuStyles = ({
       verticalAlignItems: 'center',
       spacing: 6,
       opacity: disabled ? 0.3 : 1,
-    },
-    text: {
-      fontSize: 14,
-      lineHeight: 22,
-      width: 'fill-parent',
-    },
-    command: {
-      fontSize: 12,
-      lineHeight: 20,
-      fill: colors.neutral[500],
     },
     icon: {
       width: 14,
@@ -107,6 +91,7 @@ export const getMenuStyles = ({
       height: 1,
       width: 1,
     },
+    trigger: {},
   };
 };
 

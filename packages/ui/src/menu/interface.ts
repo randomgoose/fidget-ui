@@ -1,6 +1,18 @@
 import { DividerProps } from '../divider/interface';
+import { ComponentStyle, ElementProps } from '../types';
 
-export interface MenuItemProps extends Omit<AutoLayoutProps, 'children'> {
+export interface MenuAnatomy {
+  container: AutoLayoutProps;
+  list: AutoLayoutProps;
+  item: ElementProps;
+  icon: Omit<SVGProps, 'src'>;
+  chevron: Omit<SVGProps, 'src'> & { color: string };
+  locator: AutoLayoutProps;
+  trigger: ElementProps;
+}
+
+export interface MenuItemProps extends ElementProps {
+  style?: ComponentStyle<string, string, MenuAnatomy['item']>;
   type?: 'item';
   children?: FigmaDeclarativeNode;
   /**
@@ -10,7 +22,6 @@ export interface MenuItemProps extends Omit<AutoLayoutProps, 'children'> {
   icon?: FigmaDeclarativeNode;
   disabled?: boolean;
   items?: MenuItemProps[];
-  /*---- New ----*/
   color?: TextProps['stroke'];
   onClick?: (e: WidgetClickEvent) => void;
 }
@@ -28,6 +39,7 @@ export type MenuListProps = AutoLayoutProps;
 export interface MenuProps extends AutoLayoutProps {
   id: string;
   // TODO 通过 trigger 和 items 使用的方式似乎还未实现？
+  style?: ComponentStyle<string, string, MenuAnatomy>;
   trigger?: FigmaDeclarativeNode;
   children?: FigmaDeclarativeNode;
   items?: (MenuItemProps | MenuDividerProps)[];
