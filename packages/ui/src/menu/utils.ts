@@ -7,4 +7,10 @@ export const NODE_NAME_MAP = {
   listLocator: 'Menu List Locator',
 };
 
-export function isMenuItem() {}
+export function isMenuItem(child: any): boolean {
+  return child?.props?.name === NODE_NAME_MAP.item;
+}
+
+export function isMenuDivider(child: any): boolean {
+  return child?.props?.name === NODE_NAME_MAP.divider;
+}

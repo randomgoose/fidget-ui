@@ -1,15 +1,12 @@
 import { colors, isNeutralColor } from '../styles';
-import { SwitchProps } from './interface';
+import { SwitchProps, SwitchStyle } from './interface';
 
 export const getSwitchStyles = ({
   checked,
   colorScheme,
   disabled,
   size,
-}: Pick<SwitchProps, 'checked' | 'colorScheme' | 'disabled' | 'size'>): {
-  container: AutoLayoutProps;
-  thumb: RectangleProps;
-} => {
+}: Pick<SwitchProps, 'checked' | 'colorScheme' | 'disabled' | 'size'>): SwitchStyle => {
   /* ---- Container ---- */
   let width: AutoLayoutProps['width'] = 44;
   let height: AutoLayoutProps['height'] = 24;

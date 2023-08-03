@@ -1,5 +1,4 @@
-// eslint-disable-next-line
-import { Heading, Divider, Tabs, colors } from 'fidget-ui';
+import { Heading, Divider, Tabs } from 'fidget-ui';
 import { docStyle } from './styles';
 import { Code, P, Pre } from './typography';
 
@@ -82,6 +81,7 @@ export function Intro() {
         To use Fidget components, install the <Pre>fidget-ui</Pre> package.
       </P>
       <Tabs
+        id=""
         activeKey={registry}
         onChange={(key) => setRegistry(key)}
         items={[

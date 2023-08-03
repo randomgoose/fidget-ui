@@ -76,6 +76,7 @@ export function Issue() {
     >
       <Heading as="h5">Issue#47</Heading>
       <TextField
+        id="m002"
         width={'fill-parent'}
         value={title}
         onTextEditEnd={(e) => setTitle(e.characters)}

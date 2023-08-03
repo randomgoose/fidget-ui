@@ -1,9 +1,24 @@
-import { ElementProps } from '../types';
+import { ComponentStyle, ElementProps } from '../types';
 
-export type CardProps = AutoLayoutProps;
+export interface CardProps extends AutoLayoutProps {
+  style?: ComponentStyle<string, string, any>;
+}
 
-export type CardHeaderProps = ElementProps;
+export interface CardHeaderProps extends ElementProps {
+  style?: ComponentStyle<string, string, WidgetJSX.AutoLayoutProps>;
+}
 
-export type CardBodyProps = ElementProps;
+export interface CardBodyProps extends ElementProps {
+  style?: ComponentStyle<string, string, WidgetJSX.AutoLayoutProps>;
+}
 
-export type CardFooterProps = ElementProps;
+export interface CardFooterProps extends ElementProps {
+  style?: ComponentStyle<string, string, WidgetJSX.AutoLayoutProps>;
+}
+
+export type CardStyle = {
+  container: CardProps;
+  header: CardHeaderProps;
+  body: CardBodyProps;
+  footer: CardFooterProps;
+};

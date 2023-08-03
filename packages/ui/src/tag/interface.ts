@@ -1,3 +1,5 @@
+import { ComponentStyle } from '../types';
+
 export type TagColorScheme =
   | 'neutral'
   | 'red'
@@ -18,11 +20,15 @@ export type TagColorScheme =
   | 'pink'
   | 'rose';
 
+export type TagSize = 'sm' | 'md' | 'lg';
+export type TagVariant = 'solid' | 'subtle' | 'outline';
+
 export interface TagProps extends AutoLayoutProps {
   children?: FigmaDeclarativeNode;
-  variant?: 'solid' | 'subtle' | 'outline';
+  variant?: TagVariant;
+  style?: ComponentStyle<TagSize, TagVariant>;
   colorScheme?: TagColorScheme;
-  size?: 'sm' | 'md' | 'lg';
+  size?: TagSize;
   dismissible?: boolean;
   leftIcon?: SVG;
   rightIcon?: SVG;

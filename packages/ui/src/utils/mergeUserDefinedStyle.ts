@@ -18,7 +18,7 @@ function flatUserStyle({
   );
 }
 
-export function mergeUserDefinedStyle({
+export function mergeUserDefinedStyles({
   defaultStyle,
   globalStyle,
   propStyle,
@@ -28,8 +28,8 @@ export function mergeUserDefinedStyle({
   defaultStyle: Record<string, any>;
   globalStyle: ComponentStyle | undefined;
   propStyle: ComponentStyle | undefined;
-  size: string | undefined;
-  variant: string | undefined;
+  size?: string | undefined;
+  variant?: string | undefined;
 }): typeof defaultStyle {
   return merge(
     defaultStyle,

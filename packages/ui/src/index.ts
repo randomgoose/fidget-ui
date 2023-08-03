@@ -1,7 +1,7 @@
 export * from './accordion';
 export type { AccordionProps, AccordionItemProps } from './accordion/interface';
 
-export * from './avatar';
+export * from './avatar/index';
 export type { AvatarGroupProps, AvatarProps } from './avatar/interface';
 
 export * from './button';
@@ -11,7 +11,6 @@ export * from './checkbox';
 export type { CheckboxProps, CheckboxGroupProps } from './checkbox/interface';
 
 export * from './card';
-// export type { } from './card/interface'
 
 export * from './description-list';
 export type { DescriptionListProps } from './description-list/interface';

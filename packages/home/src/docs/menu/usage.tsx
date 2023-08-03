@@ -39,7 +39,7 @@ export function MenuUsage() {
                     <Button>Menu Trigger</Button>
                   </MenuTrigger>
                   <MenuList width={180}>
-                    <MenuItem>Edit Profile</MenuItem>
+                    <MenuItem fontSize={12}>Edit Profile</MenuItem>
                     <MenuItem>Copy Code</MenuItem>
                     <MenuItem>Download</MenuItem>
                     <MenuDivider />
