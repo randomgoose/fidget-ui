@@ -1,4 +1,5 @@
 import { colors } from '../styles';
+import { RadioStyle } from './interface';
 
 export const getRadioStyles = ({
   checked,
@@ -6,12 +7,7 @@ export const getRadioStyles = ({
 }: {
   checked: boolean;
   disabled: boolean;
-}): {
-  control: AutoLayoutProps;
-  label: TextProps;
-  container: AutoLayoutProps;
-  ink: EllipseProps;
-} => {
+}): RadioStyle => {
   let fill: AutoLayoutProps['fill'];
   let stroke: AutoLayoutProps['stroke'];
   let opacity: AutoLayoutProps['opacity'] = 1;
@@ -46,6 +42,11 @@ export const getRadioStyles = ({
       lineHeight: 22,
       fill: colors.neutral[900],
     },
-    ink: {},
+    ink: {
+      width: 6,
+      height: 6,
+      cornerRadius: 100,
+      fill: colors.white,
+    },
   };
 };

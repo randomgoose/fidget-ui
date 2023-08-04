@@ -6,9 +6,11 @@ import { Button } from '../button';
 import { IconCalendar } from '../icons';
 import { getDatePickerStyles } from './styles';
 import { SimpleGrid } from '../simple-grid';
-import { generateDecade, generateFirstDayOfEachWeek, generateWeek } from './utils';
+import { generateDecade, generateFirstDayOfEachWeek, generateWeek, getRowWidth } from './utils';
 import { Controls } from './controls';
 import { getSyncedKeys } from '../utils';
+import { useFetchGlobalConfig } from '../config-provider';
+import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
 
 const NODE_NAME_MAP = {
   datepicker: 'DatePicker',
@@ -53,8 +55,14 @@ export function DatePicker(props: DatePickerProps) {
 
   /*---- Styles ----*/
   const fieldStyles = getFieldStyles({ variant, size, disabled, open });
-  const pickerStyles = getDatePickerStyles({
-    placement: props.placement || 'top-start',
+
+  const globalConfig = useFetchGlobalConfig();
+  const calendarStyles = mergeUserDefinedStyles({
+    globalStyle: globalConfig.Calendar?.style,
+    propStyle: props.style,
+    defaultStyle: getDatePickerStyles({
+      placement: props.placement || 'top-start',
+    }),
   });
 
   const firstDayOfTheMonth = dayjs(pivot).clone().startOf('month');
@@ -80,21 +88,26 @@ export function DatePicker(props: DatePickerProps) {
       case 'date':
         return (
           <>
-            <AutoLayout name={NODE_NAME_MAP.calenderWeekdays} width="fill-parent">
+            <AutoLayout name={NODE_NAME_MAP.calenderWeekdays} width={'fill-parent'}>
               {generateWeeksOfTheMonth()[0].map((day, index) => (
-                <AutoLayout key={index} {...pickerStyles.weekday}>
-                  <Text {...pickerStyles.digit}>{dayjs(day).format('dd')}</Text>
+                <AutoLayout key={index} {...calendarStyles.weekday}>
+                  <Text {...calendarStyles.digit}>{dayjs(day).format('dd')}</Text>
                 </AutoLayout>
               ))}
             </AutoLayout>
 
-            <AutoLayout direction="vertical" width="fill-parent" spacing={2}>
+            <AutoLayout
+              name="cells"
+              direction="vertical"
+              width={getRowWidth(calendarStyles.calendar.width)}
+              spacing={calendarStyles.calendar.spacing}
+            >
               {generateWeeksOfTheMonth().map((week, index) => (
                 <AutoLayout
                   key={index}
-                  width="fill-parent"
+                  width={getRowWidth(calendarStyles.calendar.width)}
+                  {...calendarStyles.row}
                   name={NODE_NAME_MAP.calendarRow}
-                  spacing={2}
                 >
                   {
                     /*---- Render date cell ----*/
@@ -107,7 +120,7 @@ export function DatePicker(props: DatePickerProps) {
                         <AutoLayout
                           key={index}
                           name={NODE_NAME_MAP.calendarCell}
-                          {...pickerStyles.cell}
+                          {...calendarStyles.cell}
                           fill={selected ? colors.blue[500] : undefined}
                           hoverStyle={{
                             fill: selected ? colors.blue[500] : colors.neutral[100],
@@ -121,11 +134,11 @@ export function DatePicker(props: DatePickerProps) {
                           {isToday ? (
                             <Ellipse
                               name={NODE_NAME_MAP.calendarTodayLocator}
-                              {...pickerStyles.indicator}
+                              {...calendarStyles.indicator}
                             />
                           ) : null}
                           <Text
-                            {...pickerStyles.digit}
+                            {...calendarStyles.digit}
                             fill={
                               selected
                                 ? colors.white
@@ -232,7 +245,7 @@ export function DatePicker(props: DatePickerProps) {
     <AutoLayout name={NODE_NAME_MAP.locator} overflow="visible" hidden={!open}>
       {/* Limit the height of Locator to 0 with a zero-height Line component to avoid layer shifting. */}
       <Line opacity={0} />
-      <AutoLayout name={NODE_NAME_MAP.calendar} {...pickerStyles.calendar} hidden={!open}>
+      <AutoLayout name={NODE_NAME_MAP.calendar} {...calendarStyles.calendar} hidden={!open}>
         <Controls pivot={pivot} setPivot={setPivot} view={view} setView={setView} />
         {renderView(view)}
       </AutoLayout>
@@ -256,7 +269,7 @@ export function DatePicker(props: DatePickerProps) {
   return (
     <AutoLayout
       name={NODE_NAME_MAP.datepicker}
-      {...pickerStyles.container}
+      {...calendarStyles.container}
       direction="vertical"
       overflow="visible"
       spacing={0}

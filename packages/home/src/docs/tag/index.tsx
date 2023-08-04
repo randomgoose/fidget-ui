@@ -15,7 +15,6 @@ export function TagDoc() {
       <Heading as="h1">Tag</Heading>
       <P>Tags are used to mark or categorize items.</P>
       <Divider />
-
       <TagColorSchemes />
       <TagVariants />
       <TagSizes />

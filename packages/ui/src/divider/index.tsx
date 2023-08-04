@@ -1,4 +1,6 @@
+import { useFetchGlobalConfig } from '../config-provider';
 import { renderChildren } from '../utils';
+import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
 import { DividerProps } from './interface';
 import { getDividerStyles } from './styles';
 
@@ -15,8 +17,14 @@ export function Divider({
   stroke,
   orientation = 'horizontal',
   margin = orientation === 'horizontal' ? { top: 4, bottom: 4 } : { left: 4, right: 4 },
+  style
 }: DividerProps) {
-  const styles = getDividerStyles({ orientation });
+  const globalConfig = useFetchGlobalConfig();
+  const styles = mergeUserDefinedStyles({
+    globalStyle: globalConfig.Divider?.style,
+    propStyle: style,
+    defaultStyle: getDividerStyles({ orientation }),
+  });
 
   const renderDivider = (orientation: 'horizontal' | 'vertical') => {
     return (

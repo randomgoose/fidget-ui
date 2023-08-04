@@ -40,3 +40,7 @@ export const generateDecade = (day: Dayjs) => {
 
   return years;
 };
+
+export const getRowWidth = (calendarWidth: number | 'hug-contents') => {
+  return typeof calendarWidth === 'number' ? 'fill-parent' : 'hug-contents';
+};

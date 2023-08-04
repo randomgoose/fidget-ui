@@ -2,15 +2,17 @@ import { TagProps } from './interface';
 import { getTagStyles } from './styles';
 import { IconXMark } from '../icons';
 import { isSvg, renderChildren, renderIcon } from '../utils';
+import { useFetchGlobalConfig } from '../config-provider';
+import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
 
-const { widget } = figma;
-const { AutoLayout } = widget;
+const { AutoLayout } = figma.widget;
 
 const NODE_NAM_MAP = {
   tag: 'Tag',
 };
 
 export function Tag({
+  style,
   children,
   variant,
   colorScheme = 'blue',
@@ -21,35 +23,36 @@ export function Tag({
   rightIcon,
   ...rest
 }: TagProps) {
-  const styles = getTagStyles({ variant, colorScheme, size });
+  const globalConfig = useFetchGlobalConfig();
 
-  const renderIconOptions = {
-    width: styles.icon.width,
-    height: styles.icon.height,
-    stroke: styles.icon.stroke,
-    fill: styles.icon.fill,
-  };
+  const styles = mergeUserDefinedStyles({
+    defaultStyle: getTagStyles({ variant, colorScheme, size }),
+    globalStyle: globalConfig.Tag?.style,
+    propStyle: style,
+    variant,
+    size,
+  });
+
+  console.log('Tag', styles);
+
   const leftIconNode = isSvg(leftIcon)
     ? renderIcon({
         svg: leftIcon as any,
-        options: renderIconOptions,
+        options: { ...styles.icon },
       })
     : null;
   const rightIconNode = isSvg(rightIcon)
     ? renderIcon({
         svg: rightIcon as any,
-        options: renderIconOptions,
+        options: { ...styles.icon },
       })
     : null;
 
   return (
-    <AutoLayout name={NODE_NAM_MAP.tag} {...styles.container} {...rest}>
+    <AutoLayout {...styles.container} {...rest} name={NODE_NAM_MAP.tag}>
       {leftIconNode}
-
       {renderChildren(children, { textProps: styles.label })}
-
       {rightIconNode}
-
       {dismissible ? (
         <IconXMark {...styles.closeButton} width={12} height={12} onClick={() => onClose?.()} />
       ) : null}

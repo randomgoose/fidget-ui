@@ -1,10 +1,11 @@
-import { colors } from '../styles';
+import { useFetchGlobalConfig } from '../config-provider';
 import { renderChildren, getSyncedKeys } from '../utils';
+import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
 import { RadioGroupProps, RadioProps } from './interface';
 import { getRadioStyles } from './styles';
 
 const { widget } = figma;
-const { AutoLayout, Ellipse, useSyncedState } = widget;
+const { AutoLayout, Rectangle, useSyncedState } = widget;
 
 const NODE_NAME_MAP = {
   root: 'Radio',
@@ -13,8 +14,20 @@ const NODE_NAME_MAP = {
   group: 'Radio Group',
 };
 
-export function Radio({ value, children, disabled = false, checked = false, onClick }: RadioProps) {
-  const styles = getRadioStyles({ checked, disabled });
+export function Radio({
+  value,
+  children,
+  disabled = false,
+  checked = false,
+  onClick,
+  style,
+}: RadioProps) {
+  const globalConfig = useFetchGlobalConfig();
+  const styles = mergeUserDefinedStyles({
+    globalStyle: globalConfig.Radio?.style,
+    propStyle: style,
+    defaultStyle: getRadioStyles({ checked, disabled }),
+  });
 
   return (
     <AutoLayout
@@ -25,9 +38,7 @@ export function Radio({ value, children, disabled = false, checked = false, onCl
       {...styles.container}
     >
       <AutoLayout name={NODE_NAME_MAP.control} {...styles.control}>
-        {checked ? (
-          <Ellipse width={6} height={6} fill={colors.white} name={NODE_NAME_MAP.ink} />
-        ) : null}
+        {checked ? <Rectangle {...styles.ink} name={NODE_NAME_MAP.ink} /> : null}
       </AutoLayout>
       {children ? renderChildren(children, { textProps: styles.label }) : null}
     </AutoLayout>

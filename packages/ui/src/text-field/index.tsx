@@ -3,6 +3,8 @@ import { renderChildren } from '../utils';
 import { IconXMark } from '../icons';
 import { getFieldStyles } from '../_field/styles';
 import { TextFieldProps } from './interface';
+import { useFetchGlobalConfig } from '../config-provider';
+import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
 
 const { widget } = figma;
 const { Input, AutoLayout } = widget;
@@ -30,16 +32,24 @@ export function TextField({
   addonRight,
   disabled = false,
   onClear,
+  style,
   ...rest
 }: TextFieldProps) {
-  const styles = getFieldStyles({
+  const globalConfig = useFetchGlobalConfig();
+  const styles = mergeUserDefinedStyles({
+    defaultStyle: getFieldStyles({
+      variant,
+      size,
+      elementLeft,
+      elementRight,
+      disabled,
+      addonLeft,
+      addonRight,
+    }),
+    globalStyle: globalConfig.Field?.style,
+    propStyle: style,
     variant,
     size,
-    elementLeft,
-    elementRight,
-    disabled,
-    addonLeft,
-    addonRight,
   });
 
   const clearIcon = (

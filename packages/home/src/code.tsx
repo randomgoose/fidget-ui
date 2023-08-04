@@ -70,28 +70,14 @@ function Widget() {
   useGlobalConfig({
     Button: {
       style: {
-        baseStyle: {
-          text: { fontSize: 20 },
-        },
-        sizes: {
-          sm: { text: { fontSize: 8 } },
-          md: { text: { fontSize: 16 } },
-          lg: { text: { fontSize: 24 } },
-        },
+        baseStyle: {},
         variants: {
           filled: {
             container: {
-              fill: '#f00',
-            },
-          },
-          outline: {
-            container: {
-              fill: '#0f0',
-            },
-          },
-          ghost: {
-            container: {
-              fill: '#00f',
+              fill: colors.slate[900],
+              hoverStyle: {
+                fill: colors.slate[700],
+              },
             },
           },
         },
@@ -99,8 +85,22 @@ function Widget() {
     },
     Tag: {
       style: {
-        baseStyle: {},
-        variants: {},
+        baseStyle: {
+          container: {
+            cornerRadius: 100,
+          },
+        },
+      },
+    },
+    Field: {
+      style: {
+        variants: {
+          filled: {
+            field: {
+              fill: '#ffe400',
+            },
+          },
+        },
       },
     },
     Menu: {},
@@ -124,6 +124,86 @@ function Widget() {
         baseStyle: {
           container: {
             fill: '#ffe400',
+          },
+        },
+      },
+    },
+    Checkbox: {
+      style: {
+        baseStyle: {},
+      },
+    },
+    Accordion: {
+      style: {
+        baseStyle: {
+          container: {
+            strokeWidth: 0,
+          },
+          item: {
+            fill: colors.neutral[900],
+            hoverStyle: {
+              fill: colors.neutral[700],
+            },
+          },
+          button: {
+            hoverStyle: {
+              fill: colors.neutral[700],
+            },
+          },
+          title: {
+            fill: colors.white,
+          },
+        },
+      },
+    },
+    Notice: {
+      style: {
+        baseStyle: {
+          container: {
+            cornerRadius: 0,
+          },
+        },
+      },
+    },
+    Radio: {
+      style: {
+        baseStyle: {
+          control: {
+            cornerRadius: 2,
+          },
+          ink: {
+            cornerRadius: 0,
+          },
+        },
+      },
+    },
+    Calendar: {
+      style: {
+        baseStyle: {
+          calendar: {
+            width: 'hug-contents',
+            padding: 0,
+            cornerRadius: 0,
+            spacing: 0,
+          },
+          cell: {
+            width: 72,
+            height: 48,
+            padding: 8,
+            horizontalAlignItems: 'end',
+            verticalAlignItems: 'end',
+            stroke: colors.neutral[200],
+            cornerRadius: 0,
+            strokeAlign: 'center',
+          },
+          weekday: {
+            horizontalAlignItems: 'end',
+            stroke: colors.neutral[200],
+            padding: 8,
+            strokeAlign: 'center',
+          },
+          row: {
+            spacing: 0,
           },
         },
       },

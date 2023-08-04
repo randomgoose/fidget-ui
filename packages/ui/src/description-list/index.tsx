@@ -1,4 +1,6 @@
+import { useFetchGlobalConfig } from '../config-provider';
 import { renderChildren } from '../utils';
+import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
 import { DescriptionListItem, DescriptionListProps } from './interface';
 import { getDescriptionListStyles } from './styles';
 
@@ -6,7 +8,7 @@ const { widget } = figma;
 const { AutoLayout, Text } = widget;
 
 const NODE_NAME_MAP = {
-  list: 'Description List',
+  container: 'Description Container',
   item: 'Description List Item',
   itemLabel: 'Description List Item Label',
   itemValue: 'Description List Item Value',
@@ -27,11 +29,16 @@ const findLongestLabelIndex = (items: DescriptionListItem[]) => {
   return index;
 };
 
-export function DescriptionList({ items, spacing = 16, ...rest }: DescriptionListProps) {
-  const styles = getDescriptionListStyles({ spacing });
+export function DescriptionList({ items, spacing = 16, style, ...rest }: DescriptionListProps) {
+  const globalConfig = useFetchGlobalConfig();
+  const styles = mergeUserDefinedStyles({
+    globalStyle: globalConfig.DescriptionList?.style,
+    defaultStyle: getDescriptionListStyles({ spacing }),
+    propStyle: style,
+  });
 
   return (
-    <AutoLayout name={NODE_NAME_MAP.list} {...styles.list} {...rest} direction="vertical">
+    <AutoLayout name={NODE_NAME_MAP.container} {...styles.container} {...rest} direction="vertical">
       {items?.map(({ value, label }, index) => (
         <AutoLayout key={index} name={NODE_NAME_MAP.item} width="fill-parent" {...styles.item}>
           <Text width={128} name={NODE_NAME_MAP.itemLabel} {...styles.label}>
