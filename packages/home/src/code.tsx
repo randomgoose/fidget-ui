@@ -208,6 +208,37 @@ function Widget() {
         },
       },
     },
+    Tag: {
+      style: {
+        baseStyle: {},
+        variants: {},
+      },
+    },
+    Menu: {},
+    Card: {
+      style: {
+        baseStyle: {
+          footer: {
+            fill: '#ffe400',
+          },
+          header: {
+            fontSize: 48,
+          },
+          body: {
+            color: colors.neutral[200],
+          },
+        },
+      },
+    },
+    Switch: {
+      style: {
+        baseStyle: {
+          container: {
+            fill: '#ffe400',
+          },
+        },
+      },
+    },
   });
 
   const COMPONENT_DOC: { [key: string]: FigmaDeclarativeNode } = {
