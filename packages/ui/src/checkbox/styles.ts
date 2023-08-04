@@ -1,15 +1,11 @@
 import { colors, isNeutralColor } from '../styles';
-import { CheckboxProps } from './interface';
+import { CheckboxProps, CheckboxStyle } from './interface';
 
 export const getCheckboxStyles = ({
   checked,
   disabled,
   colorScheme = 'neutral',
-}: Pick<CheckboxProps, 'checked' | 'disabled' | 'colorScheme'>): {
-  control: AutoLayoutProps;
-  container: AutoLayoutProps;
-  label: TextProps;
-} => {
+}: Pick<CheckboxProps, 'checked' | 'disabled' | 'colorScheme'>): CheckboxStyle => {
   let fill: AutoLayoutProps['fill'];
 
   if (colorScheme) {
@@ -38,6 +34,12 @@ export const getCheckboxStyles = ({
     label: {
       fontSize: 14,
       lineHeight: 22,
+      fill: colors.neutral[700],
+    },
+    ink: {
+      width: 10,
+      height: 10,
+      color: colors.white,
     },
   };
 };

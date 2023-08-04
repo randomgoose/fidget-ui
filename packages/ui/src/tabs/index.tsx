@@ -1,5 +1,7 @@
+import { useFetchGlobalConfig } from '../config-provider';
 import { colors } from '../styles';
 import { renderChildren, getSyncedKeys } from '../utils';
+import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
 import { TabsProps } from './interface';
 import { getTabsStyles } from './styles';
 
@@ -24,6 +26,7 @@ export function Tabs({
   colorScheme = 'neutral',
   width = 'fill-parent',
   onChange,
+  style,
   ...rest
 }: TabsProps) {
   const [syncedKeyActiveKey] = getSyncedKeys('Tabs', id, ['activeKey']);
@@ -32,8 +35,13 @@ export function Tabs({
     defaultActiveKey || items?.[0].key
   );
 
-  /* ---- Styles ---- */
-  const styles = getTabsStyles({ variant, isFitted, colorScheme, width });
+  const globalConfig = useFetchGlobalConfig();
+  const styles = mergeUserDefinedStyles({
+    globalStyle: globalConfig.Tabs?.style,
+    propStyle: style,
+    defaultStyle: getTabsStyles({ variant, isFitted, colorScheme, width }),
+  });
+
   const mergedActiveKey = rest.activeKey ? rest.activeKey : activeKey;
 
   const tabPanels = Array.isArray(items)

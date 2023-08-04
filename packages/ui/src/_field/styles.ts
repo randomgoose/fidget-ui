@@ -1,5 +1,5 @@
 import { colors } from '../styles';
-import { FieldProps } from './interface';
+import { FieldProps, FieldStyle } from './interface';
 
 export const getFieldStyles = ({
   variant,
@@ -11,15 +11,7 @@ export const getFieldStyles = ({
 }: Pick<
   FieldProps,
   'size' | 'disabled' | 'elementLeft' | 'elementRight' | 'variant' | 'addonLeft' | 'addonRight'
-> & { open?: boolean }): {
-  field: AutoLayoutProps;
-  input: AutoLayoutProps;
-  text: TextProps;
-  clearIcon: Omit<SVGProps, 'src' | 'fill'> & { color: string };
-  leftAddon: AutoLayoutProps;
-  rightAddon: AutoLayoutProps;
-  element: AutoLayoutProps;
-} => {
+> & { open?: boolean }): FieldStyle => {
   /* ---- Field ---- */
   let fill: AutoLayoutProps['fill'];
   let stroke: AutoLayoutProps['stroke'];

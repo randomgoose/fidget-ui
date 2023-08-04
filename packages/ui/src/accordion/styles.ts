@@ -1,15 +1,7 @@
 import { colors } from '../styles';
+import { AccordionStyle } from './interface';
 
-export const getAccordionStyles = (): {
-  container: AutoLayoutProps;
-  item: AutoLayoutProps;
-  button: AutoLayoutProps;
-  chevronContainer: AutoLayoutProps;
-  chevron: Omit<SVGProps, 'src'> & { color: string };
-  title: TextProps;
-  content: TextProps;
-  panel: AutoLayoutProps;
-} => {
+export const getAccordionStyles = (): AccordionStyle => {
   return {
     container: {
       direction: 'vertical',

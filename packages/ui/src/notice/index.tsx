@@ -1,4 +1,5 @@
 //@ts-nocheck
+import { useFetchGlobalConfig } from '../config-provider';
 import {
   IconCheckCircleSolid,
   IconExclamationCircleSolid,
@@ -6,6 +7,7 @@ import {
   IconXCircleSolid,
 } from '../icons';
 import { isSvg, renderChildren, renderIcon } from '../utils';
+import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
 import { NoticeProps } from './interface';
 import { getNoticeStyles } from './styles';
 
@@ -24,9 +26,15 @@ export function Notice({
   title,
   description,
   children,
+  style,
   ...rest
 }: NoticeProps) {
-  const styles = getNoticeStyles({ variant, status });
+  const globalConfig = useFetchGlobalConfig();
+  const styles = mergeUserDefinedStyles({
+    defaultStyle: getNoticeStyles({ variant, status }),
+    globalStyle: globalConfig.Notice?.style,
+    propStyle: style,
+  });
 
   const renderIconNode = () => {
     const { icon: iconStyle } = styles;

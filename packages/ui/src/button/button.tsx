@@ -40,6 +40,8 @@ export function Button({
     variant,
   });
 
+  console.log('Button', styles);
+
   const [nodeIconLeft, nodeIconRight] = [leftIcon, rightIcon].map((icon) =>
     icon
       ? renderIcon({

@@ -1,15 +1,10 @@
 import { colors } from '../styles';
-import { NoticeProps } from './interface';
+import { NoticeProps, NoticeStyle } from './interface';
 
 export const getNoticeStyles = ({
   variant,
   status,
-}: Pick<NoticeProps, 'status' | 'variant'>): {
-  container: AutoLayoutProps;
-  title: TextProps;
-  description: TextProps;
-  icon: Omit<SVGProps, 'src'>;
-} => {
+}: Pick<NoticeProps, 'status' | 'variant'>): NoticeStyle => {
   /* ---- Container ---- */
   let fill: AutoLayoutProps['fill'];
 

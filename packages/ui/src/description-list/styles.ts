@@ -4,13 +4,13 @@ import { DescriptionListProps } from './interface';
 export const getDescriptionListStyles = ({
   spacing,
 }: Pick<DescriptionListProps, 'spacing'>): {
-  list: AutoLayoutProps;
+  container: AutoLayoutProps;
   item: AutoLayoutProps;
   label: TextProps;
   value: TextProps;
 } => {
   return {
-    list: {
+    container: {
       spacing,
       overflow: 'visible',
     },

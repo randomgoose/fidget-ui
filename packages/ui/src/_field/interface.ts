@@ -1,6 +1,22 @@
+import { ComponentStyle } from '../types';
+
+type FieldVariant = 'filled' | 'outline' | 'flush';
+type FieldSize = 'xs' | 'sm' | 'md' | 'lg';
+
+export interface FieldStyle {
+  field: AutoLayoutProps;
+  input: AutoLayoutProps;
+  text: TextProps;
+  clearIcon: Omit<SVGProps, 'src' | 'fill'> & { color: string };
+  leftAddon: AutoLayoutProps;
+  rightAddon: AutoLayoutProps;
+  element: AutoLayoutProps;
+}
+
 export interface FieldProps extends InputProps {
-  variant?: 'filled' | 'outline' | 'flush';
-  size?: 'xs' | 'sm' | 'md' | 'lg';
+  style?: ComponentStyle<FieldSize, FieldVariant, FieldStyle>;
+  variant?: FieldVariant;
+  size?: FieldSize;
   placeholder?: string;
   elementLeft?: FigmaDeclarativeNode;
   elementRight?: FigmaDeclarativeNode;

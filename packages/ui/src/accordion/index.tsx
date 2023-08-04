@@ -1,13 +1,15 @@
 import { IconChevronDown, IconChevronUp } from '../icons';
 import { AccordionItemProps, AccordionProps } from './interface';
 import { renderChildren, getSyncedKeys } from '../utils';
+import { useFetchGlobalConfig } from '../config-provider';
+import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
 import { getAccordionStyles } from './styles';
 
 const { widget } = figma;
 const { AutoLayout, useSyncedState } = widget;
 
 const NODE_NAME_MAP = {
-  root: 'Accordion',
+  container: 'Accordion',
   panel: 'Accordion Panel',
   item: 'Accordion Item',
   itemButton: 'Accordion Button',
@@ -15,8 +17,14 @@ const NODE_NAME_MAP = {
   itemChevron: 'Accordion Chevron Container',
 };
 
-export function Accordion({ id, data, width = 320 }: AccordionProps) {
-  const styles = getAccordionStyles();
+export function Accordion({ id, data, width = 320, style, ...rest }: AccordionProps) {
+  const globalConfig = useFetchGlobalConfig();
+  const styles = mergeUserDefinedStyles({
+    globalStyle: globalConfig.Accordion?.style,
+    defaultStyle: getAccordionStyles(),
+    propStyle: style,
+  });
+
   const [syncedKeyActiveKeys] = getSyncedKeys('Accordion', id, ['activeKeys']);
   const [activeKeys, setActiveKeys] = useSyncedState<AccordionItemProps['key'][]>(
     syncedKeyActiveKeys,
@@ -64,7 +72,7 @@ export function Accordion({ id, data, width = 320 }: AccordionProps) {
   };
 
   return (
-    <AutoLayout name={NODE_NAME_MAP.root} {...styles.container} width={width}>
+    <AutoLayout name={NODE_NAME_MAP.container} {...styles.container} width={width} {...rest}>
       {data.map((item) => renderItem(item))}
     </AutoLayout>
   );

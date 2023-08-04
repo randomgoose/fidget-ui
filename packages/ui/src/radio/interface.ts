@@ -1,10 +1,20 @@
+import { ComponentStyle } from '../types';
+
 export type Option = {
   value: string;
   label?: FigmaDeclarativeNode;
   disabled?: boolean;
 };
 
+export interface RadioStyle {
+  control: AutoLayoutProps;
+  label: TextProps;
+  container: AutoLayoutProps;
+  ink: Partial<RectangleProps>;
+}
+
 export interface RadioProps {
+  style?: ComponentStyle<string, string, RadioStyle>;
   value: string;
   children?: FigmaDeclarativeNode;
   disabled?: boolean;

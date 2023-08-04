@@ -1,4 +1,4 @@
-import { ColorScheme } from '../types';
+import { ColorScheme, ComponentStyle } from '../types';
 
 export type Option = {
   value: string;
@@ -6,8 +6,16 @@ export type Option = {
   disabled?: boolean;
 };
 
+export interface CheckboxStyle {
+  control: AutoLayoutProps;
+  container: AutoLayoutProps;
+  label: TextProps;
+  ink: Omit<SVGProps, 'src'> & { color: SVGProps['fill'] };
+}
+
 export interface CheckboxProps extends AutoLayoutProps {
   id: string;
+  style?: ComponentStyle<string, string>;
   colorScheme?: ColorScheme;
   checked?: boolean;
   children?: FigmaDeclarativeNode;

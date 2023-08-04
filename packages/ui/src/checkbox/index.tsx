@@ -1,12 +1,13 @@
 import { omit } from 'lodash-es';
-
-import { colors } from '../styles';
 import { renderChildren, getSyncedKeys } from '../utils';
 import { CheckboxGroupProps, CheckboxProps, Option } from './interface';
 import { getCheckboxStyles } from './styles';
+import { useFetchGlobalConfig } from '../config-provider';
+import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
+import { IconCheck } from '../icons';
 
 const { widget } = figma;
-const { AutoLayout, SVG, useSyncedState } = widget;
+const { AutoLayout, useSyncedState } = widget;
 
 const NODE_NAME_MAP = {
   root: 'Checkbox',
@@ -15,20 +16,19 @@ const NODE_NAME_MAP = {
   group: 'Checkbox Group',
 };
 
-const icon = (
-  <SVG
-    width={10}
-    height={10}
-    src="<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='white' aria-hidden='true' class='w-6 h-6'><path stroke-linecap='round' stroke-linejoin='round' d='M4.5 12.75l6 6 9-13.5'></path></svg>"
-  />
-);
-
 export function Checkbox(props: CheckboxProps) {
   const { id, children, disabled, onChange, colorScheme, ...rest } = props;
   const [syncedKeyChecked] = getSyncedKeys('Checkbox', id, ['checked']);
   const [stateChecked, setStateChecked] = useSyncedState(syncedKeyChecked, false);
   const mergedChecked = 'checked' in props ? props.checked : stateChecked;
-  const styles = getCheckboxStyles({ checked: mergedChecked, disabled, colorScheme });
+
+  const globalConfig = useFetchGlobalConfig();
+
+  const styles = mergeUserDefinedStyles({
+    globalStyle: globalConfig.Checkbox?.style,
+    defaultStyle: getCheckboxStyles({ checked: mergedChecked, disabled, colorScheme }),
+    propStyle: props.style,
+  });
 
   const tryUpdateChecked = () => {
     if (!disabled) {
@@ -40,19 +40,19 @@ export function Checkbox(props: CheckboxProps) {
 
   return (
     <AutoLayout
-      name={NODE_NAME_MAP.root}
       {...styles.container}
       {...omit(rest, 'checked')}
       onClick={(event) => {
         tryUpdateChecked();
         rest.onClick?.(event);
       }}
+      name={NODE_NAME_MAP.root}
     >
-      <AutoLayout name={NODE_NAME_MAP.control} {...styles.control}>
-        {icon}
+      <AutoLayout {...styles.control} name={NODE_NAME_MAP.control}>
+        <IconCheck {...styles.ink} />
       </AutoLayout>
       {renderChildren(children, {
-        textProps: { name: NODE_NAME_MAP.label, fill: colors.neutral[900], ...styles.label },
+        textProps: { name: NODE_NAME_MAP.label, ...styles.label },
       })}
     </AutoLayout>
   );
