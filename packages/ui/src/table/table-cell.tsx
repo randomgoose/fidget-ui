@@ -10,10 +10,10 @@ export function TableCell(props: ElementProps) {
   const { cell } = getTableStyles();
 
   const mergedProps = merge(cell, props);
-  const { autolayoutProps, textProps } = splitProps(mergedProps);
+  const { autoLayoutProps, textProps } = splitProps(mergedProps);
 
   return (
-    <AutoLayout {...autolayoutProps} name={NODE_NAME_MAP.cell} width="fill-parent">
+    <AutoLayout {...autoLayoutProps} name={NODE_NAME_MAP.cell} width="fill-parent">
       {renderChildren(props.children, { textProps })}
     </AutoLayout>
   );

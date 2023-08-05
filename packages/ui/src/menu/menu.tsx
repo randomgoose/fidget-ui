@@ -6,12 +6,12 @@ import { getSyncedKeys } from '../utils';
 import { NODE_NAME_MAP, isMenuDivider, isMenuItem } from './utils';
 import { useFetchGlobalConfig } from '../config-provider';
 import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
-import { flatten, merge } from 'lodash-es';
+import { merge } from 'lodash-es';
 import { MenuItem } from './item';
 import { MenuDivider } from './divider';
 
 const { widget } = figma;
-const { AutoLayout, useSyncedState, h, Line, Fragment } = widget;
+const { AutoLayout, useSyncedState, Line, Fragment } = widget;
 
 export function Menu(props: MenuProps) {
   const [syncedKeyOpen] = getSyncedKeys('Menu', props.id, ['open']);
@@ -31,24 +31,33 @@ export function Menu(props: MenuProps) {
       const order = placement.startsWith('top')
         ? [NODE_NAME_MAP.list, NODE_NAME_MAP.trigger]
         : [NODE_NAME_MAP.trigger, NODE_NAME_MAP.list];
+
       return children
-        .sort((a: any, b: any) => order.indexOf(a.props.name) - order.indexOf(b.props.name))
-        .map((child: any, index) => {
+        .sort((a: any, b: any) => order.indexOf(a?.props?.name) - order.indexOf(b?.props?.name))
+        .map((child: any, index: number) => {
           // TODO 如果使用 name 判断节点，需要为 fidget 组件节点提供不易冲突的名称，如 __FidgetUI_Menu_Item
-          switch (child.props.name) {
+          switch (child?.props?.name) {
             case NODE_NAME_MAP.trigger:
-              return h(MenuTrigger, {
-                ...child.props,
-                key: index,
-                children: child.children,
-                onClick: (e: WidgetClickEvent) => {
-                  child.props?.onClick?.(e);
-                  setIsOpen((prev) => !prev);
-                },
-              });
+              return (
+                <MenuTrigger
+                  key={index}
+                  {...child.props}
+                  children={child.children}
+                  onClick={(e: WidgetClickEvent) => {
+                    child.props?.onClick?.(e);
+                    setIsOpen((prev) => !prev);
+                  }}
+                />
+              );
+
             case NODE_NAME_MAP.list:
               return (
-                <AutoLayout width={1} name={NODE_NAME_MAP.listLocator} overflow="scroll">
+                <AutoLayout
+                  key={index}
+                  width={1}
+                  name={NODE_NAME_MAP.listLocator}
+                  overflow="scroll"
+                >
                   <Line opacity={0} />
                   {isOpen ? (
                     <MenuList
@@ -57,30 +66,28 @@ export function Menu(props: MenuProps) {
                       onClick={() => {
                         setIsOpen(false);
                       }}
-                    >
-                      {flatten(child.children).map((child: any, index) => {
-                        if (isMenuItem(child)) {
-                          const { children, ...rest } = merge(styles.item, child.props);
-                          return (
-                            <MenuItem {...rest} key={index}>
-                              {...children}
-                            </MenuItem>
-                          );
-                        } else if (isMenuDivider(child)) {
-                          const { children, ...rest } = merge(styles.item, child.props);
-                          return (
-                            <MenuDivider {...rest} key={index}>
-                              {...children}
-                            </MenuDivider>
-                          );
-                        }
+                      children={child.children.map((liteItem: any, itemIndex: number) => {
+                        return isMenuItem(liteItem) ? (
+                          <MenuItem
+                            key={itemIndex}
+                            children={liteItem.children}
+                            {...merge({}, styles.item, liteItem.props)}
+                          />
+                        ) : isMenuDivider(liteItem) ? (
+                          <MenuDivider
+                            key={itemIndex}
+                            children={liteItem.children}
+                            {...merge({}, styles.divider, liteItem.props)}
+                          />
+                        ) : null;
                       })}
-                    </MenuList>
+                    />
                   ) : null}
                 </AutoLayout>
               );
+
             default:
-              return <Fragment key={index} />;
+              return <Fragment key={index} children={child} />;
           }
         });
     } else {

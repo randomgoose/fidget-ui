@@ -15,10 +15,10 @@ export function CardHeader(props: CardHeaderProps) {
     globalStyle: globalConfig.Card?.style,
   });
 
-  const { autolayoutProps, textProps } = splitProps(styles.header);
+  const { autoLayoutProps, textProps } = splitProps(styles.header);
 
   return (
-    <AutoLayout {...autolayoutProps} name={NODE_NAME_MAP.header}>
+    <AutoLayout {...autoLayoutProps} name={NODE_NAME_MAP.header}>
       {renderChildren(props.children, { textProps })}
     </AutoLayout>
   );

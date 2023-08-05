@@ -92,6 +92,7 @@ export const getMenuStyles = ({
       width: 1,
     },
     trigger: {},
+    divider: {},
   };
 };
 

@@ -15,10 +15,10 @@ export function CardFooter(props: CardFooterProps) {
     globalStyle: globalConfig.Card?.style,
   });
 
-  const { autolayoutProps, textProps } = splitProps(styles.footer);
+  const { autoLayoutProps, textProps } = splitProps(styles.footer);
 
   return (
-    <AutoLayout {...autolayoutProps} name={NODE_NAME_MAP.footer}>
+    <AutoLayout {...autoLayoutProps} name={NODE_NAME_MAP.footer}>
       {renderChildren(props.children, { textProps })}
     </AutoLayout>
   );

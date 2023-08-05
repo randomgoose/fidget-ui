@@ -18,7 +18,7 @@ export function Avatar({ src, size = 'md', fill, displayName, style, ...props }:
     propStyle: style,
   });
 
-  const { autolayoutProps, textProps } = splitProps(styles.avatar);
+  const { autoLayoutProps, textProps } = splitProps(styles.avatar);
 
   const initials = getInitials(displayName);
 
@@ -30,7 +30,7 @@ export function Avatar({ src, size = 'md', fill, displayName, style, ...props }:
       fill={fill || colors.neutral[300]}
       verticalAlignItems="center"
       horizontalAlignItems="center"
-      {...autolayoutProps}
+      {...autoLayoutProps}
     >
       {initials ? (
         <Text {...textProps}>{initials}</Text>
@@ -46,7 +46,7 @@ export function Avatar({ src, size = 'md', fill, displayName, style, ...props }:
       {...props}
       tooltip={displayName}
       fill={{ type: 'image', src }}
-      {...autolayoutProps}
+      {...autoLayoutProps}
       padding={0}
     />
   ) : (

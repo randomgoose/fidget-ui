@@ -33,8 +33,6 @@ export function Tag({
     size,
   });
 
-  console.log('Tag', styles);
-
   const leftIconNode = isSvg(leftIcon)
     ? renderIcon({
         svg: leftIcon as any,

@@ -28,7 +28,7 @@ export function AvatarGroup({
 
   const renderExcessLabel = (count: number, max: number) => {
     return count > max ? (
-      <AutoLayout name={NODE_NAME_MAP.excessLabel} {...excessLabelProps.autolayoutProps}>
+      <AutoLayout name={NODE_NAME_MAP.excessLabel} {...excessLabelProps.autoLayoutProps}>
         <Text {...excessLabelProps.textProps}>+{count - (max || 0)}</Text>
       </AutoLayout>
     ) : null;

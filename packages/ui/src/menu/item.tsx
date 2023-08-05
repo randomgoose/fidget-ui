@@ -2,13 +2,11 @@ import { renderIcon, renderChildren, splitProps } from '../utils';
 import { MenuItemProps } from './interface';
 import { NODE_NAME_MAP } from './utils';
 
-const { AutoLayout } = figma.widget;
+const { AutoLayout, Fragment } = figma.widget;
 
 export function MenuItem(props: MenuItemProps) {
   const { icon, children, onClick = () => {} } = props;
-
-  const { autolayoutProps, textProps } = splitProps(props);
-  console.log(children, textProps.fill, props.key);
+  const { autoLayoutProps, textProps } = splitProps(props);
 
   const iconNode = icon
     ? renderIcon({
@@ -21,10 +19,17 @@ export function MenuItem(props: MenuItemProps) {
       })
     : null;
 
+  const rootProps = {
+    name: NODE_NAME_MAP.item,
+    ...props,
+  };
+
   return (
-    <AutoLayout {...autolayoutProps} name={NODE_NAME_MAP.item} onClick={onClick}>
-      {iconNode}
-      {renderChildren(children, { textProps })}
-    </AutoLayout>
+    <Fragment {...rootProps}>
+      <AutoLayout {...autoLayoutProps} onClick={onClick}>
+        {iconNode}
+        {renderChildren(children, { textProps })}
+      </AutoLayout>
+    </Fragment>
   );
 }

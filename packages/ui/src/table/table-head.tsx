@@ -10,10 +10,10 @@ export function TableHead(props: ElementProps) {
   const { head } = getTableStyles();
 
   const mergedProps = merge(head, props);
-  const { autolayoutProps, textProps } = splitProps(mergedProps);
+  const { autoLayoutProps, textProps } = splitProps(mergedProps);
 
   return (
-    <AutoLayout {...autolayoutProps} name={NODE_NAME_MAP.head}>
+    <AutoLayout {...autoLayoutProps} name={NODE_NAME_MAP.head}>
       {renderChildren(props.children, { textProps })}
     </AutoLayout>
   );

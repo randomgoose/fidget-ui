@@ -9,6 +9,7 @@ export interface MenuAnatomy {
   chevron: Omit<SVGProps, 'src'> & { color: string };
   locator: AutoLayoutProps;
   trigger: ElementProps;
+  divider: AutoLayoutProps;
 }
 
 export interface MenuItemProps extends ElementProps {

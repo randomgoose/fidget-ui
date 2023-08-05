@@ -15,10 +15,10 @@ export function CardBody(props: CardBodyProps) {
     globalStyle: globalConfig.Card?.style,
   });
 
-  const { autolayoutProps, textProps } = splitProps(styles.body);
+  const { autoLayoutProps, textProps } = splitProps(styles.body);
 
   return (
-    <AutoLayout {...autolayoutProps} name={NODE_NAME_MAP.body}>
+    <AutoLayout {...autoLayoutProps} name={NODE_NAME_MAP.body}>
       {renderChildren(props.children, { textProps })}
     </AutoLayout>
   );

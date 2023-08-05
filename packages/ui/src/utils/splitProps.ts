@@ -3,7 +3,7 @@ import { ElementProps } from '../types';
 export const splitProps = (
   props: ElementProps
 ): {
-  autolayoutProps: AutoLayoutProps;
+  autoLayoutProps: AutoLayoutProps;
   textProps: TextProps;
 } => {
   const {
@@ -27,7 +27,7 @@ export const splitProps = (
   } = props;
 
   return {
-    autolayoutProps: { ...rest },
+    autoLayoutProps: { ...rest },
     textProps: {
       fontFamily,
       letterSpacing,
