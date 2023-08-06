@@ -39,6 +39,7 @@ export function Switch({
     }),
     globalStyle: globalConfig.Switch?.style,
     propStyle: style,
+    size,
   });
 
   return (

@@ -1,9 +1,9 @@
 import { colors, shadows } from '../styles';
-import { DatePickerProps, CalendarStyle } from './interface';
+import { DatePickerProps, DatePickerAnatomy } from './interface';
 
 export const getDatePickerStyles = (
   { placement }: { placement: DatePickerProps['placement'] } = { placement: 'top' }
-): CalendarStyle => {
+): DatePickerAnatomy => {
   const horizontalAlignItems: AutoLayoutProps['horizontalAlignItems'] = placement?.endsWith('start')
     ? 'start'
     : placement?.endsWith('end')

@@ -1,5 +1,5 @@
 import { colors } from '../styles';
-import { RadioStyle } from './interface';
+import { RadioAnatomy } from './interface';
 
 export const getRadioStyles = ({
   checked,
@@ -7,7 +7,7 @@ export const getRadioStyles = ({
 }: {
   checked: boolean;
   disabled: boolean;
-}): RadioStyle => {
+}): RadioAnatomy => {
   let fill: AutoLayoutProps['fill'];
   let stroke: AutoLayoutProps['stroke'];
   let opacity: AutoLayoutProps['opacity'] = 1;

@@ -1,6 +1,7 @@
 import { ComponentStyle } from '../types';
 
 export type TabsVariant = 'line' | 'enclosed' | 'soft-rounded' | 'solid-rounded';
+
 export type TabsColorScheme =
   | 'neutral'
   | 'red'
@@ -21,7 +22,7 @@ export type TabsColorScheme =
   | 'pink'
   | 'rose';
 
-export interface TabsStyle {
+export interface TabsAnatomy {
   container: AutoLayoutProps;
   tab: AutoLayoutProps;
   activeTab: AutoLayoutProps;
@@ -41,7 +42,7 @@ export interface TabPaneProps extends AutoLayoutProps {
 
 export interface TabsProps extends AutoLayoutProps {
   id: string;
-  style?: ComponentStyle<string, TabsVariant, TabsStyle>;
+  style?: ComponentStyle<TabsAnatomy, string, TabsVariant>;
   variant?: TabsVariant;
   colorScheme?: TabsColorScheme;
   defaultActiveKey?: string | number;

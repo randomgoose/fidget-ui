@@ -3,7 +3,7 @@ import { ComponentStyle } from '../types';
 type FieldVariant = 'filled' | 'outline' | 'flush';
 type FieldSize = 'xs' | 'sm' | 'md' | 'lg';
 
-export interface FieldStyle {
+export interface FieldAnatomy {
   field: AutoLayoutProps;
   input: AutoLayoutProps;
   text: TextProps;
@@ -14,7 +14,7 @@ export interface FieldStyle {
 }
 
 export interface FieldProps extends InputProps {
-  style?: ComponentStyle<FieldSize, FieldVariant, FieldStyle>;
+  style?: ComponentStyle<FieldAnatomy, FieldSize, FieldVariant>;
   variant?: FieldVariant;
   size?: FieldSize;
   placeholder?: string;

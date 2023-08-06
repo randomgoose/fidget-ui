@@ -1,6 +1,7 @@
 import { colors } from '../styles';
-import { FieldProps, FieldStyle } from './interface';
+import { FieldProps, FieldAnatomy } from './interface';
 
+// TODO globalConfig 设置样式
 export const getFieldStyles = ({
   variant,
   size,
@@ -11,7 +12,7 @@ export const getFieldStyles = ({
 }: Pick<
   FieldProps,
   'size' | 'disabled' | 'elementLeft' | 'elementRight' | 'variant' | 'addonLeft' | 'addonRight'
-> & { open?: boolean }): FieldStyle => {
+> & { open?: boolean }): FieldAnatomy => {
   /* ---- Field ---- */
   let fill: AutoLayoutProps['fill'];
   let stroke: AutoLayoutProps['stroke'];

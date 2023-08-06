@@ -40,6 +40,7 @@ export function Tabs({
     globalStyle: globalConfig.Tabs?.style,
     propStyle: style,
     defaultStyle: getTabsStyles({ variant, isFitted, colorScheme, width }),
+    variant,
   });
 
   const mergedActiveKey = rest.activeKey ? rest.activeKey : activeKey;

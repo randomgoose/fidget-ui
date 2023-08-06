@@ -5,7 +5,7 @@ import { ComponentStyle } from '../types';
 export type DateType = Date | Dayjs | string;
 export type CalendarView = 'date' | 'month' | 'year';
 
-export interface CalendarStyle {
+export interface DatePickerAnatomy {
   container: AutoLayoutProps;
   calendar: AutoLayoutProps;
   row: AutoLayoutProps;
@@ -18,7 +18,7 @@ export interface CalendarStyle {
 
 export interface DatePickerProps extends Omit<FieldProps, 'onTextEditEnd' | 'value' | 'style'> {
   id: string;
-  style?: ComponentStyle<string, string, CalendarStyle>;
+  style?: ComponentStyle<DatePickerAnatomy>;
   date?: DateType;
   onChange?: (date: Date) => void;
   excludeDates?: Date[];

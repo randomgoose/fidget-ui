@@ -1,7 +1,7 @@
 import { colors, shadows } from '../styles';
-import { CardStyle } from './interface';
+import { CardAnatomy } from './interface';
 
-export const getCardStyles = (): CardStyle => {
+export const getCardStyles = (): CardAnatomy => {
   return {
     container: {
       cornerRadius: 8,

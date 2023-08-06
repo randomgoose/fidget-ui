@@ -1,25 +1,20 @@
 import { renderChildren, splitProps } from '../utils';
 import { CardHeaderProps } from './interface';
-import { getCardStyles } from './styles';
 import { NODE_NAME_MAP } from './utils';
-import { useFetchGlobalConfig } from '../config-provider';
-import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
 
-const { AutoLayout } = figma.widget;
+const { AutoLayout, Fragment } = figma.widget;
 
 export function CardHeader(props: CardHeaderProps) {
-  const globalConfig = useFetchGlobalConfig();
-  const styles = mergeUserDefinedStyles({
-    defaultStyle: getCardStyles(),
-    propStyle: props.style,
-    globalStyle: globalConfig.Card?.style,
-  });
-
-  const { autoLayoutProps, textProps } = splitProps(styles.header);
+  const { autoLayoutProps, textProps } = splitProps(props);
+  // mount all props on Fragment to ensure that child.props can get all component-props in its parent
+  const rootProps = {
+    name: NODE_NAME_MAP.header,
+    ...props,
+  };
 
   return (
-    <AutoLayout {...autoLayoutProps} name={NODE_NAME_MAP.header}>
-      {renderChildren(props.children, { textProps })}
-    </AutoLayout>
+    <Fragment {...rootProps}>
+      <AutoLayout {...autoLayoutProps}>{renderChildren(props.children, { textProps })}</AutoLayout>
+    </Fragment>
   );
 }

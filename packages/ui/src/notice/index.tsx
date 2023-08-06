@@ -34,6 +34,7 @@ export function Notice({
     defaultStyle: getNoticeStyles({ variant, status }),
     globalStyle: globalConfig.Notice?.style,
     propStyle: style,
+    variant,
   });
 
   const renderIconNode = () => {

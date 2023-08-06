@@ -1,5 +1,5 @@
 import { colors, isNeutralColor } from '../styles';
-import { TabsProps, TabsStyle } from './interface';
+import { TabsProps, TabsAnatomy } from './interface';
 import chroma from 'chroma-js';
 
 export const getTabsStyles = ({
@@ -7,7 +7,7 @@ export const getTabsStyles = ({
   isFitted,
   colorScheme = 'neutral',
   width = 'fill-parent',
-}: Pick<TabsProps, 'variant' | 'isFitted' | 'colorScheme' | 'width'>): TabsStyle => {
+}: Pick<TabsProps, 'variant' | 'isFitted' | 'colorScheme' | 'width'>): TabsAnatomy => {
   /* ---- Tabs Container ---- */
   let bg: AutoLayoutProps['fill'];
   let activeBg: AutoLayoutProps['fill'];

@@ -1,9 +1,9 @@
 import { colors } from '../styles';
-import { DividerProps, DividerStyle } from './interface';
+import { DividerProps, DividerAnatomy } from './interface';
 
 export const getDividerStyles = ({
   orientation,
-}: Pick<DividerProps, 'orientation'>): DividerStyle => {
+}: Pick<DividerProps, 'orientation'>): DividerAnatomy => {
   let width: AutoLayoutProps['width'];
   let height: AutoLayoutProps['height'];
   let horizontalAlignItems: AutoLayoutProps['horizontalAlignItems'];

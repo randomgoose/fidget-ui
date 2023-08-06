@@ -246,7 +246,13 @@ export function DatePicker(props: DatePickerProps) {
       {/* Limit the height of Locator to 0 with a zero-height Line component to avoid layer shifting. */}
       <Line opacity={0} />
       <AutoLayout name={NODE_NAME_MAP.calendar} {...calendarStyles.calendar} hidden={!open}>
-        <Controls pivot={pivot} setPivot={setPivot} view={view} setView={setView} />
+        <Controls
+          pivot={pivot}
+          setPivot={setPivot}
+          view={view}
+          setView={setView}
+          {...calendarStyles.controls}
+        />
         {renderView(view)}
       </AutoLayout>
     </AutoLayout>

@@ -1,10 +1,13 @@
+import { isNaN } from 'lodash-es';
+import { Decimal } from 'decimal.js';
+
 import { IconButton } from '../button';
 import { IconMinusSolid, IconPlusSolid } from '../icons';
 import { getSyncedKeys } from '../utils';
 import { StepperProps } from './interface';
-import { isNaN } from 'lodash-es';
 import { getStepperStyles } from './styles';
-import { Decimal } from 'decimal.js';
+import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
+import { useFetchGlobalConfig } from '../config-provider';
 
 const { AutoLayout, Input, useSyncedState } = figma.widget;
 
@@ -17,6 +20,7 @@ const NODE_NAME_MAP = {
 
 export function Stepper(props: StepperProps) {
   const {
+    style,
     id,
     defaultValue,
     size = 'md',
@@ -29,6 +33,15 @@ export function Stepper(props: StepperProps) {
     disabled,
     ...rest
   } = props;
+
+  const globalConfig = useFetchGlobalConfig();
+  const styles = mergeUserDefinedStyles({
+    defaultStyle: getStepperStyles({ size }),
+    globalStyle: globalConfig.Stepper?.style,
+    propStyle: style,
+    size,
+  });
+
   const [syncedKeyValue] = getSyncedKeys('Stepper', id, ['value']);
   const [value, setValue] = useSyncedState(syncedKeyValue, defaultValue || 0);
 
@@ -44,8 +57,6 @@ export function Stepper(props: StepperProps) {
       }
     }
   };
-
-  const styles = getStepperStyles({ size });
 
   return (
     <AutoLayout spacing={-1} width={width} {...rest} name={NODE_NAME_MAP.container}>

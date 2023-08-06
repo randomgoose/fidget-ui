@@ -6,7 +6,7 @@ export type Option = {
   disabled?: boolean;
 };
 
-export interface RadioStyle {
+export interface RadioAnatomy {
   control: AutoLayoutProps;
   label: TextProps;
   container: AutoLayoutProps;
@@ -14,7 +14,7 @@ export interface RadioStyle {
 }
 
 export interface RadioProps {
-  style?: ComponentStyle<string, string, RadioStyle>;
+  style?: ComponentStyle<RadioAnatomy>;
   value: string;
   children?: FigmaDeclarativeNode;
   disabled?: boolean;

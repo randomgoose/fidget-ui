@@ -21,12 +21,20 @@ export type TagColorScheme =
   | 'rose';
 
 export type TagSize = 'sm' | 'md' | 'lg';
+
 export type TagVariant = 'solid' | 'subtle' | 'outline';
+
+export type TagAnatomy = {
+  container: AutoLayoutProps;
+  label: TextProps;
+  closeButton: { color: string };
+  icon: Omit<SVGProps, 'src'>;
+};
 
 export interface TagProps extends AutoLayoutProps {
   children?: FigmaDeclarativeNode;
   variant?: TagVariant;
-  style?: ComponentStyle<TagSize, TagVariant>;
+  style?: ComponentStyle<TagAnatomy, TagSize, TagVariant>;
   colorScheme?: TagColorScheme;
   size?: TagSize;
   dismissible?: boolean;

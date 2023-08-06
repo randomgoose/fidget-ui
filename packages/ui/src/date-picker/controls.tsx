@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 import { colors } from '../styles';
 import { IconButton } from '../button';
-import { getDatePickerStyles } from './styles';
 import { CalendarView } from './interface';
 import { IconChevronLeft, IconChevronRight } from '../icons';
 import { generateDecade } from './utils';
@@ -22,22 +21,14 @@ const CALENDAR_MONTHS = [
   'Dec',
 ];
 
-export function Controls({
-  pivot,
-  view,
-  setView,
-  setPivot,
-}: {
+interface ControlsProps extends AutoLayoutProps {
   pivot: string;
   view: CalendarView;
   setPivot: (newValue: string | ((currValue: string) => string)) => void;
   setView: (view: CalendarView) => void;
-}) {
-  const paginate = (by: number) => {
-    setPivot((prev) => dayjs(prev).add(by, 'month').toString());
-  };
+}
 
-  const { controls } = getDatePickerStyles();
+export function Controls({ pivot, view, setView, setPivot, ...rest }: ControlsProps) {
   const buttonStyles: TextProps = {
     fontSize: 12,
     fill: colors.neutral[900],
@@ -47,9 +38,12 @@ export function Controls({
   };
 
   const decade = generateDecade(dayjs(pivot));
+  const paginate = (by: number) => {
+    setPivot((prev) => dayjs(prev).add(by, 'month').toString());
+  };
 
   return (
-    <AutoLayout name="Calendar Controls" {...controls}>
+    <AutoLayout name="Calendar Controls" {...rest}>
       {view !== 'month' && (
         <IconButton
           variant="ghost"

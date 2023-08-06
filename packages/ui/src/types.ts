@@ -51,9 +51,9 @@ export type FidgetComponentNames =
   | 'Stepper';
 
 export type ComponentStyle<
+  PartsStyle = Record<string, any>,
   Size extends string = string,
-  Variant extends string = string,
-  PartsStyle = Record<string, any>
+  Variant extends string = string
 > = {
   baseStyle?: Partial<PartsStyle>;
   sizes?: Partial<Record<Size, Partial<PartsStyle>>>;

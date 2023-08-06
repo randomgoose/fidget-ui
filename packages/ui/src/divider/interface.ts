@@ -1,13 +1,13 @@
 import { ComponentStyle } from '../types';
 
-export interface DividerStyle {
+export interface DividerAnatomy {
   container: AutoLayoutProps;
   text: TextProps;
   divider: AutoLayoutProps;
 }
 
 export interface DividerProps {
-  style?: ComponentStyle<string, string, DividerStyle>;
+  style?: ComponentStyle<DividerAnatomy>;
   orientation?: 'vertical' | 'horizontal';
   children?: FigmaDeclarativeNode;
   margin?: AutoLayoutProps['padding'];

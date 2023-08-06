@@ -1,16 +1,11 @@
 import { colors } from '../styles';
-import { TagProps } from './interface';
+import { TagAnatomy, TagProps } from './interface';
 
 export const getTagStyles = ({
   colorScheme = 'blue',
   size = 'md',
   variant = 'solid',
-}: Pick<TagProps, 'colorScheme' | 'size' | 'variant'>): {
-  container: AutoLayoutProps;
-  label: TextProps;
-  closeButton: { color: string };
-  icon: Omit<SVGProps, 'src'>;
-} => {
+}: Pick<TagProps, 'colorScheme' | 'size' | 'variant'>): TagAnatomy => {
   /* ---- Container ---- */
   let bg: AutoLayoutProps['fill'];
   let stroke: AutoLayoutProps['stroke'];

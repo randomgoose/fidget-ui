@@ -6,7 +6,7 @@ export type Option = {
   disabled?: boolean;
 };
 
-export interface CheckboxStyle {
+export interface CheckboxAnatomy {
   control: AutoLayoutProps;
   container: AutoLayoutProps;
   label: TextProps;
@@ -15,7 +15,7 @@ export interface CheckboxStyle {
 
 export interface CheckboxProps extends AutoLayoutProps {
   id: string;
-  style?: ComponentStyle<string, string>;
+  style?: ComponentStyle<CheckboxAnatomy>;
   colorScheme?: ColorScheme;
   checked?: boolean;
   children?: FigmaDeclarativeNode;

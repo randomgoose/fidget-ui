@@ -28,7 +28,7 @@ export type ButtonColorScheme =
   | 'pink'
   | 'rose';
 
-export type ButtonStyle = {
+export type ButtonAnatomy = {
   container: AutoLayoutProps;
   text: TextProps;
   icon: Omit<SVGProps, 'src'>;
@@ -36,7 +36,7 @@ export type ButtonStyle = {
 
 export interface ButtonProps extends Omit<AutoLayoutProps, 'onClick'> {
   children: string;
-  style?: ComponentStyle<ButtonSize, ButtonVariant, ButtonStyle>;
+  style?: ComponentStyle<ButtonAnatomy, ButtonSize, ButtonVariant>;
   variant?: ButtonVariant;
   colorScheme?: ButtonColorScheme;
   size?: ButtonSize;
@@ -48,7 +48,7 @@ export interface ButtonProps extends Omit<AutoLayoutProps, 'onClick'> {
 }
 
 export interface IconButtonProps extends Omit<AutoLayoutProps, 'onClick'> {
-  style?: ComponentStyle<ButtonSize, ButtonVariant, ButtonStyle>;
+  style?: ComponentStyle<ButtonAnatomy, ButtonSize, ButtonVariant>;
   icon?: FigmaDeclarativeNode;
   variant?: ButtonVariant;
   colorScheme?: ButtonColorScheme;

@@ -1,11 +1,11 @@
 import { colors, isNeutralColor } from '../styles';
-import { CheckboxProps, CheckboxStyle } from './interface';
+import { CheckboxProps, CheckboxAnatomy } from './interface';
 
 export const getCheckboxStyles = ({
   checked,
   disabled,
   colorScheme = 'neutral',
-}: Pick<CheckboxProps, 'checked' | 'disabled' | 'colorScheme'>): CheckboxStyle => {
+}: Pick<CheckboxProps, 'checked' | 'disabled' | 'colorScheme'>): CheckboxAnatomy => {
   let fill: AutoLayoutProps['fill'];
 
   if (colorScheme) {

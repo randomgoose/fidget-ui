@@ -1,16 +1,7 @@
-import { IconButtonProps } from '../button/interface';
 import { colors } from '../styles';
-import { StepperProps } from './interface';
+import { StepperAnatomy, StepperSize } from './interface';
 
-export const getStepperStyles = ({
-  size,
-}: {
-  size: StepperProps['size'];
-}): {
-  field: Omit<InputProps, 'value' | 'onTextEditEnd'>;
-  incrementButton: IconButtonProps;
-  decrementButton: IconButtonProps;
-} => {
+export const getStepperStyles = ({ size }: { size: StepperSize }): StepperAnatomy => {
   let height: InputProps['height'];
 
   switch (size) {

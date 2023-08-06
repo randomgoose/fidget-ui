@@ -1,6 +1,6 @@
 import { colors } from '../styles';
 import { IconUser } from '../icons';
-import { AvatarProps } from './interface';
+import { AvatarProps, AvatarSize } from './interface';
 import { getAvatarStyles } from './styles';
 import { useFetchGlobalConfig } from '../config-provider';
 import { mergeUserDefinedStyles } from '../utils/mergeUserDefinedStyle';
@@ -16,6 +16,7 @@ export function Avatar({ src, size = 'md', fill, displayName, style, ...props }:
     defaultStyle: getAvatarStyles({ size }),
     globalStyle: globalConfig.Avatar?.style,
     propStyle: style,
+    size: size as AvatarSize,
   });
 
   const { autoLayoutProps, textProps } = splitProps(styles.avatar);

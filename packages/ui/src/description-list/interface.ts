@@ -1,6 +1,6 @@
 import { ComponentStyle } from '../types';
 
-export interface DescriptionListStyle {
+export interface DescriptionListAnatomy {
   container: AutoLayoutProps;
   item: AutoLayoutProps;
   label: TextProps;
@@ -13,6 +13,6 @@ export type DescriptionListItem = {
 };
 
 export interface DescriptionListProps extends AutoLayoutProps {
-  style?: ComponentStyle<string, string, DescriptionListStyle>;
+  style?: ComponentStyle<DescriptionListAnatomy>;
   items?: DescriptionListItem[];
 }

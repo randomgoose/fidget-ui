@@ -1,7 +1,7 @@
 import { colors } from '../styles';
-import { AccordionStyle } from './interface';
+import { AccordionAnatomy } from './interface';
 
-export const getAccordionStyles = (): AccordionStyle => {
+export const getAccordionStyles = (): AccordionAnatomy => {
   return {
     container: {
       direction: 'vertical',

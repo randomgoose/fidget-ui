@@ -1,14 +1,15 @@
 import { ColorScheme, ComponentStyle } from '../types';
 
 export type SwitchSize = 'sm' | 'md' | 'lg';
-export interface SwitchStyle {
+
+export interface SwitchAnatomy {
   container: AutoLayoutProps;
   thumb: RectangleProps;
 }
 
 export interface SwitchProps extends AutoLayoutProps {
   id: string;
-  style?: ComponentStyle<string, string, SwitchStyle>;
+  style?: ComponentStyle<SwitchAnatomy, SwitchSize>;
   defaultChecked?: boolean;
   checked?: boolean;
   size?: SwitchSize;

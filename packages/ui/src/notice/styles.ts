@@ -1,10 +1,10 @@
 import { colors } from '../styles';
-import { NoticeProps, NoticeStyle } from './interface';
+import { NoticeProps, NoticeAnatomy } from './interface';
 
 export const getNoticeStyles = ({
   variant,
   status,
-}: Pick<NoticeProps, 'status' | 'variant'>): NoticeStyle => {
+}: Pick<NoticeProps, 'status' | 'variant'>): NoticeAnatomy => {
   /* ---- Container ---- */
   let fill: AutoLayoutProps['fill'];
 

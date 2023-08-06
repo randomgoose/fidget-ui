@@ -1,7 +1,7 @@
 import { colors } from '../styles';
-import { AvatarProps, AvatarStyle } from './interface';
+import { AvatarProps, AvatarAnatomy } from './interface';
 
-export const getAvatarStyles = ({ size = 'md' }: Pick<AvatarProps, 'size'>): AvatarStyle => {
+export const getAvatarStyles = ({ size = 'md' }: Pick<AvatarProps, 'size'>): AvatarAnatomy => {
   let width: number;
   let height: number;
   let padding: AutoLayoutProps['padding'];

@@ -1,14 +1,9 @@
 import { colors } from '../styles';
-import { DescriptionListProps } from './interface';
+import { DescriptionListAnatomy, DescriptionListProps } from './interface';
 
 export const getDescriptionListStyles = ({
   spacing,
-}: Pick<DescriptionListProps, 'spacing'>): {
-  container: AutoLayoutProps;
-  item: AutoLayoutProps;
-  label: TextProps;
-  value: TextProps;
-} => {
+}: Pick<DescriptionListProps, 'spacing'>): DescriptionListAnatomy => {
   return {
     container: {
       spacing,

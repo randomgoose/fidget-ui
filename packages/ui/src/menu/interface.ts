@@ -13,7 +13,7 @@ export interface MenuAnatomy {
 }
 
 export interface MenuItemProps extends ElementProps {
-  style?: ComponentStyle<string, string, MenuAnatomy['item']>;
+  style?: ComponentStyle<MenuAnatomy['item']>;
   type?: 'item';
   children?: FigmaDeclarativeNode;
   /**
@@ -40,7 +40,7 @@ export type MenuListProps = AutoLayoutProps;
 export interface MenuProps extends AutoLayoutProps {
   id: string;
   // TODO 通过 trigger 和 items 使用的方式似乎还未实现？
-  style?: ComponentStyle<string, string, MenuAnatomy>;
+  style?: ComponentStyle<MenuAnatomy>;
   trigger?: FigmaDeclarativeNode;
   children?: FigmaDeclarativeNode;
   items?: (MenuItemProps | MenuDividerProps)[];

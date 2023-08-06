@@ -1,5 +1,6 @@
 import { colors } from '../styles';
 
+// TODO globalConfig 设置样式
 export const getDropdownStyles = ({
   size,
   placement,

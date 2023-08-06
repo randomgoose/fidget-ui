@@ -1,6 +1,6 @@
 import { ComponentStyle } from '../types';
 
-export interface AccordionStyle {
+export interface AccordionAnatomy {
   container: AutoLayoutProps;
   item: AutoLayoutProps;
   button: AutoLayoutProps;
@@ -18,7 +18,7 @@ export type AccordionItemProps = {
 };
 
 export interface AccordionProps {
-  style?: ComponentStyle<string, string, AccordionStyle>;
+  style?: ComponentStyle<AccordionAnatomy>;
   id: string;
   data: AccordionItemProps[];
   width?: number | 'fill-parent';

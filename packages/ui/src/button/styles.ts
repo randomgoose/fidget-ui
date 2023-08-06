@@ -1,5 +1,5 @@
 import { colors, isNeutralColor } from '../styles';
-import type { ButtonProps, IconButtonProps, ButtonStyle } from './interface';
+import type { ButtonProps, IconButtonProps, ButtonAnatomy } from './interface';
 
 export const getButtonStyles = ({
   variant,
@@ -7,7 +7,7 @@ export const getButtonStyles = ({
   size,
   disabled,
   block,
-}: Pick<ButtonProps, 'colorScheme' | 'size' | 'variant' | 'disabled' | 'block'>): ButtonStyle => {
+}: Pick<ButtonProps, 'colorScheme' | 'size' | 'variant' | 'disabled' | 'block'>): ButtonAnatomy => {
   const hue = colors[colorScheme];
 
   let bg: AutoLayoutProps['fill'];
@@ -121,7 +121,7 @@ export const getIconButtonStyles = ({
   disabled,
   fontSize,
 }: Pick<IconButtonProps, 'size' | 'variant' | 'colorScheme' | 'disabled' | 'fontSize'>): Omit<
-  ButtonStyle,
+  ButtonAnatomy,
   'text'
 > => {
   const styles = getButtonStyles({ variant, size, colorScheme, disabled });
