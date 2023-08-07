@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "Your Figma widget",
   "scripts": {
+<<<<<<< Updated upstream
     "build": "esbuild src/code.tsx --bundle --outfile=dist/code.js --target=es6",
+=======
+    "build": "node build.js",
+    "generate": "rollup -c",
+>>>>>>> Stashed changes
     "watch": "npm run build -- --watch"
   },
   "dependencies": {
@@ -13,6 +18,18 @@
   "devDependencies": {
     "@figma/plugin-typings": "*",
     "@figma/widget-typings": "*",
+<<<<<<< Updated upstream
     "esbuild": "*"
+=======
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.5.0",
+    "@types/codemirror": "^5.60.8",
+    "@types/prismjs": "^1.26.0",
+    "esbuild": "*",
+    "esbuild-plugin-replace": "^1.4.0",
+    "fs-extra": "^11.1.1",
+    "rollup-plugin-execute": "^1.1.1",
+    "rollup-plugin-terser": "^7.0.2"
+>>>>>>> Stashed changes
   }
 }
