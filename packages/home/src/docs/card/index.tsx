@@ -1,6 +1,7 @@
 import { Divider, Heading } from 'fidget-ui';
 import { docStyle } from '../styles';
 import { CardUsage } from './usage';
+import { CustomCard } from './custom';
 
 const { AutoLayout } = figma.widget;
 
@@ -11,6 +12,7 @@ export function CardDoc() {
       <Divider />
 
       <CardUsage />
+      <CustomCard />
     </AutoLayout>
   );
 }

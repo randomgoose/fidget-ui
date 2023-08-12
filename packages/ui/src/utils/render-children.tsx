@@ -1,3 +1,5 @@
+import { flattenDeep } from 'lodash-es';
+
 const { widget } = figma;
 const { Text } = widget;
 
@@ -17,15 +19,17 @@ export function renderChildren(
 
   if (typeof children === 'object') {
     if (Array.isArray(children)) {
-      if (children.length === 1 && typeof children[0] === 'string') {
-        return (
-          <Text name="Text" {...options?.textProps}>
-            {children[0]}
-          </Text>
-        );
-      } else {
-        return children;
-      }
+      return flattenDeep(children).map((child) => {
+        if (typeof child === 'string') {
+          return (
+            <Text name="Text" {...options?.textProps}>
+              {child}
+            </Text>
+          );
+        } else {
+          return child;
+        }
+      });
     } else {
       return children;
     }

@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -54,6 +54,25 @@ importers:
         specifier: ^4.9.5
         version: 4.9.5
 
+  packages/examples/board:
+    dependencies:
+      fidget-ui:
+        specifier: workspace:~0
+        version: link:../../ui
+    devDependencies:
+      '@figma/plugin-typings':
+        specifier: '*'
+        version: 1.69.0
+      '@figma/widget-typings':
+        specifier: '*'
+        version: 1.5.0(@figma/plugin-typings@1.69.0)
+      esbuild:
+        specifier: '*'
+        version: 0.17.19
+      typescript:
+        specifier: '*'
+        version: 4.9.5
+
   packages/home:
     dependencies:
       '@codemirror/lang-javascript':
@@ -87,6 +106,18 @@ importers:
       '@figma/widget-typings':
         specifier: '*'
         version: 1.5.0(@figma/plugin-typings@1.64.0)
+      '@rollup/plugin-node-resolve':
+        specifier: ^13.3.0
+        version: 13.3.0(rollup@2.79.1)
+      '@rollup/plugin-typescript':
+        specifier: ^8.5.0
+        version: 8.5.0(rollup@2.79.1)(tslib@2.6.0)(typescript@4.9.5)
+      '@types/codemirror':
+        specifier: ^5.60.8
+        version: 5.60.8
+      '@types/prismjs':
+        specifier: ^1.26.0
+        version: 1.26.0
       esbuild:
         specifier: '*'
         version: 0.17.19
@@ -238,18 +269,6 @@ packages:
       '@codemirror/state': 6.2.1
       style-mod: 4.0.3
       w3c-keyname: 2.2.8
-    dev: false
-
-  /@codemirror/autocomplete@6.9.0(@codemirror/language@6.8.0)(@codemirror/state@6.2.1):
-    resolution: {integrity: sha512-Fbwm0V/Wn3BkEJZRhr0hi5BhCo5a7eBL6LYaliPjOSwCyfOpnjXY59HruSxOUNV+1OYer0Tgx1zRNQttjXyDog==}
-    peerDependencies:
-      '@codemirror/language': ^6.0.0
-      '@codemirror/state': ^6.0.0
-    dependencies:
-      '@codemirror/language': 6.8.0
-      '@codemirror/state': 6.2.1
-      '@codemirror/view': 6.15.3
-      '@lezer/common': 1.0.3
     dev: false
 
   /@commitlint/cli@17.6.6:
@@ -803,20 +822,6 @@ packages:
       rollup: 2.79.1
     dev: true
 
-  /@rollup/plugin-node-resolve@13.3.0:
-    resolution: {integrity: sha512-Lus8rbUo1eEcnS4yTFKLZrVumLPY+YayBdWXgFSHYhTT2iJbMhoaaBL3xl5NCdeRytErGr8tZ0L71BMRmnlwSw==}
-    engines: {node: '>= 10.0.0'}
-    peerDependencies:
-      rollup: ^2.42.0
-    dependencies:
-      '@rollup/pluginutils': 3.1.0
-      '@types/resolve': 1.17.1
-      deepmerge: 4.3.1
-      is-builtin-module: 3.2.1
-      is-module: 1.0.0
-      resolve: 1.22.2
-    dev: true
-
   /@rollup/plugin-node-resolve@13.3.0(rollup@2.79.1):
     resolution: {integrity: sha512-Lus8rbUo1eEcnS4yTFKLZrVumLPY+YayBdWXgFSHYhTT2iJbMhoaaBL3xl5NCdeRytErGr8tZ0L71BMRmnlwSw==}
     engines: {node: '>= 10.0.0'}
@@ -830,21 +835,6 @@ packages:
       is-module: 1.0.0
       resolve: 1.22.2
       rollup: 2.79.1
-    dev: true
-
-  /@rollup/plugin-typescript@8.5.0:
-    resolution: {integrity: sha512-wMv1/scv0m/rXx21wD2IsBbJFba8wGF3ErJIr6IKRfRj49S85Lszbxb4DCo8iILpluTjk2GAAu9CoZt4G3ppgQ==}
-    engines: {node: '>=8.0.0'}
-    peerDependencies:
-      rollup: ^2.14.0
-      tslib: '*'
-      typescript: '>=3.7.0'
-    peerDependenciesMeta:
-      tslib:
-        optional: true
-    dependencies:
-      '@rollup/pluginutils': 3.1.0
-      resolve: 1.22.2
     dev: true
 
   /@rollup/plugin-typescript@8.5.0(rollup@2.79.1)(tslib@2.6.0)(typescript@4.9.5):
@@ -863,17 +853,6 @@ packages:
       rollup: 2.79.1
       tslib: 2.6.0
       typescript: 4.9.5
-    dev: true
-
-  /@rollup/pluginutils@3.1.0:
-    resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
-    engines: {node: '>= 8.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0
-    dependencies:
-      '@types/estree': 0.0.39
-      estree-walker: 1.0.1
-      picomatch: 2.3.1
     dev: true
 
   /@rollup/pluginutils@3.1.0(rollup@2.79.1):
@@ -1334,6 +1313,20 @@ packages:
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
     dev: true
+
+  /codemirror@6.0.1(@lezer/common@1.0.3):
+    resolution: {integrity: sha512-J8j+nZ+CdWmIeFIGXEFbFPtpiYacFMDR8GlHK3IyHQJMCaVRfGx9NT+Hxivv1ckLWPvNdZqndbr/7lVhrf/Svg==}
+    dependencies:
+      '@codemirror/autocomplete': 6.9.0(@codemirror/language@6.8.0)(@codemirror/state@6.2.1)(@codemirror/view@6.15.3)(@lezer/common@1.0.3)
+      '@codemirror/commands': 6.2.4
+      '@codemirror/language': 6.8.0
+      '@codemirror/lint': 6.4.0
+      '@codemirror/search': 6.5.0
+      '@codemirror/state': 6.2.1
+      '@codemirror/view': 6.15.3
+    transitivePeerDependencies:
+      - '@lezer/common'
+    dev: false
 
   /color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
@@ -3035,6 +3028,23 @@ packages:
     hasBin: true
     dependencies:
       glob: 7.2.3
+    dev: true
+
+  /rollup-plugin-execute@1.1.1:
+    resolution: {integrity: sha512-isCNR/VrwlEfWJMwsnmt5TBRod8dW1IjVRxcXCBrxDmVTeA1IXjzeLSS3inFBmRD7KDPlo38KSb2mh5v5BoWgA==}
+    dev: true
+
+  /rollup-plugin-terser@7.0.2(rollup@2.79.1):
+    resolution: {integrity: sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ==}
+    deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
+    peerDependencies:
+      rollup: ^2.0.0
+    dependencies:
+      '@babel/code-frame': 7.22.5
+      jest-worker: 26.6.2
+      rollup: 2.79.1
+      serialize-javascript: 4.0.0
+      terser: 5.19.2
     dev: true
 
   /rollup@2.79.1:

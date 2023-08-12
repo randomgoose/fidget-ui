@@ -55,7 +55,7 @@ export function SimpleGrid({
             <AutoLayout
               key={index}
               name={NODE_NAME_MAP.row}
-              width="fill-parent"
+              width={width}
               spacing={computedSpacing.x}
               overflow="visible"
               height={rowHeight}
@@ -65,7 +65,7 @@ export function SimpleGrid({
                   key={index}
                   name={NODE_NAME_MAP.cell}
                   overflow="visible"
-                  width={width}
+                  width={'hug-contents'}
                   height={rowHeight}
                 >
                   {item}
