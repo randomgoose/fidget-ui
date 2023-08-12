@@ -8,6 +8,7 @@ export const getCardStyles = (): CardAnatomy => {
       stroke: colors.neutral[200],
       effect: shadows.sm,
       direction: 'vertical',
+      fill: colors.white,
     },
     header: {
       width: 'fill-parent',

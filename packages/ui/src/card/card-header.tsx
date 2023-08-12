@@ -14,7 +14,9 @@ export function CardHeader(props: CardHeaderProps) {
 
   return (
     <Fragment {...rootProps}>
-      <AutoLayout {...autoLayoutProps}>{renderChildren(props.children, { textProps })}</AutoLayout>
+      <AutoLayout {...autoLayoutProps} key={props.key}>
+        {renderChildren(props.children, { textProps })}
+      </AutoLayout>
     </Fragment>
   );
 }

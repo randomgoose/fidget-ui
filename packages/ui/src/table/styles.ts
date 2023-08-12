@@ -1,14 +1,16 @@
 import { colors } from '../styles';
 import { ElementProps } from '../types';
 
-export const getTableStyles = (): {
+export interface TableAnatomy {
   container: AutoLayoutProps;
   cell: ElementProps;
   head: ElementProps;
   body: AutoLayoutProps;
   header: AutoLayoutProps;
   row: AutoLayoutProps;
-} => {
+}
+
+export const getTableStyles = (): TableAnatomy => {
   return {
     container: {
       direction: 'vertical',

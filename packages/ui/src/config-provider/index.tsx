@@ -5,7 +5,7 @@ import type { TagProps } from '../tag/interface';
 import type { SwitchProps } from '../switch/interface';
 import type { AvatarProps } from '../avatar';
 import type { MenuProps } from '../menu';
-import type { CheckboxProps } from '../checkbox';
+import type { CheckboxProps } from '../checkbox/interface';
 import type { FieldProps } from '../_field/interface';
 import type { AccordionProps } from '../accordion/interface';
 import type { DescriptionListProps } from '../description-list/interface';
@@ -15,6 +15,7 @@ import type { DividerProps } from '../divider/interface';
 import type { DatePickerProps } from '../date-picker/interface';
 import type { RadioProps } from '../radio/interface';
 import type { StepperProps } from '../stepper/interface';
+import { TableProps } from '../table/interface';
 
 const { widget } = figma;
 const { useSyncedState } = widget;
@@ -36,6 +37,7 @@ export type FidgetGlobalConfig = Partial<{
   Divider: Partial<DividerProps>;
   Calendar: Partial<DatePickerProps>;
   Stepper: Partial<StepperProps>;
+  Table: Partial<TableProps>;
 }>;
 
 export function useGlobalConfig(config: FidgetGlobalConfig) {

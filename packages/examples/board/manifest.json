@@ -1,0 +1,17 @@
+{
+  "name": "board",
+  "id": "1271745572639398337",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": [
+    "figma",
+    "figjam"
+  ],
+  "containsWidget": true,
+  "widgetApi": "1.0.0",
+  "networkAccess": {
+    "allowedDomains": ["https://images.pexels.com"]
+  }
+}

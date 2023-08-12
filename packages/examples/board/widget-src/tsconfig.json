@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "jsxFactory": "figma.widget.h",
+    "jsxFragmentFactory": "figma.widget.Fragment",
+    "target": "es2016",
+    "lib": [
+      "es2017"
+    ],
+    "strict": true,
+    "typeRoots": [
+      "../node_modules/@types",
+      "../node_modules/@figma"
+    ],
+    "moduleResolution": "node"
+  }
+}

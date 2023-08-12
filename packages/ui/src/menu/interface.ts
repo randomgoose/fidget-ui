@@ -27,7 +27,7 @@ export interface MenuItemProps extends ElementProps {
   onClick?: (e: WidgetClickEvent) => void;
 }
 
-export interface MenuTriggerProps extends AutoLayoutProps {
+export interface MenuTriggerProps extends ElementProps {
   onClick?: (e: WidgetClickEvent) => void;
 }
 

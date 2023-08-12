@@ -10,7 +10,7 @@ import { useFetchGlobalConfig } from '../config-provider';
 
 const { AutoLayout, h } = figma.widget;
 
-function Card({ children, style }: CardProps) {
+function Card({ children, style, ...rest }: CardProps) {
   const globalConfig = useFetchGlobalConfig();
   const styles = mergeUserDefinedStyles({
     defaultStyle: getCardStyles(),
@@ -54,7 +54,7 @@ function Card({ children, style }: CardProps) {
   };
 
   return (
-    <AutoLayout {...styles.container} name={NODE_NAME_MAP.container}>
+    <AutoLayout {...styles.container} {...rest} name={NODE_NAME_MAP.container}>
       {renderChildren()}
     </AutoLayout>
   );

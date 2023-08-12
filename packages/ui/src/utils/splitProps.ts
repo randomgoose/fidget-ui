@@ -45,6 +45,8 @@ export const splitProps = (
       verticalAlignText,
       lineHeight,
       fill: color,
+      width: props.width,
+      height: props.height,
     },
   };
 };
