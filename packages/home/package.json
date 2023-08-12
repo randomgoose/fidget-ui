@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Your Figma widget",
   "scripts": {
-    "build": "esbuild src/code.tsx --bundle --outfile=dist/code.js --target=es6",
-    "generate": "rollup -c",
-    "watch": "npm run build -- --watch"
+    "build": "concurrently \"rollup -c\" \"node .scripts/build.js\"",
+    "watch": "WATCH=1 node .scripts/build.js",
+    "typeCheck": "tsc --noEmit"
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.1.9",
@@ -24,8 +24,9 @@
     "@rollup/plugin-typescript": "^8.5.0",
     "@types/codemirror": "^5.60.8",
     "@types/prismjs": "^1.26.0",
+    "concurrently": "^8.2.0",
     "esbuild": "*",
-    "rollup-plugin-execute": "^1.1.1",
+    "esbuild-plugin-replace": "^1.4.0",
     "rollup-plugin-terser": "^7.0.2"
   }
 }

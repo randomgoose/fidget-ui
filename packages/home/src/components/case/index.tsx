@@ -15,7 +15,7 @@ export function Case({ children, height, ...rest }: AutoLayoutProps) {
       {...rest}
     >
       {/* { children} */}
-      {Array.isArray(children) ? <>{...children}</> : children}
+      {Array.isArray(children) ? children.map((c) => c) : children}
     </AutoLayout>
   );
 }
