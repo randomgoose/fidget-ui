@@ -1,8 +1,8 @@
 import { Divider, Heading } from 'fidget-ui';
 import { docStyle } from '../styles';
-import { MenuUsage } from './usage';
-import { MenuPlacement } from './menu-placement';
-import { MenuItemWithIcon } from './item-with-icon';
+import MenuUsage from './usage';
+import MenuPlacement from './menu-placement';
+import MenuItemWithIcon from './item-with-icon';
 
 const { widget } = figma;
 const { AutoLayout } = widget;

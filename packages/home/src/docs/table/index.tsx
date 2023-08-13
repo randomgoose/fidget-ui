@@ -1,6 +1,6 @@
 import { Heading, Divider } from 'fidget-ui';
 import { docStyle } from '../styles';
-import { TableUsage } from './usage';
+import TableUsage from './usage';
 import { P } from '../typography';
 
 const { AutoLayout } = figma.widget;

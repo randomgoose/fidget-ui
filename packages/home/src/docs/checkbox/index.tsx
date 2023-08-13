@@ -1,9 +1,9 @@
 import { Heading, Divider } from 'fidget-ui';
 import { docStyle } from '../styles';
 import { Code, P } from '../typography';
-import { SingleCheckbox } from './single-checkbox';
-import { DisabledCheckbox } from './disabled-checkbox';
-import { CheckboxCheckboxGroup } from './checkbox-group';
+import SingleCheckbox from './single-checkbox';
+import DisabledCheckbox from './disabled-checkbox';
+import CheckboxCheckboxGroup from './checkbox-group';
 
 const { AutoLayout } = figma.widget;
 

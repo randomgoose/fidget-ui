@@ -1,11 +1,11 @@
 import { Heading, TextField, Divider, Tabs } from 'fidget-ui';
 import { codeStyle, docStyle } from '../styles';
-import { Code, P, Pre } from '../typography';
+import { P, Pre } from '../typography';
 import { Case } from '../../components/case';
 import InputElements from './input-elements';
 import InputAddons from './input-addons';
 import DisabledTextFields from './disabled-text-fields';
-import { TextFieldUsage } from './usage';
+import TextFieldUsage from './usage';
 
 const { widget } = figma;
 const { useSyncedState, AutoLayout, Span } = widget;
@@ -63,37 +63,6 @@ export function TextFieldDoc() {
               </Case>
             ),
           },
-          {
-            key: 'code',
-            tab: 'Code',
-            children: (
-              <Code height={240}>
-                {` <TextField
-  id='z592'
-  value={value}
-  onTextEditEnd={(e) => setValue(e.characters)}
-  placeholder={'TextField [variant=outline]'}
-  width={240}
-/>
-<TextField
-  id='jt93'
-  variant="filled"
-  value={value}
-  onTextEditEnd={(e) => setValue(e.characters)}
-  placeholder={'TextField [variant=filled]'}
-  width={240}
-/>
-<TextField
-  id='05k2'
-  variant="flush"
-  value={value}
-  onTextEditEnd={(e) => setValue(e.characters)}
-  placeholder={'TextField [variant=flush]'}
-  width={240}
-/>`}
-              </Code>
-            ),
-          },
         ]}
       />
 
@@ -135,38 +104,6 @@ export function TextFieldDoc() {
                   width={240}
                 />
               </Case>
-            ),
-          },
-          {
-            key: 'code',
-            tab: 'Code',
-            children: (
-              <Code height={240}>
-                {`<TextField
-  id='zb72'
-  size={'lg'}
-  value={value}
-  onTextEditEnd={(e) => setValue(e.characters)}
-  placeholder={'TextField [size=lg]'}
-  width={240}
-/>
-<TextField
-  id='94n2'
-  size={'md'}
-  value={value}
-  onTextEditEnd={(e) => setValue(e.characters)}
-  placeholder={'TextField [size=md]'}
-  width={240}
-/>
-<TextField
-  id='lo22'
-  size={'sm'}
-  value={value}
-  onTextEditEnd={(e) => setValue(e.characters)}
-  placeholder={'TextField [size=sm]'}
-  width={240}
-/>`}
-              </Code>
             ),
           },
         ]}

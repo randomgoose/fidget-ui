@@ -10,7 +10,7 @@ export interface StepperAnatomy {
 export type StepperSize = 'sm' | 'md' | 'lg';
 
 export interface StepperProps extends AutoLayoutProps {
-  style: ComponentStyle<StepperAnatomy, StepperSize>;
+  style?: ComponentStyle<StepperAnatomy, StepperSize>;
   id: string;
   value?: number;
   defaultValue?: number;

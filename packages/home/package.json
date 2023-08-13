@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Your Figma widget",
   "scripts": {
-    "build": "concurrently \"rollup -c\" \"node .scripts/build.js\"",
+    "build": "node .scripts/build.js",
+    "buildHighlighter": "rollup -c",
+    "buildAll": "concurrently \"npm run build\" \"npm run buildHighlighter\"",
     "watch": "WATCH=1 node .scripts/build.js",
     "typeCheck": "tsc --noEmit"
   },

@@ -1,11 +1,11 @@
 import { Heading, Divider } from 'fidget-ui';
 import { docStyle } from '../styles';
 import { Code, P } from '../typography';
-import { RadioRadioGroup } from './radio-group';
-import { ControlledRadioGroup } from './controlled-radio-group';
-import { Orientation } from './orientation';
-import { DisabledRadios } from './disabled-radios';
-import { CustomRendering } from './custom-rendering';
+import RadioRadioGroup from './radio-group';
+import ControlledRadioGroup from './controlled-radio-group';
+import Orientation from './orientation';
+import DisabledRadios from './disabled-radios';
+import CustomRendering from './custom-rendering';
 
 const { widget } = figma;
 const { AutoLayout } = widget;
