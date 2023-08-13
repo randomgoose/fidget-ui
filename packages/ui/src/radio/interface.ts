@@ -13,7 +13,6 @@ export interface RadioAnatomy {
   ink: Partial<RectangleProps>;
 }
 
-
 /**
  * @title Radio
  */
@@ -39,9 +38,9 @@ export interface RadioProps {
    */
   checked?: boolean;
   /**
-   * 
+   *
    * @param value
-   * @returns 
+   * @returns
    * @en The click event.
    */
   onClick?: (value: string) => void;
@@ -76,16 +75,16 @@ export interface RadioGroupProps {
    */
   spacing?: number;
   /**
-   * 
-   * @param option 
-   * @returns 
+   *
+   * @param option
+   * @returns
    * @en The change event.
    */
   onChange?: (option: Option) => void;
   /**
-   * 
+   *
    * @param option
-   * @returns 
+   * @returns
    * @en The render function takes the data and returns a custom component instead of the default checkbox.
    */
   render?: ({ checked, option }: { checked: boolean; option: Option }) => FigmaDeclarativeNode;

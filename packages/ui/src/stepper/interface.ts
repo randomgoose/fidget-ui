@@ -9,7 +9,6 @@ export interface StepperAnatomy {
 
 export type StepperSize = 'sm' | 'md' | 'lg';
 
-
 /**
  * @title Stepper
  */
@@ -51,26 +50,26 @@ export interface StepperProps extends AutoLayoutProps {
    */
   disabled?: boolean;
   /**
-   * 
-   * @param nextValue 
-   * @returns 
-   * 
+   *
+   * @param nextValue
+   * @returns
+   *
    * @en The change event handler.
    */
   onChange?: (nextValue: number) => void;
   /**
-   * 
-   * @param nextValue 
-   * @returns 
-   * 
+   *
+   * @param nextValue
+   * @returns
+   *
    * @en The increment event handler.
    */
   onIncrement?: (nextValue: number) => void;
   /**
-   * 
-   * @param nextValue 
-   * @returns 
-   * 
+   *
+   * @param nextValue
+   * @returns
+   *
    * @en The decrement event handler.
    */
   onDecrement?: (nextValue: number) => void;

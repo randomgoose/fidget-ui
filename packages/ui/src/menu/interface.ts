@@ -45,8 +45,8 @@ export interface MenuItemProps extends ElementProps {
    */
   color?: TextProps['stroke'];
   /**
-   * 
-   * @param e 
+   *
+   * @param e
    * @en The click event.
    */
   onClick?: (e: WidgetClickEvent) => void;

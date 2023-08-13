@@ -18,7 +18,7 @@ export interface SelectProps extends Omit<FieldProps, 'value' | 'onTextEditEnd'>
    */
   options: OptionProps[];
   /**
-   * @param selected 
+   * @param selected
    * @en The change event handler of the select.
    */
   onChange?: (selected: OptionProps) => void;

@@ -69,8 +69,8 @@ export interface CheckboxGroupProps {
    */
   spacing?: number;
   /**
-   * 
-   * @param option 
+   *
+   * @param option
    * @en The change event.
    */
   onChange?: (option: Option) => void;

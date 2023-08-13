@@ -7,6 +7,7 @@
     "buildHighlighter": "rollup -c",
     "buildAll": "concurrently \"npm run build\" \"npm run buildHighlighter\"",
     "watch": "WATCH=1 node .scripts/build.js",
+    "genAPIs": "node .scripts/parseAPI.js",
     "typeCheck": "tsc --noEmit"
   },
   "dependencies": {

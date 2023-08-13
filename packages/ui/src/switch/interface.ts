@@ -38,7 +38,7 @@ export interface SwitchProps extends AutoLayoutProps {
   colorScheme?: ColorScheme;
   /**
    * @param value
-   * 
+   *
    * @en The change event handler of the switch.
    */
   onChange?: (value: boolean) => void;

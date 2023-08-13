@@ -14,10 +14,10 @@ export interface TimePickerProps extends Omit<FieldProps, 'value' | 'onTextEditE
    */
   value?: Dayjs | string | Date;
   /**
-   * 
-   * @param newValue 
-   * @returns 
-   * 
+   *
+   * @param newValue
+   * @returns
+   *
    * @en The change event handler.
    */
   onChange?: (newValue: string) => void;

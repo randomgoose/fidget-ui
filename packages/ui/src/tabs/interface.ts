@@ -33,7 +33,6 @@ export interface TabsAnatomy {
   tabPanel: AutoLayoutProps;
 }
 
-
 /**
  * @title Tab Pane
  */
@@ -98,9 +97,9 @@ export interface TabsProps extends AutoLayoutProps {
    */
   items?: TabPaneProps[];
   /**
-   * @param key 
-   * @returns 
-   * 
+   * @param key
+   * @returns
+   *
    * @en The change event of the tabs.
    */
   onChange?: (key: string | number) => Promise<void> | void;

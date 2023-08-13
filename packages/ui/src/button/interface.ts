@@ -77,7 +77,7 @@ export interface ButtonProps extends Omit<AutoLayoutProps, 'onClick'> {
    */
   block?: boolean;
   /**
-   * @en The click event of the button. 
+   * @en The click event of the button.
    */
   onClick?: () => void;
 }

@@ -68,7 +68,7 @@ export interface TagProps extends AutoLayoutProps {
    */
   rightIcon?: SVG;
   /**
-   * 
+   *
    * @en The close event handler.
    */
   onClose?: () => void;

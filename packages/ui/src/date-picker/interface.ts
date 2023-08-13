@@ -33,9 +33,9 @@ export interface DatePickerProps extends Omit<FieldProps, 'onTextEditEnd' | 'val
    */
   date?: DateType;
   /**
-   * 
+   *
    * @param date
-   * 
+   *
    * @en The change event of the date.
    */
   onChange?: (date: Date) => void;
