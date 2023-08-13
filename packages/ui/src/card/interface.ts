@@ -7,7 +7,13 @@ export type CardAnatomy = {
   footer: ElementProps;
 };
 
+/**
+ * @title Card
+ */
 export interface CardProps extends AutoLayoutProps {
+  /**
+   * @en The style object for all card components.
+   */
   style?: ComponentStyle<CardAnatomy>;
 }
 
