@@ -16,12 +16,35 @@ export interface DatePickerAnatomy {
   indicator: EllipseProps;
 }
 
+/**
+ * @title DatePicker
+ */
 export interface DatePickerProps extends Omit<FieldProps, 'onTextEditEnd' | 'value' | 'style'> {
+  /**
+   * @en A unique identifier for the date picker.
+   */
   id: string;
+  /**
+   * @en The style object inlcuding all date picker parts.
+   */
   style?: ComponentStyle<DatePickerAnatomy>;
+  /**
+   * @en The selected date.
+   */
   date?: DateType;
+  /**
+   * 
+   * @param date
+   * 
+   * @en The change event of the date.
+   */
   onChange?: (date: Date) => void;
-  excludeDates?: Date[];
+  /**
+   * @en The placement of the popper layer.
+   */
   placement?: 'bottom' | 'top' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end';
+  /**
+   * @en The date format.
+   */
   format?: string;
 }

@@ -12,7 +12,16 @@ export type DescriptionListItem = {
   value: FigmaDeclarativeNode;
 };
 
+/**
+ * @title Description List
+ */
 export interface DescriptionListProps extends AutoLayoutProps {
+  /**
+   * @en The style object including all description list parts.
+   */
   style?: ComponentStyle<DescriptionListAnatomy>;
+  /**
+   * @en The description list entries.
+   */
   items?: DescriptionListItem[];
 }
