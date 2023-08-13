@@ -6,6 +6,7 @@ import ControlledRadioGroup from './controlled-radio-group';
 import Orientation from './orientation';
 import DisabledRadios from './disabled-radios';
 import CustomRendering from './custom-rendering';
+import { APIs } from '../../components';
 
 const { widget } = figma;
 const { AutoLayout } = widget;
@@ -23,6 +24,8 @@ export function RadioDoc() {
       <Orientation />
       <DisabledRadios />
       <CustomRendering />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }

@@ -6,6 +6,7 @@ import StepperSizes from './sizes';
 import StepperStep from './step';
 import ControlledSteppers from './controlled-stepper';
 import StepperPrecision from './stepper-precision';
+import { APIs } from '../../components';
 
 const { AutoLayout } = figma.widget;
 
@@ -20,6 +21,8 @@ export function StepperDoc() {
       <StepperStep />
       <StepperMinAndMax />
       <StepperPrecision />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }

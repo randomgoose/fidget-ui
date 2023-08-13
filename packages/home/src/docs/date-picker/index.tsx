@@ -4,6 +4,7 @@ import { P } from '../typography';
 import DatePickerUsage from './usage';
 import DatePickerFieldStyles from './field-styles';
 import DatePickerFormat from './format';
+import { APIs } from '../../components';
 
 const { AutoLayout } = figma.widget;
 
@@ -19,6 +20,8 @@ export function DatePickerDoc() {
       <DatePickerUsage />
       <DatePickerFieldStyles />
       <DatePickerFormat />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }

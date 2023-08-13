@@ -5,6 +5,7 @@ import NoticeUsage from './usage';
 import NoticeTitleDescription from './title-description';
 import NoticeStatus from './status';
 import NoticeIcon from './icon';
+import { APIs } from '../../components';
 
 const { AutoLayout } = figma.widget;
 
@@ -19,6 +20,8 @@ export function NoticeDoc() {
       <NoticeTitleDescription />
       <NoticeStatus />
       <NoticeIcon />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }

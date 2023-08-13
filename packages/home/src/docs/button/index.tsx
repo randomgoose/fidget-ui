@@ -6,6 +6,7 @@ import ButtonSizes from './sizes';
 import ButtonColorSchemes from './color-schemes';
 import DisabledButtons from './disabled-buttons';
 import ButtonWithIcon from './button-with-icon';
+import { APIs } from '../../components';
 
 const { widget } = figma;
 const { AutoLayout } = widget;
@@ -23,6 +24,8 @@ export function ButtonDoc() {
       <ButtonColorSchemes />
       <DisabledButtons />
       <ButtonWithIcon />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
 
       {/* <Heading as="h5">Block button</Heading>
       <P>

@@ -6,6 +6,7 @@ import InputElements from './input-elements';
 import InputAddons from './input-addons';
 import DisabledTextFields from './disabled-text-fields';
 import TextFieldUsage from './usage';
+import { APIs } from '../../components';
 
 const { widget } = figma;
 const { useSyncedState, AutoLayout, Span } = widget;
@@ -112,6 +113,8 @@ export function TextFieldDoc() {
       <InputElements />
       <InputAddons />
       <DisabledTextFields />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }

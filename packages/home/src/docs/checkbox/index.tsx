@@ -4,6 +4,7 @@ import { Code, P } from '../typography';
 import SingleCheckbox from './single-checkbox';
 import DisabledCheckbox from './disabled-checkbox';
 import CheckboxCheckboxGroup from './checkbox-group';
+import { APIs } from '../../components';
 
 const { AutoLayout } = figma.widget;
 
@@ -18,6 +19,8 @@ export function CheckboxDoc() {
       <SingleCheckbox />
       <DisabledCheckbox />
       <CheckboxCheckboxGroup />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }

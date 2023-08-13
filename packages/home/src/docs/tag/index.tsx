@@ -5,6 +5,7 @@ import TagColorSchemes from './color-schemes';
 import TagVariants from './variants';
 import TagSizes from './sizes';
 import DismissibleTags from './dismissible-tags';
+import { APIs } from '../../components';
 
 const { widget } = figma;
 const { AutoLayout } = widget;
@@ -19,6 +20,8 @@ export function TagDoc() {
       <TagVariants />
       <TagSizes />
       <DismissibleTags />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }

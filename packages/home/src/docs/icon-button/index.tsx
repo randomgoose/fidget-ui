@@ -5,6 +5,7 @@ import IconButtonVariants from './icon-button-variants';
 import IconButtonSizes from './icon-sizes';
 import IconButtonColorSchemes from './icon-button-color-schemes';
 import IconButtonDisabledButtons from './icon-button-disabled-buttons';
+import { APIs } from '../../components';
 
 const { widget } = figma;
 const { AutoLayout } = widget;
@@ -25,6 +26,8 @@ export function IconButtonDoc() {
       <IconButtonSizes />
       <IconButtonColorSchemes />
       <IconButtonDisabledButtons />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }

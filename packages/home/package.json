@@ -29,6 +29,7 @@
     "concurrently": "^8.2.0",
     "esbuild": "*",
     "esbuild-plugin-replace": "^1.4.0",
-    "rollup-plugin-terser": "^7.0.2"
+    "rollup-plugin-terser": "^7.0.2",
+    "ts-document": "^0.8.0"
   }
 }

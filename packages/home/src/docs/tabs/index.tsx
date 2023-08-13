@@ -4,6 +4,7 @@ import { P } from '../typography';
 import TabsUsage from './usage';
 import TabsVariants from './variants';
 import FittedTabs from './fitted-tabs';
+import { APIs } from '../../components';
 
 const { widget } = figma;
 const { AutoLayout } = widget;
@@ -18,6 +19,8 @@ export function TabsDoc() {
       <TabsUsage />
       <TabsVariants />
       <FittedTabs />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }

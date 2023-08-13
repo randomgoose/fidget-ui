@@ -6,6 +6,7 @@ import ControlledSwitch from './controlled-switch';
 import SwitchSizes from './sizes';
 import CustomizeSwitchColors from './customize-switch-colors';
 import DisabledSwitch from './disabled-switch';
+import { APIs } from '../../components';
 
 const { AutoLayout } = figma.widget;
 
@@ -20,6 +21,8 @@ export function SwitchDoc() {
       <SwitchSizes />
       <CustomizeSwitchColors />
       <DisabledSwitch />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }

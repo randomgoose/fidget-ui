@@ -3,6 +3,7 @@
   "version": "0.0.13",
   "description": "A component library for building Figma widgets.",
   "author": "Chen Chen",
+  "main": "dist/index.js",
   "module": "dist/index.js",
   "type": "module",
   "types": "dist/index.d.ts",

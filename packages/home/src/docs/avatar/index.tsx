@@ -5,6 +5,7 @@ import AvatarUsage from './usage';
 import AvatarBackgroundColors from './background-colors';
 import AvatarSizes from './sizes';
 import AvatarGroups from './avatar-groups';
+import { APIs } from '../../components';
 
 const { widget } = figma;
 const { AutoLayout } = widget;
@@ -24,6 +25,8 @@ export function AvatarDoc() {
       <AvatarBackgroundColors />
       <AvatarSizes />
       <AvatarGroups />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }

@@ -4,6 +4,7 @@ import { P } from '../typography';
 import SelectUsage from './usage';
 import SelectVariants from './variants';
 import SelectPlacement from './placement';
+import { APIs } from '../../components';
 
 const { widget } = figma;
 const { AutoLayout, Span } = widget;
@@ -27,6 +28,8 @@ export function SelectDoc() {
       <SelectUsage />
       <SelectVariants />
       <SelectPlacement />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }

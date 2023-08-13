@@ -3,6 +3,7 @@ import { docStyle } from '../styles';
 import MenuUsage from './usage';
 import MenuPlacement from './menu-placement';
 import MenuItemWithIcon from './item-with-icon';
+import { APIs } from '../../components';
 
 const { widget } = figma;
 const { AutoLayout } = widget;
@@ -15,6 +16,8 @@ export function MenuDoc() {
       <MenuUsage />
       <MenuItemWithIcon />
       <MenuPlacement />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }

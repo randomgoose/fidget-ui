@@ -4,6 +4,7 @@ import { Code } from '../typography';
 import DividerUsage from './usage';
 import DividerOrientation from './orientation';
 import DividerCustomElements from './custom-elements';
+import { APIs } from '../../components';
 
 const { widget } = figma;
 const { AutoLayout } = widget;
@@ -17,6 +18,8 @@ export function DividerDoc() {
       <DividerUsage />
       <DividerOrientation />
       <DividerCustomElements />
+
+      <APIs code={`__FIDGET_COMPONENT_API`} />
     </AutoLayout>
   );
 }
