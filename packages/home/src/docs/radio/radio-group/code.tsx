@@ -9,7 +9,7 @@ export function RadioGroupDemo() {
         { value: 'cats', label: 'Cats' },
         { value: 'sheep', label: 'Sheep' },
       ]}
-      onChange={({ value }) => figma.notify(`You selected ${value}.`)}
+      onChange={({ value }) => figma.notify(value)}
     />
   );
 }

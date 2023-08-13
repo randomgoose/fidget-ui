@@ -5,7 +5,7 @@ export function SwitchUsage() {
     <Switch
       id="ht5o"
       onChange={(checked) => {
-        figma.notify(`Switched ${checked ? 'on' : 'off'}.`);
+        figma.notify(checked + '');
       }}
     />
   );
