@@ -11,7 +11,7 @@ const DEMO_CODE_FILENAME = 'code.tsx';
 const API_DOC_PLACEHOLDER = '__FIDGET_COMPONENT_API';
 
 let fidgetAPIs = {};
-try  {
+try {
   fidgetAPIs = require(FIDGET_API_JSON_PATH)
 } catch (err) {
   console.error(`Failed to load fidget-ui APIs from ${FIDGET_API_JSON_PATH}`, err);
@@ -41,7 +41,8 @@ try  {
             .replace(/(^\w)|(-\w)/g, (match) => match.replace('-', '').toUpperCase());
           const targetAPI = fidgetAPIs[componentName];
           if (targetAPI) {
-            return JSON.stringify(targetAPI, null, 2).replace(/`/g, '\\`');
+            const obj = Object.fromEntries(targetAPI.map(interface => ([interface.name, interface])))
+            return JSON.stringify(obj, null, 2).replace(/`/g, '\\`');
           }
           return '';
         }
