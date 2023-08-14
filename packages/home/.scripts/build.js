@@ -41,8 +41,7 @@ try {
             .replace(/(^\w)|(-\w)/g, (match) => match.replace('-', '').toUpperCase());
           const targetAPI = fidgetAPIs[componentName];
           if (targetAPI) {
-            const obj = Object.fromEntries(targetAPI.map(interface => ([interface.name, interface])))
-            return JSON.stringify(obj, null, 2).replace(/`/g, '\\`');
+            return encodeURI(JSON.stringify(targetAPI));
           }
           return '';
         }

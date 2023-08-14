@@ -16,7 +16,7 @@ function generateHTMLPlugin() {
 }
 
 export default {
-  input: './src/highlighter.ts',
+  input: './src/ui.ts',
   output: {
     file: 'dist/ui.html',
   },

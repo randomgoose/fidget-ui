@@ -161,8 +161,6 @@ function highlight(doc: string) {
   // Flush any remaining tokens
   flushTokens();
 
-  console.log(newTokens);
-
   return {
     width,
     height,

@@ -4,8 +4,8 @@
   "description": "Your Figma widget",
   "scripts": {
     "build": "node .scripts/build.js",
-    "buildHighlighter": "rollup -c",
-    "buildAll": "concurrently \"npm run build\" \"npm run buildHighlighter\"",
+    "buildUI": "rollup -c",
+    "buildAll": "concurrently \"npm run build\" \"npm run buildUI\"",
     "watch": "WATCH=1 node .scripts/build.js",
     "genAPIs": "node .scripts/parseAPI.js",
     "typeCheck": "tsc --noEmit"
