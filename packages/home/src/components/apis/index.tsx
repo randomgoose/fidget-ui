@@ -8,7 +8,7 @@ import {
   TableRow,
   colors,
 } from 'fidget-ui';
-const { AutoLayout } = figma.widget;
+const { AutoLayout, useEffect } = figma.widget;
 
 const props = [
   { name: 'id', type: 'string', description: 'A unique identifier for the button.' },
@@ -19,6 +19,22 @@ export function APIs({ code }: { code: string }) {
   if (!code) {
     return null;
   }
+
+  useEffect(() => {
+    figma.showUI(__html__, { visible: false });
+
+    figma.ui.postMessage({
+      type: 'DECODE_TEXT',
+      text: code,
+    });
+
+    figma.ui.onmessage = (msg) => {
+      if (msg.type === 'TEXT_DECODED') {
+        console.log(JSON.parse(msg.text));
+        figma.closePlugin();
+      }
+    };
+  });
 
   return (
     <AutoLayout direction="vertical" width={'fill-parent'} spacing={16}>

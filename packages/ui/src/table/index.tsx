@@ -67,7 +67,6 @@ function Table({ children, style, ...rest }: TableProps) {
             </Component>
           );
         } else {
-          console.log(child);
           return child;
         }
       });

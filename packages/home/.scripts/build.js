@@ -42,7 +42,7 @@ try {
           const targetAPI = fidgetAPIs[componentName];
           if (targetAPI) {
             const obj = Object.fromEntries(targetAPI.map(interface => ([interface.name, interface])))
-            return JSON.stringify(obj, null, 2).replace(/`/g, '\\`');
+            return new TextEncoder().encode(JSON.stringify(obj));
           }
           return '';
         }

@@ -161,8 +161,6 @@ function highlight(doc: string) {
   // Flush any remaining tokens
   flushTokens();
 
-  console.log(newTokens);
-
   return {
     width,
     height,
@@ -172,13 +170,15 @@ function highlight(doc: string) {
 }
 
 window.onmessage = (msg) => {
+  console.log('_________Get decode request', msg.data.pluginMessage.text);
+
   switch (msg.data.pluginMessage.type) {
     case 'COPY':
       copy(msg.data.pluginMessage.payload);
       break;
+
     case 'HIGHLIGHT':
       const tokens = highlight(msg.data.pluginMessage.payload.doc || '');
-
       window.parent.postMessage(
         {
           pluginMessage: {
@@ -187,6 +187,20 @@ window.onmessage = (msg) => {
               tokens,
               id: msg.data.pluginMessage.payload.id,
             },
+          },
+        },
+        '*'
+      );
+      break;
+
+    case 'DECODE_TEXT':
+      const decoder = new TextDecoder();
+      const text = decoder.decode(new Uint8Array(msg.data.pluginMessage.text.split(',')));
+      window.parent.postMessage(
+        {
+          pluginMessage: {
+            type: 'TEXT_DECODED',
+            text: text,
           },
         },
         '*'
