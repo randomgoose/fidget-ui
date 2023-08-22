@@ -1,6 +1,6 @@
 {
   "name": "fidget-ui",
-  "version": "0.0.13",
+  "version": "0.0.15",
   "description": "A component library for building Figma widgets.",
   "author": "Chen Chen",
   "main": "dist/index.js",

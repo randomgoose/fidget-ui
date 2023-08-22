@@ -16,7 +16,7 @@ export function ShadowsDoc() {
 
       <Heading as="h5">Usage</Heading>
       <P>
-        Import the <Pre>shadows</Pre> object
+        Import the <Pre>shadows</Pre> object and use it with the effect prop.
       </P>
 
       <Case spacing={32}>

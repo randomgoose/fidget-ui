@@ -52,18 +52,12 @@ function Table({ children, style, ...rest }: TableProps) {
         if (target) {
           const Component = target.component;
           return (
-            // h(Component, {
-            //   key: index,
-            //   ...merge({}, target?.style, child.props),
-            //   children: recursivelyRenderChildren(flatten(child.children)),
-            //   name: child.props.name
-            // })
             <Component
               {...merge({}, target?.style, child.props)}
               key={index}
               name={child.props.name}
             >
-              {recursivelyRenderChildren(child.children as FigmaDeclarativeNode)}
+              {...recursivelyRenderChildren(child.children as FigmaDeclarativeNode)}
             </Component>
           );
         } else {
@@ -77,7 +71,7 @@ function Table({ children, style, ...rest }: TableProps) {
 
   return (
     <AutoLayout {...styles.container} {...rest} name={NODE_NAME_MAP.container}>
-      {recursivelyRenderChildren(children)}
+      {...recursivelyRenderChildren(children)}
     </AutoLayout>
   );
 }

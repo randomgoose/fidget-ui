@@ -14,7 +14,7 @@ export default function () {
 
       <Preview id="tabs/variants" code={`__FIDGET_DEMO_CODE`}>
         <Case
-          height={240}
+          height={480}
           direction="vertical"
           spacing={48}
           horizontalAlignItems="start"

@@ -14,13 +14,13 @@ export type StepperSize = 'sm' | 'md' | 'lg';
  */
 export interface StepperProps extends AutoLayoutProps {
   /**
-   * @en The style object including all stepper parts.
-   */
-  style?: ComponentStyle<StepperAnatomy, StepperSize>;
-  /**
    * @en A unique identifier for the stepper.
    */
   id: string;
+  /**
+   * @en The style object including all stepper parts.
+   */
+  style?: ComponentStyle<StepperAnatomy, StepperSize, string>;
   /**
    * @en The controlled value of the stepper.
    */

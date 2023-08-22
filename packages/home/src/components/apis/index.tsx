@@ -1,15 +1,6 @@
-import {
-  Heading,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-  colors,
-} from 'fidget-ui';
+import { Heading, colors } from 'fidget-ui';
 
-const { AutoLayout, Fragment } = figma.widget;
+const { AutoLayout, Fragment, Text } = figma.widget;
 
 type Property = {
   name: string;
@@ -41,32 +32,93 @@ export function APIs({ code }: { code: string }) {
       return (
         <Fragment key={name}>
           <Heading as="h6">{name}</Heading>
-          <Table width={'fill-parent'}>
-            <TableHeader>
-              <TableRow>
-                <TableHead height={40}>Name</TableHead>
-                <TableHead height={40}>Description</TableHead>
-                <TableHead height={40}>Type</TableHead>
-                <TableHead height={40}>DefaultValue</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
+          <AutoLayout width={'fill-parent'} direction="vertical">
+            <AutoLayout width={'fill-parent'} fill={colors.neutral[50]}>
+              <AutoLayout
+                verticalAlignItems="center"
+                padding={{ horizontal: 4, vertical: 4 }}
+                width={120}
+                height={40}
+              >
+                <Text verticalAlignText="center" fontSize={12}>
+                  Name
+                </Text>
+              </AutoLayout>
+              <AutoLayout
+                verticalAlignItems="center"
+                padding={{ horizontal: 4, vertical: 4 }}
+                width={'fill-parent'}
+                height={40}
+              >
+                <Text verticalAlignText="center" fontSize={12}>
+                  Description
+                </Text>
+              </AutoLayout>
+              <AutoLayout
+                verticalAlignItems="center"
+                padding={{ horizontal: 4, vertical: 4 }}
+                width={'fill-parent'}
+                height={40}
+              >
+                <Text verticalAlignText="center" fontSize={12}>
+                  Type
+                </Text>
+              </AutoLayout>
+              <AutoLayout
+                verticalAlignItems="center"
+                padding={{ horizontal: 4, vertical: 4 }}
+                width={'fill-parent'}
+                height={40}
+              >
+                <Text verticalAlignText="center" fontSize={12}>
+                  DefaultValue
+                </Text>
+              </AutoLayout>
+            </AutoLayout>
+
+            <AutoLayout name="Table Body" width={'fill-parent'} direction="vertical">
               {properties.map(({ name, type, description, defaultValue }) => (
-                <TableRow>
-                  <TableCell height={40}>{name}</TableCell>
-                  <TableCell fontSize={14} color={colors.neutral[500]} height={40}>
-                    {description}
-                  </TableCell>
-                  <TableCell fontFamily="Fira Code" height={40}>
-                    {type}
-                  </TableCell>
-                  <TableCell fontFamily="Fira Code" height={40}>
-                    {defaultValue}
-                  </TableCell>
-                </TableRow>
+                <AutoLayout width={'fill-parent'}>
+                  <AutoLayout padding={{ horizontal: 4, vertical: 12 }} width={120} height={40}>
+                    <Text
+                      fill={colors.neutral[700]}
+                      fontWeight={'semi-bold'}
+                      fontSize={12}
+                      width={'fill-parent'}
+                    >
+                      {name}
+                    </Text>
+                  </AutoLayout>
+                  <AutoLayout padding={{ horizontal: 4, vertical: 12 }} width={'fill-parent'}>
+                    <Text fill={colors.neutral[500]} fontSize={12} width={'fill-parent'}>
+                      {description}
+                    </Text>
+                  </AutoLayout>
+                  <AutoLayout padding={{ horizontal: 4, vertical: 12 }} width={'fill-parent'}>
+                    <Text
+                      fill={colors.indigo[500]}
+                      fontSize={10}
+                      fontFamily="Fira Code"
+                      fontWeight={'medium'}
+                      width={'fill-parent'}
+                    >
+                      {type}
+                    </Text>
+                  </AutoLayout>
+                  <AutoLayout padding={{ horizontal: 4, vertical: 12 }} width={'fill-parent'}>
+                    <Text
+                      fill={colors.neutral[700]}
+                      fontFamily="Fira Code"
+                      fontSize={12}
+                      width={'fill-parent'}
+                    >
+                      {defaultValue}
+                    </Text>
+                  </AutoLayout>
+                </AutoLayout>
               ))}
-            </TableBody>
-          </Table>
+            </AutoLayout>
+          </AutoLayout>
         </Fragment>
       );
     }

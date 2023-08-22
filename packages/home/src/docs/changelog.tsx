@@ -6,10 +6,10 @@ const { AutoLayout } = figma.widget;
 const changelog: AccordionItemProps[] = [
   {
     key: 1,
-    title: 'Jul 9, 2023 - Jul 15, 2023',
-    content: `- [New] DatePicker
-- [New] Menu
-- [New] Shadow styles`,
+    title: 'Aug 15, 2023',
+    content: `- New components: Card, Menu, DatePicker, Stepper, and Table.
+- New code blocks and syntax highlighting.
+- Shadow styles`,
   },
 ];
 

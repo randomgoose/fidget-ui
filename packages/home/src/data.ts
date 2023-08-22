@@ -30,4 +30,4 @@ export const COMPONENTS: { option: string; label: string; type: string }[] = [
   { option: 'demo2', label: 'Demo: Issue', type: 'demos' },
 ];
 
-export const LATEST = ['shadows', 'date-picker', 'menu'];
+export const LATEST = ['shadows', 'date-picker', 'menu', 'stepper', 'card', 'table'];

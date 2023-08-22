@@ -18,11 +18,13 @@ export const getTableStyles = (): TableAnatomy => {
       fill: '#fff',
     },
     cell: {
+      width: 'fill-parent',
       height: 56,
       verticalAlignItems: 'center',
       fontSize: 14,
       color: colors.neutral[700],
       padding: { left: 16 },
+      verticalAlignText: 'center',
     },
     header: {
       width: 'fill-parent',
@@ -46,6 +48,7 @@ export const getTableStyles = (): TableAnatomy => {
       verticalAlignItems: 'center',
       padding: { left: 16 },
       effect: [{ type: 'drop-shadow', offset: { y: 1, x: 0 }, blur: 0, color: '#E5E5E5' }],
+      verticalAlignText: 'center',
     },
   };
 };

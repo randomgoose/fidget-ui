@@ -158,7 +158,7 @@ export function TimePicker({
         <Button block variant="ghost" onClick={closeDropdown} size="sm">
           Cancel
         </Button>
-        <Button onClick={assignTime} block variant="filled" colorScheme="blue" size="sm">
+        <Button onClick={assignTime} block variant="filled" colorScheme="neutral" size="sm">
           Done
         </Button>
       </AutoLayout>
@@ -172,15 +172,15 @@ export function TimePicker({
         {...fieldStyles.field}
         {...fieldStyles.input}
         {...rest}
-        spacing={8}
+        spacing={6}
         onClick={open ? closeDropdown : openDropdown}
       >
+        <IconClock color={colors.neutral[500]} width={14} height={14} />
+
         <Text {...fieldStyles.text}>
           {time}
           {/* {time.format("HH:mm")} */}
         </Text>
-
-        <IconClock color={colors.neutral[500]} width={14} height={14} />
       </AutoLayout>
 
       {open ? panel : null}

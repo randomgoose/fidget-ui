@@ -65,6 +65,7 @@ export function Preview({ id, children, code }: PreviewProps) {
 
   return (
     <Tabs
+      overflow="visible"
       key={id}
       onChange={async (key) =>
         new Promise((resolve) => {

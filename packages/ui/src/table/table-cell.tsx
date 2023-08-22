@@ -1,24 +1,25 @@
 import { ElementProps } from '../types';
 import { renderChildren, splitProps } from '../utils';
+import { getTableStyles } from './styles';
 import { NODE_NAME_MAP } from './utils';
 import { merge } from 'lodash-es';
 
 const { AutoLayout, Fragment } = figma.widget;
 
 export function TableCell(props: ElementProps) {
+  const { cell } = getTableStyles();
+
+  const mergedProps = merge({}, cell, props);
+  const { autoLayoutProps, textProps } = splitProps(mergedProps);
+
   const rootProps = {
     name: NODE_NAME_MAP.cell,
     ...props,
   };
 
-  const mergedProps = merge({}, props);
-  const { autoLayoutProps, textProps } = splitProps(mergedProps);
-
   return (
     <Fragment {...rootProps}>
-      <AutoLayout {...autoLayoutProps} width="fill-parent">
-        {renderChildren(props.children, { textProps })}
-      </AutoLayout>
+      <AutoLayout {...autoLayoutProps}>{renderChildren(props.children, { textProps })}</AutoLayout>
     </Fragment>
   );
 }

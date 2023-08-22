@@ -4,6 +4,7 @@ import { CardAnatomy } from './interface';
 export const getCardStyles = (): CardAnatomy => {
   return {
     container: {
+      width: 280,
       cornerRadius: 8,
       stroke: colors.neutral[200],
       effect: shadows.sm,

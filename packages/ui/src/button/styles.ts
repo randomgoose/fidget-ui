@@ -32,7 +32,7 @@ export const getButtonStyles = ({
 
     case 'outline':
       if (isNeutralColor(colorScheme)) {
-        stroke = hue[900];
+        stroke = hue[200];
         color = hue[900];
         hoverStyle = { fill: hue[100] };
       } else {

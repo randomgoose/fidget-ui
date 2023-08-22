@@ -43,8 +43,8 @@ function Card({ children, style, ...rest }: CardProps) {
         return target
           ? h(target.component, {
               key: index,
-              ...merge({}, target.style, child.props),
               children: child.children,
+              ...merge({}, target.style, child.props),
             })
           : child;
       });

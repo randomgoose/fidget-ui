@@ -9,7 +9,7 @@ const { AutoLayout, Fragment } = figma.widget;
 export function TableHead(props: ElementProps) {
   const { head } = getTableStyles();
 
-  const mergedProps = merge(head, props);
+  const mergedProps = merge({}, head, props);
   const { autoLayoutProps, textProps } = splitProps(mergedProps);
 
   const rootProps = {
